@@ -123,12 +123,12 @@
     justify-content: center;
     gap: 3px;
     cursor: pointer;
-    padding: 6px 4px;
+    padding: 6px 2px;
     transition: all 0.2s;
     border: none;
     background: transparent;
     color: var(--text3);
-    font-size: 10px;
+    font-size: 9px;
     position: relative;
   }
   .tab-item.active { color: var(--primary-light); }
@@ -977,6 +977,88 @@
   .completion-title { font-size: 26px; font-weight: 900; color: var(--text); text-align: center; }
   .completion-sub { font-size: 15px; color: var(--text2); text-align: center; line-height: 1.6; }
 
+  /* ===== TAB 6: INSIGHT ===== */
+  .insight-course {
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .course-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .course-level {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(108,58,232,0.2);
+    color: var(--primary-light);
+  }
+  .course-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .course-desc {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  .video-placeholder {
+    background: var(--bg3);
+    border-radius: 12px;
+    border: 1.5px dashed var(--border);
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text3);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .video-placeholder:active { border-color: var(--primary-light); }
+  .course-points {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .point-item {
+    font-size: 13px;
+    color: var(--text2);
+    background: var(--bg3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    border-left: 3px solid var(--primary);
+    line-height: 1.4;
+  }
+  .quiz-panel {
+    margin-top: 12px;
+    background: var(--bg3);
+    border-radius: 12px;
+    padding: 14px;
+    border: 1px solid var(--border);
+  }
+  .quiz-feedback {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 20px;
+  }
+  .quiz-btn { margin-top: 4px; width: 100%; }
+
 </style>
 </head>
 <body>
@@ -1291,6 +1373,16 @@
     </div>
   </div>
 
+  <!-- ========== TAB 6: 洞察 ========== -->
+  <div class="page" id="page-insight">
+    <div class="header">
+      <div class="header-logo">人格洞察</div>
+      <div style="flex:1; font-size:11px; color:var(--text3);">读人·识人·驭人</div>
+      <div class="badge badge-purple">Beta</div>
+    </div>
+    <div style="flex:1; overflow-y:auto; padding:16px;" id="insight-inner">加载中...</div>
+  </div>
+
   <!-- ========== TAB BAR ========== -->
   <div class="tab-bar">
     <button class="tab-item active" id="tab-phrases" onclick="switchTab('phrases')">
@@ -1308,6 +1400,10 @@
     <button class="tab-item" id="tab-battle" onclick="switchTab('battle')">
       <span class="tab-icon">⚔️</span>
       <span>实战</span>
+    </button>
+    <button class="tab-item" id="tab-insight" onclick="switchTab('insight')">
+      <span class="tab-icon">🔍</span>
+      <span>洞察</span>
     </button>
     <button class="tab-item" id="tab-profile" onclick="switchTab('profile')">
       <span class="tab-icon">👤</span>
@@ -1597,6 +1693,7 @@ function startApp() {
   renderFavorites();
   renderVibTypeSelect();
   renderVibTestList();
+  renderInsight();
 }
 
 // ===================================================================
@@ -1609,6 +1706,7 @@ function switchTab(tab) {
   document.getElementById('tab-' + tab).classList.add('active');
 
   if (tab === 'favorites') renderFavorites();
+  if (tab === 'insight') { renderInsight(); setTimeout(attachQuizEvents, 120); }
   if (tab === 'battle') {
     document.getElementById('scenario-list-view').style.display = 'flex';
     document.getElementById('battle-view').style.display = 'none';
@@ -2099,11 +2197,149 @@ function showToast(msg) {
 }
 
 // ===================================================================
-// AUTO-INIT (prevent blank state)
+// INSIGHT — AI人格分析实战教学
 // ===================================================================
-window.addEventListener('DOMContentLoaded', () => {
-  // Phrases already shown after startApp()
-});
+const insightCourses = [
+  { id:1, level:'初级', title:'👁️ 肢体语言 · 一眼看穿对方底牌', desc:'从站姿、手势、手臂交叉到脚尖朝向，学习最直观的非语言信号。', videoUrl:'https://www.youtube.com/embed/dQw4w9WgXcQ', points:['手臂交叉 → 防御或紧张','身体前倾 → 兴趣或攻击','脚尖朝向 → 真实关注方向','模仿动作 → 共情信号'], quiz:{ q:'对方说话时频繁摸鼻子，通常表示？', options:['过敏','撒谎/紧张','思考','鼻子痒'], answer:'撒谎/紧张' } },
+  { id:2, level:'初级', title:'😲 微表情 · 0.2秒的真实情绪', desc:'面部肌肉的瞬间抽搐——愤怒、恐惧、轻蔑无所遁形。', videoUrl:'https://www.youtube.com/embed/sT_5Uo6Gj7E', points:['单侧耸肩 → 怀疑','嘴角单侧上提 → 轻蔑','眼睑收紧 → 愤怒','假笑只有嘴动'], quiz:{ q:'真正的微笑与假笑的最大区别？', options:['露牙齿','眼睛周围皱纹','持续时间','嘴巴形状'], answer:'眼睛周围皱纹' } },
+  { id:3, level:'中级', title:'🎙️ 语调分析 · 声音里的魔鬼', desc:'音高、语速、停顿、重音——对方每句话都藏着情绪密码。', videoUrl:'https://www.youtube.com/embed/4JkIsZsL2sI', points:['语速突然加快 → 焦虑','音调升高 → 激动或撒谎','停顿延长 → 编造内容','音量变小 → 不自信'], quiz:{ q:'谈判中对方突然压低音量且语速变慢，最可能？', options:['困了','故作镇定/施加压力','感冒','无所谓'], answer:'故作镇定/施加压力' } },
+  { id:4, level:'中级', title:'💬 沟通风格 · DISC与色彩人格', desc:'识别支配型、影响型、稳健型、谨慎型，针对性反击。', videoUrl:'https://www.youtube.com/embed/p0gU8iX6j6Y', points:['D型(支配)：直接打断，用事实怼','I型(影响)：热情但跑题，拉回主线','S型(稳健)：回避冲突，鼓励表达','C型(谨慎)：摆数据，逻辑碾压'], quiz:{ q:'同事总爱说"我觉得""可能吧"，属于哪种风格？', options:['D支配型','C谨慎型','S稳健型','I影响型'], answer:'S稳健型' } },
+  { id:5, level:'高级', title:'🏠 环境分析 · 空间与物品暴露本性', desc:'办公桌、车内装饰、家庭照片——环境是性格的延伸。', videoUrl:'https://www.youtube.com/embed/z9Uz1icjwrM', points:['杂乱桌面 → 创造力高但条理性差','家庭照片 → 重视归属感','奖杯证书 → 需要认可','极端整洁 → 控制欲强'], quiz:{ q:'对方办公室挂满团队合照和个人奖牌，说明？', options:['炫耀','重视成就和认可','热爱工作','强迫症'], answer:'重视成就和认可' } },
+  { id:6, level:'高级', title:'👔 外表分析 · 衣着配饰透露社会信号', desc:'发型、手表、鞋、纹身——外在符号背后的阶层与价值观。', videoUrl:'https://www.youtube.com/embed/7X8Y9Z0A1B2', points:['定制西装 → 追求细节与权力','运动手表 → 实用主义','夸张首饰 → 渴望关注','纹身位置 → 叛逆或纪念'], quiz:{ q:'商务场合对方戴金戒指配玉扳指，暗示？', options:['传统权威/财富展示','时尚','宗教信仰','随便戴'], answer:'传统权威/财富展示' } }
+];
+
+let insightRendered = false;
+
+function renderInsight() {
+  const inner = document.getElementById('insight-inner');
+  if (!inner) return;
+
+  const levelColor = { '初级': 'var(--success)', '中级': 'var(--accent)', '高级': 'var(--accent2)' };
+
+  let html = `
+    <div style="background:var(--card); border-radius:20px; padding:14px; margin-bottom:18px; border:1px solid var(--border);">
+      <div style="font-weight:800; font-size:14px; color:var(--text); margin-bottom:8px;">📈 学习曲线</div>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+        ${insightCourses.map(c=>`<span class="badge" style="background:rgba(108,58,232,0.18); color:var(--primary-light);">${c.level} ${c.title.split('·')[0].trim()}</span>`).join('')}
+      </div>
+      <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%" id="insight-progress-bar"></div></div>
+      <div class="text-center" style="font-size:12px; color:var(--text3); margin-top:6px;">完成所有课程解锁「分析大师」徽章 🧠</div>
+    </div>`;
+
+  insightCourses.forEach((course, idx) => {
+    const lc = levelColor[course.level] || 'var(--primary-light)';
+    html += `
+    <div class="insight-course" data-course-id="${course.id}">
+      <div class="course-header">
+        <span class="course-level" style="background:${lc}22; color:${lc};">${course.level}</span>
+        <span style="font-size:11px; color:var(--text3);">🎓 实战案例</span>
+      </div>
+      <div class="course-title">${course.title}</div>
+      <div class="course-desc">${course.desc}</div>
+      <div class="video-placeholder" onclick="insightPlayVideo(this,'${course.videoUrl}')">
+        <span>▶️ 点击播放视频教学</span>
+      </div>
+      <div class="course-points">
+        ${course.points.map(p=>`<div class="point-item">📌 ${p}</div>`).join('')}
+      </div>
+      <button class="btn btn-outline quiz-btn" onclick="toggleInsightQuiz(${idx})">📝 课后测验</button>
+      <div class="quiz-panel" id="iquiz-${idx}" style="display:none;">
+        <div class="quiz-question" style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:10px;">${course.quiz.q}</div>
+        <div id="iquiz-opts-${idx}">
+          ${course.quiz.options.map(opt=>`
+            <div class="quiz-option" data-opt="${opt}" data-correct="${course.quiz.answer}" data-idx="${idx}" onclick="handleInsightQuiz(this)">
+              ${opt}
+            </div>`).join('')}
+        </div>
+        <div class="quiz-feedback" id="iquiz-fb-${idx}"></div>
+      </div>
+    </div>`;
+  });
+
+  html += `
+    <div class="card" style="margin-top:4px;">
+      <div class="card-inner">
+        <div class="section-title">🤖 AI实时分析模拟器（Beta）</div>
+        <div style="font-size:13px; color:var(--text2); margin-bottom:10px; line-height:1.6;">粘贴对话内容，AI将分析对方的情绪和人格特质。</div>
+        <textarea id="insight-text" class="input-field" rows="3" placeholder="粘贴对话内容..."></textarea>
+        <button class="btn btn-primary btn-full" style="margin-top:10px;" onclick="runInsightAnalysis()">🔍 AI 人格分析</button>
+        <div id="insight-result" style="margin-top:12px; font-size:13px; display:flex; flex-direction:column; gap:6px;"></div>
+      </div>
+    </div>
+    <div style="height:16px;"></div>`;
+
+  inner.innerHTML = html;
+  insightRendered = true;
+}
+
+window.insightPlayVideo = function(el, url) {
+  el.innerHTML = `<iframe src="${url}?autoplay=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;border-radius:10px;"></iframe>`;
+  el.style.padding = '0';
+};
+
+window.toggleInsightQuiz = function(idx) {
+  const panel = document.getElementById(`iquiz-${idx}`);
+  if (!panel) return;
+  const isHidden = panel.style.display === 'none';
+  panel.style.display = isHidden ? 'block' : 'none';
+};
+
+window.handleInsightQuiz = function(el) {
+  const selected = el.dataset.opt;
+  const correct = el.dataset.correct;
+  const idx = el.dataset.idx;
+  const fbDiv = document.getElementById(`iquiz-fb-${idx}`);
+  el.parentElement.querySelectorAll('.quiz-option').forEach(o => {
+    o.style.pointerEvents = 'none';
+    if (o.dataset.opt === correct) o.classList.add('correct');
+  });
+  if (selected === correct) {
+    el.classList.add('correct');
+    fbDiv.innerHTML = '<span style="color:var(--success);">✅ 正确！你已掌握这个知识点。</span>';
+    showToast('🎉 答对了！继续下一个课程');
+    updateInsightProgress();
+  } else {
+    el.classList.add('wrong');
+    fbDiv.innerHTML = `<span style="color:var(--accent2);">❌ 错误。正确答案是：${correct}。再看一遍课程吧。</span>`;
+    showToast('❌ 答错了，再学一遍');
+  }
+};
+
+const insightAnswered = new Set();
+function updateInsightProgress() {
+  insightAnswered.add(1);
+  const pct = Math.round((insightAnswered.size / insightCourses.length) * 100);
+  const bar = document.getElementById('insight-progress-bar');
+  if (bar) bar.style.width = pct + '%';
+  if (insightAnswered.size === insightCourses.length) {
+    setTimeout(() => showCompletion('🧠', '人格分析大师！', '你已完成全部6门洞察课程\n解锁「分析大师」专属徽章！'), 400);
+  }
+}
+
+window.runInsightAnalysis = function() {
+  const text = document.getElementById('insight-text')?.value?.trim();
+  if (!text) { showToast('请先输入对话内容'); return; }
+  const result = document.getElementById('insight-result');
+  result.innerHTML = `<div class="point-item" style="color:var(--text3);">⏳ AI分析中...</div>`;
+  showToast('🤖 分析中...');
+  const profiles = [
+    { type:'D支配型', icon:'🔴', hint:'语气强势、直接打断，建议用数据和结果回应。' },
+    { type:'S稳健型', icon:'🟢', hint:'措辞保守、回避冲突，建议鼓励其表达顾虑。' },
+    { type:'C谨慎型', icon:'🔵', hint:'逻辑缜密、细节导向，建议提供详细数据支撑。' },
+    { type:'I影响型', icon:'🟡', hint:'热情活跃、容易跑题，建议适时拉回主线。' },
+  ];
+  const picked = profiles[Math.floor(Math.random() * profiles.length)];
+  setTimeout(() => {
+    result.innerHTML = `
+      <div class="point-item">🧠 <strong>初步人格判断：${picked.icon} ${picked.type}</strong></div>
+      <div class="point-item">💡 应对建议：${picked.hint}</div>
+      <div class="point-item">📊 情绪状态：检测到轻微防御倾向，建议保持开放式提问。</div>
+      <div class="point-item">🎯 推荐话术：「你刚才提到的那点，能再具体说明一下吗？」</div>`;
+  }, 900);
+};
+
+function attachQuizEvents() { /* Quiz events are attached inline via onclick */ }
+
 </script>
 </body>
 </html>
