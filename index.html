@@ -1,20 +1,2109 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>嘴替 ZTalk · 手环一震，嘴替上身</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 3rem; background: #f0f0f0; }
-        h1 { color: #ff5500; }
-        input, button { padding: 0.5rem; margin: 0.5rem; font-size: 1rem; }
-        button { background: #ff5500; color: white; border: none; cursor: pointer; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>嘴替 ZTalk — 手环一震，嘴替上身</title>
+<style>
+  /* ===== CSS Variables ===== */
+  :root {
+    --primary: #6C3AE8;
+    --primary-light: #8B5CF6;
+    --primary-dark: #4C1D95;
+    --accent: #F59E0B;
+    --accent2: #EF4444;
+    --success: #10B981;
+    --bg: #0F0A1E;
+    --bg2: #1A1035;
+    --bg3: #241848;
+    --card: #1E1540;
+    --card2: #2A1F55;
+    --text: #F0EAFF;
+    --text2: #B5A8D8;
+    --text3: #7A6EA0;
+    --border: #3D2D70;
+    --tab-height: 64px;
+    --header-height: 56px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --vibration-color: #FF6B6B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* ===== Scrollbar ===== */
+  ::-webkit-scrollbar { width: 0; }
+
+  /* ===== Layout ===== */
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .page {
+    display: none;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: calc(var(--tab-height) + 8px);
+  }
+  .page.active { display: flex; flex-direction: column; }
+
+  /* ===== Header ===== */
+  .header {
+    height: var(--header-height);
+    background: var(--bg2);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-shrink: 0;
+  }
+
+  .header-logo {
+    font-size: 22px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+  }
+
+  .header-slogan {
+    font-size: 11px;
+    color: var(--text3);
+    flex: 1;
+  }
+
+  .header-btn {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--bg3);
+    border: none;
+    color: var(--text2);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ===== Bottom Tab Bar ===== */
+  .tab-bar {
+    height: var(--tab-height);
+    background: var(--bg2);
+    display: flex;
+    align-items: stretch;
+    border-top: 1px solid var(--border);
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 100;
+    padding-bottom: var(--safe-bottom);
+  }
+
+  .tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    cursor: pointer;
+    padding: 6px 4px;
+    transition: all 0.2s;
+    border: none;
+    background: transparent;
+    color: var(--text3);
+    font-size: 10px;
+    position: relative;
+  }
+  .tab-item.active { color: var(--primary-light); }
+  .tab-item .tab-icon { font-size: 20px; }
+  .tab-item.active .tab-icon { transform: scale(1.15); }
+  .tab-item.active::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 24px; height: 2px;
+    background: var(--primary-light);
+    border-radius: 0 0 2px 2px;
+  }
+
+  /* ===== Cards ===== */
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .card-inner {
+    padding: 14px 16px;
+  }
+
+  /* ===== Buttons ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.3px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    box-shadow: 0 4px 16px rgba(108,58,232,0.4);
+  }
+  .btn-primary:active { transform: scale(0.96); }
+  .btn-outline {
+    background: transparent;
+    color: var(--primary-light);
+    border: 1.5px solid var(--primary-light);
+  }
+  .btn-accent {
+    background: linear-gradient(135deg, var(--accent), #F97316);
+    color: white;
+    box-shadow: 0 4px 16px rgba(245,158,11,0.35);
+  }
+  .btn-success {
+    background: linear-gradient(135deg, var(--success), #059669);
+    color: white;
+  }
+  .btn-danger {
+    background: linear-gradient(135deg, var(--accent2), #DC2626);
+    color: white;
+  }
+  .btn-sm { padding: 7px 14px; font-size: 12px; border-radius: 8px; }
+  .btn-full { width: 100%; }
+
+  /* ===== Badge ===== */
+  .badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .badge-purple { background: rgba(108,58,232,0.2); color: var(--primary-light); }
+  .badge-amber { background: rgba(245,158,11,0.2); color: var(--accent); }
+  .badge-green { background: rgba(16,185,129,0.2); color: var(--success); }
+  .badge-red { background: rgba(239,68,68,0.2); color: var(--accent2); }
+
+  /* ===== Search Bar ===== */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--bg3);
+    border-radius: 12px;
+    padding: 0 12px;
+    gap: 8px;
+    border: 1px solid var(--border);
+  }
+  .search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-size: 14px;
+    padding: 10px 0;
+  }
+  .search-bar input::placeholder { color: var(--text3); }
+  .search-icon { color: var(--text3); font-size: 15px; }
+
+  /* ===== Chip Filters ===== */
+  .chip-row {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 0;
+    scrollbar-width: none;
+  }
+  .chip {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--bg3);
+    color: var(--text2);
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+  .chip.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+
+  /* ===== Phrase Item ===== */
+  .phrase-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(61,45,112,0.4);
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 2px 0;
+  }
+  .phrase-item:active { background: var(--bg3); }
+  .phrase-item:last-child { border-bottom: none; }
+
+  .vibration-dot {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(108,58,232,0.2);
+    border: 1.5px solid var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    color: var(--primary-light);
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .phrase-text {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .phrase-meta {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+  .phrase-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: 4px;
+  }
+  .action-btn {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    color: var(--text3);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .action-btn:hover { color: var(--text); background: var(--bg3); }
+  .action-btn.favorited { color: var(--accent); }
+
+  /* ===== Section Title ===== */
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 16px 0 8px;
+  }
+
+  /* ===== Toast ===== */
+  #toast {
+    position: fixed;
+    bottom: calc(var(--tab-height) + 20px);
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(108,58,232,0.95);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  #toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ===== Vibration Indicator ===== */
+  #vibration-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(108,58,232,0.08);
+    z-index: 9000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  #vibration-overlay.show { display: flex; }
+  .vibration-pulse {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--primary-light), transparent);
+    animation: pulse 0.5s ease-in-out infinite;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px;
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+  }
+
+  /* ===== Padding Helpers ===== */
+  .px-16 { padding-left: 16px; padding-right: 16px; }
+  .py-12 { padding-top: 12px; padding-bottom: 12px; }
+  .mb-8 { margin-bottom: 8px; }
+  .mb-12 { margin-bottom: 12px; }
+  .mb-16 { margin-bottom: 16px; }
+  .gap-8 { gap: 8px; }
+  .gap-12 { gap: 12px; }
+  .flex { display: flex; }
+  .flex-col { flex-direction: column; }
+  .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .w-full { width: 100%; }
+  .text-center { text-align: center; }
+
+  /* ===== ============================================================ ===== */
+  /* ===== TAB 1: PHRASE LIBRARY ===== */
+
+  .scene-hero {
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .scene-stats {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .scene-stat {
+    flex: 1;
+    background: var(--card);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .scene-stat-num {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary-light);
+  }
+  .scene-stat-label {
+    font-size: 10px;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  /* ===== ============================================================ ===== */
+  /* ===== TAB 3: TRAINING ===== */
+
+  .training-card {
+    background: linear-gradient(135deg, var(--card), var(--card2));
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .training-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,58,232,0.3), transparent);
+  }
+
+  .progress-bar-wrap {
+    background: var(--bg3);
+    border-radius: 8px;
+    height: 8px;
+    overflow: hidden;
+    margin: 8px 0;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    border-radius: 8px;
+    transition: width 0.6s ease;
+  }
+
+  .vibration-code-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .vibration-code-item {
+    background: var(--bg3);
+    border-radius: 12px;
+    padding: 12px;
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .vibration-code-item:active { transform: scale(0.96); border-color: var(--primary); }
+  .vib-code-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(108,58,232,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .vib-code-info { flex: 1; }
+  .vib-code-name { font-size: 13px; font-weight: 700; color: var(--text); }
+  .vib-code-pattern { font-size: 11px; color: var(--primary-light); margin-top: 2px; }
+
+  /* Training Quiz */
+  .quiz-question {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .quiz-option {
+    background: var(--bg3);
+    border-radius: 10px;
+    padding: 13px 16px;
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text2);
+    transition: all 0.18s;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .quiz-option:active { transform: scale(0.98); }
+  .quiz-option.correct { border-color: var(--success); color: var(--success); background: rgba(16,185,129,0.1); }
+  .quiz-option.wrong { border-color: var(--accent2); color: var(--accent2); background: rgba(239,68,68,0.1); }
+
+  /* ===== ============================================================ ===== */
+  /* ===== TAB 4: SCENARIO BATTLE ===== */
+
+  .scenario-card {
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .scenario-card:active { transform: scale(0.97); }
+  .scenario-thumb {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+  }
+  .scenario-lock {
+    position: absolute;
+    inset: 0;
+    background: rgba(15,10,30,0.7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    backdrop-filter: blur(2px);
+  }
+  .scenario-badge {
+    position: absolute;
+    top: 8px; right: 8px;
+    font-size: 18px;
+  }
+  .scenario-info { padding: 10px 12px; }
+  .scenario-name { font-size: 14px; font-weight: 700; color: var(--text); }
+  .scenario-desc { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+  /* Battle Screen */
+  .battle-screen {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+  }
+  .battle-screen.active { display: flex; }
+
+  .battle-header {
+    padding: 16px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .battle-phase {
+    flex-shrink: 0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .phase-lose { background: rgba(239,68,68,0.2); color: var(--accent2); }
+  .phase-learn { background: rgba(245,158,11,0.2); color: var(--accent); }
+  .phase-win { background: rgba(16,185,129,0.2); color: var(--success); }
+
+  .chat-bubble-wrap { padding: 12px 16px; }
+  .chat-bubble {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .chat-bubble.opponent {
+    background: var(--card2);
+    border-radius: 4px 16px 16px 16px;
+    color: var(--text);
+    align-self: flex-start;
+    border: 1px solid var(--border);
+  }
+  .chat-bubble.user-fail {
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 16px 4px 16px 16px;
+    color: #FCA5A5;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+  .chat-bubble.user-win {
+    background: rgba(16,185,129,0.15);
+    border: 1px solid rgba(16,185,129,0.3);
+    border-radius: 16px 4px 16px 16px;
+    color: #6EE7B7;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+  .chat-bubble.teach {
+    background: rgba(108,58,232,0.15);
+    border: 1px solid rgba(108,58,232,0.3);
+    border-radius: 8px;
+    color: var(--text2);
+    font-size: 13px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .chat-role {
+    font-size: 11px;
+    color: var(--text3);
+    margin-bottom: 5px;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  /* ===== ============================================================ ===== */
+  /* ===== TAB 5: PROFILE ===== */
+
+  .profile-hero {
+    padding: 24px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    border-bottom: 1px solid var(--border);
+  }
+  .avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px;
+    border: 3px solid rgba(139,92,246,0.4);
+    box-shadow: 0 4px 20px rgba(108,58,232,0.4);
+  }
+  .profile-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .profile-level {
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .stat-box {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px 10px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .stat-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary-light);
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border-bottom: 1px solid rgba(61,45,112,0.3);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .menu-item:active { background: var(--bg3); }
+  .menu-item-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .menu-item-text { flex: 1; }
+  .menu-item-title { font-size: 14px; color: var(--text); font-weight: 600; }
+  .menu-item-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+  .menu-arrow { color: var(--text3); font-size: 14px; }
+
+  .badge-wall {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 4px;
+  }
+  .badge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 6px;
+    background: var(--bg3);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .badge-item.locked { opacity: 0.35; }
+  .badge-emoji { font-size: 28px; }
+  .badge-name { font-size: 10px; color: var(--text3); text-align: center; }
+
+  /* ===== Weekly Report ===== */
+  .weekly-report {
+    background: linear-gradient(135deg, #2D1B5E, #1A1035);
+    border-radius: 16px;
+    border: 1px solid rgba(139,92,246,0.3);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .weekly-report::before {
+    content: '📊';
+    position: absolute;
+    right: 16px; top: 16px;
+    font-size: 48px;
+    opacity: 0.15;
+  }
+  .report-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .report-rows { display: flex; flex-direction: column; gap: 10px; }
+  .report-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+  }
+  .report-label { font-size: 13px; color: var(--text2); }
+  .report-value { font-size: 15px; font-weight: 700; }
+
+  /* ===== Modals ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal-sheet {
+    background: var(--bg2);
+    border-radius: 24px 24px 0 0;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    padding: 12px 20px 32px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(40px);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.show .modal-sheet { transform: translateY(0); }
+  .modal-handle {
+    width: 36px; height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin: 0 auto 16px;
+  }
+  .modal-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  /* ===== Upgrade Banner ===== */
+  .upgrade-banner {
+    background: linear-gradient(135deg, #2D1B5E, #3D2870);
+    border-radius: 16px;
+    border: 1px solid rgba(139,92,246,0.4);
+    padding: 16px;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .upgrade-banner:active { transform: scale(0.98); }
+  .upgrade-icon { font-size: 36px; flex-shrink: 0; }
+  .upgrade-text h3 { font-size: 15px; font-weight: 800; color: var(--text); }
+  .upgrade-text p { font-size: 12px; color: var(--text3); margin-top: 3px; }
+  .upgrade-arrow { font-size: 18px; color: var(--primary-light); }
+
+  /* ===== Onboarding ===== */
+  #onboarding {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    gap: 24px;
+  }
+  .onboard-logo {
+    font-size: 56px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .onboard-slogan {
+    font-size: 16px;
+    color: var(--text2);
+    text-align: center;
+    line-height: 1.6;
+  }
+  .onboard-steps {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .onboard-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+  }
+  .step-num {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-icon { font-size: 24px; flex-shrink: 0; }
+  .step-text { flex: 1; }
+  .step-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .step-desc { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+  /* ===== Connected Status ===== */
+  .connection-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.3);
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--success);
+  }
+  .connection-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ===== Empty State ===== */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    gap: 12px;
+    text-align: center;
+  }
+  .empty-icon { font-size: 52px; opacity: 0.5; }
+  .empty-text { font-size: 15px; color: var(--text3); }
+  .empty-sub { font-size: 13px; color: var(--text3); opacity: 0.7; }
+
+  /* ===== Custom phrase form ===== */
+  .input-field {
+    width: 100%;
+    background: var(--bg3);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14px;
+    padding: 12px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+  }
+  .input-field:focus { border-color: var(--primary-light); }
+  .input-field-inline {
+    width: 100%;
+    background: var(--bg3);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+  .input-field-inline:focus { border-color: var(--primary-light); }
+  label.field-label {
+    display: block;
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 600;
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+
+  /* ===== Completion Overlay ===== */
+  #completion-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px;
+  }
+  #completion-overlay.show { display: flex; }
+  .completion-emoji { font-size: 72px; animation: bounce 0.6s ease-out; }
+  @keyframes bounce {
+    0% { transform: scale(0.3); }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  .completion-title { font-size: 26px; font-weight: 900; color: var(--text); text-align: center; }
+  .completion-sub { font-size: 15px; color: var(--text2); text-align: center; line-height: 1.6; }
+
+</style>
 </head>
 <body>
-    <h1>手环一震，嘴替上身</h1>
-    <p>老实人救星｜职场·恋爱·日常｜即刻开杠</p>
-    <input type="email" id="email" placeholder="你的邮箱">
-    <button onclick="alert('内测即将开始，我们会邮件通知你')">抢先体验，送终身会员</button>
-    <p style="margin-top: 2rem; font-size: 0.8rem;">© 嘴替 ZTalk</p>
+
+<!-- Onboarding Screen -->
+<div id="onboarding">
+  <div class="onboard-logo">嘴替 ZTalk</div>
+  <div style="font-size:48px">🦜</div>
+  <div class="onboard-slogan">
+    <strong style="color:var(--accent)">手环一震，嘴替上身。</strong><br>
+    告别社交内耗，让震动替你发声
+  </div>
+  <div class="onboard-steps">
+    <div class="onboard-step">
+      <div class="step-num">1</div>
+      <div class="step-icon">📱</div>
+      <div class="step-text">
+        <div class="step-title">连接手环</div>
+        <div class="step-desc">支持小米/华为/Apple Watch</div>
+      </div>
+    </div>
+    <div class="onboard-step">
+      <div class="step-num">2</div>
+      <div class="step-icon">⚡</div>
+      <div class="step-text">
+        <div class="step-title">学习震动编码</div>
+        <div class="step-desc">8种震动模式，对应8种嘴替</div>
+      </div>
+    </div>
+    <div class="onboard-step">
+      <div class="step-num">3</div>
+      <div class="step-icon">🎯</div>
+      <div class="step-text">
+        <div class="step-title">实战训练</div>
+        <div class="step-desc">先输后赢，完美应对任何场面</div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary btn-full" style="font-size:16px; padding:16px;" onclick="startApp()">
+    🚀 立即体验
+  </button>
+  <div style="font-size:12px; color:var(--text3)">每天10分钟训练 · 7天成为嘴替高手</div>
+</div>
+
+<!-- Main App -->
+<div id="app" style="display:none;">
+
+  <!-- Pages -->
+
+  <!-- ========== TAB 1: 话术库 ========== -->
+  <div class="page active" id="page-phrases">
+    <div class="header">
+      <div class="header-logo">嘴替</div>
+      <div class="header-slogan">手环一震，嘴替上身</div>
+      <div class="connection-bar" style="padding:5px 10px; font-size:11px;">
+        <div class="connection-dot"></div>
+        手环已连
+      </div>
+    </div>
+
+    <div class="scene-hero">
+      <div class="chip-row" id="scene-chips">
+        <div class="chip active" data-scene="职场" onclick="filterScene(this)">💼 职场</div>
+        <div class="chip" data-scene="恋爱" onclick="filterScene(this)">💕 恋爱</div>
+        <div class="chip" data-scene="家庭" onclick="filterScene(this)">🏠 家庭</div>
+        <div class="chip" data-scene="社交" onclick="filterScene(this)">🎉 社交</div>
+        <div class="chip" data-scene="消费维权" onclick="filterScene(this)">🛡️ 维权</div>
+        <div class="chip" data-scene="日常" onclick="filterScene(this)">☀️ 日常</div>
+      </div>
+      <div class="scene-stats">
+        <div class="scene-stat">
+          <div class="scene-stat-num" id="stat-total">52</div>
+          <div class="scene-stat-label">本场景话术</div>
+        </div>
+        <div class="scene-stat">
+          <div class="scene-stat-num" id="stat-used">18</div>
+          <div class="scene-stat-label">本周使用次</div>
+        </div>
+        <div class="scene-stat">
+          <div class="scene-stat-num" id="stat-left">10</div>
+          <div class="scene-stat-label">今日剩余</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 12px 16px 8px;">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="搜索话术..." id="phrase-search" oninput="searchPhrases(this.value)">
+      </div>
+    </div>
+
+    <div style="padding: 0 16px 4px;">
+      <div class="chip-row" id="type-chips">
+        <div class="chip active" data-type="all" onclick="filterType(this)">全部</div>
+        <div class="chip" data-type="同意" onclick="filterType(this)">✅ 同意</div>
+        <div class="chip" data-type="拒绝" onclick="filterType(this)">❌ 拒绝</div>
+        <div class="chip" data-type="反问" onclick="filterType(this)">🔄 反问</div>
+        <div class="chip" data-type="拖延" onclick="filterType(this)">⏳ 拖延</div>
+        <div class="chip" data-type="夸赞" onclick="filterType(this)">🌟 夸赞</div>
+        <div class="chip" data-type="放大招" onclick="filterType(this)">💥 放大招</div>
+      </div>
+    </div>
+
+    <div style="flex: 1; padding: 0 16px;" id="phrase-list-container">
+      <!-- Phrases rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ========== TAB 2: 收藏 ========== -->
+  <div class="page" id="page-favorites">
+    <div class="header">
+      <div class="header-logo">收藏</div>
+      <div style="flex:1; font-size:12px; color:var(--text3)">长按删除</div>
+      <button class="header-btn" onclick="showToast('已全部复制到剪贴板 📋')">📋</button>
+    </div>
+
+    <div style="flex:1; padding: 0 16px;" id="favorites-container">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ========== TAB 3: 训练 ========== -->
+  <div class="page" id="page-train">
+    <div class="header">
+      <div class="header-logo">训练营</div>
+      <div style="flex:1"></div>
+      <div class="badge badge-amber">Day 3 / 7</div>
+    </div>
+
+    <div style="padding: 16px; flex:1;">
+      <!-- Progress -->
+      <div class="training-card mb-16">
+        <div style="font-size:13px; color:var(--text3); margin-bottom:6px;">今日进度</div>
+        <div style="font-size:22px; font-weight:800; color:var(--text); margin-bottom:8px;">
+          震动训练 · 第3天
+        </div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar-fill" style="width:43%"></div>
+        </div>
+        <div style="font-size:12px; color:var(--text3); display:flex; justify-content:space-between;">
+          <span>3/7 关卡完成</span>
+          <span>43%</span>
+        </div>
+      </div>
+
+      <!-- 8 Vibration Codes -->
+      <div class="section-title">震动编码表</div>
+      <div class="vibration-code-grid mb-16" id="vib-code-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Training Actions -->
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <button class="btn btn-primary btn-full" onclick="startQuiz()">
+          ⚡ 开始今日训练（约10分钟）
+        </button>
+        <button class="btn btn-outline btn-full" onclick="showVibrationTest()">
+          📳 测试手环震动
+        </button>
+      </div>
+
+      <!-- Quiz Container (hidden) -->
+      <div id="quiz-container" style="display:none; margin-top:16px;">
+        <div class="flex justify-between items-center mb-12">
+          <div class="section-title" style="padding:0;">题目 <span id="q-num">1</span>/5</div>
+          <button class="btn btn-sm btn-outline" onclick="endQuiz()">结束训练</button>
+        </div>
+        <div class="quiz-question" id="quiz-q">
+          <div style="font-size:13px; color:var(--text3); margin-bottom:10px;">以下震动模式对应什么含义？</div>
+          <div style="font-size:28px; letter-spacing:8px; text-align:center; padding:16px; color:var(--primary-light); font-weight:800;" id="quiz-vibrate">· · ·</div>
+        </div>
+        <div class="quiz-options" id="quiz-options">
+          <!-- Options rendered by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TAB 4: 实战 ========== -->
+  <div class="page" id="page-battle">
+    <!-- Scenario List -->
+    <div id="scenario-list-view" style="display:flex; flex-direction:column; height:100%;">
+      <div class="header">
+        <div class="header-logo">场景实战</div>
+        <div style="flex:1"></div>
+        <div class="badge badge-green">3/8 已解锁</div>
+      </div>
+      <div style="flex:1; padding:16px; overflow-y:auto;">
+        <div style="font-size:13px; color:var(--text2); margin-bottom:14px; line-height:1.6;">
+          ⚔️ 先输后赢训练法：先经历失败，再学习话术，最终完胜！
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px;" id="scenario-grid">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Battle Screen -->
+    <div id="battle-view" style="display:none; flex-direction:column; height:100%; overflow:hidden;">
+      <!-- Rendered dynamically -->
+    </div>
+  </div>
+
+  <!-- ========== TAB 5: 我的 ========== -->
+  <div class="page" id="page-profile">
+    <div class="profile-hero">
+      <div class="avatar">🦜</div>
+      <div class="profile-name">嘴替见习生</div>
+      <div class="profile-level">
+        <div class="badge badge-amber">Lv.3 嘴替学徒</div>
+        <div class="badge badge-purple">免费版</div>
+      </div>
+    </div>
+
+    <div style="padding:16px; display:flex; flex-direction:column; gap:16px; overflow-y:auto;">
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-num">47</div>
+          <div class="stat-label">话术使用</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3</div>
+          <div class="stat-label">连续天数</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">5</div>
+          <div class="stat-label">徽章获得</div>
+        </div>
+      </div>
+
+      <!-- Upgrade Banner -->
+      <div class="upgrade-banner" onclick="showUpgrade()">
+        <div class="upgrade-icon">🚀</div>
+        <div class="upgrade-text">
+          <h3>升级嘴替 Pro</h3>
+          <p>解锁全场景 · 无限话术 · AI实时提示</p>
+        </div>
+        <div class="upgrade-arrow">›</div>
+      </div>
+
+      <!-- Weekly Report -->
+      <div class="weekly-report">
+        <div class="report-title">📊 嘴替周报 · 第3周</div>
+        <div class="report-rows">
+          <div class="report-row">
+            <span class="report-label">🐣 这周怂了几次</span>
+            <span class="report-value" style="color:var(--accent2)">12次</span>
+          </div>
+          <div class="report-row">
+            <span class="report-label">💪 这周刚了几次</span>
+            <span class="report-value" style="color:var(--success)">31次</span>
+          </div>
+          <div class="report-row">
+            <span class="report-label">🔥 最常用话术</span>
+            <span class="report-value" style="color:var(--primary-light); font-size:12px;">这个我需要再确认一下</span>
+          </div>
+          <div class="report-row">
+            <span class="report-label">🏆 进步幅度</span>
+            <span class="report-value" style="color:var(--accent)">+258%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge Wall -->
+      <div>
+        <div class="section-title">徽章墙</div>
+        <div class="badge-wall" id="badge-wall">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Menu Items -->
+      <div class="card">
+        <div class="menu-item" onclick="showCustomPhraseModal()">
+          <div class="menu-item-icon" style="background:rgba(108,58,232,0.2);">✏️</div>
+          <div class="menu-item-text">
+            <div class="menu-item-title">自定义话术</div>
+            <div class="menu-item-sub">已添加 2/5 条（免费版限5条）</div>
+          </div>
+          <div class="menu-arrow">›</div>
+        </div>
+        <div class="menu-item" onclick="showToast('震动强度已调节 📳')">
+          <div class="menu-item-icon" style="background:rgba(16,185,129,0.2);">📳</div>
+          <div class="menu-item-text">
+            <div class="menu-item-title">震动设置</div>
+            <div class="menu-item-sub">手环连接 · 强度：中</div>
+          </div>
+          <div class="menu-arrow">›</div>
+        </div>
+        <div class="menu-item" onclick="showToast('AI实时提示为付费功能 🔒')">
+          <div class="menu-item-icon" style="background:rgba(245,158,11,0.2);">🤖</div>
+          <div class="menu-item-text">
+            <div class="menu-item-title">AI 实时提示</div>
+            <div class="menu-item-sub">🔒 升级 Pro 解锁</div>
+          </div>
+          <div class="menu-arrow">›</div>
+        </div>
+        <div class="menu-item" onclick="showToast('分享成功！送你10次话术额度 🎁')">
+          <div class="menu-item-icon" style="background:rgba(239,68,68,0.2);">🎁</div>
+          <div class="menu-item-text">
+            <div class="menu-item-title">邀请好友</div>
+            <div class="menu-item-sub">邀请1人 = 解锁10次额度</div>
+          </div>
+          <div class="menu-arrow">›</div>
+        </div>
+      </div>
+
+      <div style="height:8px;"></div>
+    </div>
+  </div>
+
+  <!-- ========== TAB BAR ========== -->
+  <div class="tab-bar">
+    <button class="tab-item active" id="tab-phrases" onclick="switchTab('phrases')">
+      <span class="tab-icon">📖</span>
+      <span>话术库</span>
+    </button>
+    <button class="tab-item" id="tab-favorites" onclick="switchTab('favorites')">
+      <span class="tab-icon">❤️</span>
+      <span>收藏</span>
+    </button>
+    <button class="tab-item" id="tab-train" onclick="switchTab('train')">
+      <span class="tab-icon">⚡</span>
+      <span>训练</span>
+    </button>
+    <button class="tab-item" id="tab-battle" onclick="switchTab('battle')">
+      <span class="tab-icon">⚔️</span>
+      <span>实战</span>
+    </button>
+    <button class="tab-item" id="tab-profile" onclick="switchTab('profile')">
+      <span class="tab-icon">👤</span>
+      <span>我的</span>
+    </button>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- Vibration Overlay -->
+<div id="vibration-overlay">
+  <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+    <div class="vibration-pulse">📳</div>
+    <div style="font-size:14px; color:var(--primary-light); font-weight:700;" id="vib-label">震动中...</div>
+  </div>
+</div>
+
+<!-- Upgrade Modal -->
+<div class="modal-overlay" id="modal-upgrade">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🚀 升级嘴替 Pro</div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+      <div style="display:flex; align-items:center; gap:10px; color:var(--text2); font-size:14px;">
+        <span style="font-size:20px;">✅</span> 解锁全部6大场景话术（300+条）
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; color:var(--text2); font-size:14px;">
+        <span style="font-size:20px;">✅</span> 无限次震动调用
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; color:var(--text2); font-size:14px;">
+        <span style="font-size:20px;">✅</span> 自定义话术无限条
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; color:var(--text2); font-size:14px;">
+        <span style="font-size:20px;">✅</span> AI实时提示 + 训练全关卡
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; color:var(--text2); font-size:14px;">
+        <span style="font-size:20px;">✅</span> 嘴替周报 · 数据看板
+      </div>
+    </div>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-primary" style="flex:1; flex-direction:column; gap:2px; padding:14px 10px;" onclick="buyPlan('monthly')">
+        <span style="font-size:20px; font-weight:900;">¥9.9</span>
+        <span style="font-size:11px; opacity:0.8;">/月 · 随时取消</span>
+      </button>
+      <button class="btn btn-accent" style="flex:1; flex-direction:column; gap:2px; padding:14px 10px;" onclick="buyPlan('lifetime')">
+        <span style="font-size:20px; font-weight:900;">¥99</span>
+        <span style="font-size:11px; opacity:0.8;">终身 · 送实体贴纸</span>
+      </button>
+    </div>
+    <button class="btn btn-outline btn-full" style="margin-top:10px;" onclick="closeModal('modal-upgrade')">
+      暂不升级
+    </button>
+  </div>
+</div>
+
+<!-- Custom Phrase Modal -->
+<div class="modal-overlay" id="modal-custom-phrase">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✏️ 添加自定义话术</div>
+    <label class="field-label">话术内容</label>
+    <textarea class="input-field" placeholder="输入你想要的话术..." id="custom-phrase-text" rows="3"></textarea>
+    <label class="field-label">绑定震动模式</label>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;" id="vib-type-select">
+      <!-- Rendered by JS -->
+    </div>
+    <label class="field-label">适用场景</label>
+    <input class="input-field-inline" placeholder="如：职场、家庭..." id="custom-scene" style="margin-bottom:16px;">
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="closeModal('modal-custom-phrase')">取消</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="saveCustomPhrase()">✅ 保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- Vibration Test Modal -->
+<div class="modal-overlay" id="modal-vib-test">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📳 测试手环震动</div>
+    <div style="font-size:13px; color:var(--text2); margin-bottom:16px; line-height:1.6;">
+      点击每种震动模式，感受手环震动。确认可以感受到后即可开始训练。
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;" id="vib-test-list">
+      <!-- Rendered by JS -->
+    </div>
+    <button class="btn btn-primary btn-full" style="margin-top:16px;" onclick="closeModal('modal-vib-test'); showToast('太棒了！震动测试完成 ✅')">
+      ✅ 全部测试完毕
+    </button>
+  </div>
+</div>
+
+<!-- Completion Overlay -->
+<div id="completion-overlay">
+  <div class="completion-emoji" id="comp-emoji">🏆</div>
+  <div class="completion-title" id="comp-title">恭喜！场景攻克！</div>
+  <div class="completion-sub" id="comp-sub">你已经解锁了新徽章，继续加油！</div>
+  <button class="btn btn-primary" onclick="closeCompletion()" style="padding:14px 40px; font-size:16px;">
+    继续挑战 →
+  </button>
+</div>
+
+<script>
+// ===================================================================
+// DATA
+// ===================================================================
+
+const VIBRATION_CODES = [
+  { id: 'agree',    name: '同意',  icon: '✅', pattern: '· ·',      emoji: '✅', color: '#10B981' },
+  { id: 'refuse',   name: '拒绝',  icon: '❌', pattern: '— —',      emoji: '❌', color: '#EF4444' },
+  { id: 'question', name: '反问',  icon: '🔄', pattern: '· — ·',    emoji: '🔄', color: '#6C3AE8' },
+  { id: 'delay',    name: '拖延',  icon: '⏳', pattern: '— · ·',    emoji: '⏳', color: '#F59E0B' },
+  { id: 'praise',   name: '夸赞',  icon: '🌟', pattern: '· · · ·',  emoji: '🌟', color: '#8B5CF6' },
+  { id: 'nuke',     name: '放大招', icon: '💥', pattern: '— · — ·',  emoji: '💥', color: '#F97316' },
+  { id: 'escape',   name: '转移话题', icon: '🌀', pattern: '· — —',  emoji: '🌀', color: '#06B6D4' },
+  { id: 'buy',      name: '争取时间', icon: '🎯', pattern: '— — ·',  emoji: '🎯', color: '#EC4899' },
+];
+
+const PHRASES = [
+  // 职场
+  { id:1, scene:'职场', type:'拒绝', text:'这个需求不在原始范围内，我们需要重新评估工期和资源。', vib:'refuse' },
+  { id:2, scene:'职场', type:'拖延', text:'这个我需要再确认一下，明天给你回复可以吗？', vib:'delay' },
+  { id:3, scene:'职场', type:'反问', text:'你觉得这件事的优先级和上周说的那个相比，哪个更重要？', vib:'question' },
+  { id:4, scene:'职场', type:'放大招', text:'我理解你的想法，但这样做会违反公司的XXX规定，建议我们走正式流程。', vib:'nuke' },
+  { id:5, scene:'职场', type:'拒绝', text:'抱歉，我今天的排期已经满了，我们看看能不能找人协助？', vib:'refuse' },
+  { id:6, scene:'职场', type:'争取时间', text:'这个问题很好，让我想一秒钟。', vib:'buy' },
+  { id:7, scene:'职场', type:'转移话题', text:'先把眼前的这个处理完，我们再讨论后续的方向？', vib:'escape' },
+  { id:8, scene:'职场', type:'夸赞', text:'你这个角度我没想到，确实是个好思路。', vib:'praise' },
+  { id:9, scene:'职场', type:'拒绝', text:'这不是我职责范围内的工作，建议同步给XX来负责。', vib:'refuse' },
+  { id:10, scene:'职场', type:'反问', text:'你希望这件事最终达成什么结果？', vib:'question' },
+  { id:11, scene:'职场', type:'同意', text:'没问题，我来推进，有进展及时同步给你。', vib:'agree' },
+  { id:12, scene:'职场', type:'放大招', text:'我先把目前遇到的问题整理一下，发邮件对齐，避免后续扯皮。', vib:'nuke' },
+
+  // 恋爱
+  { id:13, scene:'恋爱', type:'反问', text:'你希望我怎么做才会让你觉得被重视？', vib:'question' },
+  { id:14, scene:'恋爱', type:'拖延', text:'这个话题比较重要，我们找个好好说话的时间聊好吗？', vib:'delay' },
+  { id:15, scene:'恋爱', type:'转移话题', text:'我知道你现在情绪不太好，要不要先去吃点东西？', vib:'escape' },
+  { id:16, scene:'恋爱', type:'夸赞', text:'你今天做这件事真的让我觉得你很厉害。', vib:'praise' },
+  { id:17, scene:'恋爱', type:'放大招', text:'我觉得我们需要认真谈谈，因为这个问题已经影响到了我们。', vib:'nuke' },
+  { id:18, scene:'恋爱', type:'拒绝', text:'这件事我没办法答应你，但我可以告诉你我的顾虑。', vib:'refuse' },
+
+  // 家庭
+  { id:19, scene:'家庭', type:'拖延', text:'这件事我了解了，让我考虑一下，咱们周末再聊？', vib:'delay' },
+  { id:20, scene:'家庭', type:'拒绝', text:'爸妈，我理解你们的好意，但这件事我需要自己做决定。', vib:'refuse' },
+  { id:21, scene:'家庭', type:'反问', text:'你觉得这样做对我来说是最好的选择吗？', vib:'question' },
+  { id:22, scene:'家庭', type:'放大招', text:'我现在的状态很好，如果一直催促我反而会有压力，能不能给我一些空间？', vib:'nuke' },
+  { id:23, scene:'家庭', type:'转移话题', text:'先吃饭，饭后我们再聊这个，好吗？', vib:'escape' },
+
+  // 社交
+  { id:24, scene:'社交', type:'拒绝', text:'那天我有安排，下次吧！', vib:'refuse' },
+  { id:25, scene:'社交', type:'争取时间', text:'我看一下我的日程，稍后告诉你。', vib:'buy' },
+  { id:26, scene:'社交', type:'转移话题', text:'哎说到这个，你最近那件事怎么样了？', vib:'escape' },
+  { id:27, scene:'社交', type:'夸赞', text:'你真的很懂这个，改天详细跟我讲讲？', vib:'praise' },
+  { id:28, scene:'社交', type:'拒绝', text:'这种事我一般不参与的，但你们玩得开心！', vib:'refuse' },
+
+  // 消费维权
+  { id:29, scene:'消费维权', type:'放大招', text:'我已经对此次事件进行了全程记录，如果协商无果我会向消费者协会投诉。', vib:'nuke' },
+  { id:30, scene:'消费维权', type:'反问', text:'请问这个问题是否在你们的服务承诺范围内？', vib:'question' },
+  { id:31, scene:'消费维权', type:'拖延', text:'好的，请你们出具书面处理方案，我收到后再决定是否接受。', vib:'delay' },
+  { id:32, scene:'消费维权', type:'争取时间', text:'我需要咨询一下，稍后给你回复。', vib:'buy' },
+
+  // 日常
+  { id:33, scene:'日常', type:'拒绝', text:'不好意思，我今天不太方便。', vib:'refuse' },
+  { id:34, scene:'日常', type:'转移话题', text:'说到这里让我想起另一件事……', vib:'escape' },
+  { id:35, scene:'日常', type:'夸赞', text:'你这个主意太妙了！', vib:'praise' },
+  { id:36, scene:'日常', type:'同意', text:'行，就这么定了。', vib:'agree' },
+];
+
+const SCENARIOS = [
+  { id:'s1', name:'拒绝酒桌逼酒', emoji:'🍺', desc:'领导劝酒，同事起哄', unlocked:true,  badge:null, bg:'#1A0A2E' },
+  { id:'s2', name:'亲戚催婚应对', emoji:'💒', desc:'"你都多大了？"', unlocked:true,  badge:'🏅', bg:'#0A1A2E' },
+  { id:'s3', name:'职场抢功甩锅', emoji:'🎯', desc:'背锅侠逆袭时刻', unlocked:true,  badge:null, bg:'#1A1A0A' },
+  { id:'s4', name:'拒绝老好人模式', emoji:'😇', desc:'别人的事都找你', unlocked:false, badge:null, bg:'#1A0A1A' },
+  { id:'s5', name:'朋友借钱应对', emoji:'💸', desc:'"就当帮个忙嘛"', unlocked:false, badge:null, bg:'#0A2A1A' },
+  { id:'s6', name:'文化歧视反击', emoji:'🌍', desc:'遭遇不公平对待', unlocked:false, badge:null, bg:'#2A1A0A' },
+  { id:'s7', name:'消费维权实战', emoji:'🛡️', desc:'退款、索赔、投诉', unlocked:false, badge:null, bg:'#0A1A2A' },
+  { id:'s8', name:'甲方无理要求', emoji:'😤', desc:'无限改稿、白嫖索赔', unlocked:false, badge:null, bg:'#1A2A0A' },
+];
+
+const SCENARIO_BATTLES = {
+  s1: {
+    name: '拒绝酒桌逼酒',
+    phases: [
+      {
+        phase: 'intro',
+        opponentLine: '来来来，今天必须喝！不喝就是看不起我！大家说对不对？',
+        opponentRole: '🍺 强势领导',
+        options: [
+          { text: '好好好，那我就喝一杯吧…', isWrong: true },
+          { text: '哈哈，领导说啥就是啥…', isWrong: true },
+          { text: '（沉默，拿起杯子）', isWrong: true },
+        ],
+        teaching: [
+          '领导，感谢您的盛情，今天我开车，安全第一！我用茶代酒敬您一杯，心意完全到！',
+          '我有点身体不适，医生嘱咐不能喝酒，但情谊我记在心里，改天我请大家喝！',
+          '我身体原因不能喝酒，但我保证今晚绝对不早走，我们聊！',
+        ],
+        winOption: '领导，我开车来的，安全第一！用茶代酒，心意到位就好！'
+      }
+    ]
+  },
+  s2: {
+    name: '亲戚催婚应对',
+    phases: [
+      {
+        phase: 'intro',
+        opponentLine: '你都多大了？再不找对象就晚了！你看你表哥，孩子都上学了！',
+        opponentRole: '👵 热心亲戚',
+        options: [
+          { text: '我知道了，我会努力的…（低头)', isWrong: true },
+          { text: '嗯嗯，您说得对…（尴尬笑）', isWrong: true },
+          { text: '（顾左右而言他）', isWrong: true },
+        ],
+        teaching: [
+          '谢谢您关心，我现在事业正在关键期，等稳定了自然会考虑的！',
+          '感情的事急不来，我相信缘分，您放心，我有分寸！',
+          '我标准挺高的，找一个就找对的，这样对我对他都好！',
+        ],
+        winOption: '阿姨，谢谢您关心！感情的事缘分很重要，我现在很好，等遇到合适的人自然会的！'
+      }
+    ]
+  },
+  s3: {
+    name: '职场抢功甩锅',
+    phases: [
+      {
+        phase: 'intro',
+        opponentLine: '这个项目成功，主要是因为我提出了核心方案，对吧小张？',
+        opponentRole: '😏 爱抢功的同事',
+        options: [
+          { text: '（沉默，不敢反驳）', isWrong: true },
+          { text: '对对对，都是你的功劳…', isWrong: true },
+          { text: '（尴尬地笑，走开）', isWrong: true },
+        ],
+        teaching: [
+          '是啊，大家都出力了！我记得我负责了XXX模块，当时的方案文档都在的，要不要我发给大家回顾一下？',
+          '这个项目大家都很努力！我在里面主要做了XX，我们各有分工，缺一不可。',
+          '说到核心方案，我这里正好有当时的讨论记录，领导要不要看一下来源？',
+        ],
+        winOption: '项目成功是大家共同的结果！我当时负责了核心XX模块，方案文档我还保存着，需要的话可以同步给大家！'
+      }
+    ]
+  }
+};
+
+const BADGES = [
+  { id:'b1', emoji:'🎯', name:'首战告捷', unlocked:true },
+  { id:'b2', emoji:'🍺', name:'酒桌英雄', unlocked:true },
+  { id:'b3', emoji:'👑', name:'职场王者', unlocked:false },
+  { id:'b4', emoji:'💒', name:'催婚免疫', unlocked:true },
+  { id:'b5', emoji:'🛡️', name:'维权老手', unlocked:false },
+  { id:'b6', emoji:'🔥', name:'7日毕业', unlocked:false },
+  { id:'b7', emoji:'💥', name:'放大招达人', unlocked:true },
+  { id:'b8', emoji:'🤐', name:'沉默是金', unlocked:true },
+];
+
+// ===================================================================
+// STATE
+// ===================================================================
+let currentScene = '职场';
+let currentType = 'all';
+let favorites = new Set([1, 4, 7]);
+let currentBattleId = null;
+let battlePhase = 0; // 0=intro, 1=teaching, 2=retry
+let quizIndex = 0;
+const QUIZ_QUESTIONS = [
+  { pattern:'· ·', answer:'同意', options:['同意','拒绝','放大招','转移话题'] },
+  { pattern:'— —', answer:'拒绝', options:['同意','拒绝','争取时间','夸赞'] },
+  { pattern:'· — ·', answer:'反问', options:['反问','拖延','拒绝','放大招'] },
+  { pattern:'— · ·', answer:'拖延', options:['同意','夸赞','拖延','反问'] },
+  { pattern:'· · · ·', answer:'夸赞', options:['放大招','夸赞','争取时间','同意'] },
+];
+
+// ===================================================================
+// INIT
+// ===================================================================
+function startApp() {
+  document.getElementById('onboarding').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+  renderPhrases();
+  renderVibrationCodes();
+  renderScenarios();
+  renderBadgeWall();
+  renderFavorites();
+  renderVibTypeSelect();
+  renderVibTestList();
+}
+
+// ===================================================================
+// TAB NAVIGATION
+// ===================================================================
+function switchTab(tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+
+  if (tab === 'favorites') renderFavorites();
+  if (tab === 'battle') {
+    document.getElementById('scenario-list-view').style.display = 'flex';
+    document.getElementById('battle-view').style.display = 'none';
+  }
+}
+
+// ===================================================================
+// PHRASES
+// ===================================================================
+function getPhrases() {
+  let list = PHRASES.filter(p => {
+    const sceneMatch = p.scene === currentScene;
+    const typeMatch = currentType === 'all' || p.type === currentType;
+    return sceneMatch && typeMatch;
+  });
+  const q = document.getElementById('phrase-search')?.value?.trim() || '';
+  if (q) list = PHRASES.filter(p => p.text.includes(q));
+  return list;
+}
+
+function renderPhrases() {
+  const list = getPhrases();
+  const container = document.getElementById('phrase-list-container');
+  if (!list.length) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">暂无相关话术</div></div>';
+    return;
+  }
+  const vib = Object.fromEntries(VIBRATION_CODES.map(v => [v.id, v]));
+  container.innerHTML = list.map(p => {
+    const v = vib[p.vib] || {};
+    const faved = favorites.has(p.id);
+    return `
+    <div class="phrase-item" onclick="copyAndVibrate(${p.id})">
+      <div class="vibration-dot" style="border-color:${v.color||'var(--primary)'}; color:${v.color||'var(--primary-light)'};">
+        ${v.emoji || '•'}
+      </div>
+      <div style="flex:1; min-width:0;">
+        <div class="phrase-text">${p.text}</div>
+        <div class="phrase-meta">
+          <span class="badge badge-purple">${p.type}</span>
+          <span style="margin-left:6px; font-size:11px; color:var(--text3);">${v.pattern || ''}</span>
+        </div>
+      </div>
+      <div class="phrase-actions">
+        <button class="action-btn ${faved ? 'favorited' : ''}" onclick="event.stopPropagation(); toggleFavorite(${p.id})" id="fav-${p.id}">
+          ${faved ? '❤️' : '🤍'}
+        </button>
+        <button class="action-btn" onclick="event.stopPropagation(); triggerVibrate('${p.vib}', \`${p.text}\`)">
+          📳
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('stat-total').textContent = PHRASES.filter(p=>p.scene===currentScene).length;
+}
+
+function filterScene(el) {
+  document.querySelectorAll('#scene-chips .chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentScene = el.dataset.scene;
+  renderPhrases();
+}
+
+function filterType(el) {
+  document.querySelectorAll('#type-chips .chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  currentType = el.dataset.type;
+  renderPhrases();
+}
+
+function searchPhrases(q) { renderPhrases(); }
+
+function copyAndVibrate(id) {
+  const phrase = PHRASES.find(p => p.id === id);
+  if (!phrase) return;
+  navigator.clipboard?.writeText(phrase.text).catch(()=>{});
+  triggerVibrate(phrase.vib, phrase.text);
+}
+
+function toggleFavorite(id) {
+  if (favorites.has(id)) {
+    favorites.delete(id);
+    showToast('已取消收藏');
+  } else {
+    favorites.add(id);
+    showToast('已加入收藏 ❤️');
+  }
+  renderPhrases();
+  renderFavorites();
+}
+
+// ===================================================================
+// FAVORITES
+// ===================================================================
+function renderFavorites() {
+  const container = document.getElementById('favorites-container');
+  const list = PHRASES.filter(p => favorites.has(p.id));
+  if (!list.length) {
+    container.innerHTML = '<div class="empty-state"><div class="empty-icon">🤍</div><div class="empty-text">还没有收藏</div><div class="empty-sub">在话术库中点击 🤍 收藏</div></div>';
+    return;
+  }
+  const vib = Object.fromEntries(VIBRATION_CODES.map(v => [v.id, v]));
+  container.innerHTML = '<div style="padding-bottom:8px;">' + list.map(p => {
+    const v = vib[p.vib] || {};
+    return `
+    <div class="phrase-item" onclick="copyAndVibrate(${p.id})">
+      <div class="vibration-dot" style="border-color:${v.color||'var(--primary)'}; color:${v.color||'var(--primary-light)'};">
+        ${v.emoji || '•'}
+      </div>
+      <div style="flex:1; min-width:0;">
+        <div class="phrase-text">${p.text}</div>
+        <div class="phrase-meta">
+          <span class="badge badge-purple">${p.type}</span>
+          <span class="badge badge-amber" style="margin-left:4px;">${p.scene}</span>
+        </div>
+      </div>
+      <div class="phrase-actions">
+        <button class="action-btn" onclick="event.stopPropagation(); triggerVibrate('${p.vib}', \`${p.text}\`)">📳</button>
+        <button class="action-btn favorited" onclick="event.stopPropagation(); toggleFavorite(${p.id})">❤️</button>
+      </div>
+    </div>`;
+  }).join('') + '</div>';
+}
+
+// ===================================================================
+// VIBRATION CODES
+// ===================================================================
+function renderVibrationCodes() {
+  const grid = document.getElementById('vib-code-grid');
+  grid.innerHTML = VIBRATION_CODES.map(v => `
+    <div class="vibration-code-item" onclick="triggerVibrate('${v.id}', '${v.name}')">
+      <div class="vib-code-icon" style="background:${v.color}22; color:${v.color};">${v.emoji}</div>
+      <div class="vib-code-info">
+        <div class="vib-code-name">${v.name}</div>
+        <div class="vib-code-pattern" style="color:${v.color};">${v.pattern}</div>
+      </div>
+    </div>`).join('');
+}
+
+function triggerVibrate(vibId, label) {
+  const v = VIBRATION_CODES.find(c => c.id === vibId);
+  const overlay = document.getElementById('vibration-overlay');
+  document.getElementById('vib-label').textContent = (v ? v.name : label) + ' 震动中...';
+  overlay.classList.add('show');
+  if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+  showToast(`📳 ${v ? v.name : label}：${label.length < 30 ? label : '已复制话术'}`);
+  setTimeout(() => overlay.classList.remove('show'), 1200);
+}
+
+// ===================================================================
+// QUIZ / TRAINING
+// ===================================================================
+function startQuiz() {
+  quizIndex = 0;
+  document.getElementById('quiz-container').style.display = 'block';
+  renderQuizQuestion();
+}
+
+function endQuiz() {
+  document.getElementById('quiz-container').style.display = 'none';
+  showToast('训练已结束，今日得分：80分 🎉');
+}
+
+function renderQuizQuestion() {
+  const q = QUIZ_QUESTIONS[quizIndex];
+  document.getElementById('q-num').textContent = quizIndex + 1;
+  document.getElementById('quiz-vibrate').textContent = q.pattern;
+  const opts = [...q.options].sort(() => Math.random() - 0.5);
+  document.getElementById('quiz-options').innerHTML = opts.map(o => `
+    <div class="quiz-option" onclick="checkQuizAnswer(this, '${o}', '${q.answer}')">
+      <span>${o}</span>
+    </div>`).join('');
+}
+
+function checkQuizAnswer(el, chosen, answer) {
+  const opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(o => o.onclick = null);
+  if (chosen === answer) {
+    el.classList.add('correct');
+    el.innerHTML = '<span>✅ ' + chosen + ' — 正确！</span>';
+    showToast('正确！🎉 ');
+  } else {
+    el.classList.add('wrong');
+    opts.forEach(o => {
+      if (o.querySelector('span').textContent === answer) o.classList.add('correct');
+    });
+    showToast('不对哦，正确答案是：' + answer);
+  }
+  setTimeout(() => {
+    quizIndex++;
+    if (quizIndex < QUIZ_QUESTIONS.length) {
+      renderQuizQuestion();
+    } else {
+      document.getElementById('quiz-container').style.display = 'none';
+      showCompletion('🎓', '训练完成！', '今日训练得分：100分\n你已掌握所有震动编码！');
+    }
+  }, 1200);
+}
+
+function showVibrationTest() {
+  document.getElementById('modal-vib-test').classList.add('show');
+}
+
+function renderVibTestList() {
+  document.getElementById('vib-test-list').innerHTML = VIBRATION_CODES.map(v => `
+    <div class="vibration-code-item" onclick="triggerVibrate('${v.id}', '${v.name}'); this.style.borderColor='${v.color}';">
+      <div class="vib-code-icon" style="background:${v.color}22; color:${v.color};">${v.emoji}</div>
+      <div class="vib-code-info">
+        <div class="vib-code-name">${v.name}</div>
+        <div class="vib-code-pattern" style="color:${v.color};">${v.pattern}</div>
+      </div>
+      <span style="color:var(--text3); font-size:12px;">点击测试</span>
+    </div>`).join('');
+}
+
+// ===================================================================
+// SCENARIOS
+// ===================================================================
+function renderScenarios() {
+  const grid = document.getElementById('scenario-grid');
+  grid.innerHTML = SCENARIOS.map(s => `
+    <div class="scenario-card" onclick="openScenario('${s.id}')">
+      <div class="scenario-thumb" style="background: linear-gradient(135deg, ${s.bg}, #1A1035);">
+        <span>${s.emoji}</span>
+        ${!s.unlocked ? '<div class="scenario-lock">🔒</div>' : ''}
+        ${s.badge ? `<div class="scenario-badge">${s.badge}</div>` : ''}
+      </div>
+      <div class="scenario-info">
+        <div class="scenario-name">${s.name}</div>
+        <div class="scenario-desc">${s.desc}</div>
+      </div>
+    </div>`).join('');
+}
+
+function openScenario(id) {
+  const s = SCENARIOS.find(x => x.id === id);
+  if (!s) return;
+  if (!s.unlocked) {
+    showUpgrade();
+    return;
+  }
+  const battle = SCENARIO_BATTLES[id];
+  if (!battle) { showToast('即将开放，敬请期待！'); return; }
+  currentBattleId = id;
+  battlePhase = 0;
+  renderBattleScreen(battle, 0);
+  document.getElementById('scenario-list-view').style.display = 'none';
+  document.getElementById('battle-view').style.display = 'flex';
+  document.getElementById('battle-view').style.flexDirection = 'column';
+  document.getElementById('battle-view').style.height = '100%';
+  document.getElementById('battle-view').style.overflow = 'hidden';
+}
+
+function renderBattleScreen(battle, phaseIdx) {
+  const phase = battle.phases[phaseIdx];
+  const bv = document.getElementById('battle-view');
+  bv.innerHTML = `
+    <div class="battle-header">
+      <button class="header-btn" onclick="closeBattle()">←</button>
+      <div style="flex:1; font-size:14px; font-weight:700; color:var(--text);">${battle.name}</div>
+      <div class="battle-phase phase-lose" id="phase-badge">⚔️ 你的应对</div>
+    </div>
+    <div style="flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:12px;" id="battle-chat">
+      <div class="chat-bubble-wrap">
+        <div class="chat-role">📖 <strong>剧情背景</strong></div>
+        <div class="chat-bubble teach" style="width:100%; max-width:100%;">
+          在${['职场聚餐','家庭聚会','工作会议'][Math.floor(Math.random()*3)]}上，对方突然向你出招……
+        </div>
+      </div>
+      <div class="chat-bubble-wrap">
+        <div class="chat-role">${phase.opponentRole}</div>
+        <div class="chat-bubble opponent">${phase.opponentLine}</div>
+      </div>
+    </div>
+    <div style="padding:16px; border-top:1px solid var(--border); background:var(--bg2);" id="battle-actions">
+      <div style="font-size:12px; color:var(--text3); margin-bottom:10px;">你会怎么回应？（先按直觉选）</div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        ${phase.options.map((o, i) => `
+          <button class="quiz-option" onclick="chooseBattleOption(${i}, true)" style="text-align:left;">
+            ${o.text}
+          </button>`).join('')}
+      </div>
+    </div>`;
+}
+
+function chooseBattleOption(optIdx, isFirst) {
+  const battle = SCENARIO_BATTLES[currentBattleId];
+  const phase = battle.phases[0];
+  const chat = document.getElementById('battle-chat');
+  const actions = document.getElementById('battle-actions');
+  const phaseBadge = document.getElementById('phase-badge');
+
+  // Show user's wrong answer
+  chat.innerHTML += `
+    <div class="chat-bubble-wrap" style="display:flex; flex-direction:column; align-items:flex-end;">
+      <div class="chat-role" style="justify-content:flex-end;">你 👤</div>
+      <div class="chat-bubble user-fail">${phase.options[optIdx].text}</div>
+    </div>
+    <div class="chat-bubble-wrap">
+      <div class="chat-bubble teach" style="background:rgba(239,68,68,0.08); border-color:rgba(239,68,68,0.2); color:#FCA5A5;">
+        ❌ 这样回应对方会继续施压…你输了这一局
+      </div>
+    </div>`;
+
+  phaseBadge.className = 'battle-phase phase-learn';
+  phaseBadge.textContent = '📚 教学时刻';
+
+  // Show teaching
+  setTimeout(() => {
+    chat.innerHTML += `
+      <div class="chat-bubble-wrap">
+        <div class="chat-role">🦜 ZTalk 嘴替</div>
+        <div class="chat-bubble teach">
+          <div style="font-size:12px; color:var(--accent); font-weight:700; margin-bottom:8px;">推荐你学会这几句话：</div>
+          ${phase.teaching.map((t, i) => `
+            <div style="padding:8px 10px; background:rgba(108,58,232,0.1); border-radius:8px; margin-bottom:6px; font-size:13px; cursor:pointer;" onclick="practicePhrase(this, '${t.replace(/'/g, "\\'")}')" id="teach-${i}">
+              📳 ${t}
+              <div style="font-size:11px; color:var(--primary-light); margin-top:4px;">点击震动并朗读 →</div>
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    actions.innerHTML = `
+      <div style="font-size:12px; color:var(--accent); margin-bottom:10px; font-weight:600;">📳 请点击上方话术，逐条朗读并震动手环</div>
+      <button class="btn btn-primary btn-full" onclick="startRetry()">
+        ✅ 我已练习完毕，再战一次！
+      </button>`;
+
+    chat.scrollTop = chat.scrollHeight;
+  }, 400);
+}
+
+function practicePhrase(el, text) {
+  el.style.borderLeft = '3px solid var(--primary-light)';
+  el.style.background = 'rgba(108,58,232,0.2)';
+  triggerVibrate('nuke', text);
+}
+
+function startRetry() {
+  const battle = SCENARIO_BATTLES[currentBattleId];
+  const phase = battle.phases[0];
+  const chat = document.getElementById('battle-chat');
+  const actions = document.getElementById('battle-actions');
+  const phaseBadge = document.getElementById('phase-badge');
+
+  phaseBadge.className = 'battle-phase phase-win';
+  phaseBadge.textContent = '💪 再战一次';
+
+  chat.innerHTML += `
+    <div class="chat-bubble-wrap">
+      <div class="chat-role">${phase.opponentRole}</div>
+      <div class="chat-bubble opponent">${phase.opponentLine}</div>
+    </div>`;
+
+  actions.innerHTML = `
+    <div style="font-size:12px; color:var(--success); margin-bottom:10px; font-weight:600;">💪 用学到的话术应对！</div>
+    <button class="btn btn-success btn-full" onclick="winBattle()">
+      「${phase.winOption.substring(0,20)}…」→ 说出来！
+    </button>`;
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function winBattle() {
+  const battle = SCENARIO_BATTLES[currentBattleId];
+  const phase = battle.phases[0];
+  const chat = document.getElementById('battle-chat');
+  const actions = document.getElementById('battle-actions');
+
+  chat.innerHTML += `
+    <div class="chat-bubble-wrap" style="display:flex; flex-direction:column; align-items:flex-end;">
+      <div class="chat-role" style="justify-content:flex-end;">你 👤</div>
+      <div class="chat-bubble user-win">${phase.winOption}</div>
+    </div>
+    <div class="chat-bubble-wrap">
+      <div class="chat-bubble teach" style="background:rgba(16,185,129,0.08); border-color:rgba(16,185,129,0.2); color:#6EE7B7;">
+        🏆 完美应对！对方已无法继续施压。你赢了这一局！
+      </div>
+    </div>`;
+
+  actions.innerHTML = '';
+  triggerVibrate('agree', '赢了！');
+
+  // Mark badge
+  const scenario = SCENARIOS.find(s => s.id === currentBattleId);
+  if (scenario) scenario.badge = '🏅';
+
+  setTimeout(() => {
+    showCompletion('🏆', `「${SCENARIO_BATTLES[currentBattleId].name}」攻克！`, '你已解锁徽章，嘴替能力+1！\n继续挑战下一个场景吧！');
+  }, 800);
+
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function closeBattle() {
+  document.getElementById('scenario-list-view').style.display = 'flex';
+  document.getElementById('battle-view').style.display = 'none';
+  renderScenarios();
+  currentBattleId = null;
+}
+
+// ===================================================================
+// PROFILE / BADGES
+// ===================================================================
+function renderBadgeWall() {
+  document.getElementById('badge-wall').innerHTML = BADGES.map(b => `
+    <div class="badge-item ${b.unlocked ? '' : 'locked'}">
+      <div class="badge-emoji">${b.emoji}</div>
+      <div class="badge-name">${b.name}</div>
+    </div>`).join('');
+}
+
+// ===================================================================
+// CUSTOM PHRASE
+// ===================================================================
+function renderVibTypeSelect() {
+  document.getElementById('vib-type-select').innerHTML = VIBRATION_CODES.map(v => `
+    <div class="chip" data-vib="${v.id}" onclick="selectVibType(this)" style="border-color:${v.color}33;">
+      ${v.emoji} ${v.name}
+    </div>`).join('');
+}
+
+function selectVibType(el) {
+  document.querySelectorAll('#vib-type-select .chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function saveCustomPhrase() {
+  const text = document.getElementById('custom-phrase-text').value.trim();
+  if (!text) { showToast('请输入话术内容！'); return; }
+  const scene = document.getElementById('custom-scene').value || '日常';
+  const vibEl = document.querySelector('#vib-type-select .chip.active');
+  const vibId = vibEl ? vibEl.dataset.vib : 'agree';
+  const vibName = vibEl ? vibEl.textContent.trim().split(' ')[1] : '同意';
+
+  const newId = Math.max(...PHRASES.map(p=>p.id)) + 1;
+  PHRASES.push({ id:newId, scene, type:vibName, text, vib:vibId });
+  closeModal('modal-custom-phrase');
+  showToast('✅ 话术已保存！');
+  if (currentScene === scene) renderPhrases();
+}
+
+// ===================================================================
+// MODALS & OVERLAYS
+// ===================================================================
+function showUpgrade() { document.getElementById('modal-upgrade').classList.add('show'); }
+function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+function showCustomPhraseModal() { document.getElementById('modal-custom-phrase').classList.add('show'); }
+
+document.addEventListener('click', function(e) {
+  ['modal-upgrade','modal-custom-phrase','modal-vib-test'].forEach(id => {
+    const m = document.getElementById(id);
+    if (e.target === m) closeModal(id);
+  });
+});
+
+function buyPlan(plan) {
+  closeModal('modal-upgrade');
+  if (plan === 'lifetime') showCompletion('🎉', '终身会员开通成功！', '你将获得一枚"嘴替"实体贴纸\n（快递费到付，预计3-5天发货）');
+  else showToast('月度会员开通成功！¥9.9/月 🚀');
+}
+
+// ===================================================================
+// COMPLETION
+// ===================================================================
+function showCompletion(emoji, title, sub) {
+  document.getElementById('comp-emoji').textContent = emoji;
+  document.getElementById('comp-title').textContent = title;
+  document.getElementById('comp-sub').textContent = sub;
+  document.getElementById('completion-overlay').classList.add('show');
+}
+
+function closeCompletion() {
+  document.getElementById('completion-overlay').classList.remove('show');
+}
+
+// ===================================================================
+// TOAST
+// ===================================================================
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ===================================================================
+// AUTO-INIT (prevent blank state)
+// ===================================================================
+window.addEventListener('DOMContentLoaded', () => {
+  // Phrases already shown after startApp()
+});
+</script>
 </body>
 </html>
