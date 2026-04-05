@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>嘴替 ZTalk — 手环一震，嘴替上身</title>
+<style>
+:root{--primary:#6C3AE8;--primary-light:#8B5CF6;--accent:#F59E0B;--accent2:#EF4444;--success:#10B981;--bg:#0F0A1E;--bg2:#1A1035;--bg3:#241848;--card:#1E1540;--card2:#2A1F55;--text:#F0EAFF;--text2:#B5A8D8;--text3:#7A6EA0;--border:#3D2D70;--tab-height:64px;--header-height:56px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;position:relative;user-select:none;-webkit-tap-highlight-color:transparent}
+::-webkit-scrollbar{width:0}
+#app{display:flex;flex-direction:column;height:100vh}
+.page{display:none;flex:1;overflow-y:auto;padding-bottom:calc(var(--tab-height) + 8px)}
+.page.active{display:flex;flex-direction:column}
+.header{height:var(--header-height);background:var(--bg2);display:flex;align-items:center;padding:0 16px;gap:10px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;flex-shrink:0}
+.header-logo{font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-slogan{font-size:11px;color:var(--text3);flex:1}
+.header-btn{width:32px;height:32px;border-radius:50%;background:var(--bg3);border:none;color:var(--text2);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.tab-bar{height:var(--tab-height);background:var(--bg2);display:flex;align-items:stretch;border-top:1px solid var(--border);position:fixed;bottom:0;left:0;right:0;z-index:100;padding-bottom:env(safe-area-inset-bottom,0px)}
+.tab-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;padding:6px 2px;transition:all .2s;border:none;background:transparent;color:var(--text3);font-size:9px;position:relative}
+.tab-item.active{color:var(--primary-light)}
+.tab-item .tab-icon{font-size:20px}
+.tab-item.active::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:24px;height:2px;background:var(--primary-light);border-radius:0 0 2px 2px}
+.card{background:var(--card);border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.card-inner{padding:14px 16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;border-radius:10px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;box-shadow:0 4px 16px rgba(108,58,232,.4)}
+.btn-primary:active{transform:scale(.96)}
+.btn-outline{background:transparent;color:var(--primary-light);border:1.5px solid var(--primary-light)}
+.btn-accent{background:linear-gradient(135deg,var(--accent),#F97316);color:#fff;box-shadow:0 4px 16px rgba(245,158,11,.35)}
+.btn-success{background:linear-gradient(135deg,var(--success),#059669);color:#fff}
+.btn-sm{padding:7px 14px;font-size:12px;border-radius:8px}
+.btn-full{width:100%}
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-purple{background:rgba(108,58,232,.2);color:var(--primary-light)}
+.badge-amber{background:rgba(245,158,11,.2);color:var(--accent)}
+.badge-green{background:rgba(16,185,129,.2);color:var(--success)}
+.badge-red{background:rgba(239,68,68,.2);color:var(--accent2)}
+.search-bar{display:flex;align-items:center;background:var(--bg3);border-radius:12px;padding:0 12px;gap:8px;border:1px solid var(--border)}
+.search-bar input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:14px;padding:10px 0}
+.search-bar input::placeholder{color:var(--text3)}
+.search-icon{color:var(--text3);font-size:15px}
+.chip-row{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
+.chip{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;background:var(--bg3);color:var(--text2);border:1.5px solid var(--border);cursor:pointer;transition:all .18s;white-space:nowrap}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.phrase-item{display:flex;align-items:flex-start;gap:10px;padding:10px;cursor:pointer;transition:background .15s;border-radius:8px;margin:2px 0}
+.phrase-item:active{background:var(--bg3)}
+.vibration-dot{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(108,58,232,.2);border:1.5px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--primary-light);font-weight:700;margin-top:1px}
+.phrase-text{flex:1;font-size:14px;color:var(--text);line-height:1.5}
+.phrase-meta{font-size:11px;color:var(--text3);margin-top:3px}
+.phrase-actions{display:flex;gap:6px;align-items:center;margin-left:4px}
+.action-btn{width:30px;height:30px;border-radius:8px;background:transparent;border:none;color:var(--text3);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.action-btn:hover{color:var(--text);background:var(--bg3)}
+.action-btn.favorited{color:var(--accent)}
+.section-title{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;padding:16px 0 8px}
+#toast{position:fixed;bottom:calc(var(--tab-height) + 20px);left:50%;transform:translateX(-50%) translateY(20px);background:rgba(108,58,232,.95);color:#fff;padding:10px 20px;border-radius:24px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#vibration-overlay{position:fixed;inset:0;background:rgba(108,58,232,.08);z-index:9000;display:none;align-items:center;justify-content:center;pointer-events:none}
+#vibration-overlay.show{display:flex}
+.vibration-pulse{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,var(--primary-light),transparent);animation:pulse .5s ease-in-out infinite;display:flex;align-items:center;justify-content:center;font-size:40px}
+@keyframes pulse{0%{transform:scale(.9);opacity:.7}50%{transform:scale(1.1);opacity:1}100%{transform:scale(.9);opacity:.7}}
+.mb-16{margin-bottom:16px}.gap-8{gap:8px}.gap-12{gap:12px}
+.scene-hero{background:linear-gradient(135deg,var(--bg2),var(--bg3));padding:16px;border-bottom:1px solid var(--border)}
+.scene-stats{display:flex;gap:12px;margin-top:10px}
+.scene-stat{flex:1;background:var(--card);border-radius:10px;padding:10px 12px;text-align:center;border:1px solid var(--border)}
+.scene-stat-num{font-size:22px;font-weight:800;color:var(--primary-light)}
+.scene-stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+.training-card{background:linear-gradient(135deg,var(--card),var(--card2));border-radius:16px;border:1px solid var(--border);padding:20px;position:relative;overflow:hidden}
+.progress-bar-wrap{background:var(--bg3);border-radius:8px;height:8px;overflow:hidden;margin:8px 0}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-light));border-radius:8px;transition:width .6s ease}
+.vibration-code-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.vibration-code-item{background:var(--bg3);border-radius:12px;padding:12px;border:1.5px solid var(--border);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px}
+.vibration-code-item:active{transform:scale(.96);border-color:var(--primary)}
+.vib-code-icon{width:36px;height:36px;border-radius:10px;background:rgba(108,58,232,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.vib-code-info{flex:1}
+.vib-code-name{font-size:13px;font-weight:700;color:var(--text)}
+.vib-code-pattern{font-size:11px;color:var(--primary-light);margin-top:2px}
+.quiz-question{background:var(--card);border-radius:14px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
+.quiz-options{display:flex;flex-direction:column;gap:10px}
+.quiz-option{background:var(--bg3);border-radius:10px;padding:13px 16px;border:1.5px solid var(--border);cursor:pointer;font-size:14px;color:var(--text2);transition:all .18s;display:flex;align-items:center;gap:10px}
+.quiz-option:active{transform:scale(.98)}
+.quiz-option.correct{border-color:var(--success);color:var(--success);background:rgba(16,185,129,.1)}
+.quiz-option.wrong{border-color:var(--accent2);color:var(--accent2);background:rgba(239,68,68,.1)}
+.scenario-card{background:var(--card);border-radius:16px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all .2s;position:relative}
+.scenario-card:active{transform:scale(.97)}
+.scenario-thumb{height:90px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative}
+.scenario-lock{position:absolute;inset:0;background:rgba(15,10,30,.7);display:flex;align-items:center;justify-content:center;font-size:28px;backdrop-filter:blur(2px)}
+.scenario-badge{position:absolute;top:8px;right:8px;font-size:18px}
+.scenario-info{padding:10px 12px}
+.scenario-name{font-size:14px;font-weight:700;color:var(--text)}
+.scenario-desc{font-size:11px;color:var(--text3);margin-top:3px}
+.battle-header{padding:16px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.battle-phase{flex-shrink:0;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.phase-lose{background:rgba(239,68,68,.2);color:var(--accent2)}
+.phase-learn{background:rgba(245,158,11,.2);color:var(--accent)}
+.phase-win{background:rgba(16,185,129,.2);color:var(--success)}
+.chat-bubble-wrap{padding:12px 16px}
+.chat-bubble{max-width:80%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.6;position:relative;margin-bottom:10px}
+.chat-bubble.opponent{background:var(--card2);border-radius:4px 16px 16px 16px;color:var(--text);align-self:flex-start;border:1px solid var(--border)}
+.chat-bubble.user-fail{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:16px 4px 16px 16px;color:#FCA5A5;align-self:flex-end;margin-left:auto}
+.chat-bubble.user-win{background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.3);border-radius:16px 4px 16px 16px;color:#6EE7B7;align-self:flex-end;margin-left:auto}
+.chat-bubble.teach{background:rgba(108,58,232,.15);border:1px solid rgba(108,58,232,.3);border-radius:8px;color:var(--text2);font-size:13px;width:100%;max-width:100%}
+.chat-role{font-size:11px;color:var(--text3);margin-bottom:5px;display:flex;align-items:center;gap:4px}
+.profile-hero{padding:24px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;background:linear-gradient(135deg,var(--bg2),var(--bg3));border-bottom:1px solid var(--border)}
+.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-light));display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid rgba(139,92,246,.4);box-shadow:0 4px 20px rgba(108,58,232,.4)}
+.profile-name{font-size:20px;font-weight:800;color:var(--text)}
+.profile-level{display:flex;align-items:center;gap:6px}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-box{background:var(--card);border-radius:12px;padding:14px 10px;text-align:center;border:1px solid var(--border)}
+.stat-num{font-size:24px;font-weight:800;color:var(--primary-light)}
+.stat-label{font-size:11px;color:var(--text3);margin-top:3px}
+.menu-item{display:flex;align-items:center;gap:14px;padding:16px;border-bottom:1px solid rgba(61,45,112,.3);cursor:pointer;transition:background .15s}
+.menu-item:active{background:var(--bg3)}
+.menu-item-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.menu-item-text{flex:1}
+.menu-item-title{font-size:14px;color:var(--text);font-weight:600}
+.menu-item-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.menu-arrow{color:var(--text3);font-size:14px}
+.badge-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:4px}
+.badge-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px;background:var(--bg3);border-radius:12px;border:1px solid var(--border)}
+.badge-item.locked{opacity:.35}
+.badge-emoji{font-size:28px}
+.badge-name{font-size:10px;color:var(--text3);text-align:center}
+.weekly-report{background:linear-gradient(135deg,#2D1B5E,#1A1035);border-radius:16px;border:1px solid rgba(139,92,246,.3);padding:20px;position:relative;overflow:hidden}
+.weekly-report::before{content:'📊';position:absolute;right:16px;top:16px;font-size:48px;opacity:.15}
+.report-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:12px}
+.report-rows{display:flex;flex-direction:column;gap:10px}
+.report-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(255,255,255,.05);border-radius:10px}
+.report-label{font-size:13px;color:var(--text2)}
+.report-value{font-size:15px;font-weight:700}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-sheet{background:var(--bg2);border-radius:24px 24px 0 0;border:1px solid var(--border);border-bottom:none;padding:12px 20px 32px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(40px);transition:transform .3s}
+.modal-overlay.show .modal-sheet{transform:translateY(0)}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
+.modal-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px}
+.upgrade-banner{background:linear-gradient(135deg,#2D1B5E,#3D2870);border-radius:16px;border:1px solid rgba(139,92,246,.4);padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:all .2s}
+.upgrade-banner:active{transform:scale(.98)}
+.upgrade-icon{font-size:36px;flex-shrink:0}
+.upgrade-text h3{font-size:15px;font-weight:800;color:var(--text)}
+.upgrade-text p{font-size:12px;color:var(--text3);margin-top:3px}
+.upgrade-arrow{font-size:18px;color:var(--primary-light)}
+#onboarding{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;gap:24px}
+.onboard-logo{font-size:56px;font-weight:900;background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.onboard-slogan{font-size:16px;color:var(--text2);text-align:center;line-height:1.6}
+.onboard-steps{width:100%;display:flex;flex-direction:column;gap:12px}
+.onboard-step{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:14px;padding:14px 16px;border:1px solid var(--border)}
+.step-num{width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-icon{font-size:24px;flex-shrink:0}
+.step-text{flex:1}
+.step-title{font-size:14px;font-weight:700;color:var(--text)}
+.step-desc{font-size:12px;color:var(--text3);margin-top:2px}
+.connection-bar{display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:10px;padding:8px 12px;font-size:12px;color:var(--success)}
+.connection-dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;gap:12px;text-align:center}
+.empty-icon{font-size:52px;opacity:.5}
+.empty-text{font-size:15px;color:var(--text3)}
+.empty-sub{font-size:13px;color:var(--text3);opacity:.7}
+.input-field{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;padding:12px 14px;outline:none;transition:border-color .2s;font-family:inherit;resize:vertical;min-height:80px}
+.input-field:focus{border-color:var(--primary-light)}
+.input-field-inline{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;padding:10px 14px;outline:none;transition:border-color .2s;font-family:inherit}
+.input-field-inline:focus{border-color:var(--primary-light)}
+label.field-label{display:block;font-size:12px;color:var(--text3);font-weight:600;margin-bottom:6px;margin-top:14px}
+#completion-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;flex-direction:column;gap:20px;padding:32px}
+#completion-overlay.show{display:flex}
+.completion-emoji{font-size:72px;animation:bounce .6s ease-out}
+@keyframes bounce{0%{transform:scale(.3)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+.completion-title{font-size:26px;font-weight:900;color:var(--text);text-align:center}
+.completion-sub{font-size:15px;color:var(--text2);text-align:center;line-height:1.6}
+.insight-course{background:var(--card);border-radius:16px;border:1px solid var(--border);padding:16px;margin-bottom:14px}
+.course-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.course-level{display:inline-flex;align-items:center;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(108,58,232,.2);color:var(--primary-light)}
+.course-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:6px}
+.course-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:12px}
+.video-placeholder{background:var(--bg3);border-radius:12px;border:1.5px dashed var(--border);height:160px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--text3);margin-bottom:12px;overflow:hidden;transition:border-color .2s}
+.video-placeholder:active{border-color:var(--primary-light)}
+.course-points{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.point-item{font-size:13px;color:var(--text2);background:var(--bg3);border-radius:8px;padding:8px 12px;border-left:3px solid var(--primary);line-height:1.4}
+.quiz-panel{margin-top:12px;background:var(--bg3);border-radius:12px;padding:14px;border:1px solid var(--border)}
+.quiz-feedback{margin-top:10px;font-size:13px;font-weight:600;min-height:20px}
+.quiz-btn{margin-top:4px;width:100%}
+/* ===== VIDEO TAB ===== */
+.video-upload-zone{background:linear-gradient(135deg,var(--card),var(--card2));border-radius:20px;border:2px dashed var(--primary-light);padding:32px 20px;text-align:center;margin:16px;transition:all .3s;cursor:pointer}
+.video-upload-zone:hover,.video-upload-zone.dragover{border-color:var(--accent);background:linear-gradient(135deg,var(--bg3),var(--card))}
+.upload-icon{font-size:56px;margin-bottom:12px}
+.upload-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px}
+.upload-sub{font-size:13px;color:var(--text3);margin-bottom:16px}
+.upload-hint{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);border-radius:10px;padding:10px 14px;font-size:12px;color:var(--accent);margin:12px 16px;line-height:1.5}
+.upload-input{display:none}
+.link-input-row{display:flex;gap:10px;padding:0 16px 16px}
+.link-input-row input{flex:1;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;padding:12px 14px;outline:none}
+.link-input-row input:focus{border-color:var(--primary-light)}
+.link-input-row input::placeholder{color:var(--text3)}
+.video-player-wrap{background:var(--bg);border-radius:16px;overflow:hidden;margin:0 16px 16px;position:relative}
+.video-player{width:100%;aspect-ratio:16/9;background:var(--bg3);display:flex;align-items:center;justify-content:center}
+.video-placeholder-icon{font-size:64px;opacity:.5}
+.frame-controls{display:flex;gap:8px;padding:10px 12px;background:var(--bg2);align-items:center}
+.frame-btn{width:36px;height:36px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.frame-btn:active{background:var(--primary)}
+.time-display{flex:1;text-align:center;font-size:13px;color:var(--text2);font-family:monospace}
+.timeline-section{background:var(--card);border-radius:14px;border:1px solid var(--border);margin:0 16px 16px;overflow:hidden}
+.timeline-header{padding:12px 14px;background:var(--bg3);font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
+.timeline-item{padding:12px 14px;border-bottom:1px solid rgba(61,45,112,.3);cursor:pointer;transition:background .15s}
+.timeline-item:last-child{border-bottom:none}
+.timeline-item:active{background:var(--bg3)}
+.timeline-time{font-size:12px;font-weight:700;color:var(--primary-light);font-family:monospace;margin-bottom:4px}
+.timeline-original{font-size:13px;color:var(--text);margin-bottom:4px}
+.timeline-subtext{font-size:12px;color:var(--accent)}
+.analysis-report{background:var(--card);border-radius:14px;border:1px solid var(--border);margin:0 16px 16px;padding:16px}
+.report-section{margin-bottom:16px}
+.report-section:last-child{margin-bottom:0}
+.report-section-title{font-size:13px;font-weight:700;color:var(--text3);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.scene-tags{display:flex;flex-wrap:wrap;gap:8px}
+.scene-tag{padding:6px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(108,58,232,.2);color:var(--primary-light);border:1px solid rgba(108,58,232,.3)}
+.scene-tag.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.power-bar-wrap{margin-bottom:10px}
+.power-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text2);margin-bottom:4px}
+.power-bar{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.power-fill{height:100%;border-radius:4px;transition:width .5s ease}
+.power-fill.dominate{background:linear-gradient(90deg,var(--accent2),var(--accent))}
+.power-fill.submit{background:linear-gradient(90deg,var(--success),#34D399)}
+.comeback-card{background:var(--bg3);border-radius:10px;padding:12px;margin-bottom:10px;border-left:3px solid var(--primary)}
+.comeback-text{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:8px}
+.comeback-actions{display:flex;gap:8px}
+/* ===== SLANG TAB ===== */
+.slang-hero{background:linear-gradient(135deg,var(--bg2),var(--bg3));padding:16px;border-bottom:1px solid var(--border)}
+.slang-hero-title{font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px}
+.slang-hero-sub{font-size:12px;color:var(--text3)}
+.slang-category-row{padding:12px 16px;overflow-x:auto;scrollbar-width:none}
+.slang-list{padding:0 16px}
+.slang-item{background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:10px;overflow:hidden;transition:all .2s}
+.slang-item:active{transform:scale(.98)}
+.slang-main{display:flex;align-items:center;padding:14px;cursor:pointer}
+.slang-word{font-size:18px;font-weight:800;color:var(--primary-light);min-width:60px}
+.slang-trans{flex:1;font-size:13px;color:var(--text2)}
+.slang-expand-icon{color:var(--text3);font-size:14px;transition:transform .2s}
+.slang-item.expanded .slang-expand-icon{transform:rotate(180deg)}
+.slang-detail{display:none;padding:0 14px 14px;border-top:1px solid rgba(61,45,112,.3)}
+.slang-item.expanded .slang-detail{display:block}
+.slang-plain{font-size:13px;color:var(--text);margin-bottom:10px;line-height:1.5}
+.slang-example{background:var(--bg3);border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.slang-example-label{font-size:11px;color:var(--text3);margin-bottom:4px}
+.slang-example-text{font-size:13px;color:var(--text2);line-height:1.4}
+.slang-example-translation{font-size:12px;color:var(--accent2);margin-top:6px;padding-top:6px;border-top:1px dashed rgba(61,45,112,.3)}
+.slang-add-btn{width:100%;margin-top:8px}
+.ai-training-section{background:linear-gradient(135deg,var(--card),var(--card2));border-radius:20px;border:1px solid var(--border);margin:16px;padding:20px;position:relative;overflow:hidden}
+.ai-training-section::before{content:'🤖';position:absolute;right:16px;top:16px;font-size:40px;opacity:.2}
+.training-section-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.daily-card{background:var(--bg3);border-radius:14px;padding:16px;border:1px solid var(--border);margin-bottom:16px}
+.daily-card-label{font-size:11px;color:var(--accent);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.daily-word{font-size:24px;font-weight:900;color:var(--primary-light);margin-bottom:4px}
+.daily-trans{font-size:13px;color:var(--text2);margin-bottom:8px}
+.daily-example{font-size:12px;color:var(--text3);font-style:italic}
+.mode-tabs{display:flex;gap:8px;margin-bottom:12px}
+.mode-tab{flex:1;padding:10px;border-radius:10px;background:var(--bg3);border:1.5px solid var(--border);color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s}
+.mode-tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.preset-examples{margin-top:10px}
+.preset-label{font-size:11px;color:var(--text3);margin-bottom:6px}
+.preset-item{background:var(--bg3);border-radius:8px;padding:8px 10px;font-size:12px;color:var(--text2);margin-bottom:6px;cursor:pointer;border:1px solid transparent;transition:all .15s}
+.preset-item:active{border-color:var(--primary-light);background:rgba(108,58,232,.1)}
+.ai-result{background:var(--bg3);border-radius:12px;padding:14px;margin-top:12px;border:1px solid var(--border)}
+.ai-score{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.score-circle{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff}
+.score-detail{flex:1}
+.score-label{font-size:12px;color:var(--text3)}
+.score-comment{font-size:13px;color:var(--text2);margin-top:2px}
+.better-example{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:8px;padding:10px 12px;margin-top:10px}
+.better-example-label{font-size:11px;color:var(--success);font-weight:700;margin-bottom:4px}
+.better-example-text{font-size:13px;color:var(--text);line-height:1.4}
+.leaderboard{background:var(--card);border-radius:14px;border:1px solid var(--border);margin:16px;overflow:hidden}
+.leaderboard-header{padding:12px 14px;background:var(--bg3);font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.leaderboard-item{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(61,45,112,.3);gap:10px}
+.leaderboard-item:last-child{border-bottom:none}
+.leaderboard-rank{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;background:var(--bg3);color:var(--text3)}
+.leaderboard-rank.gold{background:linear-gradient(135deg,#FFD700,#FFA500);color:#1A1035}
+.leaderboard-rank.silver{background:linear-gradient(135deg,#C0C0C0,#A0A0A0);color:#1A1035}
+.leaderboard-rank.bronze{background:linear-gradient(135deg,#CD7F32,#B8860B);color:#1A1035}
+.leaderboard-name{flex:1;font-size:13px;color:var(--text)}
+.leaderboard-score{font-size:14px;font-weight:700;color:var(--accent)}
+.home-header{background:linear-gradient(135deg,var(--bg2),var(--bg3));padding:24px 16px 20px;border-bottom:1px solid var(--border)}
+.home-logo{font-size:26px;font-weight:900;background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.home-slogan{font-size:13px;color:var(--text3)}
+.feature-cards{display:flex;flex-direction:column;gap:14px}
+.feature-card{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:18px;border:1px solid var(--border);padding:18px 16px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.feature-card:active{transform:scale(.97)}
+.feature-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.video-card::before{background:linear-gradient(180deg,var(--accent),var(--accent2))}
+.slang-card::before{background:linear-gradient(180deg,var(--primary),var(--primary-light))}
+.battle-card::before{background:linear-gradient(180deg,var(--success),#059669)}
+.feature-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;background:var(--bg3)}
+.feature-content{flex:1}
+.feature-title{font-size:17px;font-weight:800;color:var(--text);margin-bottom:3px}
+.feature-desc{font-size:12px;color:var(--text2);margin-bottom:8px}
+.feature-tags{display:flex;gap:6px;flex-wrap:wrap}
+.feature-tag{background:var(--bg3);padding:3px 8px;border-radius:6px;font-size:10px;color:var(--text3)}
+.feature-arrow{font-size:24px;color:var(--text3);flex-shrink:0}
+.phrases-card::before{background:linear-gradient(180deg,#EC4899,#F472B6)}
+.train-card::before{background:linear-gradient(180deg,#3B82F6,#60A5FA)}
+.favorites-card::before{background:linear-gradient(180deg,#EC4899,#F472B6)}
+.profile-card::before{background:linear-gradient(180deg,#8B5CF6,#A78BFA)}
+</style>
+</head>
+<body>
+
+<div id="onboarding">
+  <div class="onboard-logo">嘴替 ZTalk</div>
+  <div style="font-size:48px">🦜</div>
+  <div class="onboard-slogan"><strong style="color:var(--accent)">手环一震，嘴替上身。</strong><br>告别社交内耗，让震动替你发声</div>
+  <div class="onboard-steps">
+    <div class="onboard-step"><div class="step-num">1</div><div class="step-icon">📱</div><div class="step-text"><div class="step-title">连接手环</div><div class="step-desc">支持小米/华为/Apple Watch</div></div></div>
+    <div class="onboard-step"><div class="step-num">2</div><div class="step-icon">⚡</div><div class="step-text"><div class="step-title">学习震动编码</div><div class="step-desc">8种震动模式，对应8种嘴替</div></div></div>
+    <div class="onboard-step"><div class="step-num">3</div><div class="step-icon">🎯</div><div class="step-text"><div class="step-title">实战训练</div><div class="step-desc">先输后赢，完美应对任何场面</div></div></div>
+  </div>
+  <button class="btn btn-primary btn-full" style="font-size:16px;padding:16px;" onclick="startApp()">🚀 立即体验</button>
+  <div style="font-size:12px;color:var(--text3)">每天10分钟训练 · 7天成为嘴替高手</div>
+</div>
+
+<div id="app" style="display:none;">
+  <!-- ========== 首页：三大功能入口 ========== -->
+  <div class="page active" id="page-home">
+    <div class="home-header">
+      <div class="home-logo">🦜 嘴替 ZTalk</div>
+      <div class="home-slogan">手环一震，嘴替上身</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:20px 16px;">
+      <!-- 功能入口卡片 -->
+      <div class="feature-cards">
+        <!-- 卡片1: AI视频教学 -->
+        <div class="feature-card video-card" onclick="switchTab('video')">
+          <div class="feature-icon">🎬</div>
+          <div class="feature-content">
+            <div class="feature-title">AI视频教学</div>
+            <div class="feature-desc">把影视剧变成你的私教</div>
+            <div class="feature-tags">
+              <span class="feature-tag">🎥 视频分析</span>
+              <span class="feature-tag">⏱️ 时间轴标注</span>
+            </div>
+          </div>
+          <div class="feature-arrow">›</div>
+        </div>
+
+        <!-- 卡片2: 黑话翻译 -->
+        <div class="feature-card slang-card" onclick="switchTab('slang')">
+          <div class="feature-icon">🗣️</div>
+          <div class="feature-content">
+            <div class="feature-title">黑话翻译</div>
+            <div class="feature-desc">听懂每一句潜台词</div>
+            <div class="feature-tags">
+              <span class="feature-tag">💼 职场</span>
+              <span class="feature-tag">💕 恋爱</span>
+              <span class="feature-tag">🍺 酒桌</span>
+            </div>
+          </div>
+          <div class="feature-arrow">›</div>
+        </div>
+
+        <!-- 卡片3: 实战训练 -->
+        <div class="feature-card battle-card" onclick="switchTab('battle')">
+          <div class="feature-icon">⚔️</div>
+          <div class="feature-content">
+            <div class="feature-title">实战训练</div>
+            <div class="feature-desc">先输后赢，完胜收场</div>
+            <div class="feature-tags">
+              <span class="feature-tag">🎭 场景模拟</span>
+              <span class="feature-tag">💪 话术练习</span>
+            </div>
+          </div>
+          <div class="feature-arrow">›</div>
+        </div>
+
+        <!-- 卡片4: 话术库 -->
+        <div class="feature-card phrases-card" onclick="switchTab('phrases')">
+          <div class="feature-icon">📖</div>
+          <div class="feature-content">
+            <div class="feature-title">话术库</div>
+            <div class="feature-desc">告别嘴笨，让AI替你说话</div>
+            <div class="feature-tags">
+              <span class="feature-tag">✅ 同意</span>
+              <span class="feature-tag">❌ 拒绝</span>
+              <span class="feature-tag">🔄 反问</span>
+            </div>
+          </div>
+          <div class="feature-arrow">›</div>
+        </div>
+
+        <!-- 卡片5: 训练营 -->
+        <div class="feature-card train-card" onclick="switchTab('train')">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-content">
+            <div class="feature-title">训练营</div>
+            <div class="feature-desc">7天震动训练，成为嘴替高手</div>
+            <div class="feature-tags">
+              <span class="feature-tag">📳 震动编码</span>
+              <span class="feature-tag">🎯 实战Quiz</span>
+            </div>
+          </div>
+          <div class="feature-arrow">›</div>
+        </div>
+
+        <!-- 卡片6: 收藏 -->
+        <div class="feature-card favorites-card" onclick="switchTab('favorites')">
+          <div class="feature-icon">❤️</div>
+          <div class="feature-content">
+            <div class="feature-title">收藏</div>
+            <div class="feature-desc">收藏你的专属话术</div>
+            <div class="feature-tags">
+              <span class="feature-tag">⭐ 常用</span>
+              <span class="feature-tag">📌 重点</span>
+            </div>
+          </div>
+          <div class="feature-arrow">›</div>
+        </div>
+
+        <!-- 卡片7: 我的 -->
+        <div class="feature-card profile-card" onclick="switchTab('profile')">
+          <div class="feature-icon">👤</div>
+          <div class="feature-content">
+            <div class="feature-title">我的</div>
+            <div class="feature-desc">个人中心与成长记录</div>
+            <div class="feature-tags">
+              <span class="feature-tag">🏆 徽章</span>
+              <span class="feature-tag">📊 周报</span>
+            </div>
+          </div>
+          <div class="feature-arrow">›</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TAB: 话术库 ========== -->
+  <div class="page" id="page-phrases">
+    <div class="header">
+      <div class="header-logo">嘴替</div>
+      <div class="header-slogan">手环一震，嘴替上身</div>
+      <div class="connection-bar" style="padding:5px 10px;font-size:11px;"><div class="connection-dot"></div>手环已连</div>
+    </div>
+    <div class="scene-hero">
+      <div class="chip-row" id="scene-chips">
+        <div class="chip active" data-scene="职场" onclick="filterScene(this)">💼 职场</div>
+        <div class="chip" data-scene="恋爱" onclick="filterScene(this)">💕 恋爱</div>
+        <div class="chip" data-scene="家庭" onclick="filterScene(this)">🏠 家庭</div>
+        <div class="chip" data-scene="社交" onclick="filterScene(this)">🎉 社交</div>
+        <div class="chip" data-scene="消费维权" onclick="filterScene(this)">🛡️ 维权</div>
+        <div class="chip" data-scene="日常" onclick="filterScene(this)">☀️ 日常</div>
+      </div>
+      <div class="scene-stats">
+        <div class="scene-stat"><div class="scene-stat-num" id="stat-total">52</div><div class="scene-stat-label">本场景话术</div></div>
+        <div class="scene-stat"><div class="scene-stat-num" id="stat-used">18</div><div class="scene-stat-label">本周使用次</div></div>
+        <div class="scene-stat"><div class="scene-stat-num" id="stat-left">10</div><div class="scene-stat-label">今日剩余</div></div>
+      </div>
+    </div>
+    <div style="padding:12px 16px 8px;">
+      <div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="搜索话术..." id="phrase-search" oninput="searchPhrases(this.value)"></div>
+    </div>
+    <div style="padding:0 16px 4px;">
+      <div class="chip-row" id="type-chips">
+        <div class="chip active" data-type="all" onclick="filterType(this)">全部</div>
+        <div class="chip" data-type="同意" onclick="filterType(this)">✅ 同意</div>
+        <div class="chip" data-type="拒绝" onclick="filterType(this)">❌ 拒绝</div>
+        <div class="chip" data-type="反问" onclick="filterType(this)">🔄 反问</div>
+        <div class="chip" data-type="拖延" onclick="filterType(this)">⏳ 拖延</div>
+        <div class="chip" data-type="夸赞" onclick="filterType(this)">🌟 夸赞</div>
+        <div class="chip" data-type="放大招" onclick="filterType(this)">💥 放大招</div>
+      </div>
+    </div>
+    <div style="flex:1;padding:0 16px;" id="phrase-list-container"></div>
+  </div>
+
+  <!-- ========== TAB 2: 收藏 ========== -->
+  <div class="page" id="page-favorites">
+    <div class="header"><div class="header-logo">收藏</div><div style="flex:1;font-size:12px;color:var(--text3)">长按删除</div><button class="header-btn" onclick="showToast('已全部复制到剪贴板 📋')">📋</button></div>
+    <div style="flex:1;padding:0 16px;" id="favorites-container"></div>
+  </div>
+
+  <!-- ========== TAB 3: 训练 ========== -->
+  <div class="page" id="page-train">
+    <div class="header"><div class="header-logo">训练营</div><div style="flex:1"></div><div class="badge badge-amber">Day 3 / 7</div></div>
+    <div style="padding:16px;flex:1;">
+      <div class="training-card mb-16">
+        <div style="font-size:13px;color:var(--text3);margin-bottom:6px;">今日进度</div>
+        <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;">震动训练 · 第3天</div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:43%"></div></div>
+        <div style="font-size:12px;color:var(--text3);display:flex;justify-content:space-between;"><span>3/7 关卡完成</span><span>43%</span></div>
+      </div>
+      <div class="section-title">震动编码表</div>
+      <div class="vibration-code-grid mb-16" id="vib-code-grid"></div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button class="btn btn-primary btn-full" onclick="startQuiz()">⚡ 开始今日训练（约10分钟）</button>
+        <button class="btn btn-outline btn-full" onclick="showVibrationTest()">📳 测试手环震动</button>
+      </div>
+      <div id="quiz-container" style="display:none;margin-top:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <div class="section-title" style="padding:0;">题目 <span id="q-num">1</span>/5</div>
+          <button class="btn btn-sm btn-outline" onclick="endQuiz()">结束训练</button>
+        </div>
+        <div class="quiz-question" id="quiz-q">
+          <div style="font-size:13px;color:var(--text3);margin-bottom:10px;">以下震动模式对应什么含义？</div>
+          <div style="font-size:28px;letter-spacing:8px;text-align:center;padding:16px;color:var(--primary-light);font-weight:800;" id="quiz-vibrate">· · ·</div>
+        </div>
+        <div class="quiz-options" id="quiz-options"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TAB 4: 实战 ========== -->
+  <div class="page" id="page-battle">
+    <div id="scenario-list-view" style="display:flex;flex-direction:column;height:100%;">
+      <div class="header"><div class="header-logo">场景实战</div><div style="flex:1"></div><div class="badge badge-green">3/8 已解锁</div></div>
+      <div style="flex:1;padding:16px;overflow-y:auto;">
+        <div style="font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.6;">⚔️ 先输后赢训练法：先经历失败，再学习话术，最终完胜！</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;" id="scenario-grid"></div>
+      </div>
+    </div>
+    <div id="battle-view" style="display:none;flex-direction:column;height:100%;overflow:hidden;"></div>
+  </div>
+
+  <!-- ========== TAB 5: 洞察 ========== -->
+  <div class="page" id="page-insight">
+    <div class="header"><div class="header-logo">人格洞察</div><div style="flex:1;font-size:11px;color:var(--text3);">读人·识人·驭人</div><div class="badge badge-purple">Beta</div></div>
+    <div style="flex:1;overflow-y:auto;padding:16px;" id="insight-inner">加载中...</div>
+  </div>
+
+  <!-- ========== TAB 6: AI视频教学 ========== -->
+  <div class="page" id="page-video">
+    <div class="header"><div class="header-logo">🎬 AI视频教学</div><div style="flex:1;font-size:11px;color:var(--text3);">影视剧 = 你的私教</div></div>
+    <div style="flex:1;overflow-y:auto;padding-bottom:16px;" id="video-inner">
+      <div class="video-upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+        <div class="upload-icon">📤</div>
+        <div class="upload-title">拖拽上传或点击选择</div>
+        <div class="upload-sub">支持 MP4 / MOV，最大 500MB</div>
+        <div style="display:flex;gap:8px;justify-content:center;">
+          <div class="badge badge-purple">📹 拖拽上传</div>
+          <div class="badge badge-amber">🔗 粘贴链接</div>
+        </div>
+        <input type="file" id="file-input" class="upload-input" accept="video/mp4,video/quicktime" onchange="handleFileUpload(this)">
+      </div>
+      <div class="upload-hint">💡 上传一段吵视频<br>AI帮你“察言观色”</div>
+      <div class="link-input-row">
+        <input type="text" id="video-link" placeholder="粘贴 YouTube / Bilibili 链接...">
+        <button class="btn btn-primary btn-sm" onclick="handleLinkUpload()">解析</button>
+      </div>
+      <div id="video-analysis-result" style="display:none;">
+        <div class="video-player-wrap">
+          <div class="video-player" id="video-player-container">
+            <div style="text-align:center;color:var(--text3);"><div class="video-placeholder-icon">🎬</div><div style="font-size:13px;margin-top:8px;">视频预览区</div></div>
+          </div>
+          <div class="frame-controls">
+            <button class="frame-btn" onclick="frameBack()">⏮️</button>
+            <button class="frame-btn" onclick="frameForward()">⏭️</button>
+            <div class="time-display" id="time-display">00:00 / 00:00</div>
+            <button class="frame-btn" onclick="togglePlay()">▶️</button>
+          </div>
+        </div>
+        <div class="timeline-section">
+          <div class="timeline-header">📍 AI 时间轴标注</div>
+          <div id="timeline-list">
+            <div class="timeline-item" onclick="jumpToTime('00:15')"><div class="timeline-time">00:15</div><div class="timeline-original">老板说"我简单说两句"</div><div class="timeline-subtext">潜台词：准备听他逼逼一小时</div></div>
+            <div class="timeline-item" onclick="jumpToTime('01:20')"><div class="timeline-time">01:20</div><div class="timeline-original">同事说"这个idea不错"</div><div class="timeline-subtext">潜台词：功劳我要抢</div></div>
+            <div class="timeline-item" onclick="jumpToTime('02:45')"><div class="timeline-time">02:45</div><div class="timeline-original">领导说"我们对事不对人"</div><div class="timeline-subtext">潜台词：我就是针对你</div></div>
+            <div class="timeline-item" onclick="jumpToTime('03:30')"><div class="timeline-time">03:30</div><div class="timeline-original">客户说"再考虑一下"</div><div class="timeline-subtext">潜台词：价格太高</div></div>
+          </div>
+        </div>
+        <div class="analysis-report">
+          <div class="report-section">
+            <div class="report-section-title">🏷️ 场景分类</div>
+            <div class="scene-tags"><div class="scene-tag">职场PUA</div><div class="scene-tag">领导施压</div><div class="scene-tag">权力不对等</div></div>
+          </div>
+          <div class="report-section">
+            <div class="report-section-title">⚡ 角色权力分析</div>
+            <div class="power-bar-wrap">
+              <div class="power-label"><span>👔 领导/强势方</span><span>78%</span></div>
+              <div class="power-bar"><div class="power-fill dominate" style="width:78%"></div></div>
+            </div>
+            <div class="power-bar-wrap">
+              <div class="power-label"><span>👤 下属/弱势方</span><span>22%</span></div>
+              <div class="power-bar"><div class="power-fill submit" style="width:22%"></div></div>
+            </div>
+          </div>
+          <div class="report-section">
+            <div class="report-section-title">🗣️ 黑话翻译</div>
+            <div class="point-item" style="margin-bottom:8px;">"我简单说两句" → <span style="color:var(--accent);">准备听他逼逼一小时</span></div>
+            <div class="point-item" style="margin-bottom:8px;">"这个idea不错" → <span style="color:var(--accent);">功劳我要抢</span></div>
+            <div class="point-item">"我是对事不对人" → <span style="color:var(--accent);">我就是针对你</span></div>
+          </div>
+          <div class="report-section">
+            <div class="report-section-title">💥 反击话术包</div>
+            <div class="comeback-card">
+              <div class="comeback-text">领导，这个需求我需要再评估一下工期，毕竟质量和速度很难兼得，您说呢？</div>
+              <div class="comeback-actions">
+                <button class="btn btn-sm btn-outline" onclick="copyComeback(this)">📋 复制</button>
+                <button class="btn btn-sm btn-primary" onclick="saveToPractice(this)">💾 存到实战</button>
+              </div>
+            </div>
+            <div class="comeback-card">
+              <div class="comeback-text">这个项目的核心是我提出的框架，文档都在，要我发给大家回顾一下吗？</div>
+              <div class="comeback-actions">
+                <button class="btn btn-sm btn-outline" onclick="copyComeback(this)">📋 复制</button>
+                <button class="btn btn-sm btn-primary" onclick="saveToPractice(this)">💾 存到实战</button>
+              </div>
+            </div>
+            <div class="comeback-card">
+              <div class="comeback-text">我理解您的想法，但我有不同看法，咱们数据说话？</div>
+              <div class="comeback-actions">
+                <button class="btn btn-sm btn-outline" onclick="copyComeback(this)">📋 复制</button>
+                <button class="btn btn-sm btn-primary" onclick="saveToPractice(this)">💾 存到实战</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TAB 7: 黑话大全 ========== -->
+  <div class="page" id="page-slang">
+    <div class="slang-hero"><div class="slang-hero-title">🎭 成人黑话大全</div><div class="slang-hero-sub">从听懂到主动操翻</div></div>
+    <div style="padding:12px 16px;"><div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="搜索黑话..." id="slang-search" oninput="searchSlang(this.value)"></div></div>
+    <div class="slang-category-row">
+      <div class="chip-row" id="slang-categories">
+        <div class="chip active" data-cat="all" onclick="filterSlangCat(this)">全部</div>
+        <div class="chip" data-cat="职场" onclick="filterSlangCat(this)">💼 职场</div>
+        <div class="chip" data-cat="恋爱" onclick="filterSlangCat(this)">💕 恋爱</div>
+        <div class="chip" data-cat="酒桌" onclick="filterSlangCat(this)">🍺 酒桌</div>
+        <div class="chip" data-cat="金融" onclick="filterSlangCat(this)">💰 金融</div>
+        <div class="chip" data-cat="网络" onclick="filterSlangCat(this)">🌐 网络</div>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding-bottom:16px;" id="slang-list-container"></div>
+    <div class="ai-training-section">
+      <div class="training-section-title">🤖 AI 黑话训练</div>
+      <div class="daily-card" id="daily-slang-card">
+        <div class="daily-card-label">📅 今日黑话</div>
+        <div class="daily-word" id="daily-word">赋能</div>
+        <div class="daily-trans" id="daily-trans">Empower / Enablement</div>
+        <div class="daily-example" id="daily-example">"我给你们赋能，你们放手去干"</div>
+      </div>
+      <div class="mode-tabs">
+        <div class="mode-tab active" data-mode="create" onclick="switchTrainingMode(this)">模式1：造句</div>
+        <div class="mode-tab" data-mode="translate" onclick="switchTrainingMode(this)">模式2：翻译</div>
+      </div>
+      <div id="training-mode-create">
+        <textarea class="input-field" id="slang-input" rows="3" placeholder="用「赋能」这个词造一个句子..."></textarea>
+        <div class="preset-examples">
+          <div class="preset-label">💡 参考例句（点击使用）</div>
+          <div class="preset-item" onclick="usePreset(this)">给团队赋能，让每个人都发挥最大价值</div>
+          <div class="preset-item" onclick="usePreset(this)">我需要领导给我赋能才能推进</div>
+        </div>
+      </div>
+      <div id="training-mode-translate" style="display:none;">
+        <textarea class="input-field" id="translate-input" rows="3" placeholder="粘贴老板/领导的话，AI帮你翻译..."></textarea>
+        <div class="preset-examples">
+          <div class="preset-label">💡 预设翻译练习（点击使用）</div>
+          <div class="preset-item" onclick="useTranslatePreset(this)">"这个项目我们赋能一下团队"</div>
+          <div class="preset-item" onclick="useTranslatePreset(this)">"我们需要拉齐一下认知"</div>
+          <div class="preset-item" onclick="useTranslatePreset(this)">"先对齐一下颗粒度"</div>
+        </div>
+      </div>
+      <button class="btn btn-accent btn-full" style="margin-top:12px;" onclick="getAIScore()">🤖 AI 评分</button>
+      <div id="ai-result" style="display:none;"></div>
+    </div>
+    <div class="leaderboard">
+      <div class="leaderboard-header">🏆 今日排行榜</div>
+      <div class="leaderboard-item"><div class="leaderboard-rank gold">🥇</div><div class="leaderboard-name">老王</div><div class="leaderboard-score">98分</div></div>
+      <div class="leaderboard-item"><div class="leaderboard-rank silver">🥈</div><div class="leaderboard-name">小李</div><div class="leaderboard-score">95分</div></div>
+      <div class="leaderboard-item"><div class="leaderboard-rank bronze">🥉</div><div class="leaderboard-name">阿强</div><div class="leaderboard-score">92分</div></div>
+      <div class="leaderboard-item"><div class="leaderboard-rank">4</div><div class="leaderboard-name">匿名用户</div><div class="leaderboard-score">88分</div></div>
+      <div class="leaderboard-item"><div class="leaderboard-rank">5</div><div class="leaderboard-name">匿名用户</div><div class="leaderboard-score">85分</div></div>
+    </div>
+  </div>
+
+  <!-- ========== TAB 8: 我的 ========== -->
+  <div class="page" id="page-profile">
+    <div class="profile-hero">
+      <div class="avatar">🦜</div>
+      <div class="profile-name">嘴替见习生</div>
+      <div class="profile-level"><div class="badge badge-amber">Lv.3 嘴替学徒</div><div class="badge badge-purple">免费版</div></div>
+    </div>
+    <div style="padding:16px;display:flex;flex-direction:column;gap:16px;overflow-y:auto;">
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-num">47</div><div class="stat-label">话术使用</div></div>
+        <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">连续天数</div></div>
+        <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">徽章获得</div></div>
+      </div>
+      <div class="upgrade-banner" onclick="showUpgrade()">
+        <div class="upgrade-icon">🚀</div>
+        <div class="upgrade-text"><h3>升级嘴替 Pro</h3><p>解锁全场景 · 无限话术 · AI实时提示</p></div>
+        <div class="upgrade-arrow">›</div>
+      </div>
+      <div class="weekly-report">
+        <div class="report-title">📊 嘴替周报 · 第3周</div>
+        <div class="report-rows">
+          <div class="report-row"><span class="report-label">🐣 这周怂了几次</span><span class="report-value" style="color:var(--accent2)">12次</span></div>
+          <div class="report-row"><span class="report-label">💪 这周刚了几次</span><span class="report-value" style="color:var(--success)">31次</span></div>
+          <div class="report-row"><span class="report-label">🔥 最常用话术</span><span class="report-value" style="color:var(--primary-light);font-size:12px;">这个我需要再确认一下</span></div>
+          <div class="report-row"><span class="report-label">🏆 进步幅度</span><span class="report-value" style="color:var(--accent)">+258%</span></div>
+        </div>
+      </div>
+      <div><div class="section-title">徽章墙</div><div class="badge-wall" id="badge-wall"></div></div>
+      <div class="card">
+        <div class="menu-item" onclick="showCustomPhraseModal()"><div class="menu-item-icon" style="background:rgba(108,58,232,.2)">✏️</div><div class="menu-item-text"><div class="menu-item-title">自定义话术</div><div class="menu-item-sub">已添加 2/5 条（免费版限5条）</div></div><div class="menu-arrow">›</div></div>
+        <div class="menu-item" onclick="showToast('震动强度已调节 📳')"><div class="menu-item-icon" style="background:rgba(16,185,129,.2)">📳</div><div class="menu-item-text"><div class="menu-item-title">震动设置</div><div class="menu-item-sub">手环连接 · 强度：中</div></div><div class="menu-arrow">›</div></div>
+        <div class="menu-item" onclick="showToast('AI实时提示为付费功能 🔒')"><div class="menu-item-icon" style="background:rgba(245,158,11,.2)">🤖</div><div class="menu-item-text"><div class="menu-item-title">AI 实时提示</div><div class="menu-item-sub">🔒 升级 Pro 解锁</div></div><div class="menu-arrow">›</div></div>
+        <div class="menu-item" onclick="showToast('分享成功！送你10次话术额度 🎁')"><div class="menu-item-icon" style="background:rgba(239,68,68,.2)">🎁</div><div class="menu-item-text"><div class="menu-item-title">邀请好友</div><div class="menu-item-sub">邀请1人 = 解锁10次额度</div></div><div class="menu-arrow">›</div></div>
+      </div>
+      <div style="height:8px;"></div>
+    </div>
+  </div>
+
+  <!-- ========== TAB BAR ========== -->
+  <div class="tab-bar">
+    <button class="tab-item active" id="tab-home" onclick="switchTab('home')"><span class="tab-icon">🏠</span><span>首页</span></button>
+    <button class="tab-item" id="tab-video" onclick="switchTab('video')"><span class="tab-icon">🎬</span><span>视频</span></button>
+    <button class="tab-item" id="tab-slang" onclick="switchTab('slang')"><span class="tab-icon">🗣️</span><span>黑话</span></button>
+    <button class="tab-item" id="tab-battle" onclick="switchTab('battle')"><span class="tab-icon">⚔️</span><span>实战</span></button>
+    <button class="tab-item" id="tab-train" onclick="switchTab('train')"><span class="tab-icon">⚡</span><span>训练</span></button>
+    <button class="tab-item" id="tab-phrases" onclick="switchTab('phrases')"><span class="tab-icon">📖</span><span>话术库</span></button>
+    <button class="tab-item" id="tab-profile" onclick="switchTab('profile')"><span class="tab-icon">👤</span><span>我的</span></button>
+  </div>
+</div>
+
+<div id="toast"></div>
+<div id="vibration-overlay"><div style="display:flex;flex-direction:column;align-items:center;gap:16px;"><div class="vibration-pulse">📳</div><div style="font-size:14px;color:var(--primary-light);font-weight:700;" id="vib-label">震动中...</div></div></div>
+
+<div class="modal-overlay" id="modal-upgrade">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🚀 升级嘴替 Pro</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 解锁全部6大场景话术（300+条）</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 无限次震动调用</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 自定义话术无限条</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> AI实时提示 + 训练全关卡</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 嘴替周报 · 数据看板</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-primary" style="flex:1;flex-direction:column;gap:2px;padding:14px 10px;" onclick="buyPlan('monthly')"><span style="font-size:20px;font-weight:900;">¥9.9</span><span style="font-size:11px;opacity:.8;">/月 · 随时取消</span></button>
+      <button class="btn btn-accent" style="flex:1;flex-direction:column;gap:2px;padding:14px 10px;" onclick="buyPlan('lifetime')"><span style="font-size:20px;font-weight:900;">¥99</span><span style="font-size:11px;opacity:.8;">终身 · 送实体贴纸</span></button>
+    </div>
+    <button class="btn btn-outline btn-full" style="margin-top:10px;" onclick="closeModal('modal-upgrade')">暂不升级</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-custom-phrase">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✏️ 添加自定义话术</div>
+    <label class="field-label">话术内容</label>
+    <textarea class="input-field" placeholder="输入你想要的话术..." id="custom-phrase-text" rows="3"></textarea>
+    <label class="field-label">绑定震动模式</label>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;" id="vib-type-select"></div>
+    <label class="field-label">适用场景</label>
+    <input class="input-field-inline" placeholder="如：职场、家庭..." id="custom-scene" style="margin-bottom:16px;">
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="closeModal('modal-custom-phrase')">取消</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="saveCustomPhrase()">✅ 保存</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-vib-test">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📳 测试手环震动</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.6;">点击每种震动模式，感受手环震动。确认可以感受到后即可开始训练。</div>
+    <div style="display:flex;flex-direction:column;gap:10px;" id="vib-test-list"></div>
+    <button class="btn btn-primary btn-full" style="margin-top:16px;" onclick="closeModal('modal-vib-test');showToast('太棒了！震动测试完成 ✅')">✅ 全部测试完毕</button>
+  </div>
+</div>
+
+<div id="completion-overlay">
+  <div class="completion-emoji" id="comp-emoji">🏆</div>
+  <div class="completion-title" id="comp-title">恭喜！场景攻克！</div>
+  <div class="completion-sub" id="comp-sub">你已经解锁了新徽章，继续加油！</div>
+  <button class="btn btn-primary" onclick="closeCompletion()" style="padding:14px 40px;font-size:16px;">继续挑战 →</button>
+</div>
+
+<script>
+// ========== DATA ==========
+const VIBRATION_CODES=[{id:'agree',name:'同意',icon:'✅',pattern:'· ·',emoji:'✅',color:'#10B981'},{id:'refuse',name:'拒绝',icon:'❌',pattern:'— —',emoji:'❌',color:'#EF4444'},{id:'question',name:'反问',icon:'🔄',pattern:'· — ·',emoji:'🔄',color:'#6C3AE8'},{id:'delay',name:'拖延',icon:'⏳',pattern:'— · ·',emoji:'⏳',color:'#F59E0B'},{id:'praise',name:'夸赞',icon:'🌟',pattern:'· · · ·',emoji:'🌟',color:'#8B5CF6'},{id:'nuke',name:'放大招',icon:'💥',pattern:'— · — ·',emoji:'💥',color:'#F97316'},{id:'escape',name:'转移话题',icon:'🌀',pattern:'· — —',emoji:'🌀',color:'#06B6D4'},{id:'buy',name:'争取时间',icon:'🎯',pattern:'— — ·',emoji:'🎯',color:'#EC4899'}];
+const PHRASES=[{id:1,scene:'职场',type:'拒绝',text:'这个需求不在原始范围内，我们需要重新评估工期和资源。',vib:'refuse'},{id:2,scene:'职场',type:'拖延',text:'这个我需要再确认一下，明天给你回复可以吗？',vib:'delay'},{id:3,scene:'职场',type:'反问',text:'你觉得这件事的优先级和上周说的那个相比，哪个更重要？',vib:'question'},{id:4,scene:'职场',type:'放大招',text:'我理解你的想法，但这样做会违反公司的XXX规定，建议我们走正式流程。',vib:'nuke'},{id:5,scene:'职场',type:'拒绝',text:'抱歉，我今天的排期已经满了，我们看看能不能找人协助？',vib:'refuse'},{id:6,scene:'职场',type:'争取时间',text:'这个问题很好，让我想一秒钟。',vib:'buy'},{id:7,scene:'职场',type:'转移话题',text:'先把眼前的这个处理完，我们再讨论后续的方向？',vib:'escape'},{id:8,scene:'职场',type:'夸赞',text:'你这个角度我没想到，确实是个好思路。',vib:'praise'},{id:9,scene:'职场',type:'拒绝',text:'这不是我职责范围内的工作，建议同步给XX来负责。',vib:'refuse'},{id:10,scene:'职场',type:'反问',text:'你希望这件事最终达成什么结果？',vib:'question'},{id:11,scene:'职场',type:'同意',text:'没问题，我来推进，有进展及时同步给你。',vib:'agree'},{id:12,scene:'职场',type:'放大招',text:'我先把目前遇到的问题整理一下，发邮件对齐，避免后续扯皮。',vib:'nuke'},{id:13,scene:'恋爱',type:'反问',text:'你希望我怎么做才会让你觉得被重视？',vib:'question'},{id:14,scene:'恋爱',type:'拖延',text:'这个话题比较重要，我们找个好好说话的时间聊好吗？',vib:'delay'},{id:15,scene:'恋爱',type:'转移话题',text:'我知道你现在情绪不太好，要不要先去吃点东西？',vib:'escape'},{id:16,scene:'恋爱',type:'夸赞',text:'你今天做这件事真的让我觉得你很厉害。',vib:'praise'},{id:17,scene:'恋爱',type:'放大招',text:'我觉得我们需要认真谈谈，因为这个问题已经影响到了我们。',vib:'nuke'},{id:18,scene:'恋爱',type:'拒绝',text:'这件事我没办法答应你，但我可以告诉你我的顾虑。',vib:'refuse'},{id:19,scene:'家庭',type:'拖延',text:'这件事我了解了，让我考虑一下，咱们周末再聊？',vib:'delay'},{id:20,scene:'家庭',type:'拒绝',text:'爸妈，我理解你们的好意，但这件事我需要自己做决定。',vib:'refuse'},{id:21,scene:'家庭',type:'反问',text:'你觉得这样做对我来说是最好的选择吗？',vib:'question'},{id:22,scene:'家庭',type:'放大招',text:'我现在的状态很好，如果一直催促我反而会有压力，能不能给我一些空间？',vib:'nuke'},{id:23,scene:'家庭',type:'转移话题',text:'先吃饭，饭后我们再聊这个，好吗？',vib:'escape'},{id:24,scene:'社交',type:'拒绝',text:'那天我有安排，下次吧！',vib:'refuse'},{id:25,scene:'社交',type:'争取时间',text:'我看一下我的日程，稍后告诉你。',vib:'buy'},{id:26,scene:'社交',type:'转移话题',text:'哎说到这个，你最近那件事怎么样了？',vib:'escape'},{id:27,scene:'社交',type:'夸赞',text:'你真的很懂这个，改天详细跟我讲讲？',vib:'praise'},{id:28,scene:'社交',type:'拒绝',text:'这种事我一般不参与的，但你们玩得开心！',vib:'refuse'},{id:29,scene:'消费维权',type:'放大招',text:'我已经对此次事件进行了全程记录，如果协商无果我会向消费者协会投诉。',vib:'nuke'},{id:30,scene:'消费维权',type:'反问',text:'请问这个问题是否在你们的服务承诺范围内？',vib:'question'},{id:31,scene:'消费维权',type:'拖延',text:'好的，请你们出具书面处理方案，我收到后再决定是否接受。',vib:'delay'},{id:32,scene:'消费维权',type:'争取时间',text:'我需要咨询一下，稍后给你回复。',vib:'buy'},{id:33,scene:'日常',type:'拒绝',text:'不好意思，我今天不太方便。',vib:'refuse'},{id:34,scene:'日常',type:'转移话题',text:'说到这里让我想起另一件事……',vib:'escape'},{id:35,scene:'日常',type:'夸赞',text:'你这个主意太妙了！',vib:'praise'},{id:36,scene:'日常',type:'同意',text:'行，就这么定了。',vib:'agree'}];
+const SCENARIOS=[{id:'s1',name:'拒绝酒桌逼酒',emoji:'🍺',desc:'领导劝酒，同事起哄',unlocked:true,badge:null,bg:'#1A0A2E'},{id:'s2',name:'亲戚催婚应对',emoji:'💒',desc:'"你都多大了？"',unlocked:true,badge:'🏅',bg:'#0A1A2E'},{id:'s3',name:'职场抢功甩锅',emoji:'🎯',desc:'背锅侠逆袭时刻',unlocked:true,badge:null,bg:'#1A1A0A'},{id:'s4',name:'拒绝老好人模式',emoji:'😇',desc:'别人的事都找你',unlocked:false,badge:null,bg:'#1A0A1A'},{id:'s5',name:'朋友借钱应对',emoji:'💸',desc:'"就当帮个忙嘛"',unlocked:false,badge:null,bg:'#0A2A1A'},{id:'s6',name:'文化歧视反击',emoji:'🌍',desc:'遭遇不公平对待',unlocked:false,badge:null,bg:'#2A1A0A'},{id:'s7',name:'消费维权实战',emoji:'🛡️',desc:'退款、索赔、投诉',unlocked:false,badge:null,bg:'#0A1A2A'},{id:'s8',name:'甲方无理要求',emoji:'😤',desc:'无限改稿、白嫖索赔',unlocked:false,badge:null,bg:'#1A2A0A'}];
+const SCENARIO_BATTLES={s1:{name:'拒绝酒桌逼酒',phases:[{phase:'intro',opponentLine:'来来来，今天必须喝！不喝就是看不起我！大家说对不对？',opponentRole:'🍺 强势领导',options:[{text:'好好好，那我就喝一杯吧…',isWrong:true},{text:'哈哈，领导说啥就是啥…',isWrong:true},{text:'（沉默，拿起杯子）',isWrong:true}],teaching:['领导，感谢您的盛情，今天我开车，安全第一！我用茶代酒敬您一杯，心意完全到！','我有点身体不适，医生嘱咐不能喝酒，但情谊我记在心里，改天我请大家喝！','我身体原因不能喝酒，但我保证今晚绝对不早走，我们聊！'],winOption:'领导，我开车来的，安全第一！用茶代酒，心意到位就好！'}]},s2:{name:'亲戚催婚应对',phases:[{phase:'intro',opponentLine:'你都多大了？再不找对象就晚了！你看你表哥，孩子都上学了！',opponentRole:'👵 热心亲戚',options:[{text:'我知道了，我会努力的…（低头)',isWrong:true},{text:'嗯嗯，您说得对…（尴尬笑）',isWrong:true},{text:'（顾左右而言他）',isWrong:true}],teaching:['谢谢您关心，我现在事业正在关键期，等稳定了自然会考虑的！','感情的事急不来，我相信缘分，您放心，我有分寸！','我标准挺高的，找一个就找对的，这样对我对他都好！'],winOption:'阿姨，谢谢您关心！感情的事缘分很重要，我现在很好，等遇到合适的人自然会的！'}]},s3:{name:'职场抢功甩锅',phases:[{phase:'intro',opponentLine:'这个项目成功，主要是因为我提出了核心方案，对吧小张？',opponentRole:'😏 爱抢功的同事',options:[{text:'（沉默，不敢反驳）',isWrong:true},{text:'对对对，都是你的功劳…',isWrong:true},{text:'（尴尬地笑，走开）',isWrong:true}],teaching:['是啊，大家都出力了！我记得我负责了XXX模块，当时的方案文档都在的，要不要我发给大家回顾一下？','这个项目大家都很努力！我在里面主要做了XX，我们各有分工，缺一不可。','说到核心方案，我这里正好有当时的讨论记录，领导要不要看一下来源？'],winOption:'项目成功是大家共同的结果！我当时负责了核心XX模块，方案文档我还保存着，需要的话可以同步给大家！'}]}};
+const BADGES=[{id:'b1',emoji:'🎯',name:'首战告捷',unlocked:true},{id:'b2',emoji:'🍺',name:'酒桌英雄',unlocked:true},{id:'b3',emoji:'👑',name:'职场王者',unlocked:false},{id:'b4',emoji:'💒',name:'催婚免疫',unlocked:true},{id:'b5',emoji:'🛡️',name:'维权老手',unlocked:false},{id:'b6',emoji:'🔥',name:'7日毕业',unlocked:false},{id:'b7',emoji:'💥',name:'放大招达人',unlocked:true},{id:'b8',emoji:'🤐',name:'沉默是金',unlocked:true}];
+const SLANG_DATA=[{id:'s1',word:'赋能',category:'职场',trans:'Empower / Enablement',plain:'给下属或团队提供资源和权力，让他们干得更爽',example:'老板用法',exampleText:'"我给你们赋能，你们放手去干"',translation:'= "活儿你们干，锅我甩"'},{id:'s2',word:'拉齐',category:'职场',trans:'Align / Sync',plain:'让所有人的认知和信息保持一致',example:'老板用法',exampleText:'"我们先拉齐一下认知"',translation:'= "我要重新讲一遍确保你们别搞错"'},{id:'s3',word:'对齐颗粒度',category:'职场',trans:'Get aligned on details',plain:'把讨论的细节级别统一一下',example:'老板用法',exampleText:'"我们先对齐一下颗粒度"',translation:'= "你说的太粗了，给我细说"'},{id:'s4',word:'闭环',category:'职场',trans:'Close the loop',plain:'从开始到结束完整做一件事并确认结果',example:'老板用法',exampleText:'"这个需求要形成闭环"',translation:'= "你得干完还要汇报，别干一半跑了"'},{id:'s5',word:'抓手',category:'职场',trans:'Leverage point / Handle',plain:'做事的关键切入点或着力点',example:'老板用法',exampleText:'"找到业务的抓手"',translation:'= "找个能突破的关键点"'},{id:'s6',word:'打透',category:'职场',trans:'Drill down / Penetrate',plain:'把事情做深入、做透彻',example:'老板用法',exampleText:'"这个点要打透"',translation:'= "别蜻蜓点水，给我往深里搞"'},{id:'s7',word:'你是个好人',category:'恋爱',trans:'You are a nice guy',plain:'经典的拒绝方式，意思是"我们不合适"',example:'女生用法',exampleText:'"你是个好人，但我们不合适"',translation:'= "我不想伤害你但真的没感觉"'},{id:'s8',word:'想静静',category:'恋爱',trans:'Need space',plain:'需要独处的时间，可能是在考虑关系',example:'对方用法',exampleText:'"我最近想静静"',translation:'= "我需要时间想清楚我们的关系"'},{id:'s9',word:'我们还是做朋友吧',category:'恋爱',trans:"Let's just be friends",plain:'委婉拒绝进一步发展的方式',example:'对方用法',exampleText:'"我们还是做朋友吧"',translation:'= "我不想伤害你但我不会和你在一起"'},{id:'s10',word:'我干了，你随意',category:'酒桌',trans:'Cheers - I finish mine',plain:'表示豪爽，把选择权给对方',example:'领导用法',exampleText:'"来来来，我干了，你随意！"',translation:'= "我喝了这么多，你好意思不干？"'},{id:'s11',word:'感情深一口闷',category:'酒桌',trans:'Deep feelings = bottoms up',plain:'用感情绑架逼人干杯',example:'领导用法',exampleText:'"感情深一口闷！"',translation:'= "不干就是不给面子"'},{id:'s12',word:'都在酒里',category:'酒桌',trans:"It's all in the drink",plain:'一切尽在不言中，用酒表达',example:'对方用法',exampleText:'"都在酒里了"',translation:'= "我啥也不说了，都在酒里了"'},{id:'s13',word:'风口',category:'金融',trans:'Trend / Opportunity',plain:'某个行业或领域的快速成长期',example:'投资人用法',exampleText:'"这是下一个风口"',translation:'= "这个赛道正在高速增长"'},{id:'s14',word:'赛道',category:'金融',trans:'Industry / Sector',plain:'某个特定的商业领域',example:'投资人用法',exampleText:'"这个赛道很有潜力"',translation:'= "这个行业/领域值得关注"'},{id:'s15',word:'底层逻辑',category:'金融',trans:'Fundamental logic',plain:'最根本的商业本质和规律',example:'大佬用法',exampleText:'"要理解这件事的底层逻辑"',translation:'= "搞清楚本质再说话"'},{id:'s16',word:'内卷',category:'网络',trans:'Involution / Rat race',plain:'在资源有限的情况下过度竞争',example:'网友用法',exampleText:'"996是内卷"',translation:'= "大家都在拼命但整体没进步"'},{id:'s17',word:'躺平',category:'网络',trans:'Lie flat / Check out',plain:'放弃过度竞争，选择低欲望生活',example:'网友用法',exampleText:'"我选择躺平"',translation:'= "不卷了，活着就行"'},{id:'s18',word:'社死',category:'网络',trans:'Social death',plain:'社会性死亡，丢脸到没脸见人',example:'网友用法',exampleText:'"这波操作导致社死"',translation:'= "丢人丢到没脸见人"'},{id:'s19',word:'绝绝子',category:'网络',trans:'Amazing / Awesome',plain:'表示非常厉害、非常好',example:'网友用法',exampleText:'"这个操作绝绝子"',translation:'= "太牛了！"'}];
+
+const insightCourses=[{id:1,level:'初级',title:'👁️ 肢体语言 · 一眼看穿对方底牌',desc:'从站姿、手势、手臂交叉到脚尖朝向，学习最直观的非语言信号。',videoUrl:'https://www.youtube.com/embed/dQw4w9WgXcQ',points:['手臂交叉 → 防御或紧张','身体前倾 → 兴趣或攻击','脚尖朝向 → 真实关注方向','模仿动作 → 共情信号'],quiz:{q:'对方说话时频繁摸鼻子，通常表示？',options:['过敏','撒谎/紧张','思考','鼻子痒'],answer:'撒谎/紧张'}},{id:2,level:'初级',title:'😲 微表情 · 0.2秒的真实情绪',desc:'面部肌肉的瞬间抽搐——愤怒、恐惧、轻蔑无所遁形。',videoUrl:'https://www.youtube.com/embed/sT_5Uo6Gj7E',points:['单侧耸肩 → 怀疑','嘴角单侧上提 → 轻蔑','眼睑收紧 → 愤怒','假笑只有嘴动'],quiz:{q:'真正的微笑与假笑的最大区别？',options:['露牙齿','眼睛周围皱纹','持续时间','嘴巴形状'],answer:'眼睛周围皱纹'}},{id:3,level:'中级',title:'🎙️ 语调分析 · 声音里的魔鬼',desc:'音高、语速、停顿、重音——对方每句话都藏着情绪密码。',videoUrl:'https://www.youtube.com/embed/4JkIsZsL2sI',points:['语速突然加快 → 焦虑','音调升高 → 激动或撒谎','停顿延长 → 编造内容','音量变小 → 不自信'],quiz:{q:'谈判中对方突然压低音量且语速变慢，最可能？',options:['困了','故作镇定/施加压力','感冒','无所谓'],answer:'故作镇定/施加压力'}},{id:4,level:'中级',title:'💬 沟通风格 · DISC与色彩人格',desc:'识别支配型、影响型、稳健型、谨慎型，针对性反击。',videoUrl:'https://www.youtube.com/embed/p0gU8iX6j6Y',points:['D型(支配)：直接打断，用事实怼','I型(影响)：热情但跑题，拉回主线','S型(稳健)：回避冲突，鼓励表达','C型(谨慎)：摆数据，逻辑碾压'],quiz:{q:'同事总爱说"我觉得""可能吧"，属于哪种风格？',options:['D支配型','C谨慎型','S稳健型','I影响型'],answer:'S稳健型'}},{id:5,level:'高级',title:'🏠 环境分析 · 空间与物品暴露本性',desc:'办公桌、车内装饰、家庭照片——环境是性格的延伸。',videoUrl:'https://www.youtube.com/embed/z9Uz1icjwrM',points:['杂乱桌面 → 创造力高但条理性差','家庭照片 → 重视归属感','奖杯证书 → 需要认可','极端整洁 → 控制欲强'],quiz:{q:'对方办公室挂满团队合照和个人奖牌，说明？',options:['炫耀','重视成就和认可','热爱工作','强迫症'],answer:'重视成就和认可'}},{id:6,level:'高级',title:'👔 外表分析 · 衣着配饰透露社会信号',desc:'发型、手表、鞋、纹身——外在符号背后的阶层与价值观。',videoUrl:'https://www.youtube.com/embed/7X8Y9Z0A1B2',points:['定制西装 → 追求细节与权力','运动手表 → 实用主义','夸张首饰 → 渴望关注','纹身位置 → 叛逆或纪念'],quiz:{q:'商务场合对方戴金戒指配玉扳指，暗示？',options:['传统权威/财富展示','时尚','宗教信仰','随便戴'],answer:'传统权威/财富展示' }}];
+
+// ========== STATE ==========
+let currentScene='职场',currentType='all',favorites=new Set([1,4,7]),currentBattleId=null,battlePhase=0,quizIndex=0;
+const QUIZ_QUESTIONS=[{pattern:'· ·',answer:'同意',options:['同意','拒绝','放大招','转移话题']},{pattern:'— —',answer:'拒绝',options:['同意','拒绝','争取时间','夸赞']},{pattern:'· — ·',answer:'反问',options:['反问','拖延','拒绝','放大招']},{pattern:'— · ·',answer:'拖延',options:['同意','夸赞','拖延','反问']},{pattern:'· · · ·',answer:'夸赞',options:['放大招','夸赞','争取时间','同意']}];
+let currentSlangCat='all',slangSearchQuery='',currentTrainingMode='create';
+
+// ========== INIT ==========
+function startApp(){document.getElementById('onboarding').style.display='none';document.getElementById('app').style.display='flex';renderPhrases();renderVibrationCodes();renderScenarios();renderBadgeWall();renderFavorites();renderVibTypeSelect();renderVibTestList();renderInsight();renderSlangList();renderDailySlang();setupDragDrop()}
+
+// ========== TAB NAVIGATION ==========
+function switchTab(tab){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-item').forEach(t=>t.classList.remove('active'));document.getElementById('page-'+tab).classList.add('active');document.getElementById('tab-'+tab).classList.add('active');if(tab==='favorites')renderFavorites();if(tab==='insight'){renderInsight();setTimeout(attachQuizEvents,120)}if(tab==='battle'){document.getElementById('scenario-list-view').style.display='flex';document.getElementById('battle-view').style.display='none'}if(tab==='slang'){renderSlangList();renderDailySlang()};if(tab==='phrases')renderPhraseList();if(tab==='profile')renderProfile()}
+
+// ========== PHRASES ==========
+function getPhrases(){let list=PHRASES.filter(p=>{const sceneMatch=p.scene===currentScene;const typeMatch=currentType==='all'||p.type===currentType;return sceneMatch&&typeMatch});const q=document.getElementById('phrase-search')?.value?.trim()||'';if(q)list=PHRASES.filter(p=>p.text.includes(q));return list}
+function renderPhrases(){const list=getPhrases();const container=document.getElementById('phrase-list-container');if(!list.length){container.innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">暂无相关话术</div></div>';return}const vib=Object.fromEntries(VIBRATION_CODES.map(v=>[v.id,v]));container.innerHTML=list.map(p=>{const v=vib[p.vib]||{};const faved=favorites.has(p.id);return`<div class="phrase-item" onclick="copyAndVibrate(${p.id})"><div class="vibration-dot" style="border-color:${v.color||'var(--primary)'};color:${v.color||'var(--primary-light)'};">${v.emoji||'•'}</div><div style="flex:1;min-width:0;"><div class="phrase-text">${p.text}</div><div class="phrase-meta"><span class="badge badge-purple">${p.type}</span><span style="margin-left:6px;font-size:11px;color:var(--text3);">${v.pattern||''}</span></div></div><div class="phrase-actions"><button class="action-btn ${faved?'favorited':''}" onclick="event.stopPropagation();toggleFavorite(${p.id})">${faved?'❤️':'🤍'}</button><button class="action-btn" onclick="event.stopPropagation();triggerVibrate('${p.vib}')">📳</button></div></div>`}).join('');document.getElementById('stat-total').textContent=PHRASES.filter(p=>p.scene===currentScene).length}
+function filterScene(el){document.querySelectorAll('#scene-chips .chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');currentScene=el.dataset.scene;renderPhrases()}
+function filterType(el){document.querySelectorAll('#type-chips .chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');currentType=el.dataset.type;renderPhrases()}
+function searchPhrases(){renderPhrases()}
+function copyAndVibrate(id){const phrase=PHRASES.find(p=>p.id===id);if(!phrase)return;navigator.clipboard?.writeText(phrase.text).catch(()=>{});triggerVibrate(phrase.vib,phrase.text)}
+function toggleFavorite(id){if(favorites.has(id)){favorites.delete(id);showToast('已取消收藏')}else{favorites.add(id);showToast('已加入收藏 ❤️')}renderPhrases();renderFavorites()}
+
+// ========== FAVORITES ==========
+function renderFavorites(){const container=document.getElementById('favorites-container');const list=PHRASES.filter(p=>favorites.has(p.id));if(!list.length){container.innerHTML='<div class="empty-state"><div class="empty-icon">🤍</div><div class="empty-text">还没有收藏</div><div class="empty-sub">在话术库中点击 🤍 收藏</div></div>';return}const vib=Object.fromEntries(VIBRATION_CODES.map(v=>[v.id,v]));container.innerHTML='<div style="padding-bottom:8px;">'+list.map(p=>{const v=vib[p.vib]||{};return`<div class="phrase-item" onclick="copyAndVibrate(${p.id})"><div class="vibration-dot" style="border-color:${v.color||'var(--primary)'};color:${v.color||'var(--primary-light)'};">${v.emoji||'•'}</div><div style="flex:1;min-width:0;"><div class="phrase-text">${p.text}</div><div class="phrase-meta"><span class="badge badge-purple">${p.type}</span><span class="badge badge-amber" style="margin-left:4px;">${p.scene}</span></div></div><div class="phrase-actions"><button class="action-btn" onclick="event.stopPropagation();triggerVibrate('${p.vib}')">📳</button><button class="action-btn favorited" onclick="event.stopPropagation();toggleFavorite(${p.id})">❤️</button></div></div>`}).join('')+'</div>'}
+
+// ========== VIBRATION ==========
+function renderVibrationCodes(){const grid=document.getElementById('vib-code-grid');grid.innerHTML=VIBRATION_CODES.map(v=>`<div class="vibration-code-item" onclick="triggerVibrate('${v.id}','${v.name}')"><div class="vib-code-icon" style="background:${v.color}22;color:${v.color};">${v.emoji}</div><div class="vib-code-info"><div class="vib-code-name">${v.name}</div><div class="vib-code-pattern" style="color:${v.color};">${v.pattern}</div></div></div>`).join('')}
+function triggerVibrate(vibId,label){const v=VIBRATION_CODES.find(c=>c.id===vibId);const overlay=document.getElementById('vibration-overlay');document.getElementById('vib-label').textContent=(v?v.name:label)+' 震动中...';overlay.classList.add('show');if(navigator.vibrate)navigator.vibrate([200,100,200]);showToast(`📳 ${v?v.name:label}`);setTimeout(()=>overlay.classList.remove('show'),1200)}
+
+// ========== QUIZ ==========
+function startQuiz(){quizIndex=0;document.getElementById('quiz-container').style.display='block';renderQuizQuestion()}
+function endQuiz(){document.getElementById('quiz-container').style.display='none';showToast('训练已结束，今日得分：80分 🎉')}
+function renderQuizQuestion(){const q=QUIZ_QUESTIONS[quizIndex];document.getElementById('q-num').textContent=quizIndex+1;document.getElementById('quiz-vibrate').textContent=q.pattern;const opts=[...q.options].sort(()=>Math.random()-.5);document.getElementById('quiz-options').innerHTML=opts.map(o=>`<div class="quiz-option" onclick="checkQuizAnswer(this,'${o}','${q.answer}')"><span>${o}</span></div>`).join('')}
+function checkQuizAnswer(el,chosen,answer){const opts=document.querySelectorAll('.quiz-option');opts.forEach(o=>o.onclick=null);if(chosen===answer){el.classList.add('correct');el.innerHTML='<span>✅ '+chosen+' — 正确！</span>';showToast('正确！🎉 ')}else{el.classList.add('wrong');opts.forEach(o=>{if(o.querySelector('span').textContent===answer)o.classList.add('correct')});showToast('不对哦，正确答案是：'+answer)}setTimeout(()=>{quizIndex++;if(quizIndex<QUIZ_QUESTIONS.length){renderQuizQuestion()}else{document.getElementById('quiz-container').style.display='none';showCompletion('🎓','训练完成！','今日训练得分：100分\n你已掌握所有震动编码！')}},1200)}
+function showVibrationTest(){document.getElementById('modal-vib-test').classList.add('show')}
+function renderVibTestList(){document.getElementById('vib-test-list').innerHTML=VIBRATION_CODES.map(v=>`<div class="vibration-code-item" onclick="triggerVibrate('${v.id}','${v.name}');this.style.borderColor='${v.color}';"><div class="vib-code-icon" style="background:${v.color}22;color:${v.color};">${v.emoji}</div><div class="vib-code-info"><div class="vib-code-name">${v.name}</div><div class="vib-code-pattern" style="color:${v.color};">${v.pattern}</div></div><span style="color:var(--text3);font-size:12px;">点击测试</span></div>`).join('')}
+
+// ========== SCENARIOS ==========
+function renderScenarios(){const grid=document.getElementById('scenario-grid');grid.innerHTML=SCENARIOS.map(s=>`<div class="scenario-card" onclick="openScenario('${s.id}')"><div class="scenario-thumb" style="background:linear-gradient(135deg,${s.bg},#1A1035);"><span>${s.emoji}</span>${!s.unlocked?'<div class="scenario-lock">🔒</div>':''}${s.badge?`<div class="scenario-badge">${s.badge}</div>`:''}</div><div class="scenario-info"><div class="scenario-name">${s.name}</div><div class="scenario-desc">${s.desc}</div></div></div>`).join('')}
+function openScenario(id){const s=SCENARIOS.find(x=>x.id===id);if(!s)return;if(!s.unlocked){showUpgrade();return}const battle=SCENARIO_BATTLES[id];if(!battle){showToast('即将开放，敬请期待！');return}currentBattleId=id;battlePhase=0;renderBattleScreen(battle,0);document.getElementById('scenario-list-view').style.display='none';document.getElementById('battle-view').style.display='flex';document.getElementById('battle-view').style.flexDirection='column';document.getElementById('battle-view').style.height='100%';document.getElementById('battle-view').style.overflow='hidden'}
+function renderBattleScreen(battle,phaseIdx){const phase=battle.phases[phaseIdx];const bv=document.getElementById('battle-view');bv.innerHTML=`<div class="battle-header"><button class="header-btn" onclick="closeBattle()">←</button><div style="flex:1;font-size:14px;font-weight:700;color:var(--text);">${battle.name}</div><div class="battle-phase phase-lose" id="phase-badge">⚔️ 你的应对</div></div><div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;" id="battle-chat"><div class="chat-bubble-wrap"><div class="chat-role">📖 <strong>剧情背景</strong></div><div class="chat-bubble teach" style="width:100%;max-width:100%;">在${['职场聚餐','家庭聚会','工作会议'][Math.floor(Math.random()*3)]}上，对方突然向你出招……</div></div><div class="chat-bubble-wrap"><div class="chat-role">${phase.opponentRole}</div><div class="chat-bubble opponent">${phase.opponentLine}</div></div></div><div style="padding:16px;border-top:1px solid var(--border);background:var(--bg2);" id="battle-actions"><div style="font-size:12px;color:var(--text3);margin-bottom:10px;">你会怎么回应？（先按直觉选）</div><div style="display:flex;flex-direction:column;gap:8px;">${phase.options.map((o,i)=>`<button class="quiz-option" onclick="chooseBattleOption(${i},true)" style="text-align:left;">${o.text}</button>`).join('')}</div></div>`}
+function chooseBattleOption(optIdx,isFirst){const battle=SCENARIO_BATTLES[currentBattleId];const phase=battle.phases[0];const chat=document.getElementById('battle-chat');const actions=document.getElementById('battle-actions');const phaseBadge=document.getElementById('phase-badge');chat.innerHTML+=`<div class="chat-bubble-wrap" style="display:flex;flex-direction:column;align-items:flex-end;"><div class="chat-role" style="justify-content:flex-end;">你 👤</div><div class="chat-bubble user-fail">${phase.options[optIdx].text}</div></div><div class="chat-bubble-wrap"><div class="chat-bubble teach" style="background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.2);color:#FCA5A5;">❌ 这样回应对方会继续施压…你输了这一局</div></div>`;phaseBadge.className='battle-phase phase-learn';phaseBadge.textContent='📚 教学时刻';setTimeout(()=>{chat.innerHTML+=`<div class="chat-bubble-wrap"><div class="chat-role">🦜 ZTalk 嘴替</div><div class="chat-bubble teach"><div style="font-size:12px;color:var(--accent);font-weight:700;margin-bottom:8px;">推荐你学会这几句话：</div>${phase.teaching.map((t,i)=>`<div style="padding:8px 10px;background:rgba(108,58,232,.1);border-radius:8px;margin-bottom:6px;font-size:13px;cursor:pointer;" onclick="practicePhrase(this,'${t.replace(/'/g,"\\'")}')">📳 ${t}<div style="font-size:11px;color:var(--primary-light);margin-top:4px;">点击震动并朗读 →</div></div>`).join('')}</div></div>`;actions.innerHTML=`<div style="font-size:12px;color:var(--accent);margin-bottom:10px;font-weight:600;">📳 请点击上方话术，逐条朗读并震动手环</div><button class="btn btn-primary btn-full" onclick="startRetry()">✅ 我已练习完毕，再战一次！</button>`;chat.scrollTop=chat.scrollHeight},400)}
+function practicePhrase(el,text){el.style.borderLeft='3px solid var(--primary-light)';el.style.background='rgba(108,58,232,.2)';triggerVibrate('nuke',text)}
+function startRetry(){const battle=SCENARIO_BATTLES[currentBattleId];const phase=battle.phases[0];const chat=document.getElementById('battle-chat');const actions=document.getElementById('battle-actions');const phaseBadge=document.getElementById('phase-badge');phaseBadge.className='battle-phase phase-win';phaseBadge.textContent='💪 再战一次';chat.innerHTML+=`<div class="chat-bubble-wrap"><div class="chat-role">${phase.opponentRole}</div><div class="chat-bubble opponent">${phase.opponentLine}</div></div>`;actions.innerHTML=`<div style="font-size:12px;color:var(--success);margin-bottom:10px;font-weight:600;">💪 用学到的话术应对！</div><button class="btn btn-success btn-full" onclick="winBattle()">「${phase.winOption.substring(0,20)}…」→ 说出来！</button>`;chat.scrollTop=chat.scrollHeight}
+function winBattle(){const battle=SCENARIO_BATTLES[currentBattleId];const phase=battle.phases[0];const chat=document.getElementById('battle-chat');const actions=document.getElementById('battle-actions');chat.innerHTML+=`<div class="chat-bubble-wrap" style="display:flex;flex-direction:column;align-items:flex-end;"><div class="chat-role" style="justify-content:flex-end;">你 👤</div><div class="chat-bubble user-win">${phase.winOption}</div></div><div class="chat-bubble-wrap"><div class="chat-bubble teach" style="background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.2);color:#6EE7B7;">🏆 完美应对！对方已无法继续施压。你赢了这一局！</div></div>`;actions.innerHTML='';triggerVibrate('agree','赢了！');const scenario=SCENARIOS.find(s=>s.id===currentBattleId);if(scenario)scenario.badge='🏅';setTimeout(()=>{showCompletion('🏆',`「${SCENARIO_BATTLES[currentBattleId].name}」攻克！`,'你已解锁徽章，嘴替能力+1！\n继续挑战下一个场景吧！')},800);chat.scrollTop=chat.scrollHeight}
+function closeBattle(){document.getElementById('scenario-list-view').style.display='flex';document.getElementById('battle-view').style.display='none';renderScenarios();currentBattleId=null}
+
+// ========== PROFILE ==========
+function renderBadgeWall(){document.getElementById('badge-wall').innerHTML=BADGES.map(b=>`<div class="badge-item ${b.unlocked?'':'locked'}"><div class="badge-emoji">${b.emoji}</div><div class="badge-name">${b.name}</div></div>`).join('')}
+
+// ========== CUSTOM PHRASE ==========
+function renderVibTypeSelect(){document.getElementById('vib-type-select').innerHTML=VIBRATION_CODES.map(v=>`<div class="chip" data-vib="${v.id}" onclick="selectVibType(this)" style="border-color:${v.color}33;">${v.emoji} ${v.name}</div>`).join('')}
+function selectVibType(el){document.querySelectorAll('#vib-type-select .chip').forEach(c=>c.classList.remove('active'));el.classList.add('active')}
+function saveCustomPhrase(){const text=document.getElementById('custom-phrase-text').value.trim();if(!text){showToast('请输入话术内容！');return}const scene=document.getElementById('custom-scene').value||'日常';const vibEl=document.querySelector('#vib-type-select .chip.active');const vibId=vibEl?vibEl.dataset.vib:'agree';const vibName=vibEl?vibEl.textContent.trim().split(' ')[1]:'同意';const newId=Math.max(...PHRASES.map(p=>p.id))+1;PHRASES.push({id:newId,scene,type:vibName,text,vib:vibId});closeModal('modal-custom-phrase');showToast('✅ 话术已保存！');if(currentScene===scene)renderPhrases()}
+
+// ========== MODALS ==========
+function showUpgrade(){document.getElementById('modal-upgrade').classList.add('show')}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+function showCustomPhraseModal(){document.getElementById('modal-custom-phrase').classList.add('show')}
+document.addEventListener('click',function(e){['modal-upgrade','modal-custom-phrase','modal-vib-test'].forEach(id=>{const m=document.getElementById(id);if(e.target===m)closeModal(id)})});
+function buyPlan(plan){closeModal('modal-upgrade');if(plan==='lifetime')showCompletion('🎉','终身会员开通成功！','你将获得一枚"嘴替"实体贴纸\n（快递费到付，预计3-5天发货）');else showToast('月度会员开通成功！¥9.9/月 🚀')}
+
+// ========== COMPLETION ==========
+function showCompletion(emoji,title,sub){document.getElementById('comp-emoji').textContent=emoji;document.getElementById('comp-title').textContent=title;document.getElementById('comp-sub').textContent=sub;document.getElementById('completion-overlay').classList.add('show')}
+function closeCompletion(){document.getElementById('completion-overlay').classList.remove('show')}
+
+// ========== TOAST ==========
+let toastTimer;function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2200)}
+
+// ========== INSIGHT ==========
+let insightRendered=false;const insightAnswered=new Set();
+function renderInsight(){const inner=document.getElementById('insight-inner');if(!inner)return;const levelColor={'初级':'var(--success)','中级':'var(--accent)','高级':'var(--accent2)'};let html=`<div style="background:var(--card);border-radius:20px;padding:14px;margin-bottom:18px;border:1px solid var(--border);"><div style="font-weight:800;font-size:14px;color:var(--text);margin-bottom:8px;">📈 学习曲线</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;">${insightCourses.map(c=>`<span class="badge" style="background:rgba(108,58,232,.18);color:var(--primary-light);">${c.level} ${c.title.split('·')[0].trim()}</span>`).join('')}</div><div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:0%" id="insight-progress-bar"></div></div><div class="text-center" style="font-size:12px;color:var(--text3);margin-top:6px;">完成所有课程解锁「分析大师」徽章 🧠</div></div>`;insightCourses.forEach((course,idx)=>{const lc=levelColor[course.level]||'var(--primary-light)';html+=`<div class="insight-course" data-course-id="${course.id}"><div class="course-header"><span class="course-level" style="background:${lc}22;color:${lc};">${course.level}</span><span style="font-size:11px;color:var(--text3);">🎓 实战案例</span></div><div class="course-title">${course.title}</div><div class="course-desc">${course.desc}</div><div class="video-placeholder" onclick="insightPlayVideo(this,'${course.videoUrl}')"><span>▶️ 点击播放视频教学</span></div><div class="course-points">${course.points.map(p=>`<div class="point-item">📌 ${p}</div>`).join('')}</div><button class="btn btn-outline quiz-btn" onclick="toggleInsightQuiz(${idx})">📝 课后测验</button><div class="quiz-panel" id="iquiz-${idx}" style="display:none;"><div class="quiz-question" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;">${course.quiz.q}</div><div id="iquiz-opts-${idx}">${course.quiz.options.map(opt=>`<div class="quiz-option" data-opt="${opt}" data-correct="${course.quiz.answer}" data-idx="${idx}" onclick="handleInsightQuiz(this)">${opt}</div>`).join('')}</div><div class="quiz-feedback" id="iquiz-fb-${idx}"></div></div></div>`});html+=`<div class="card" style="margin-top:4px;"><div class="card-inner"><div class="section-title">🤖 AI实时分析模拟器（Beta）</div><div style="font-size:13px;color:var(--text2);margin-bottom:10px;line-height:1.6;">粘贴对话内容，AI将分析对方的情绪和人格特质。</div><textarea id="insight-text" class="input-field" rows="3" placeholder="粘贴对话内容..."></textarea><button class="btn btn-primary btn-full" style="margin-top:10px;" onclick="runInsightAnalysis()">🔍 AI 人格分析</button><div id="insight-result" style="margin-top:12px;font-size:13px;display:flex;flex-direction:column;gap:6px;"></div></div></div><div style="height:16px;"></div>`;inner.innerHTML=html;insightRendered=true}
+window.insightPlayVideo=function(el,url){el.innerHTML=`<iframe src="${url}?autoplay=1&modestbranding=1&rel=0" allow="autoplay;encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;border-radius:10px;"></iframe>`;el.style.padding='0'};
+window.toggleInsightQuiz=function(idx){const panel=document.getElementById(`iquiz-${idx}`);if(!panel)return;const isHidden=panel.style.display==='none';panel.style.display=isHidden?'block':'none'};
+window.handleInsightQuiz=function(el){const selected=el.dataset.opt;const correct=el.dataset.correct;const idx=el.dataset.idx;const fbDiv=document.getElementById(`iquiz-fb-${idx}`);el.parentElement.querySelectorAll('.quiz-option').forEach(o=>{o.style.pointerEvents='none';if(o.dataset.opt===correct)o.classList.add('correct')});if(selected===correct){el.classList.add('correct');fbDiv.innerHTML='<span style="color:var(--success);">✅ 正确！你已掌握这个知识点。</span>';showToast('🎉 答对了！继续下一个课程');updateInsightProgress()}else{el.classList.add('wrong');fbDiv.innerHTML=`<span style="color:var(--accent2);">❌ 错误。正确答案是：${correct}。再看一遍课程吧。</span>`;showToast('❌ 答错了，再学一遍')}};
+function updateInsightProgress(){insightAnswered.add(1);const pct=Math.round((insightAnswered.size/insightCourses.length)*100);const bar=document.getElementById('insight-progress-bar');if(bar)bar.style.width=pct+'%';if(insightAnswered.size===insightCourses.length){setTimeout(()=>showCompletion('🧠','人格分析大师！','你已完成全部6门洞察课程\n解锁「分析大师」专属徽章！'),400)}};
+window.runInsightAnalysis=function(){const text=document.getElementById('insight-text')?.value?.trim();if(!text){showToast('请先输入对话内容');return}const result=document.getElementById('insight-result');result.innerHTML=`<div class="point-item" style="color:var(--text3);">⏳ AI分析中...</div>`;showToast('🤖 分析中...');const profiles=[{type:'D支配型',icon:'🔴',hint:'语气强势、直接打断，建议用数据和结果回应。'},{type:'S稳健型',icon:'🟢',hint:'措辞保守、回避冲突，建议鼓励其表达顾虑。'},{type:'C谨慎型',icon:'🔵',hint:'逻辑缜密、细节导向，建议提供详细数据支撑。'},{type:'I影响型',icon:'🟡',hint:'热情活跃、容易跑题，建议适时拉回主线。'}];const picked=profiles[Math.floor(Math.random()*profiles.length)];setTimeout(()=>{result.innerHTML=`<div class="point-item">🧠 <strong>初步人格判断：${picked.icon} ${picked.type}</strong></div><div class="point-item">💡 应对建议：${picked.hint}</div><div class="point-item">📊 情绪状态：检测到轻微防御倾向，建议保持开放式提问。</div><div class="point-item">🎯 推荐话术：「你刚才提到的那点，能再具体说明一下吗？」</div>`},900)};
+function attachQuizEvents(){}
+
+// ========== VIDEO TAB ==========
+function setupDragDrop(){const zone=document.getElementById('upload-zone');zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover')});zone.addEventListener('dragleave',e=>{e.preventDefault();zone.classList.remove('dragover')});zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('dragover');const files=e.dataTransfer.files;if(files.length>0&&(files[0].type.startsWith('video/')||files[0].name.match(/\.(mp4|mov)$/i))){handleVideoFile(files[0])}})}
+function handleFileUpload(input){if(input.files&&input.files[0])handleVideoFile(input.files[0])}
+function handleVideoFile(file){if(file.size>500*1024*1024){showToast('文件超过500MB限制！');return}showToast('视频上传成功，正在分析... 📹');document.getElementById('video-analysis-result').style.display='block'}
+function handleLinkUpload(){const link=document.getElementById('video-link').value.trim();if(!link){showToast('请输入链接');return}if(link.includes('youtube.com')||link.includes('bilibili.com')||link.includes('youtu.be')){showToast('链接解析成功，正在下载视频... 🔗');document.getElementById('video-analysis-result').style.display='block'}else{showToast('暂不支持该链接，请上传本地视频')}}
+function frameBack(){showToast('后退一帧 ⏮️')}
+function frameForward(){showToast('前进一帧 ⏭️')}
+function togglePlay(){showToast('播放/暂停 ▶️')}
+function jumpToTime(time){document.getElementById('time-display').textContent=time+' / 03:45';showToast('跳转到 '+time+' ⏱️')}
+function copyComeback(btn){const text=btn.closest('.comeback-card').querySelector('.comeback-text').textContent;navigator.clipboard?.writeText(text).catch(()=>{});showToast('已复制到剪贴板 📋')}
+function saveToPractice(){showToast('已存到实战练习 💾');switchTab('battle')}
+
+// ========== SLANG TAB ==========
+function renderSlangList(){const container=document.getElementById('slang-list-container');let list=SLANG_DATA.filter(s=>{const catMatch=currentSlangCat==='all'||s.category===currentSlangCat;const searchMatch=!slangSearchQuery||s.word.includes(slangSearchQuery)||s.trans.toLowerCase().includes(slangSearchQuery.toLowerCase())||s.plain.includes(slangSearchQuery);return catMatch&&searchMatch});if(!list.length){container.innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">暂无相关黑话</div></div>';return}container.innerHTML=list.map(s=>`<div class="slang-item" id="slang-${s.id}" onclick="toggleSlangItem('${s.id}')"><div class="slang-main"><div class="slang-word">${s.word}</div><div class="slang-trans">${s.trans}</div><div class="slang-expand-icon">▼</div></div><div class="slang-detail"><div class="slang-plain">${s.plain}</div><div class="slang-example"><div class="slang-example-label">${s.example}</div><div class="slang-example-text">${s.exampleText}</div><div class="slang-example-translation">大白话：${s.translation}</div></div><button class="btn btn-outline btn-sm slang-add-btn" onclick="event.stopPropagation();addToTraining('${s.word}')">➕ 加入训练</button></div></div>`).join('')}
+function toggleSlangItem(id){const item=document.getElementById('slang-'+id);item.classList.toggle('expanded')}
+function filterSlangCat(el){document.querySelectorAll('#slang-categories .chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');currentSlangCat=el.dataset.cat;renderSlangList()}
+function searchSlang(q){slangSearchQuery=q;renderSlangList()}
+function renderDailySlang(){const daily=SLANG_DATA[Math.floor(Math.random()*SLANG_DATA.length)];document.getElementById('daily-word').textContent=daily.word;document.getElementById('daily-trans').textContent=daily.trans;document.getElementById('daily-example').textContent='"'+daily.exampleText.replace(/"/g,'')+'"'}
+function switchTrainingMode(el){document.querySelectorAll('.mode-tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');currentTrainingMode=el.dataset.mode;document.getElementById('training-mode-create').style.display=currentTrainingMode==='create'?'block':'none';document.getElementById('training-mode-translate').style.display=currentTrainingMode==='translate'?'block':'none'}
+function usePreset(el){document.getElementById('slang-input').value=el.textContent}
+function useTranslatePreset(el){document.getElementById('translate-input').value=el.textContent}
+function addToTraining(word){const input=document.getElementById('slang-input');input.value=`用「${word}」造句：`;input.focus();showToast(`已选择「${word}」开始训练 💪`)}
+function getAIScore(){const mode=currentTrainingMode;const input=mode==='create'?document.getElementById('slang-input'):document.getElementById('translate-input');const text=input.value.trim();if(!text){showToast('请先输入内容');return}const result=document.getElementById('ai-result');result.style.display='block';result.innerHTML=`<div class="ai-score"><div class="score-circle">${Math.floor(Math.random()*3)+8}</div><div class="score-detail"><div class="score-label">AI 评分</div><div class="score-comment">${['你他妈这句子太生硬了，看老子示范','还行，但不够油腻，再练练','不错，有内味了，继续保持'][Math.floor(Math.random()*3)]}</div></div></div><div class="better-example"><div class="better-example-label">✨ 更牛逼的例句示范</div><div class="better-example-text">${mode==='create'?'"我们要给团队充分赋能，激发每个人的主观能动性，这样才能实现突破性增长。"':'"这个项目我来赋能一下，大家放手去干，有问题我兜着。"'}</div></div>`;showToast('🎉 评分完成！');triggerVibrate('agree','评分完成')}
+</script>
+</body>
+</html>
