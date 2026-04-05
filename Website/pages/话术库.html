@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>话术库 - 嘴替 ZTalk</title>
+<style>
+:root{--primary:#1a202c;--primary-light:#2d3748;--accent:#10B981;--accent2:#EF4444;--success:#10B981;--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--card:#FFFFFF;--text:#1a202c;--text2:#64748B;--text3:#94A3B8;--border:#E2E8F0;--header-height:56px;--tab-height:64px;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;position:relative}
+::-webkit-scrollbar{width:0}
+.header{height:var(--header-height);background:var(--bg2);display:flex;align-items:center;padding:0 16px;gap:10px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.header-logo{font-size:22px;font-weight:700;color:var(--text)}
+.header-slogan{font-size:11px;color:var(--text3);flex:1}
+.connection-bar{display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:10px;padding:8px 12px;font-size:12px;color:var(--success)}
+.connection-dot{width:8px;height:8px;border-radius:50%;background:var(--success);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.scene-hero{background:var(--bg2);padding:16px;border-bottom:1px solid var(--border)}
+.scene-stats{display:flex;gap:12px;margin-top:10px}
+.scene-stat{flex:1;background:var(--card);border-radius:10px;padding:10px 12px;text-align:center;border:1px solid var(--border)}
+.scene-stat-num{font-size:22px;font-weight:800;color:var(--accent)}
+.scene-stat-label{font-size:10px;color:var(--text3);margin-top:2px}
+.search-bar{display:flex;align-items:center;background:var(--bg3);border-radius:12px;padding:0 12px;gap:8px;border:1px solid var(--border)}
+.search-bar input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:14px;padding:10px 0}
+.search-bar input::placeholder{color:var(--text3)}
+.search-icon{color:var(--text3);font-size:15px}
+.chip-row{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
+.chip{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;background:var(--bg3);color:var(--text2);border:1.5px solid var(--border);cursor:pointer;transition:all .18s;white-space:nowrap}
+.chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-purple{background:rgba(99,102,241,.12);color:#6366F1}
+.phrase-list{padding:8px 0}
+.phrase-item{display:flex;align-items:flex-start;gap:10px;padding:10px;cursor:pointer;transition:background .15s;border-radius:8px;margin:2px 0}
+.phrase-item:active{background:var(--bg3)}
+.vibration-dot{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.12);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--accent);font-weight:700;margin-top:1px}
+.phrase-text{flex:1;font-size:14px;color:var(--text);line-height:1.5}
+.phrase-meta{font-size:11px;color:var(--text3);margin-top:3px}
+.phrase-actions{display:flex;gap:6px;align-items:center;margin-left:4px}
+.action-btn{width:30px;height:30px;border-radius:8px;background:transparent;border:none;color:var(--text3);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.action-btn:hover{color:var(--text);background:var(--bg3)}
+.action-btn.favorited{color:var(--accent)}
+#toast{position:fixed;bottom:calc(var(--tab-height) + 20px);left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;gap:12px;text-align:center}
+.empty-icon{font-size:52px;opacity:.5}
+.empty-text{font-size:15px;color:var(--text3)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">嘴替</div>
+  <div class="header-slogan">你语言的边界，就是你生活的边界</div>
+  <div class="connection-bar"><div class="connection-dot"></div>手环已连</div>
+</div>
+
+<div class="scene-hero">
+  <div class="chip-row" id="scene-chips">
+    <div class="chip active" data-scene="职场" onclick="filterScene(this)">💼 职场</div>
+    <div class="chip" data-scene="恋爱" onclick="filterScene(this)">💕 恋爱</div>
+    <div class="chip" data-scene="家庭" onclick="filterScene(this)">🏠 家庭</div>
+    <div class="chip" data-scene="社交" onclick="filterScene(this)">🎉 社交</div>
+    <div class="chip" data-scene="消费维权" onclick="filterScene(this)">🛡️ 维权</div>
+    <div class="chip" data-scene="日常" onclick="filterScene(this)">☀️ 日常</div>
+  </div>
+  <div class="scene-stats">
+    <div class="scene-stat"><div class="scene-stat-num" id="stat-total">52</div><div class="scene-stat-label">本场景话术</div></div>
+    <div class="scene-stat"><div class="scene-stat-num" id="stat-used">18</div><div class="scene-stat-label">本周使用次</div></div>
+    <div class="scene-stat"><div class="scene-stat-num" id="stat-left">10</div><div class="scene-stat-label">今日剩余</div></div>
+  </div>
+</div>
+
+<div style="padding:12px 16px 8px;">
+  <div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="搜索话术..." id="phrase-search" oninput="searchPhrases(this.value)"></div>
+</div>
+
+<div style="padding:0 16px 4px;">
+  <div class="chip-row" id="type-chips">
+    <div class="chip active" data-type="all" onclick="filterType(this)">全部</div>
+    <div class="chip" data-type="同意" onclick="filterType(this)">✅ 同意</div>
+    <div class="chip" data-type="拒绝" onclick="filterType(this)">❌ 拒绝</div>
+    <div class="chip" data-type="反问" onclick="filterType(this)">🔄 反问</div>
+    <div class="chip" data-type="拖延" onclick="filterType(this)">⏳ 拖延</div>
+    <div class="chip" data-type="夸赞" onclick="filterType(this)">🌟 夸赞</div>
+    <div class="chip" data-type="放大招" onclick="filterType(this)">💥 放大招</div>
+  </div>
+</div>
+
+<div style="flex:1;padding:0 16px;overflow-y:auto;" id="phrase-list-container">
+  <div class="phrase-list" id="phrase-list"></div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const VIBRATION_CODES=[
+  {id:'agree',name:'同意',icon:'✅',pattern:'· ·',emoji:'✅',color:'#10B981'},
+  {id:'refuse',name:'拒绝',icon:'❌',pattern:'— —',emoji:'❌',color:'#EF4444'},
+  {id:'question',name:'反问',icon:'🔄',pattern:'· — ·',emoji:'🔄',color:'#6C3AE8'},
+  {id:'delay',name:'拖延',icon:'⏳',pattern:'— · ·',emoji:'⏳',color:'#F59E0B'},
+  {id:'praise',name:'夸赞',icon:'🌟',pattern:'· · · ·',emoji:'🌟',color:'#8B5CF6'},
+  {id:'nuke',name:'放大招',icon:'💥',pattern:'— · — ·',emoji:'💥',color:'#F97316'},
+  {id:'escape',name:'转移话题',icon:'🌀',pattern:'· — —',emoji:'🌀',color:'#06B6D4'},
+  {id:'buy',name:'争取时间',icon:'🎯',pattern:'— — ·',emoji:'🎯',color:'#EC4899'}
+];
+
+const PHRASES=[
+  {id:1,scene:'职场',type:'拒绝',text:'这个需求不在原始范围内，我们需要重新评估工期和资源。',vib:'refuse'},
+  {id:2,scene:'职场',type:'拖延',text:'这个我需要再确认一下，明天给你回复可以吗？',vib:'delay'},
+  {id:3,scene:'职场',type:'反问',text:'你觉得这件事的优先级和上周说的那个相比，哪个更重要？',vib:'question'},
+  {id:4,scene:'职场',type:'放大招',text:'我理解你的想法，但这样做会违反公司的XXX规定，建议我们走正式流程。',vib:'nuke'},
+  {id:5,scene:'职场',type:'拒绝',text:'抱歉，我今天的排期已经满了，我们看看能不能找人协助？',vib:'refuse'},
+  {id:6,scene:'职场',type:'争取时间',text:'这个问题很好，让我想一秒钟。',vib:'buy'},
+  {id:7,scene:'职场',type:'转移话题',text:'先把眼前的这个处理完，我们再讨论后续的方向？',vib:'escape'},
+  {id:8,scene:'职场',type:'夸赞',text:'你这个角度我没想到，确实是个好思路。',vib:'praise'},
+  {id:9,scene:'职场',type:'拒绝',text:'这不是我职责范围内的工作，建议同步给XX来负责。',vib:'refuse'},
+  {id:10,scene:'职场',type:'反问',text:'你希望这件事最终达成什么结果？',vib:'question'},
+  {id:11,scene:'职场',type:'同意',text:'没问题，我来推进，有进展及时同步给你。',vib:'agree'},
+  {id:12,scene:'职场',type:'放大招',text:'我先把目前遇到的问题整理一下，发邮件对齐，避免后续扯皮。',vib:'nuke'},
+  {id:13,scene:'恋爱',type:'反问',text:'你希望我怎么做才会让你觉得被重视？',vib:'question'},
+  {id:14,scene:'恋爱',type:'拖延',text:'这个话题比较重要，我们找个好好说话的时间聊好吗？',vib:'delay'},
+  {id:15,scene:'恋爱',type:'转移话题',text:'我知道你现在情绪不太好，要不要先去吃点东西？',vib:'escape'},
+  {id:16,scene:'恋爱',type:'夸赞',text:'你今天做这件事真的让我觉得你很厉害。',vib:'praise'},
+  {id:17,scene:'恋爱',type:'放大招',text:'我觉得我们需要认真谈谈，因为这个问题已经影响到了我们。',vib:'nuke'},
+  {id:18,scene:'恋爱',type:'拒绝',text:'这件事我没办法答应你，但我可以告诉你我的顾虑。',vib:'refuse'},
+  {id:19,scene:'家庭',type:'拖延',text:'这件事我了解了，让我考虑一下，咱们周末再聊？',vib:'delay'},
+  {id:20,scene:'家庭',type:'拒绝',text:'爸妈，我理解你们的好意，但这件事我需要自己做决定。',vib:'refuse'},
+  {id:21,scene:'家庭',type:'反问',text:'你觉得这样做对我来说是最好的选择吗？',vib:'question'},
+  {id:22,scene:'家庭',type:'放大招',text:'我现在的状态很好，如果一直催促我反而会有压力，能不能给我一些空间？',vib:'nuke'},
+  {id:23,scene:'家庭',type:'转移话题',text:'先吃饭，饭后我们再聊这个，好吗？',vib:'escape'},
+  {id:24,scene:'社交',type:'拒绝',text:'那天我有安排，下次吧！',vib:'refuse'},
+  {id:25,scene:'社交',type:'争取时间',text:'我看一下我的日程，稍后告诉你。',vib:'buy'},
+  {id:26,scene:'社交',type:'转移话题',text:'哎说到这个，你最近那件事怎么样了？',vib:'escape'},
+  {id:27,scene:'社交',type:'夸赞',text:'你真的很懂这个，改天详细跟我讲讲？',vib:'praise'},
+  {id:28,scene:'社交',type:'拒绝',text:'这种事我一般不参与的，但你们玩得开心！',vib:'refuse'},
+  {id:29,scene:'消费维权',type:'放大招',text:'我已经对此次事件进行了全程记录，如果协商无果我会向消费者协会投诉。',vib:'nuke'},
+  {id:30,scene:'消费维权',type:'反问',text:'请问这个问题是否在你们的服务承诺范围内？',vib:'question'},
+  {id:31,scene:'消费维权',type:'拖延',text:'好的，请你们出具书面处理方案，我收到后再决定是否接受。',vib:'delay'},
+  {id:32,scene:'消费维权',type:'争取时间',text:'我需要咨询一下，稍后给你回复。',vib:'buy'},
+  {id:33,scene:'日常',type:'拒绝',text:'不好意思，我今天不太方便。',vib:'refuse'},
+  {id:34,scene:'日常',type:'转移话题',text:'说到这里让我想起另一件事……',vib:'escape'},
+  {id:35,scene:'日常',type:'夸赞',text:'你这个主意太妙了！',vib:'praise'},
+  {id:36,scene:'日常',type:'同意',text:'行，就这么定了。',vib:'agree'}
+];
+
+let currentScene='职场',currentType='all',favorites=new Set([1,4,7]);
+
+function renderPhrases(){
+  let list=PHRASES.filter(p=>{
+    const sceneMatch=p.scene===currentScene;
+    const typeMatch=currentType==='all'||p.type===currentType;
+    return sceneMatch&&typeMatch
+  });
+  const q=document.getElementById('phrase-search')?.value?.trim()||'';
+  if(q) list=PHRASES.filter(p=>p.text.includes(q));
+  
+  const container=document.getElementById('phrase-list');
+  if(!list.length){
+    container.innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">暂无相关话术</div></div>';
+    return;
+  }
+  
+  const vib=Object.fromEntries(VIBRATION_CODES.map(v=>[v.id,v]));
+  container.innerHTML=list.map(p=>{
+    const v=vib[p.vib]||{};
+    const faved=favorites.has(p.id);
+    return `<div class="phrase-item" onclick="copyAndVibrate(${p.id})">
+      <div class="vibration-dot" style="border-color:${v.color||'var(--primary)'};color:${v.color||'var(--primary-light)'};">${v.emoji||'•'}</div>
+      <div style="flex:1;min-width:0;">
+        <div class="phrase-text">${p.text}</div>
+        <div class="phrase-meta">
+          <span class="badge badge-purple">${p.type}</span>
+          <span style="margin-left:6px;font-size:11px;color:var(--text3);">${v.pattern||''}</span>
+        </div>
+      </div>
+      <div class="phrase-actions">
+        <button class="action-btn ${faved?'favorited':''}" onclick="event.stopPropagation();toggleFavorite(${p.id})">${faved?'❤️':'🤍'}</button>
+        <button class="action-btn" onclick="event.stopPropagation();triggerVibrate('${p.vib}')">📳</button>
+      </div>
+    </div>`;
+  }).join('');
+  
+  document.getElementById('stat-total').textContent=PHRASES.filter(p=>p.scene===currentScene).length;
+}
+
+function filterScene(el){
+  document.querySelectorAll('#scene-chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  currentScene=el.dataset.scene;
+  renderPhrases();
+}
+
+function filterType(el){
+  document.querySelectorAll('#type-chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  currentType=el.dataset.type;
+  renderPhrases();
+}
+
+function searchPhrases(){renderPhrases()}
+
+function copyAndVibrate(id){
+  const phrase=PHRASES.find(p=>p.id===id);
+  if(!phrase)return;
+  navigator.clipboard?.writeText(phrase.text).catch(()=>{});
+  triggerVibrate(phrase.vib,phrase.text);
+}
+
+function toggleFavorite(id){
+  if(favorites.has(id)){
+    favorites.delete(id);
+    showToast('已取消收藏');
+  }else{
+    favorites.add(id);
+    showToast('已加入收藏 ❤️');
+  }
+  renderPhrases();
+}
+
+function triggerVibrate(vibId,label){
+  const v=VIBRATION_CODES.find(c=>c.id===vibId);
+  showToast(`📳 ${v?v.name:label} 震动中...`);
+  if(navigator.vibrate) navigator.vibrate([200,100,200]);
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// 初始化
+renderPhrases();
+</script>
+
+</body>
+</html>

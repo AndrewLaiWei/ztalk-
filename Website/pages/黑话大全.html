@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>黑话大全 - 嘴替 ZTalk</title>
+<style>
+:root{--primary:#1a202c;--primary-light:#2d3748;--accent:#10B981;--accent2:#EF4444;--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--card:#FFFFFF;--text:#1a202c;--text2:#64748B;--text3:#94A3B8;--border:#E2E8F0;--header-height:56px;--tab-height:64px;--shadow-sm:0 1px 3px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;position:relative}
+::-webkit-scrollbar{width:0}
+.slang-hero{background:var(--bg2);padding:16px;border-bottom:1px solid var(--border)}
+.slang-hero-title{font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px}
+.slang-hero-sub{font-size:12px;color:var(--text3)}
+.search-bar{display:flex;align-items:center;background:var(--bg3);border-radius:12px;padding:0 12px;gap:8px;border:1px solid var(--border)}
+.search-bar input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-size:14px;padding:10px 0}
+.search-bar input::placeholder{color:var(--text3)}
+.search-icon{color:var(--text3);font-size:15px}
+.chip-row{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none}
+.chip{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;background:var(--bg3);color:var(--text2);border:1.5px solid var(--border);cursor:pointer;transition:all .18s;white-space:nowrap}
+.chip.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.slang-list{padding:16px}
+.slang-item{background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:10px;overflow:hidden;transition:all .2s}
+.slang-item:active{transform:scale(.98)}
+.slang-main{display:flex;align-items:center;padding:14px;cursor:pointer}
+.slang-word{font-size:18px;font-weight:800;color:var(--primary-light);min-width:60px}
+.slang-trans{flex:1;font-size:13px;color:var(--text2)}
+.slang-expand-icon{color:var(--text3);font-size:14px;transition:transform .2s}
+.slang-item.expanded .slang-expand-icon{transform:rotate(180deg)}
+.slang-detail{display:none;padding:0 14px 14px;border-top:1px solid rgba(61,45,112,.3)}
+.slang-item.expanded .slang-detail{display:block}
+.slang-plain{font-size:13px;color:var(--text);margin-bottom:10px;line-height:1.5}
+.slang-example{background:var(--bg3);border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.slang-example-label{font-size:11px;color:var(--text3);margin-bottom:4px}
+.slang-example-text{font-size:13px;color:var(--text2);line-height:1.4}
+.slang-example-translation{font-size:12px;color:var(--accent2);margin-top:6px;padding-top:6px;border-top:1px dashed rgba(61,45,112,.3)}
+.ai-training-section{background:var(--card);border-radius:12px;border:1px solid var(--border);margin:16px;padding:20px;position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+.ai-training-section::before{content:'🤖';position:absolute;right:16px;top:16px;font-size:40px;opacity:.15}
+.training-section-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.daily-card{background:var(--bg3);border-radius:10px;padding:16px;border:1px solid var(--border);margin-bottom:16px}
+.daily-card-label{font-size:11px;color:var(--accent);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:4px}
+.daily-word{font-size:24px;font-weight:900;color:var(--accent);margin-bottom:4px}
+.daily-trans{font-size:13px;color:var(--text2);margin-bottom:8px}
+.daily-example{font-size:12px;color:var(--text3);font-style:italic}
+.mode-tabs{display:flex;gap:8px;margin-bottom:12px}
+.mode-tab{flex:1;padding:10px;border-radius:8px;background:var(--bg3);border:1.5px solid var(--border);color:var(--text2);font-size:12px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s}
+.mode-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.preset-examples{margin-top:10px}
+.preset-label{font-size:11px;color:var(--text3);margin-bottom:6px}
+.preset-item{background:var(--bg3);border-radius:6px;padding:8px 10px;font-size:12px;color:var(--text2);margin-bottom:6px;cursor:pointer;border:1px solid transparent;transition:all .15s}
+.preset-item:active{border-color:var(--accent);background:rgba(16,185,129,.08)}
+.input-field{width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;padding:12px 14px;outline:none;resize:vertical;min-height:80px}
+.input-field:focus{border-color:var(--primary-light)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#0D9668}
+.btn-full{width:100%}
+.btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-sm{padding:7px 14px;font-size:12px;border-radius:8px}
+.ai-result{background:var(--bg3);border-radius:10px;padding:14px;margin-top:12px;border:1px solid var(--border)}
+.ai-score{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.score-circle{width:50px;height:50px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#fff}
+.score-detail{flex:1}
+.score-label{font-size:12px;color:var(--text3)}
+.score-comment{font-size:13px;color:var(--text2);margin-top:2px}
+.better-example{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:10px 12px;margin-top:10px}
+.better-example-label{font-size:11px;color:var(--accent);font-weight:700;margin-bottom:4px}
+.better-example-text{font-size:13px;color:var(--text);line-height:1.4}
+.leaderboard{background:var(--card);border-radius:12px;border:1px solid var(--border);margin:16px;overflow:hidden}
+.leaderboard-header{padding:12px 14px;background:var(--bg3);font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px}
+.leaderboard-item{display:flex;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border);gap:10px}
+.leaderboard-item:last-child{border-bottom:none}
+.leaderboard-rank{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;background:var(--bg3);color:var(--text3)}
+.leaderboard-rank.gold{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;font-weight:800}
+.leaderboard-rank.silver{background:linear-gradient(135deg,#9CA3AF,#6B7280);color:#fff;font-weight:800}
+.leaderboard-rank.bronze{background:linear-gradient(135deg,#D97706,#B45309);color:#fff;font-weight:800}
+.leaderboard-name{flex:1;font-size:13px;color:var(--text)}
+.leaderboard-score{font-size:14px;font-weight:700;color:var(--accent)}
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;gap:12px;text-align:center}
+.empty-icon{font-size:52px;opacity:.5}
+.empty-text{font-size:15px;color:var(--text3)}
+#toast{position:fixed;bottom:calc(var(--tab-height) + 20px);left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="slang-hero">
+  <div class="slang-hero-title">🎭 成人黑话大全</div>
+  <div class="slang-hero-sub">从听懂到玩转</div>
+</div>
+
+<div style="padding:12px 16px;">
+  <div class="search-bar"><span class="search-icon">🔍</span><input type="text" placeholder="搜索黑话..." id="slang-search" oninput="searchSlang(this.value)"></div>
+</div>
+
+<div class="chip-row" style="padding:0 16px;">
+  <div class="chip active" data-cat="all" onclick="filterSlangCat(this)">全部</div>
+  <div class="chip" data-cat="职场" onclick="filterSlangCat(this)">💼 职场</div>
+  <div class="chip" data-cat="恋爱" onclick="filterSlangCat(this)">💕 恋爱</div>
+  <div class="chip" data-cat="酒桌" onclick="filterSlangCat(this)">🍺 酒桌</div>
+  <div class="chip" data-cat="金融" onclick="filterSlangCat(this)">💰 金融</div>
+  <div class="chip" data-cat="网络" onclick="filterSlangCat(this)">🌐 网络</div>
+</div>
+
+<div style="flex:1;overflow-y:auto;padding-bottom:16px;" id="slang-list-container"></div>
+
+<div class="ai-training-section">
+  <div class="training-section-title">🤖 AI 黑话训练</div>
+  <div class="daily-card" id="daily-slang-card">
+    <div class="daily-card-label">📅 今日黑话</div>
+    <div class="daily-word" id="daily-word">赋能</div>
+    <div class="daily-trans" id="daily-trans">Empower / Enablement</div>
+    <div class="daily-example" id="daily-example">"我给你们赋能，你们放手去干"</div>
+  </div>
+  
+  <div class="mode-tabs">
+    <div class="mode-tab active" data-mode="create" onclick="switchTrainingMode(this)">模式1：造句</div>
+    <div class="mode-tab" data-mode="translate" onclick="switchTrainingMode(this)">模式2：翻译</div>
+  </div>
+  
+  <div id="training-mode-create">
+    <textarea class="input-field" id="slang-input" rows="3" placeholder="用「赋能」这个词造一个句子..."></textarea>
+    <div class="preset-examples">
+      <div class="preset-label">💡 参考例句（点击使用）</div>
+      <div class="preset-item" onclick="usePreset(this)">给团队赋能，让每个人都发挥最大价值</div>
+      <div class="preset-item" onclick="usePreset(this)">我需要领导给我赋能才能推进</div>
+    </div>
+  </div>
+  
+  <div id="training-mode-translate" style="display:none;">
+    <textarea class="input-field" id="translate-input" rows="3" placeholder="粘贴老板/领导的话，AI帮你翻译..."></textarea>
+    <div class="preset-examples">
+      <div class="preset-label">💡 预设翻译练习（点击使用）</div>
+      <div class="preset-item" onclick="useTranslatePreset(this)">"这个项目我们赋能一下团队"</div>
+      <div class="preset-item" onclick="useTranslatePreset(this)">"我们需要拉齐一下认知"</div>
+      <div class="preset-item" onclick="useTranslatePreset(this)">"先对齐一下颗粒度"</div>
+    </div>
+  </div>
+  
+  <button class="btn btn-accent btn-full" style="margin-top:12px;" onclick="getAIScore()">🤖 AI 评分</button>
+  <div id="ai-result" style="display:none;"></div>
+</div>
+
+<div class="leaderboard">
+  <div class="leaderboard-header">🏆 今日排行榜</div>
+  <div class="leaderboard-item"><div class="leaderboard-rank gold">🥇</div><div class="leaderboard-name">老王</div><div class="leaderboard-score">98分</div></div>
+  <div class="leaderboard-item"><div class="leaderboard-rank silver">🥈</div><div class="leaderboard-name">小李</div><div class="leaderboard-score">95分</div></div>
+  <div class="leaderboard-item"><div class="leaderboard-rank bronze">🥉</div><div class="leaderboard-name">阿强</div><div class="leaderboard-score">92分</div></div>
+  <div class="leaderboard-item"><div class="leaderboard-rank">4</div><div class="leaderboard-name">匿名用户</div><div class="leaderboard-score">88分</div></div>
+  <div class="leaderboard-item"><div class="leaderboard-rank">5</div><div class="leaderboard-name">匿名用户</div><div class="leaderboard-score">85分</div></div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const SLANG_DATA=[
+  {id:'s1',word:'赋能',category:'职场',trans:'Empower / Enablement',plain:'给下属或团队提供资源和权力，让他们干得更爽',example:'老板用法',exampleText:'"我给你们赋能，你们放手去干"',translation:'= "活儿你们干，锅我甩"'},
+  {id:'s2',word:'拉齐',category:'职场',trans:'Align / Sync',plain:'让所有人的认知和信息保持一致',example:'老板用法',exampleText:'"我们先拉齐一下认知"',translation:'= "我要重新讲一遍确保你们别搞错"'},
+  {id:'s3',word:'对齐颗粒度',category:'职场',trans:'Get aligned on details',plain:'把讨论的细节级别统一一下',example:'老板用法',exampleText:'"我们先对齐一下颗粒度"',translation:'= "你说的太粗了，给我细说"'},
+  {id:'s4',word:'闭环',category:'职场',trans:'Close the loop',plain:'从开始到结束完整做一件事并确认结果',example:'老板用法',exampleText:'"这个需求要形成闭环"',translation:'= "你得干完还要汇报，别干一半跑了"'},
+  {id:'s5',word:'抓手',category:'职场',trans:'Leverage point / Handle',plain:'做事的关键切入点或着力点',example:'老板用法',exampleText:'"找到业务的抓手"',translation:'= "找个能突破的关键点"'},
+  {id:'s6',word:'打透',category:'职场',trans:'Drill down / Penetrate',plain:'把事情做深入、做透彻',example:'老板用法',exampleText:'"这个点要打透"',translation:'= "别蜻蜓点水，给我往深里搞"'},
+  {id:'s7',word:'你是个好人',category:'恋爱',trans:'You are a nice guy',plain:'经典的拒绝方式，意思是"我们不合适"',example:'女生用法',exampleText:'"你是个好人，但我们不合适"',translation:'= "我不想伤害你但真的没感觉"'},
+  {id:'s8',word:'想静静',category:'恋爱',trans:'Need space',plain:'需要独处的时间，可能是在考虑关系',example:'对方用法',exampleText:'"我最近想静静"',translation:'= "我需要时间想清楚我们的关系"'},
+  {id:'s9',word:'我们还是做朋友吧',category:'恋爱',trans:"Let's just be friends",plain:'委婉拒绝进一步发展的方式',example:'对方用法',exampleText:'"我们还是做朋友吧"',translation:'= "我不想伤害你但我不会和你在一起"'},
+  {id:'s10',word:'我干了，你随意',category:'酒桌',trans:'Cheers - I finish mine',plain:'表示豪爽，把选择权给对方',example:'领导用法',exampleText:'"来来来，我干了，你随意！"',translation:'= "我喝了这么多，你好意思不干？"'},
+  {id:'s11',word:'感情深一口闷',category:'酒桌',trans:'Deep feelings = bottoms up',plain:'用感情绑架逼人干杯',example:'领导用法',exampleText:'"感情深一口闷！"',translation:'= "不干就是不给面子"'},
+  {id:'s12',word:'都在酒里',category:'酒桌',trans:"It's all in the drink",plain:'一切尽在不言中，用酒表达',example:'对方用法',exampleText:'"都在酒里了"',translation:'= "我啥也不说了，都在酒里了"'},
+  {id:'s13',word:'风口',category:'金融',trans:'Trend / Opportunity',plain:'某个行业或领域的快速成长期',example:'投资人用法',exampleText:'"这是下一个风口"',translation:'= "这个赛道正在高速增长"'},
+  {id:'s14',word:'赛道',category:'金融',trans:'Industry / Sector',plain:'某个特定的商业领域',example:'投资人用法',exampleText:'"这个赛道很有潜力"',translation:'= "这个行业/领域值得关注"'},
+  {id:'s15',word:'底层逻辑',category:'金融',trans:'Fundamental logic',plain:'最根本的商业本质和规律',example:'大佬用法',exampleText:'"要理解这件事的底层逻辑"',translation:'= "搞清楚本质再说话"'},
+  {id:'s16',word:'内卷',category:'网络',trans:'Involution / Rat race',plain:'在资源有限的情况下过度竞争',example:'网友用法',exampleText:'"996是内卷"',translation:'= "大家都在拼命但整体没进步"'},
+  {id:'s17',word:'躺平',category:'网络',trans:'Lie flat / Check out',plain:'放弃过度竞争，选择低欲望生活',example:'网友用法',exampleText:'"我选择躺平"',translation:'= "不卷了，活着就行"'},
+  {id:'s18',word:'社死',category:'网络',trans:'Social death',plain:'社会性死亡，丢脸到没脸见人',example:'网友用法',exampleText:'"这波操作导致社死"',translation:'= "丢人丢到没脸见人"'},
+  {id:'s19',word:'绝绝子',category:'网络',trans:'Amazing / Awesome',plain:'表示非常厉害、非常好',example:'网友用法',exampleText:'"这个操作绝绝子"',translation:'= "太牛了！"'}
+];
+
+let currentSlangCat='all',slangSearchQuery='',currentTrainingMode='create';
+
+function renderSlangList(){
+  const container=document.getElementById('slang-list-container');
+  let list=SLANG_DATA.filter(s=>{
+    const catMatch=currentSlangCat==='all'||s.category===currentSlangCat;
+    const searchMatch=!slangSearchQuery||s.word.includes(slangSearchQuery)||s.trans.toLowerCase().includes(slangSearchQuery.toLowerCase())||s.plain.includes(slangSearchQuery);
+    return catMatch&&searchMatch;
+  });
+  
+  if(!list.length){
+    container.innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">暂无相关黑话</div></div>';
+    return;
+  }
+  
+  container.innerHTML=list.map(s=>`
+    <div class="slang-item" id="slang-${s.id}" onclick="toggleSlangItem('${s.id}')">
+      <div class="slang-main">
+        <div class="slang-word">${s.word}</div>
+        <div class="slang-trans">${s.trans}</div>
+        <div class="slang-expand-icon">▼</div>
+      </div>
+      <div class="slang-detail">
+        <div class="slang-plain">${s.plain}</div>
+        <div class="slang-example">
+          <div class="slang-example-label">${s.example}</div>
+          <div class="slang-example-text">${s.exampleText}</div>
+          <div class="slang-example-translation">大白话：${s.translation}</div>
+        </div>
+        <button class="btn btn-outline btn-sm" style="width:100%;margin-top:8px;" onclick="event.stopPropagation();addToTraining('${s.word}')">➕ 加入训练</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleSlangItem(id){
+  const item=document.getElementById('slang-'+id);
+  item.classList.toggle('expanded');
+}
+
+function filterSlangCat(el){
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  currentSlangCat=el.dataset.cat;
+  renderSlangList();
+}
+
+function searchSlang(q){
+  slangSearchQuery=q;
+  renderSlangList();
+}
+
+function renderDailySlang(){
+  const daily=SLANG_DATA[Math.floor(Math.random()*SLANG_DATA.length)];
+  document.getElementById('daily-word').textContent=daily.word;
+  document.getElementById('daily-trans').textContent=daily.trans;
+  document.getElementById('daily-example').textContent='"'+daily.exampleText.replace(/"/g,'')+'"';
+}
+
+function switchTrainingMode(el){
+  document.querySelectorAll('.mode-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  currentTrainingMode=el.dataset.mode;
+  document.getElementById('training-mode-create').style.display=currentTrainingMode==='create'?'block':'none';
+  document.getElementById('training-mode-translate').style.display=currentTrainingMode==='translate'?'block':'none';
+}
+
+function usePreset(el){
+  document.getElementById('slang-input').value=el.textContent;
+}
+
+function useTranslatePreset(el){
+  document.getElementById('translate-input').value=el.textContent;
+}
+
+function addToTraining(word){
+  const input=document.getElementById('slang-input');
+  input.value=`用「${word}」造句：`;
+  input.focus();
+  showToast(`已选择「${word}」开始训练 💪`);
+}
+
+async function getAIScore(){
+  const mode=currentTrainingMode;
+  const input=mode==='create'?document.getElementById('slang-input'):document.getElementById('translate-input');
+  const text=input.value.trim();
+  if(!text){showToast('请先输入内容');return;}
+  
+  const resultDiv=document.getElementById('ai-result');
+  resultDiv.style.display='block';
+  resultDiv.innerHTML='<div class="ai-score"><div class="score-circle">⏳</div><div class="score-detail">AI 评分中...</div></div>';
+  
+  // 模拟AI评分
+  setTimeout(()=>{
+    const scores=[
+      {score:8,comment:'很不错！',example:'你的造句很地道，继续保持！'},
+      {score:7,comment:'还行',example:'可以再优化一下语境使用。'},
+      {score:9,comment:'太牛了！',example:'这水平可以去职场PUA别人了！'}
+    ];
+    const result=scores[Math.floor(Math.random()*scores.length)];
+    
+    resultDiv.innerHTML=`
+      <div class="ai-score">
+        <div class="score-circle">${result.score}</div>
+        <div class="score-detail">
+          <div class="score-label">AI 评分</div>
+          <div class="score-comment">${result.comment}</div>
+        </div>
+      </div>
+      <div class="better-example">
+        <div class="better-example-label">✨ 优化建议</div>
+        <div class="better-example-text">${result.example}</div>
+      </div>
+    `;
+    showToast(`得分 ${result.score}/10`);
+    if(navigator.vibrate) navigator.vibrate([200,100,200]);
+  },1000);
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// 初始化
+renderSlangList();
+renderDailySlang();
+</script>
+
+</body>
+</html>

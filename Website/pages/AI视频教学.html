@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>嘴替 ZTalk — AI视频教学</title>
+<style>
+/* ============================================
+   CSS 变量 - 与网站整体统一
+   ============================================ */
+:root {
+  --primary: #1a202c;
+  --accent: #10B981;
+  --accent-light: rgba(16, 185, 129, 0.1);
+  --bg: #FFFFFF;
+  --bg2: #F8FAFC;
+  --bg3: #F1F5F9;
+  --card: #FFFFFF;
+  --text: #1a202c;
+  --text2: #64748B;
+  --text3: #94A3B8;
+  --border: #E2E8F0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.07);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 0; }
+* { scrollbar-width: none; -ms-overflow-style: none; }
+
+/* ══════════════════════════════════════════════════════════
+   HEADER - 与网站统一
+   ============================================ */
+.header {
+  background: var(--card);
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-back {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.header-back:active { transform: scale(.95); background: var(--bg3); }
+
+.header-content { flex: 1; }
+.header-title { font-size: 17px; font-weight: 700; color: var(--text); }
+.header-sub { font-size: 11px; color: var(--text3); }
+
+.connection-bar {
+  background: var(--accent-light);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.connection-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .5; transform: scale(.8); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MAIN CONTENT
+   ============================================ */
+.main {
+  padding: 16px;
+  padding-bottom: 32px;
+}
+
+/* ── 功能入口卡片 ─────────────────────────────────────────── */
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: all .2s;
+}
+.feature-card:active { transform: scale(.98); background: var(--bg2); }
+
+.feature-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.feature-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.feature-info { flex: 1; }
+.feature-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.feature-desc { font-size: 12px; color: var(--text2); }
+
+/* ── 步骤流程 ─────────────────────────────────────────────── */
+.pipeline-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 12px 8px;
+  margin-top: 8px;
+}
+
+.pipeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.pipeline-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.pipeline-label {
+  font-size: 9px;
+  color: var(--text3);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.pipeline-arrow {
+  color: var(--text3);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+/* ── 上传区 ─────────────────────────────────────────────── */
+.upload-zone {
+  background: var(--card);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s;
+  margin: 16px 0;
+}
+
+.upload-zone:active {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.upload-icon { font-size: 48px; margin-bottom: 12px; }
+.upload-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.upload-sub { font-size: 12px; color: var(--text3); }
+.upload-hint { font-size: 11px; color: var(--text3); margin-top: 8px; }
+
+#file-input { display: none; }
+
+/* ── 文件已选 ────────────────────────────────────────────── */
+.file-selected {
+  display: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+.file-selected.show { display: flex; }
+
+.file-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.file-info { flex: 1; }
+.file-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.file-meta { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+.file-remove {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+.file-remove:active { background: #FEE2E2; }
+
+/* ── 分析按钮 ────────────────────────────────────────────── */
+.analyze-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s;
+  margin-bottom: 16px;
+}
+.analyze-btn:active { transform: scale(.98); background: #059669; }
+.analyze-btn:disabled { background: var(--bg3); color: var(--text3); cursor: not-allowed; }
+
+/* ── 进度页 ─────────────────────────────────────────────── */
+.progress-page {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+.progress-page.show { display: block; }
+
+.progress-ring {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+.progress-ring svg { transform: rotate(-90deg); }
+.progress-ring circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+.progress-ring .bg { stroke: var(--bg3); }
+.progress-ring .progress {
+  stroke: var(--accent);
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  transition: stroke-dashoffset 0.5s ease;
+}
+.progress-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.progress-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.progress-sub { font-size: 12px; color: var(--text3); margin-bottom: 16px; }
+
+/* 终端日志 */
+.terminal-log {
+  background: #1a1a2e;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 16px;
+  text-align: left;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.log-line {
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 11px;
+  color: #00F5D4;
+  margin-bottom: 4px;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+.log-line::before { content: '› '; color: var(--accent); }
+.log-line.done { color: var(--accent); }
+.log-line.error { color: #EF4444; }
+
+/* ── 结果页 ─────────────────────────────────────────────── */
+.result-page { display: none; }
+.result-page.show { display: block; }
+
+/* 数据摘要 */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-num {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.stat-num.orange { color: #F59E0B; }
+.stat-num.purple { color: #8B5CF6; }
+
+.stat-label { font-size: 11px; color: var(--text3); }
+
+/* Tab 切换 */
+.tab-bar {
+  display: flex;
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 16px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 8px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all .2s;
+}
+.tab-btn.active {
+  background: var(--card);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* 话术卡片 */
+.phrase-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.phrase-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.phrase-time {
+  font-size: 11px;
+  color: var(--text3);
+  background: var(--bg3);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.phrase-speaker {
+  font-size: 11px;
+  color: #fff;
+  background: var(--accent);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.phrase-content {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.phrase-tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-right: 6px;
+  margin-bottom: 8px;
+}
+.tag-power { background: #FEE2E2; color: #DC2626; }
+.tag-warning { background: #FEF3C7; color: #D97706; }
+.tag-info { background: #DBEAFE; color: #2563EB; }
+
+.phrase-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.action-btn:active { background: var(--bg3); transform: scale(.98); }
+.action-btn.copy { border-color: var(--accent); color: var(--accent); }
+
+/* 反击话术 */
+.counter-card {
+  background: linear-gradient(135deg, var(--accent-light), #F0FDF4);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.counter-title {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.counter-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* 时间轴 */
+.timeline {
+  position: relative;
+  padding-left: 24px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 16px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--card);
+}
+
+.timeline-time {
+  font-size: 11px;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+.timeline-text {
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg2);
+  padding: 10px 12px;
+  border-radius: 8px;
+  line-height: 1.5;
+}
+
+/* 分析报告 */
+.analysis-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.analysis-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.analysis-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.analysis-item:last-child { border-bottom: none; }
+
+.analysis-label { font-size: 13px; color: var(--text2); }
+.analysis-value { font-size: 13px; font-weight: 600; color: var(--text); }
+
+/* 进度条 */
+.progress-bar {
+  height: 8px;
+  background: var(--bg3);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* 重新开始按钮 */
+.restart-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text2);
+  cursor: pointer;
+  margin-top: 16px;
+}
+.restart-btn:active { background: var(--bg3); }
+
+/* 提示文字 */
+.hint-text {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 12px;
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-back" onclick="history.back()">‹</div>
+  <div class="header-content">
+    <div class="header-title">AI视频教学</div>
+    <div class="header-sub">把影视剧对话变成你的嘴替教材</div>
+  </div>
+  <div class="connection-bar">
+    <div class="connection-dot"></div>
+    AI 已连
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+
+  <!-- 功能说明卡片 -->
+  <div class="feature-card">
+    <div class="feature-card-header">
+      <div class="feature-icon">🎬</div>
+      <div class="feature-info">
+        <div class="feature-title">视频 → 话术</div>
+        <div class="feature-desc">上传视频，AI 提取对话中的经典话术</div>
+      </div>
+    </div>
+    <div class="pipeline-steps">
+      <div class="pipeline-step">
+        <div class="pipeline-icon">📤</div>
+        <div class="pipeline-label">视频<br>上传</div>
+      </div>
+      <div class="pipeline-arrow">›</div>
+      <div class="pipeline-step">
+        <div class="pipeline-icon">✍️</div>
+        <div class="pipeline-label">内容<br>撰写</div>
+      </div>
+      <div class="pipeline-arrow">›</div>
+      <div class="pipeline-step">
+        <div class="pipeline-icon">🧠</div>
+        <div class="pipeline-label">人格<br>分析</div>
+      </div>
+      <div class="pipeline-arrow">›</div>
+      <div class="pipeline-step">
+        <div class="pipeline-icon">🔗</div>
+        <div class="pipeline-label">关系<br>矩阵</div>
+      </div>
+      <div class="pipeline-arrow">›</div>
+      <div class="pipeline-step">
+        <div class="pipeline-icon">💬</div>
+        <div class="pipeline-label">话术<br>提取</div>
+      </div>
+      <div class="pipeline-arrow">›</div>
+      <div class="pipeline-step">
+        <div class="pipeline-icon">📊</div>
+        <div class="pipeline-label">综合<br>报告</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 上传区域 -->
+  <div class="upload-zone" id="upload-zone" onclick="document.getElementById('file-input').click()">
+    <div class="upload-icon">🎞️</div>
+    <div class="upload-title">拖拽或点击上传视频</div>
+    <div class="upload-sub">支持 MP4、MOV、AVI 等常见格式</div>
+    <div class="upload-hint">建议时长 1-10 分钟效果最佳</div>
+  </div>
+  <input type="file" id="file-input" accept=".mp4,.mov,.avi,.mkv,.webm,.m4v">
+
+  <!-- 文件已选 -->
+  <div class="file-selected" id="file-selected">
+    <div class="file-icon">🎬</div>
+    <div class="file-info">
+      <div class="file-name" id="file-name">视频文件.mp4</div>
+      <div class="file-meta" id="file-meta">0 MB · 00:00</div>
+    </div>
+    <button class="file-remove" onclick="removeFile()">✕</button>
+  </div>
+
+  <!-- 分析按钮 -->
+  <button class="analyze-btn" id="analyze-btn" onclick="startAnalysis()" disabled>
+    🎥 开始深度分析
+  </button>
+
+  <!-- 进度页 -->
+  <div class="progress-page" id="progress-page">
+    <div class="progress-ring">
+      <svg width="120" height="120">
+        <circle class="bg" cx="60" cy="60" r="50"></circle>
+        <circle class="progress" id="progress-circle" cx="60" cy="60" r="50"></circle>
+      </svg>
+      <div class="progress-percent" id="progress-percent">0%</div>
+    </div>
+    <div class="progress-title" id="progress-title">正在分析视频...</div>
+    <div class="progress-sub" id="progress-sub">预计需要 1-2 分钟</div>
+    
+    <div class="terminal-log" id="terminal-log"></div>
+  </div>
+
+  <!-- 结果页 -->
+  <div class="result-page" id="result-page">
+
+    <!-- 数据摘要 -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="stat-phrases">12</div>
+        <div class="stat-label">提取话术</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num orange" id="stat-counters">8</div>
+        <div class="stat-label">反击话术</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num purple" id="stat-scenes">5</div>
+        <div class="stat-label">关键场景</div>
+      </div>
+    </div>
+
+    <!-- Tab 切换 -->
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('phrases')">💬 话术</button>
+      <button class="tab-btn" onclick="switchTab('counters')">⚡ 反击</button>
+      <button class="tab-btn" onclick="switchTab('timeline')">⏱️ 时间轴</button>
+      <button class="tab-btn" onclick="switchTab('analysis')">📊 分析</button>
+    </div>
+
+    <!-- 话术 Tab -->
+    <div class="tab-content active" id="tab-phrases">
+      <div id="phrases-list"></div>
+    </div>
+
+    <!-- 反击话术 Tab -->
+    <div class="tab-content" id="tab-counters">
+      <div id="counters-list"></div>
+    </div>
+
+    <!-- 时间轴 Tab -->
+    <div class="tab-content" id="tab-timeline">
+      <div id="timeline-list"></div>
+    </div>
+
+    <!-- 分析报告 Tab -->
+    <div class="tab-content" id="tab-analysis">
+      <div class="analysis-card">
+        <div class="analysis-title">🎯 整体评价</div>
+        <div class="analysis-item">
+          <span class="analysis-label">压力指数</span>
+          <span class="analysis-value">高</span>
+        </div>
+        <div class="analysis-item">
+          <span class="analysis-label">应对得分</span>
+          <span class="analysis-value">72/100</span>
+        </div>
+        <div class="progress-bar" style="margin-top: 8px;">
+          <div class="progress-fill" style="width: 72%"></div>
+        </div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-title">💡 学习建议</div>
+        <div class="analysis-item" style="display: block; padding: 0; border: none;">
+          <p style="font-size: 13px; color: var(--text2); line-height: 1.6;">
+            1. 对方使用了"模糊威胁"话术，可直接要求对方明确诉求<br><br>
+            2. 在对方陈述观点后，用"您的意思是...对吗？"确认，避免误解<br><br>
+            3. 当对方情绪激动时，保持沉默反而更有利
+          </p>
+        </div>
+      </div>
+
+      <button class="restart-btn" onclick="restart()">🔄 重新上传视频</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+// 示例数据
+const samplePhrases = [
+  { time: '00:15', speaker: '甲方', content: '这个方案不行，你们根本没有理解我们的需求。', tags: ['打压', '模糊批评'] },
+  { time: '01:32', speaker: '乙方', content: '非常感谢您的反馈，能否具体说明是哪些部分不符合预期？', tags: ['请求澄清'] },
+  { time: '02:45', speaker: '甲方', content: '反正你们看着改，改到我满意为止。', tags: ['模糊指令', '施压'] },
+  { time: '03:18', speaker: '乙方', content: '完全理解。为了更好地完成修改，能否安排一次电话沟通？', tags: ['积极应对'] },
+  { time: '04:05', speaker: '甲方', content: '你们这效率也太低了吧，别人三天就做完了。', tags: ['比较施压'] },
+];
+
+const sampleCounters = [
+  { phrase: '这个方案不行，你们根本没有理解我们的需求。', counter: '您提到的"没有理解"，具体是哪些方面呢？我想逐一了解，确保下次能准确把握重点。' },
+  { phrase: '反正你们看着改，改到我满意为止。', counter: '好的。我建议我们先确认一下"满意"的具体标准，这样我能一次性做到位，省去反复修改的时间。' },
+  { phrase: '你们这效率也太低了吧，别人三天就做完了。', counter: '感谢您的对比参考。不同项目的复杂度差异较大，您方便分享一下对方项目的具体情况吗？方便我评估参考。' },
+];
+
+const sampleTimeline = [
+  { time: '00:00 - 00:30', text: '开场寒暄，建立初步信任关系' },
+  { time: '00:30 - 01:45', text: '甲方陈述需求，态度友好' },
+  { time: '01:45 - 02:50', text: '甲方开始施压，使用模糊批评话术' },
+  { time: '02:50 - 03:30', text: '乙方请求澄清，局势缓和' },
+  { time: '03:30 - 04:20', text: '甲方再次施压，使用比较施压' },
+  { time: '04:20 - 05:00', text: '乙方提出电话沟通建议' },
+];
+
+// 文件选择
+document.getElementById('file-input').addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    document.getElementById('file-name').textContent = file.name;
+    document.getElementById('file-meta').textContent = formatSize(file.size) + ' · ' + formatDuration(0);
+    document.getElementById('file-selected').classList.add('show');
+    document.getElementById('analyze-btn').disabled = false;
+    document.getElementById('analyze-btn').textContent = '🎥 开始深度分析';
+  }
+});
+
+// 拖拽上传
+const uploadZone = document.getElementById('upload-zone');
+uploadZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  uploadZone.style.borderColor = 'var(--accent)';
+  uploadZone.style.background = 'var(--accent-light)';
+});
+uploadZone.addEventListener('dragleave', () => {
+  uploadZone.style.borderColor = '';
+  uploadZone.style.background = '';
+});
+uploadZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  uploadZone.style.borderColor = '';
+  uploadZone.style.background = '';
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('video/')) {
+    document.getElementById('file-input').files = e.dataTransfer.files;
+    document.getElementById('file-name').textContent = file.name;
+    document.getElementById('file-meta').textContent = formatSize(file.size) + ' · 00:00';
+    document.getElementById('file-selected').classList.add('show');
+    document.getElementById('analyze-btn').disabled = false;
+    document.getElementById('analyze-btn').textContent = '🎥 开始深度分析';
+  }
+});
+
+function removeFile() {
+  document.getElementById('file-input').value = '';
+  document.getElementById('file-selected').classList.remove('show');
+  document.getElementById('analyze-btn').disabled = true;
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
+function formatDuration(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+// 开始分析
+function startAnalysis() {
+  document.getElementById('upload-zone').style.display = 'none';
+  document.getElementById('file-selected').style.display = 'none';
+  document.getElementById('analyze-btn').style.display = 'none';
+  document.getElementById('progress-page').classList.add('show');
+  
+  const logs = document.getElementById('terminal-log');
+  const progressCircle = document.getElementById('progress-circle');
+  const progressPercent = document.getElementById('progress-percent');
+  const progressTitle = document.getElementById('progress-title');
+  const steps = [
+    { text: '正在读取视频文件...', time: 500 },
+    { text: '提取音视频轨道', time: 1000 },
+    { text: 'Whisper 语音识别中...', time: 1800 },
+    { text: '分离说话人声音', time: 2500 },
+    { text: '提取对话文本', time: 3000 },
+    { text: '分析话术特征', time: 3600 },
+    { text: '生成反击话术', time: 4200 },
+    { text: '完成分析', time: 4500, done: true },
+  ];
+  
+  let completed = 0;
+  const totalSteps = steps.length;
+  
+  steps.forEach((step, i) => {
+    setTimeout(() => {
+      const line = document.createElement('div');
+      line.className = 'log-line' + (step.done ? ' done' : '');
+      line.textContent = step.text;
+      logs.appendChild(line);
+      logs.scrollTop = logs.scrollHeight;
+      
+      completed++;
+      const percent = Math.round((completed / totalSteps) * 100);
+      const offset = 314 - (314 * percent / 100);
+      progressCircle.style.strokeDashoffset = offset;
+      progressPercent.textContent = percent + '%';
+      
+      if (step.done) {
+        setTimeout(() => showResult(), 500);
+      }
+    }, step.time);
+  });
+}
+
+function showResult() {
+  document.getElementById('progress-page').classList.remove('show');
+  document.getElementById('result-page').classList.add('show');
+  renderPhrases();
+  renderCounters();
+  renderTimeline();
+}
+
+function renderPhrases() {
+  const container = document.getElementById('phrases-list');
+  container.innerHTML = samplePhrases.map(p => `
+    <div class="phrase-card">
+      <div class="phrase-header">
+        <span class="phrase-time">⏱️ ${p.time}</span>
+        <span class="phrase-speaker">${p.speaker}</span>
+      </div>
+      <div class="phrase-content">"${p.content}"</div>
+      <div>
+        ${p.tags.map(t => `<span class="phrase-tag tag-warning">${t}</span>`).join('')}
+      </div>
+      <div class="phrase-actions">
+        <button class="action-btn copy" onclick="copyText(this)">📋 复制</button>
+        <button class="action-btn" onclick="collect(this)">❤️ 收藏</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderCounters() {
+  const container = document.getElementById('counters-list');
+  container.innerHTML = sampleCounters.map(c => `
+    <div class="counter-card">
+      <div class="counter-title">💬 对方说</div>
+      <div class="counter-text" style="color: var(--text2); font-size: 13px; margin-bottom: 12px;">"${c.phrase}"</div>
+      <div class="counter-title">⚡ 反击话术</div>
+      <div class="counter-text">"${c.counter}"</div>
+      <div class="phrase-actions">
+        <button class="action-btn copy" onclick="copyText(this)">📋 复制</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTimeline() {
+  const container = document.getElementById('timeline-list');
+  container.innerHTML = `
+    <div class="timeline">
+      ${sampleTimeline.map(t => `
+        <div class="timeline-item">
+          <div class="timeline-time">${t.time}</div>
+          <div class="timeline-text">${t.text}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function switchTab(tabName) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-' + tabName).classList.add('active');
+}
+
+function copyText(btn) {
+  const text = btn.closest('.phrase-card, .counter-card').querySelector('.phrase-content, .counter-text').textContent.replace(/[""]/g, '');
+  navigator.clipboard.writeText(text);
+  btn.textContent = '✅ 已复制';
+  setTimeout(() => btn.textContent = '📋 复制', 1500);
+}
+
+function collect(btn) {
+  btn.textContent = '❤️ 已收藏';
+  btn.style.color = '#EF4444';
+}
+
+function restart() {
+  document.getElementById('result-page').classList.remove('show');
+  document.getElementById('upload-zone').style.display = 'block';
+  document.getElementById('file-selected').style.display = 'flex';
+  document.getElementById('file-selected').classList.remove('show');
+  document.getElementById('analyze-btn').style.display = 'block';
+  document.getElementById('analyze-btn').disabled = true;
+  document.getElementById('file-input').value = '';
+  document.getElementById('terminal-log').innerHTML = '';
+}
+</script>
+
+</body>
+</html>

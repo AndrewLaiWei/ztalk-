@@ -1,0 +1,68 @@
+<div class="card" style="margin:16px;">
+  <div class="card-inner">
+    <div class="section-title" style="padding:0 0 8px;">❓ 常见问题</div>
+    
+    <div class="menu-item" onclick="toggleFaq(this)">
+      <div class="menu-item-icon" style="background:rgba(16,185,129,.2)">🤔</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">嘴替是什么？</div>
+        <div class="menu-item-sub">一款AI辅助对话工具</div>
+      </div>
+      <div class="menu-arrow">▼</div>
+    </div>
+    <div class="faq-answer" style="display:none;padding:12px;font-size:13px;color:var(--text2);background:var(--bg3);border-radius:8px;margin-bottom:12px;">
+      嘴替 ZTalk 是一款 AI 辅助对话工具，通过震动编码和话术库，帮助你在各种场景下找到合适的表达方式。
+    </div>
+
+    <div class="menu-item" onclick="toggleFaq(this)">
+      <div class="menu-item-icon" style="background:rgba(99,102,241,.2)">📳</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">震动编码是什么？</div>
+        <div class="menu-item-sub">不同震动代表不同回应方式</div>
+      </div>
+      <div class="menu-arrow">▼</div>
+    </div>
+    <div class="faq-answer" style="display:none;padding:12px;font-size:13px;color:var(--text2);background:var(--bg3);border-radius:8px;margin-bottom:12px;">
+      震动编码是嘴替的核心功能：不同震动模式代表不同的话术类型。学会识别震动，就能在对话中快速响应！
+    </div>
+
+    <div class="menu-item" onclick="toggleFaq(this)">
+      <div class="menu-item-icon" style="background:rgba(245,158,11,.2)">💰</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">免费版和Pro版有什么区别？</div>
+        <div class="menu-item-sub">查看权益对比</div>
+      </div>
+      <div class="menu-arrow">▼</div>
+    </div>
+    <div class="faq-answer" style="display:none;padding:12px;font-size:13px;color:var(--text2);background:var(--bg3);border-radius:8px;margin-bottom:12px;">
+      免费版包含基础话术库和震动训练；Pro版解锁全部场景、无限使用、AI实时提示等功能。
+    </div>
+
+    <div class="menu-item" onclick="toggleFaq(this)">
+      <div class="menu-item-icon" style="background:rgba(239,68,68,.2)">🎁</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">如何获得更多话术额度？</div>
+        <div class="menu-item-sub">邀请好友送额度</div>
+      </div>
+      <div class="menu-arrow">▼</div>
+    </div>
+    <div class="faq-answer" style="display:none;padding:12px;font-size:13px;color:var(--text2);background:var(--bg3);border-radius:8px;margin-bottom:12px;">
+      邀请好友注册，双方各获得10次话术额度。分享海报或链接即可，邀请人数无上限！
+    </div>
+  </div>
+</div>
+
+<script>
+// FAQ 展开/收起
+function toggleFaq(el) {
+  const answer = el.nextElementSibling;
+  const arrow = el.querySelector('.menu-arrow');
+  if (answer.style.display === 'none' || !answer.style.display) {
+    answer.style.display = 'block';
+    arrow.textContent = '▲';
+  } else {
+    answer.style.display = 'none';
+    arrow.textContent = '▼';
+  }
+}
+</script>

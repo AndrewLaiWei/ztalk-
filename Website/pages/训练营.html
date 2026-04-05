@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>训练营 - 嘴替 ZTalk</title>
+<style>
+:root{--primary:#1a202c;--primary-light:#2d3748;--accent:#10B981;--accent2:#EF4444;--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--card:#FFFFFF;--text:#1a202c;--text2:#64748B;--text3:#94A3B8;--border:#E2E8F0;--header-height:56px;--tab-height:64px;--shadow-sm:0 1px 3px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;position:relative}
+::-webkit-scrollbar{width:0}
+.header{height:var(--header-height);background:var(--bg2);display:flex;align-items:center;padding:0 16px;gap:10px;border-bottom:1px solid var(--border)}
+.header-logo{font-size:22px;font-weight:700;color:var(--text)}
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-amber{background:rgba(245,158,11,.12);color:#D97706}
+.training-card{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:20px;position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+.progress-bar-wrap{background:var(--bg3);border-radius:8px;height:8px;overflow:hidden;margin:8px 0}
+.progress-bar-fill{height:100%;background:var(--accent);border-radius:8px;transition:width .6s ease}
+.section-title{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;padding:16px 0 8px}
+.vibration-code-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.vibration-code-item{background:var(--bg3);border-radius:10px;padding:12px;border:1.5px solid var(--border);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px}
+.vibration-code-item:active{transform:scale(.96);border-color:var(--accent)}
+.vib-code-icon{width:36px;height:36px;border-radius:8px;background:rgba(16,185,129,.12);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.vib-code-info{flex:1}
+.vib-code-name{font-size:13px;font-weight:600;color:var(--text)}
+.vib-code-pattern{font-size:11px;color:var(--accent);margin-top:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#0D9668}
+.btn-primary:active{transform:scale(.98)}
+.btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-full{width:100%}
+.btn-sm{padding:7px 14px;font-size:12px;border-radius:8px}
+.quiz-question{background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border);margin-bottom:16px}
+.quiz-options{display:flex;flex-direction:column;gap:10px}
+.quiz-option{background:var(--bg3);border-radius:8px;padding:13px 16px;border:1.5px solid var(--border);cursor:pointer;font-size:14px;color:var(--text2);transition:all .18s;display:flex;align-items:center;gap:10px}
+.quiz-option:active{transform:scale(.98)}
+.quiz-option.correct{border-color:var(--success);color:var(--success);background:rgba(16,185,129,.1)}
+.quiz-option.wrong{border-color:var(--accent2);color:var(--accent2);background:rgba(239,68,68,.1)}
+#toast{position:fixed;bottom:calc(var(--tab-height) + 20px);left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#vibration-overlay{position:fixed;inset:0;background:rgba(16,185,129,.08);z-index:9000;display:none;align-items:center;justify-content:center;pointer-events:none}
+#vibration-overlay.show{display:flex}
+.vibration-pulse{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.3),transparent);animation:pulse .5s ease-in-out infinite;display:flex;align-items:center;justify-content:center;font-size:40px}
+@keyframes pulse{0%{transform:scale(.9);opacity:.7}50%{transform:scale(1.1);opacity:1}100%{transform:scale(.9);opacity:.7}}
+.modal-overlay{position:fixed;inset:0;background:rgba(26,32,44,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-sheet{background:var(--bg2);border-radius:16px 16px 0 0;border:1px solid var(--border);border-bottom:none;padding:12px 20px 32px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(40px);transition:transform .3s}
+.modal-overlay.show .modal-sheet{transform:translateY(0)}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
+.modal-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">训练营</div>
+  <div style="flex:1"></div>
+  <div class="badge badge-amber">Day 3 / 7</div>
+</div>
+
+<div style="padding:16px;flex:1;overflow-y:auto;">
+  <div class="training-card mb-16">
+    <div style="font-size:13px;color:var(--text3);margin-bottom:6px;">今日进度</div>
+    <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:8px;">震动训练 · 第3天</div>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" style="width:43%"></div></div>
+    <div style="font-size:12px;color:var(--text3);display:flex;justify-content:space-between;"><span>3/7 关卡完成</span><span>43%</span></div>
+  </div>
+  
+  <div class="section-title">震动编码表</div>
+  <div class="vibration-code-grid mb-16" id="vib-code-grid"></div>
+  
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <button class="btn btn-primary btn-full" onclick="startQuiz()">⚡ 开始今日训练（约10分钟）</button>
+    <button class="btn btn-outline btn-full" onclick="showVibrationTest()">📳 测试手环震动</button>
+  </div>
+  
+  <div id="quiz-container" style="display:none;margin-top:16px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="section-title" style="padding:0;">题目 <span id="q-num">1</span>/5</div>
+      <button class="btn btn-sm btn-outline" onclick="endQuiz()">结束训练</button>
+    </div>
+    <div class="quiz-question" id="quiz-q">
+      <div style="font-size:13px;color:var(--text3);margin-bottom:10px;">以下震动模式对应什么含义？</div>
+      <div style="font-size:28px;letter-spacing:8px;text-align:center;padding:16px;color:var(--primary-light);font-weight:800;" id="quiz-vibrate">· · ·</div>
+    </div>
+    <div class="quiz-options" id="quiz-options"></div>
+  </div>
+</div>
+
+<div id="toast"></div>
+<div id="vibration-overlay">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+    <div class="vibration-pulse">📳</div>
+    <div style="font-size:14px;color:var(--primary-light);font-weight:700;" id="vib-label">震动中...</div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-vib-test">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📳 测试手环震动</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.6;">点击每种震动模式，感受手环震动。确认可以感受到后即可开始训练。</div>
+    <div style="display:flex;flex-direction:column;gap:10px;" id="vib-test-list"></div>
+    <button class="btn btn-primary btn-full" style="margin-top:16px;" onclick="closeModal('modal-vib-test');showToast('太棒了！震动测试完成 ✅')">✅ 全部测试完毕</button>
+  </div>
+</div>
+
+<script>
+const VIBRATION_CODES=[
+  {id:'agree',name:'同意',icon:'✅',pattern:'· ·',emoji:'✅',color:'#10B981'},
+  {id:'refuse',name:'拒绝',icon:'❌',pattern:'— —',emoji:'❌',color:'#EF4444'},
+  {id:'question',name:'反问',icon:'🔄',pattern:'· — ·',emoji:'🔄',color:'#6C3AE8'},
+  {id:'delay',name:'拖延',icon:'⏳',pattern:'— · ·',emoji:'⏳',color:'#F59E0B'},
+  {id:'praise',name:'夸赞',icon:'🌟',pattern:'· · · ·',emoji:'🌟',color:'#8B5CF6'},
+  {id:'nuke',name:'放大招',icon:'💥',pattern:'— · — ·',emoji:'💥',color:'#F97316'},
+  {id:'escape',name:'转移话题',icon:'🌀',pattern:'· — —',emoji:'🌀',color:'#06B6D4'},
+  {id:'buy',name:'争取时间',icon:'🎯',pattern:'— — ·',emoji:'🎯',color:'#EC4899'}
+];
+
+const QUIZ_QUESTIONS=[
+  {pattern:'· ·',answer:'同意',options:['同意','拒绝','放大招','转移话题']},
+  {pattern:'— —',answer:'拒绝',options:['同意','拒绝','争取时间','夸赞']},
+  {pattern:'· — ·',answer:'反问',options:['反问','拖延','拒绝','放大招']},
+  {pattern:'— · ·',answer:'拖延',options:['同意','夸赞','拖延','反问']},
+  {pattern:'· · · ·',answer:'夸赞',options:['放大招','夸赞','争取时间','同意']}
+];
+
+let quizIndex=0;
+
+function renderVibrationCodes(){
+  const grid=document.getElementById('vib-code-grid');
+  grid.innerHTML=VIBRATION_CODES.map(v=>`
+    <div class="vibration-code-item" onclick="triggerVibrate('${v.id}','${v.name}')">
+      <div class="vib-code-icon" style="background:${v.color}22;color:${v.color};">${v.emoji}</div>
+      <div class="vib-code-info">
+        <div class="vib-code-name">${v.name}</div>
+        <div class="vib-code-pattern" style="color:${v.color};">${v.pattern}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function triggerVibrate(vibId,label){
+  const v=VIBRATION_CODES.find(c=>c.id===vibId);
+  const overlay=document.getElementById('vibration-overlay');
+  document.getElementById('vib-label').textContent=(v?v.name:label)+' 震动中...';
+  overlay.classList.add('show');
+  if(navigator.vibrate) navigator.vibrate([200,100,200]);
+  showToast(`📳 ${v?v.name:label}`);
+  setTimeout(()=>overlay.classList.remove('show'),1200);
+}
+
+function startQuiz(){
+  quizIndex=0;
+  document.getElementById('quiz-container').style.display='block';
+  renderQuizQuestion();
+}
+
+function endQuiz(){
+  document.getElementById('quiz-container').style.display='none';
+  showToast('训练已结束，今日得分：80分 🎉');
+}
+
+function renderQuizQuestion(){
+  const q=QUIZ_QUESTIONS[quizIndex];
+  document.getElementById('q-num').textContent=quizIndex+1;
+  document.getElementById('quiz-vibrate').textContent=q.pattern;
+  const opts=[...q.options].sort(()=>Math.random()-.5);
+  document.getElementById('quiz-options').innerHTML=opts.map(o=>`
+    <div class="quiz-option" onclick="checkQuizAnswer(this,'${o}','${q.answer}')">
+      <span>${o}</span>
+    </div>
+  `).join('');
+}
+
+function checkQuizAnswer(el,chosen,answer){
+  const opts=document.querySelectorAll('.quiz-option');
+  opts.forEach(o=>o.onclick=null);
+  if(chosen===answer){
+    el.classList.add('correct');
+    el.innerHTML='<span>✅ '+chosen+' — 正确！</span>';
+    showToast('正确！🎉');
+  }else{
+    el.classList.add('wrong');
+    opts.forEach(o=>{
+      if(o.querySelector('span').textContent===answer)o.classList.add('correct');
+    });
+    showToast('不对哦，正确答案是：'+answer);
+  }
+  setTimeout(()=>{
+    quizIndex++;
+    if(quizIndex<QUIZ_QUESTIONS.length){
+      renderQuizQuestion();
+    }else{
+      document.getElementById('quiz-container').style.display='none';
+      showToast('训练完成！今日得分：100分 🎓');
+    }
+  },1200);
+}
+
+function showVibrationTest(){
+  document.getElementById('modal-vib-test').classList.add('show');
+}
+
+function renderVibTestList(){
+  document.getElementById('vib-test-list').innerHTML=VIBRATION_CODES.map(v=>`
+    <div class="vibration-code-item" onclick="triggerVibrate('${v.id}','${v.name}');this.style.borderColor='${v.color}';">
+      <div class="vib-code-icon" style="background:${v.color}22;color:${v.color};">${v.emoji}</div>
+      <div class="vib-code-info">
+        <div class="vib-code-name">${v.name}</div>
+        <div class="vib-code-pattern" style="color:${v.color};">${v.pattern}</div>
+      </div>
+      <span style="color:var(--text3);font-size:12px;">点击测试</span>
+    </div>
+  `).join('');
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove('show');
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// 初始化
+renderVibrationCodes();
+renderVibTestList();
+</script>
+
+</body>
+</html>

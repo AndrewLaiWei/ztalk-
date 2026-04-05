@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>场景实战 - 嘴替 ZTalk</title>
+<style>
+:root{--primary:#1a202c;--primary-light:#2d3748;--accent:#10B981;--accent2:#EF4444;--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--card:#FFFFFF;--text:#1a202c;--text2:#64748B;--text3:#94A3B8;--border:#E2E8F0;--header-height:56px;--tab-height:64px;--shadow-sm:0 1px 3px rgba(0,0,0,.06)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;position:relative}
+::-webkit-scrollbar{width:0}
+.header{height:var(--header-height);background:var(--bg2);display:flex;align-items:center;padding:0 16px;gap:10px;border-bottom:1px solid var(--border)}
+.header-logo{font-size:22px;font-weight:700;color:var(--text)}
+.header-btn{width:32px;height:32px;border-radius:50%;background:var(--bg3);border:none;color:var(--text2);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-green{background:rgba(16,185,129,.12);color:#10B981}
+.scenario-card{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all .2s;position:relative;box-shadow:var(--shadow-sm)}
+.scenario-card:active{transform:scale(.97)}
+.scenario-thumb{height:90px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative}
+.scenario-lock{position:absolute;inset:0;background:rgba(15,10,30,.7);display:flex;align-items:center;justify-content:center;font-size:28px;backdrop-filter:blur(2px)}
+.scenario-badge{position:absolute;top:8px;right:8px;font-size:18px}
+.scenario-info{padding:10px 12px}
+.scenario-name{font-size:14px;font-weight:700;color:var(--text)}
+.scenario-desc{font-size:11px;color:var(--text3);margin-top:3px}
+.battle-header{padding:16px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.battle-phase{flex-shrink:0;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700}
+.phase-lose{background:rgba(239,68,68,.1);color:#EF4444}
+.phase-learn{background:rgba(245,158,11,.1);color:#D97706}
+.phase-win{background:rgba(16,185,129,.1);color:#10B981}
+.chat-bubble-wrap{padding:12px 16px}
+.chat-bubble{max-width:80%;padding:12px 16px;border-radius:12px;font-size:14px;line-height:1.6;position:relative;margin-bottom:10px}
+.chat-bubble.opponent{background:var(--bg3);border-radius:4px 12px 12px 12px;color:var(--text);align-self:flex-start;border:1px solid var(--border)}
+.chat-bubble.user-fail{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px 4px 12px 12px;color:#EF4444;align-self:flex-end;margin-left:auto}
+.chat-bubble.user-win{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);border-radius:12px 4px 12px 12px;color:#10B981;align-self:flex-end;margin-left:auto}
+.chat-bubble.teach{background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;color:var(--text2);font-size:13px;width:100%;max-width:100%}
+.chat-role{font-size:11px;color:var(--text3);margin-bottom:5px;display:flex;align-items:center;gap:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#0D9668}
+.btn-sm{padding:7px 14px;font-size:12px;border-radius:8px}
+#toast{position:fixed;bottom:calc(var(--tab-height) + 20px);left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal-overlay{position:fixed;inset:0;background:rgba(26,32,44,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-sheet{background:var(--bg2);border-radius:16px 16px 0 0;border:1px solid var(--border);border-bottom:none;padding:12px 20px 32px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(40px);transition:transform .3s}
+.modal-overlay.show .modal-sheet{transform:translateY(0)}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
+.modal-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<div id="scenario-list-view" style="display:flex;flex-direction:column;height:100%;">
+  <div class="header">
+    <div class="header-logo">场景实战</div>
+    <div style="flex:1"></div>
+    <div class="badge badge-green">3/8 已解锁</div>
+  </div>
+  <div style="flex:1;padding:16px;overflow-y:auto;">
+    <div style="font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.6;">⚔️ 先输后赢训练法：先经历失败，再学习话术，最终完胜！</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;" id="scenario-grid"></div>
+  </div>
+</div>
+
+<div id="battle-view" style="display:none;flex-direction:column;height:100%;overflow:hidden;"></div>
+
+<div id="toast"></div>
+
+<div class="modal-overlay" id="modal-upgrade">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🚀 升级嘴替 Pro</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 解锁全部场景话术</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 无限次震动调用</div>
+    </div>
+    <button class="btn btn-primary btn-full" onclick="closeModal('modal-upgrade')">知道了</button>
+  </div>
+</div>
+
+<script>
+const SCENARIOS=[
+  {id:'s1',name:'拒绝酒桌逼酒',emoji:'🍺',desc:'领导劝酒，同事起哄',unlocked:true,badge:null,bg:'#F0FDF4'},
+  {id:'s2',name:'亲戚催婚应对',emoji:'💒',desc:'"你都多大了？"',unlocked:true,badge:'🏅',bg:'#EFF6FF'},
+  {id:'s3',name:'职场抢功甩锅',emoji:'🎯',desc:'背锅侠逆袭时刻',unlocked:true,badge:null,bg:'#FEF3C7'},
+  {id:'s4',name:'拒绝老好人模式',emoji:'😇',desc:'别人的事都找你',unlocked:false,badge:null,bg:'#FDF2F8'},
+  {id:'s5',name:'朋友借钱应对',emoji:'💸',desc:'"就当帮个忙嘛"',unlocked:false,badge:null,bg:'#F5F3FF'},
+  {id:'s6',name:'文化歧视反击',emoji:'🌍',desc:'遭遇不公平对待',unlocked:false,badge:null,bg:'#ECFDF5'},
+  {id:'s7',name:'消费维权实战',emoji:'🛡️',desc:'退款、索赔、投诉',unlocked:false,badge:null,bg:'#FFF7ED'},
+  {id:'s8',name:'甲方无理要求',emoji:'😤',desc:'无限改稿、白嫖索赔',unlocked:false,badge:null,bg:'#F0F9FF'}
+];
+
+let currentBattleMessages=[];
+let currentBattleSceneId=null;
+let currentBattleWaiting=false;
+
+function renderScenarios(){
+  const grid=document.getElementById('scenario-grid');
+  const bgColors=['#F0FDF4','#EFF6FF','#FEF3C7','#FDF2F8','#F5F3FF','#ECFDF5','#FFF7ED','#F0F9FF'];
+  grid.innerHTML=SCENARIOS.map((s,i)=>`
+    <div class="scenario-card" onclick="openScenario('${s.id}')">
+      <div class="scenario-thumb" style="background:linear-gradient(135deg,${bgColors[i%bgColors.length]},#fff);">
+        <span>${s.emoji}</span>
+        ${!s.unlocked?'<div class="scenario-lock">🔒</div>':''}
+        ${s.badge?`<div class="scenario-badge">${s.badge}</div>`:''}
+      </div>
+      <div class="scenario-info">
+        <div class="scenario-name">${s.name}</div>
+        <div class="scenario-desc">${s.desc}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openScenario(id){
+  const s=SCENARIOS.find(x=>x.id===id);
+  if(!s)return;
+  if(!s.unlocked){showUpgrade();return;}
+  
+  currentBattleSceneId=id;
+  currentBattleMessages=[];
+  currentBattleWaiting=false;
+  
+  const firstOpponentLine=s.name==='拒绝酒桌逼酒'
+    ?'来来来，今天必须喝！不喝就是看不起我！大家说对不对？'
+    :s.name==='亲戚催婚应对'
+    ?'你都多大了？再不找对象就晚了！你看你表哥，孩子都上学了！'
+    :s.name==='职场抢功甩锅'
+    ?'这个项目成功，主要是因为我提出了核心方案，对吧小张？'
+    :'对方突然向你发难...';
+  
+  document.getElementById('scenario-list-view').style.display='none';
+  const bv=document.getElementById('battle-view');
+  bv.style.display='flex';
+  bv.innerHTML=`
+    <div class="battle-header">
+      <button class="header-btn" onclick="closeBattle()">←</button>
+      <div style="flex:1;font-size:14px;font-weight:700;color:var(--text);">${s.name}</div>
+      <div class="battle-phase phase-lose" id="phase-badge">⚔️ 对战进行中</div>
+    </div>
+    <div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;" id="battle-chat">
+      <div class="chat-bubble-wrap">
+        <div class="chat-role">🤖 AI 对手</div>
+        <div class="chat-bubble opponent">${firstOpponentLine}</div>
+      </div>
+    </div>
+    <div style="padding:16px;border-top:1px solid var(--border);background:var(--bg2);">
+      <div style="display:flex;gap:8px;">
+        <input type="text" id="battle-user-input" placeholder="输入你的回应..." autocomplete="off" style="flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:40px;padding:12px 16px;color:var(--text);outline:none;">
+        <button class="btn btn-primary" id="battle-send-btn">发送</button>
+      </div>
+    </div>
+  `;
+  
+  document.getElementById('battle-send-btn').onclick=()=>sendBattleMessage();
+  document.getElementById('battle-user-input').onkeypress=(e)=>{if(e.key==='Enter')sendBattleMessage();};
+}
+
+function sendBattleMessage(){
+  if(currentBattleWaiting){showToast('请等待AI回应...');return;}
+  const inputEl=document.getElementById('battle-user-input');
+  const userText=inputEl.value.trim();
+  if(!userText)return;
+  inputEl.value='';
+  currentBattleWaiting=true;
+  
+  const chatDiv=document.getElementById('battle-chat');
+  chatDiv.innerHTML+=`
+    <div class="chat-bubble-wrap" style="display:flex;flex-direction:column;align-items:flex-end;">
+      <div class="chat-role" style="justify-content:flex-end;">你 👤</div>
+      <div class="chat-bubble user-fail">${escapeHtml(userText)}</div>
+    </div>
+  `;
+  chatDiv.scrollTop=chatDiv.scrollHeight;
+  
+  // 简单模拟
+  const teachingPhrases={
+    's1':['领导，感谢您的盛情，今天我开车，安全第一！我用茶代酒敬您一杯！','我有点身体不适，医生嘱咐不能喝酒，但情谊我记在心里！'],
+    's2':['谢谢您关心，我现在事业正在关键期，等稳定了自然会考虑的！','感情的事急不来，我相信缘分！'],
+    's3':['是啊，大家都出力了！我记得我负责了XXX模块，方案文档都在的！','这个项目大家都很努力！各有分工，缺一不可！']
+  };
+  
+  const isGoodResponse=userText.length>10&&!['好','行','嗯','哦','啊'].includes(userText);
+  
+  if(!isGoodResponse){
+    const phrases=teachingPhrases[currentBattleSceneId]||['请换一种更有力的回应方式！'];
+    chatDiv.innerHTML+=`
+      <div class="chat-bubble-wrap">
+        <div class="chat-bubble teach">
+          <strong>💡 你输了，学学这些话术：</strong><br><br>
+          • ${phrases[0]}<br><br>
+          • ${phrases[1]}<br><br>
+          <button class="btn btn-sm btn-primary" style="margin-top:8px;" onclick="retryBattle()">再试一次</button>
+        </div>
+      </div>
+    `;
+  }else{
+    const nextLines={
+      's1':['好好好，算你有理！那喝一杯意思意思？','行吧行吧，你小子还挺有原则！'],
+      's2':['事业重要，但感情也不能耽误啊！','缘分这东西，谁知道呢...'],
+      's3':['哦？那你说说你的贡献在哪里？','行，那就让大家评评理！']
+    };
+    const lines=nextLines[currentBattleSceneId]||['继续说...'];
+    const nextOpponentLine=lines[Math.floor(Math.random()*lines.length)];
+    chatDiv.innerHTML+=`
+      <div class="chat-bubble-wrap">
+        <div class="chat-role">🤖 AI 对手</div>
+        <div class="chat-bubble opponent">${escapeHtml(nextOpponentLine)}</div>
+      </div>
+    `;
+    currentBattleMessages.push({role:'user',text:userText});
+    currentBattleMessages.push({role:'opponent',text:nextOpponentLine});
+  }
+  
+  currentBattleWaiting=false;
+  chatDiv.scrollTop=chatDiv.scrollHeight;
+}
+
+function retryBattle(){
+  showToast('请换一种更有力的回应方式！');
+}
+
+function escapeHtml(str){
+  return str.replace(/[&<>]/g,function(m){
+    if(m==='&')return'&amp;';
+    if(m==='<')return'&lt;';
+    if(m==='>')return'&gt;';
+    return m;
+  });
+}
+
+function closeBattle(){
+  document.getElementById('scenario-list-view').style.display='flex';
+  document.getElementById('battle-view').style.display='none';
+  renderScenarios();
+  currentBattleSceneId=null;
+  currentBattleMessages=[];
+}
+
+function showUpgrade(){
+  document.getElementById('modal-upgrade').classList.add('show');
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove('show');
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// 初始化
+renderScenarios();
+</script>
+
+</body>
+</html>

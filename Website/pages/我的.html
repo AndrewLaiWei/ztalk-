@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>我的 - 嘴替 ZTalk</title>
+<style>
+:root{--primary:#1a202c;--primary-light:#2d3748;--accent:#10B981;--accent2:#EF4444;--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--card:#FFFFFF;--text:#1a202c;--text2:#64748B;--text3:#94A3B8;--border:#E2E8F0;--header-height:56px;--tab-height:64px;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);height:100vh;overflow:hidden;position:relative}
+::-webkit-scrollbar{width:0}
+.profile-hero{padding:24px 16px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#059669);display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid var(--border);box-shadow:var(--shadow-md)}
+.profile-name{font-size:20px;font-weight:800;color:var(--text)}
+.profile-level{display:flex;align-items:center;gap:6px}
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-amber{background:rgba(245,158,11,.12);color:#D97706}
+.badge-purple{background:rgba(99,102,241,.12);color:#6366F1}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-box{background:var(--card);border-radius:10px;padding:14px 10px;text-align:center;border:1px solid var(--border)}
+.stat-num{font-size:24px;font-weight:800;color:var(--accent)}
+.stat-label{font-size:11px;color:var(--text3);margin-top:3px}
+.upgrade-banner{background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(16,185,129,.04));border-radius:12px;border:1px solid rgba(16,185,129,.2);padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:all .2s}
+.upgrade-banner:active{transform:scale(.98)}
+.upgrade-icon{font-size:36px;flex-shrink:0}
+.upgrade-text h3{font-size:15px;font-weight:800;color:var(--text)}
+.upgrade-text p{font-size:12px;color:var(--text3);margin-top:3px}
+.upgrade-arrow{font-size:18px;color:var(--accent)}
+.weekly-report{background:var(--card);border-radius:12px;border:1px solid var(--border);padding:20px;position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+.weekly-report::before{content:'📊';position:absolute;right:16px;top:16px;font-size:48px;opacity:.15}
+.report-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:12px}
+.report-rows{display:flex;flex-direction:column;gap:10px}
+.report-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--bg3);border-radius:8px}
+.report-label{font-size:13px;color:var(--text2)}
+.report-value{font-size:15px;font-weight:700}
+.section-title{font-size:13px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;padding:16px 0 8px}
+.badge-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:4px}
+.badge-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:12px 6px;background:var(--bg3);border-radius:12px;border:1px solid var(--border)}
+.badge-item.locked{opacity:.35}
+.badge-emoji{font-size:28px}
+.badge-name{font-size:10px;color:var(--text3);text-align:center}
+.menu-item{display:flex;align-items:center;gap:14px;padding:16px;border-bottom:1px solid rgba(61,45,112,.3);cursor:pointer;transition:background .15s}
+.menu-item:active{background:var(--bg3)}
+.menu-item:last-child{border-bottom:none}
+.menu-item-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.menu-item-text{flex:1}
+.menu-item-title{font-size:14px;color:var(--text);font-weight:600}
+.menu-item-sub{font-size:11px;color:var(--text3);margin-top:2px}
+.menu-arrow{color:var(--text3);font-size:14px}
+#toast{position:fixed;bottom:calc(var(--tab-height) + 20px);left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal-overlay{position:fixed;inset:0;background:rgba(26,32,44,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-sheet{background:var(--bg2);border-radius:16px 16px 0 0;border:1px solid var(--border);border-bottom:none;padding:12px 20px 32px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(40px);transition:transform .3s}
+.modal-overlay.show .modal-sheet{transform:translateY(0)}
+.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px}
+.modal-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 20px;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-outline{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+.btn-full{width:100%}
+</style>
+</head>
+<body>
+
+<div class="profile-hero">
+  <div class="avatar">🦜</div>
+  <div class="profile-name">嘴替见习生</div>
+  <div class="profile-level">
+    <div class="badge badge-amber">Lv.3 嘴替学徒</div>
+    <div class="badge badge-purple">免费版</div>
+  </div>
+</div>
+
+<div style="padding:16px;display:flex;flex-direction:column;gap:16px;overflow-y:auto;">
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-num">47</div><div class="stat-label">话术使用</div></div>
+    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">连续天数</div></div>
+    <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">徽章获得</div></div>
+  </div>
+  
+  <div class="upgrade-banner" onclick="showUpgrade()">
+    <div class="upgrade-icon">🚀</div>
+    <div class="upgrade-text">
+      <h3>升级嘴替 Pro</h3>
+      <p>解锁全场景 · 无限话术 · AI实时提示</p>
+    </div>
+    <div class="upgrade-arrow">›</div>
+  </div>
+  
+  <div class="weekly-report">
+    <div class="report-title">📊 嘴替周报 · 第3周</div>
+    <div class="report-rows">
+      <div class="report-row"><span class="report-label">🐣 这周怂了几次</span><span class="report-value" style="color:var(--accent2)">12次</span></div>
+      <div class="report-row"><span class="report-label">💪 这周刚了几次</span><span class="report-value" style="color:var(--accent)">31次</span></div>
+      <div class="report-row"><span class="report-label">🔥 最常用话术</span><span class="report-value" style="color:var(--primary-light);font-size:12px;">这个我需要再确认一下</span></div>
+      <div class="report-row"><span class="report-label">🏆 进步幅度</span><span class="report-value" style="color:var(--accent)">+258%</span></div>
+    </div>
+  </div>
+  
+  <div>
+    <div class="section-title">徽章墙</div>
+    <div class="badge-wall" id="badge-wall"></div>
+  </div>
+  
+  <div class="card">
+    <div class="menu-item" onclick="showToast('自定义话术功能 🔧')">
+      <div class="menu-item-icon" style="background:rgba(108,58,232,.2)">✏️</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">自定义话术</div>
+        <div class="menu-item-sub">已添加 2/5 条（免费版限5条）</div>
+      </div>
+      <div class="menu-arrow">›</div>
+    </div>
+    <div class="menu-item" onclick="showToast('震动强度已调节 📳')">
+      <div class="menu-item-icon" style="background:rgba(16,185,129,.2)">📳</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">震动设置</div>
+        <div class="menu-item-sub">手环连接 · 强度：中</div>
+      </div>
+      <div class="menu-arrow">›</div>
+    </div>
+    <div class="menu-item" onclick="showToast('AI实时提示为付费功能 🔒')">
+      <div class="menu-item-icon" style="background:rgba(245,158,11,.2)">🤖</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">AI 实时提示</div>
+        <div class="menu-item-sub">🔒 升级 Pro 解锁</div>
+      </div>
+      <div class="menu-arrow">›</div>
+    </div>
+    <div class="menu-item" onclick="showToast('分享成功！送你10次话术额度 🎁')">
+      <div class="menu-item-icon" style="background:rgba(239,68,68,.2)">🎁</div>
+      <div class="menu-item-text">
+        <div class="menu-item-title">邀请好友</div>
+        <div class="menu-item-sub">邀请1人 = 解锁10次额度</div>
+      </div>
+      <div class="menu-arrow">›</div>
+    </div>
+  </div>
+  
+  <div style="height:8px;"></div>
+</div>
+
+<div id="toast"></div>
+
+<div class="modal-overlay" id="modal-upgrade">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🚀 升级嘴替 Pro</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 解锁全部6大场景话术（300+条）</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 无限次震动调用</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 自定义话术无限条</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> AI实时提示 + 训练全关卡</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 嘴替周报 · 数据看板</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-primary" style="flex:1;flex-direction:column;gap:2px;padding:14px 10px;" onclick="buyPlan('monthly')">
+        <span style="font-size:20px;font-weight:900;">¥9.9</span>
+        <span style="font-size:11px;opacity:.8;">/月 · 随时取消</span>
+      </button>
+      <button class="btn btn-accent" style="flex:1;flex-direction:column;gap:2px;padding:14px 10px;" onclick="buyPlan('lifetime')">
+        <span style="font-size:20px;font-weight:900;">¥99</span>
+        <span style="font-size:11px;opacity:.8;">终身 · 送实体贴纸</span>
+      </button>
+    </div>
+    <button class="btn btn-outline btn-full" style="margin-top:10px;" onclick="closeModal('modal-upgrade')">暂不升级</button>
+  </div>
+</div>
+
+<script>
+const BADGES=[
+  {id:'b1',emoji:'🎯',name:'首战告捷',unlocked:true},
+  {id:'b2',emoji:'🍺',name:'酒桌英雄',unlocked:true},
+  {id:'b3',emoji:'👑',name:'职场王者',unlocked:false},
+  {id:'b4',emoji:'💒',name:'催婚免疫',unlocked:true},
+  {id:'b5',emoji:'🛡️',name:'维权老手',unlocked:false},
+  {id:'b6',emoji:'🔥',name:'7日毕业',unlocked:false},
+  {id:'b7',emoji:'💥',name:'放大招达人',unlocked:true},
+  {id:'b8',emoji:'🤐',name:'沉默是金',unlocked:true}
+];
+
+function renderBadgeWall(){
+  document.getElementById('badge-wall').innerHTML=BADGES.map(b=>`
+    <div class="badge-item ${b.unlocked?'':'locked'}">
+      <div class="badge-emoji">${b.emoji}</div>
+      <div class="badge-name">${b.name}</div>
+    </div>
+  `).join('');
+}
+
+function showUpgrade(){
+  document.getElementById('modal-upgrade').classList.add('show');
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove('show');
+}
+
+function buyPlan(plan){
+  closeModal('modal-upgrade');
+  if(plan==='lifetime'){
+    showToast('🎉 终身会员开通成功！');
+  }else{
+    showToast('月度会员开通成功！¥9.9/月 🚀');
+  }
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// 初始化
+renderBadgeWall();
+</script>
+
+</body>
+</html>

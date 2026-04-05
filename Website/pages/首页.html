@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>首页 - 嘴替 ZTalk</title>
+<style>
+:root{--primary:#1a202c;--primary-light:#2d3748;--accent:#10B981;--accent2:#EF4444;--success:#10B981;--bg:#FFFFFF;--bg2:#F8FAFC;--bg3:#F1F5F9;--card:#FFFFFF;--text:#1a202c;--text2:#64748B;--text3:#94A3B8;--border:#E2E8F0;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 6px rgba(0,0,0,.07)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.home-header{background:var(--bg2);padding:32px 20px 28px;border-bottom:1px solid var(--border)}
+.home-logo{font-size:28px;font-weight:700;color:var(--text);margin-bottom:6px}
+.home-slogan{font-size:14px;color:var(--text3)}
+.home-content{padding:20px 16px}
+.feature-cards{display:flex;flex-direction:column;gap:14px}
+.feature-card{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:12px;border:1px solid var(--border);padding:16px 14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+.feature-card:active{transform:scale(.97)}
+.feature-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.video-card::before,.battle-card::before,.train-card::before{background:var(--accent)}
+.slang-card::before,.profile-card::before{background:var(--primary)}
+.phrases-card::before{background:#6366F1}
+.favorites-card::before{background:#F59E0B}
+.feature-icon{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;background:var(--bg3)}
+.feature-content{flex:1}
+.feature-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:3px}
+.feature-desc{font-size:12px;color:var(--text2);margin-bottom:8px}
+.feature-tags{display:flex;gap:6px;flex-wrap:wrap}
+.feature-tag{background:var(--bg3);padding:3px 8px;border-radius:6px;font-size:10px;color:var(--text3)}
+.feature-arrow{font-size:24px;color:var(--text3);flex-shrink:0}
+</style>
+</head>
+<body>
+
+<div class="home-header">
+  <div class="home-logo">🦜 嘴替 ZTalk</div>
+  <div class="home-slogan">你语言的边界，就是你生活的边界</div>
+</div>
+
+<div class="home-content">
+  <div class="feature-cards">
+    <div class="feature-card video-card" onclick="switchTab('video')">
+      <div class="feature-icon">🎬</div>
+      <div class="feature-content">
+        <div class="feature-title">AI视频教学</div>
+        <div class="feature-desc">把影视剧变成你的私教</div>
+        <div class="feature-tags">
+          <span class="feature-tag">🎥 视频分析</span>
+          <span class="feature-tag">⏱️ 时间轴标注</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+
+    <div class="feature-card slang-card" onclick="switchTab('slang')">
+      <div class="feature-icon">🗣️</div>
+      <div class="feature-content">
+        <div class="feature-title">黑话翻译</div>
+        <div class="feature-desc">听懂每一句潜台词</div>
+        <div class="feature-tags">
+          <span class="feature-tag">💼 职场</span>
+          <span class="feature-tag">💕 恋爱</span>
+          <span class="feature-tag">🍺 酒桌</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+
+    <div class="feature-card battle-card" onclick="switchTab('battle')">
+      <div class="feature-icon">⚔️</div>
+      <div class="feature-content">
+        <div class="feature-title">实战训练</div>
+        <div class="feature-desc">先输后赢，完胜收场</div>
+        <div class="feature-tags">
+          <span class="feature-tag">🎭 场景模拟</span>
+          <span class="feature-tag">💪 话术练习</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+
+    <div class="feature-card phrases-card" onclick="switchTab('phrases')">
+      <div class="feature-icon">📖</div>
+      <div class="feature-content">
+        <div class="feature-title">话术库</div>
+        <div class="feature-desc">告别嘴笨，让AI替你说话</div>
+        <div class="feature-tags">
+          <span class="feature-tag">✅ 同意</span>
+          <span class="feature-tag">❌ 拒绝</span>
+          <span class="feature-tag">🔄 反问</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+
+    <div class="feature-card train-card" onclick="switchTab('train')">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-content">
+        <div class="feature-title">训练营</div>
+        <div class="feature-desc">7天震动训练，成为嘴替高手</div>
+        <div class="feature-tags">
+          <span class="feature-tag">📳 震动编码</span>
+          <span class="feature-tag">🎯 实战Quiz</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+
+    <div class="feature-card favorites-card" onclick="switchTab('favorites')">
+      <div class="feature-icon">❤️</div>
+      <div class="feature-content">
+        <div class="feature-title">收藏</div>
+        <div class="feature-desc">收藏你的专属话术</div>
+        <div class="feature-tags">
+          <span class="feature-tag">⭐ 常用</span>
+          <span class="feature-tag">📌 重点</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+
+    <div class="feature-card profile-card" onclick="switchTab('profile')">
+      <div class="feature-icon">👤</div>
+      <div class="feature-content">
+        <div class="feature-title">我的</div>
+        <div class="feature-desc">个人中心与成长记录</div>
+        <div class="feature-tags">
+          <span class="feature-tag">🏆 徽章</span>
+          <span class="feature-tag">📊 周报</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(tab) {
+  // 模拟Tab切换提示
+  alert('跳转到 ' + tab + ' 页面');
+}
+</script>
+
+</body>
+</html>

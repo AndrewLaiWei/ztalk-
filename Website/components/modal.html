@@ -1,0 +1,56 @@
+<!-- 升级弹窗 -->
+<div class="modal-overlay" id="modal-upgrade">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🚀 升级嘴替 Pro</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 解锁全部6大场景话术（300+条）</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 无限次震动调用</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 自定义话术无限条</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> AI实时提示 + 训练全关卡</div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--text2);font-size:14px;"><span style="font-size:20px;">✅</span> 嘴替周报 · 数据看板</div>
+    </div>
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-primary" style="flex:1;flex-direction:column;gap:2px;padding:14px 10px;" onclick="buyPlan('monthly')">
+        <span style="font-size:20px;font-weight:900;">¥9.9</span>
+        <span style="font-size:11px;opacity:.8;">/月 · 随时取消</span>
+      </button>
+      <button class="btn btn-accent" style="flex:1;flex-direction:column;gap:2px;padding:14px 10px;" onclick="buyPlan('lifetime')">
+        <span style="font-size:20px;font-weight:900;">¥99</span>
+        <span style="font-size:11px;opacity:.8;">终身 · 送实体贴纸</span>
+      </button>
+    </div>
+    <button class="btn btn-outline btn-full" style="margin-top:10px;" onclick="closeModal('modal-upgrade')">暂不升级</button>
+  </div>
+</div>
+
+<!-- 自定义话术弹窗 -->
+<div class="modal-overlay" id="modal-custom-phrase">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">✏️ 添加自定义话术</div>
+    <label class="field-label">话术内容</label>
+    <textarea class="input-field" placeholder="输入你想要的话术..." id="custom-phrase-text" rows="3"></textarea>
+    <label class="field-label">绑定震动模式</label>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;" id="vib-type-select"></div>
+    <label class="field-label">适用场景</label>
+    <input class="input-field-inline" placeholder="如：职场、家庭..." id="custom-scene" style="margin-bottom:16px;">
+    <div style="display:flex;gap:10px;">
+      <button class="btn btn-outline" style="flex:1;" onclick="closeModal('modal-custom-phrase')">取消</button>
+      <button class="btn btn-primary" style="flex:1;" onclick="saveCustomPhrase()">✅ 保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 手环震动测试弹窗 -->
+<div class="modal-overlay" id="modal-vib-test">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">📳 测试手环震动</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.6;">
+      点击每种震动模式，感受手环震动。确认可以感受到后即可开始训练。
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;" id="vib-test-list"></div>
+    <button class="btn btn-primary btn-full" style="margin-top:16px;" onclick="closeModal('modal-vib-test');showToast('太棒了！震动测试完成 ✅')">✅ 全部测试完毕</button>
+  </div>
+</div>
