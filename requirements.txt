@@ -3,17 +3,23 @@
 
 fastapi==0.109.0
 uvicorn[standard]==0.27.0
-python-multipart==0.0.6
+python-multipart==0.0.9
 aiofiles==23.2.1
 
 # 音视频处理
 ffmpeg-python==0.2.0
 
 # 语音识别
-openai-whisper==20231117
+# openai-whisper==20231117
+numpy==1.26.0
 
 # AI 分析
 openai==1.10.0
+scipy==1.12.0
+pandas==2.2.0
+networkx==3.2.0
+sentence-transformers==2.6.0
+torch==2.1.0
 
 # 工具库
 python-dotenv==1.0.0

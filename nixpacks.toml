@@ -1,2 +1,5 @@
 [phases.setup]
-nixPkgs = ["ffmpeg"]
+nixPkgs = ["ffmpeg", "gcc"]
+
+[build]
+pythonVersion = "3.11"

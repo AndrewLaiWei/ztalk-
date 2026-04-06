@@ -134,9 +134,21 @@ body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;backgro
 </div>
 
 <script>
+const TAB_ROUTES = {
+  'video':     '/pages/ai-video.html',
+  'slang':     '/pages/slang.html',
+  'battle':    '/pages/scenarios.html',
+  'phrases':   '/pages/scripts.html',
+  'train':     '/pages/training.html',
+  'favorites': '/pages/favorites.html',
+  'profile':   '/pages/profile.html'
+};
+
 function switchTab(tab) {
-  // 模拟Tab切换提示
-  alert('跳转到 ' + tab + ' 页面');
+  const url = TAB_ROUTES[tab];
+  if (url) {
+    location.href = url;
+  }
 }
 </script>
 
