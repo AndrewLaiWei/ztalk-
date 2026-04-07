@@ -13,7 +13,16 @@ from pathlib import Path
 from typing import Optional
 from datetime import datetime
 
-from fastapi import FastAPI, UploadFile, File, HTTPException, WebSocket, WebSocketDisconnect
+# 清除可能导致问题的代理环境变量
+for var in ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'ALL_PROXY', 'all_proxy', 'REQUESTS_CA_BUNDLE', 'CURL_CA_BUNDLE']:
+    if var in os.environ:
+        del os.environ[var]
+
+# 加载 .env 文件
+from dotenv import load_dotenv
+load_dotenv()
+
+from fastapi import FastAPI, UploadFile, File, HTTPException, WebSocket, WebSocketDisconnect, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -22,6 +31,7 @@ from pydantic import BaseModel
 from video_processor import VideoProcessor
 from whisper_stt import WhisperSTT
 from deepseek_analyzer import DeepSeekAnalyzer
+from routes import roleplay_router
 
 # ==================== 配置 ====================
 class Config:
@@ -29,6 +39,8 @@ class Config:
     UPLOAD_DIR = Path("./uploads")
     # 处理结果存储目录
     RESULT_DIR = Path("./results")
+    # 黑话数据文件
+    SLANG_DATA_FILE = Path("./data/slang.json")
     # 支持的视频格式
     VIDEO_FORMATS = [".mp4", ".mov", ".avi", ".mkv", ".webm", ".m4v"]
     # 最大文件大小 (MB)
@@ -82,6 +94,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# 注册路由
+app.include_router(roleplay_router)
+
 # WebSocket 连接管理器
 class ConnectionManager:
     def __init__(self):
@@ -130,6 +145,94 @@ async def root():
 async def health_check():
     """健康检查"""
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
+
+@app.get("/api/slang")
+async def get_slang_data(category: str = None):
+    """
+    获取黑话数据
+    
+    参数:
+    - category: 可选，按分类筛选（职场/恋爱/酒桌/金融/网络）
+    
+    返回:
+    - categories: 所有分类列表
+    - slangs: 黑话列表
+    """
+    import json
+    
+    if not Config.SLANG_DATA_FILE.exists():
+        raise HTTPException(status_code=500, detail="黑话数据文件不存在")
+    
+    with open(Config.SLANG_DATA_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    # 如果指定了分类，筛选结果
+    if category and category != "all":
+        data["slangs"] = [s for s in data["slangs"] if s.get("category") == category]
+    
+    return {
+        "code": 0,
+        "data": data
+    }
+
+@app.post("/api/slang/add")
+async def add_slang(request: Request):
+    """添加新黑话到数据库"""
+    import json
+    body = await request.json()
+    slang = body.get("slang", "")
+    surface = body.get("surface", "")
+    hidden = body.get("hidden", "")
+    scene = body.get("scene", "")
+    strategy = body.get("strategy", "")
+    category = body.get("category", "colleague")
+    risk = body.get("risk", "medium")
+    
+    if not slang:
+        raise HTTPException(status_code=400, detail="黑话内容不能为空")
+    
+    slang_data = {
+        "id": f"u{int(datetime.now().timestamp())}",
+        "slang": slang,
+        "surface": surface,
+        "hidden": hidden,
+        "scene": scene,
+        "strategy": strategy,
+        "category": category,
+        "risk": risk,
+        "source": "user",
+        "created_at": datetime.now().isoformat()
+    }
+    
+    if Config.SLANG_DATA_FILE.exists():
+        with open(Config.SLANG_DATA_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    else:
+        data = {"slangs": [], "user_slangs": []}
+    
+    if "user_slangs" not in data:
+        data["user_slangs"] = []
+    
+    exists = any(s.get("slang") == slang for s in data.get("user_slangs", []))
+    if exists:
+        return {"code": 1, "message": "该黑话已存在"}
+    
+    data["user_slangs"].append(slang_data)
+    
+    with open(Config.SLANG_DATA_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    
+    return {"code": 0, "message": "添加成功", "data": slang_data}
+
+@app.get("/api/slang/user")
+async def get_user_slangs():
+    """获取用户贡献的黑话"""
+    import json
+    if not Config.SLANG_DATA_FILE.exists():
+        return {"code": 0, "data": {"user_slangs": []}}
+    with open(Config.SLANG_DATA_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    return {"code": 0, "data": {"user_slangs": data.get("user_slangs", [])}}
 
 @app.post("/api/upload")
 async def upload_video(file: UploadFile = File(...)):
@@ -265,10 +368,26 @@ async def websocket_endpoint(websocket: WebSocket, task_id: str):
     """WebSocket 实时推送分析进度"""
     await manager.connect(task_id, websocket)
     try:
+        # 立即发送连接成功消息
+        await websocket.send_json({
+            "type": "connected",
+            "task_id": task_id,
+            "message": "WebSocket 连接成功"
+        })
+        
+        # 持续监听直到分析完成或断开
         while True:
-            # 保持连接
-            data = await websocket.receive_text()
-            # 可以接收前端消息进行处理
+            try:
+                # 等待接收消息（带超时，避免永久阻塞）
+                data = await asyncio.wait_for(websocket.receive_text(), timeout=0.5)
+                # 如果收到消息，可以根据需要处理
+                # 例如：前端发送心跳 ping，后端响应 pong
+                if data == "ping":
+                    await websocket.send_json({"type": "pong"})
+            except asyncio.TimeoutError:
+                # 超时，继续检查是否需要发送进度
+                # 注意：进度由 run_analysis 中的 send_progress 函数主动发送
+                continue
     except WebSocketDisconnect:
         manager.disconnect(task_id)
 
@@ -323,9 +442,9 @@ async def run_analysis(task_id: str, video_path: str):
         audio_path = video_processor.extract_audio(video_path, str(Config.UPLOAD_DIR / task_id))
         await send_progress(task_id, 2, "内容撰写", 30, "音频提取完成，正在进行语音识别...")
         
-        # Whisper 语音识别
+        # Whisper 语音识别 (自动检测语言)
         await send_progress(task_id, 2, "内容撰写", 40, "Whisper 语音识别中...")
-        transcription = await whisper.transcribe(audio_path)
+        transcription = await whisper.transcribe(audio_path, language="auto")
         await send_progress(task_id, 2, "内容撰写", 50, f"识别完成，共 {len(transcription.get('segments', []))} 个片段")
         
         # ====== 步骤 3: 人格分析 ======
@@ -382,6 +501,8 @@ async def run_analysis(task_id: str, video_path: str):
         print(f"✅ 任务 {task_id} 分析完成")
         
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         print(f"❌ 任务 {task_id} 分析失败: {str(e)}")
         await send_progress(task_id, 0, "错误", 0, f"分析失败: {str(e)}", is_error=True)
 

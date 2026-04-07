@@ -1,0 +1,256 @@
+{
+  "e8c899a5": {
+    "id": "e8c899a5",
+    "name": "未知叙述者/主角",
+    "book_title": "任务",
+    "book_author": "",
+    "gender": "未知",
+    "identity": "任务执行者/调查者",
+    "era": "现代或近未来",
+    "neuroticism": 0.3,
+    "extraversion": 0.4,
+    "openness": 0.7,
+    "agreeableness": 0.5,
+    "conscientiousness": 0.8,
+    "optimism": 0.6,
+    "resilience": 0.8,
+    "self_blame": 0.2,
+    "external_blame": -0.1,
+    "speech_patterns": [
+      "分析性语句",
+      "任务导向表达"
+    ],
+    "formality_level": 0.7,
+    "emotion_density": 0.3,
+    "first_person_ratio": 0.4,
+    "decision_style": "理性",
+    "conflict_approach": "协商",
+    "social_strategy": "选择性",
+    "personality_summary": "这是一个任务导向型的角色，表现出高度的尽责性和理性决策风格。文本中透露出对目标的专注和系统性思维，情绪表达较为克制，倾向于通过分析和规划来解决问题。可能处于某种组织或任务框架中，行动受职责驱动。",
+    "key_quotes": [
+      "任务执行中",
+      "需要分析..."
+    ],
+    "confidence": 0.4,
+    "source_evidence": [],
+    "created_at": "2026-04-06T19:04:51.731349",
+    "tags": [
+      "任务导向",
+      "理性",
+      "专注",
+      "系统思维"
+    ]
+  },
+  "40676b37": {
+    "id": "40676b37",
+    "name": "未知对话者A",
+    "book_title": "任务",
+    "book_author": "",
+    "gender": "未知",
+    "identity": "同事/上级/信息提供者",
+    "era": "现代或近未来",
+    "neuroticism": 0.5,
+    "extraversion": 0.6,
+    "openness": 0.6,
+    "agreeableness": 0.7,
+    "conscientiousness": 0.7,
+    "optimism": 0.7,
+    "resilience": 0.6,
+    "self_blame": 0.1,
+    "external_blame": 0.0,
+    "speech_patterns": [
+      "指示性语言",
+      "协作性表达"
+    ],
+    "formality_level": 0.6,
+    "emotion_density": 0.4,
+    "first_person_ratio": 0.3,
+    "decision_style": "谨慎",
+    "conflict_approach": "协商",
+    "social_strategy": "开放",
+    "personality_summary": "从零散的对话片段推断，这个角色可能具有协作精神，在交流中表现出一定的指导性或支持性。语言风格相对正式但不过于僵硬，可能在工作或任务环境中与主角互动。",
+    "key_quotes": [
+      "需要确认...",
+      "建议..."
+    ],
+    "confidence": 0.3,
+    "source_evidence": [],
+    "created_at": "2026-04-06T19:04:51.731349",
+    "tags": [
+      "协作",
+      "支持性",
+      "指导性"
+    ]
+  },
+  "996d8ef3": {
+    "id": "996d8ef3",
+    "name": "未知对象B",
+    "book_title": "任务",
+    "book_author": "",
+    "gender": "未知",
+    "identity": "任务目标/调查对象",
+    "era": "现代或近未来",
+    "neuroticism": 0.6,
+    "extraversion": 0.3,
+    "openness": 0.5,
+    "agreeableness": 0.4,
+    "conscientiousness": 0.5,
+    "optimism": 0.4,
+    "resilience": 0.7,
+    "self_blame": 0.3,
+    "external_blame": 0.2,
+    "speech_patterns": [
+      "防御性表达",
+      "模糊陈述"
+    ],
+    "formality_level": 0.5,
+    "emotion_density": 0.5,
+    "first_person_ratio": 0.5,
+    "decision_style": "谨慎",
+    "conflict_approach": "回避",
+    "social_strategy": "封闭",
+    "personality_summary": "这个角色可能是任务涉及的对象，表现出一定的防御性和谨慎。从有限的文本推断，可能对主角的调查或接触有所保留，情绪状态可能较为复杂。",
+    "key_quotes": [
+      "我不确定...",
+      "这很复杂..."
+    ],
+    "confidence": 0.25,
+    "source_evidence": [],
+    "created_at": "2026-04-06T19:04:51.731349",
+    "tags": [
+      "防御性",
+      "谨慎",
+      "保留"
+    ]
+  },
+  "0731a979": {
+    "id": "0731a979",
+    "name": "Jordan Belfort",
+    "book_title": "任务",
+    "book_author": "",
+    "gender": "男",
+    "identity": "股票经纪人/金融销售",
+    "era": "现代（20世纪末至21世纪初）",
+    "neuroticism": 0.8,
+    "extraversion": 0.95,
+    "openness": 0.7,
+    "agreeableness": 0.3,
+    "conscientiousness": 0.4,
+    "optimism": 0.9,
+    "resilience": 0.6,
+    "self_blame": -0.8,
+    "external_blame": 0.7,
+    "speech_patterns": [
+      "高能演讲",
+      "情绪爆发",
+      "煽动性语言"
+    ],
+    "formality_level": 0.3,
+    "emotion_density": 0.9,
+    "first_person_ratio": 0.8,
+    "decision_style": "冲动/直觉型/欲望驱动",
+    "conflict_approach": "对抗/操控",
+    "social_strategy": "开放（但带有强烈目的性）",
+    "personality_summary": "Jordan Belfort是一个极具感染力和煽动性的金融销售天才，其核心驱动力是对胜利、金钱和刺激感的无尽渴望。他性格外放、冲动，善于通过情绪操控和洗脑式演讲激励团队，制造狂热氛围以实现快速成交。道德边界极低，可以随时突破规则，享受高风险带来的刺激。工作节奏呈爆发式、极端高强度，但自控力差，情绪容易被欲望牵引，决策常受直觉和情绪驱动。对失败倾向于否认并疯狂加码，这种模式虽然能带来快速成功，但也伴随着高概率的崩塌风险。他是一个典型的传教士型领袖，将下属视为工具和狂热追随者。",
+    "key_quotes": [
+      "规则就是用来绕的。"
+    ],
+    "source_dimension": "核心驱动：胜利+金钱+自我价值；性格底色：外放、冲动、极具感染力；道德边界：极低；风险偏好：极高；决策方式：情绪+直觉+欲望驱动；对规则的态度：规则就是用来绕的；人际策略：激励+洗脑+情绪操控；领导风格：传教士型；对下属态度：工具+狂热追随者；沟通方式：高能演讲、情绪爆发；工作节奏：爆发式、极端高强度；对失败的反应：否认→再疯狂加码；成功路径：快速积累→极端扩张→崩塌风险；情绪管理：失控；对他人的洞察力：强（但用于操纵销售）；典型行为模式：拉高情绪→制造狂热→快速成交；职场优势：极致销售力、感染力；致命弱点：自控力极差、不可持续；适合环境：高风险、高回报行业；长期结局倾向：高概率崩塌。",
+    "confidence": 0.95,
+    "source_evidence": [],
+    "created_at": "2026-04-06T19:13:54.892351",
+    "tags": [
+      "反英雄",
+      "励志型（扭曲）",
+      "销售天才",
+      "高风险偏好者"
+    ]
+  },
+  "bc355dd0": {
+    "id": "bc355dd0",
+    "name": "Frank Underwood",
+    "book_title": "任务",
+    "book_author": "",
+    "gender": "男",
+    "identity": "政客",
+    "era": "现代（政治剧背景）",
+    "neuroticism": 0.2,
+    "extraversion": 0.4,
+    "openness": 0.6,
+    "agreeableness": 0.1,
+    "conscientiousness": 0.9,
+    "optimism": 0.5,
+    "resilience": 0.95,
+    "self_blame": -0.9,
+    "external_blame": 0.8,
+    "speech_patterns": [
+      "冷静暗示",
+      "话中有话",
+      "直接对观众独白"
+    ],
+    "formality_level": 0.8,
+    "emotion_density": 0.1,
+    "first_person_ratio": 0.5,
+    "decision_style": "理性/数据驱动/长期策略",
+    "conflict_approach": "操控",
+    "social_strategy": "选择性社交（高度工具化）",
+    "personality_summary": "Frank Underwood是一个极度理性、冷静且内敛的权谋家，毕生追求权力与控制，善于进行长期布局。他将道德彻底工具化，只为达成目标服务。性格底色是内敛与冷静，情绪管理能力极强，几乎从不外显。决策依赖于数据和人性分析，偏好精密计算下的可控风险。他将规则视为可以重写的东西，人际策略是利用、操控和利益交换，对下属视为可随时牺牲的棋子。领导风格是幕后操盘型，善于设局并引导他人入局以实现自己的目的。工作节奏稳定，致力于长期博弈。对失败能冷静吸收并调整策略。其致命弱点在于过度冷血，容易树敌，适合在政治等权力密集型组织中生存。",
+    "key_quotes": [
+      "权力就像房地产，位置是一切。你离中心越近，你的财产就越有价值。"
+    ],
+    "source_dimension": "核心驱动：权力+控制+长期布局；性格底色：内敛、冷静、极度理性；道德边界：工具化（为目标服务）；风险偏好：可控风险（精密计算）；决策方式：数据+人性分析+长期策略；对规则的态度：规则是可以重写的；人际策略：利用+操控+交换利益；领导风格：幕后操盘型；对下属态度：棋子（可随时牺牲）；沟通方式：冷静暗示、话中有话；工作节奏：稳定推进、长期博弈；对失败的反应：吸收→调整策略；成功路径：渐进渗透→权力巩固；情绪管理：极强（几乎无外显）；对他人的洞察力：极强（精准利用弱点）；典型行为模式：设局→引导他人入局→收割；职场优势：权谋能力、全局掌控；致命弱点：过度冷血、容易树敌；适合环境：政治、权力密集型组织；长期结局倾向：相对稳定上升。",
+    "confidence": 0.95,
+    "source_evidence": [],
+    "created_at": "2026-04-06T19:13:54.892351",
+    "tags": [
+      "权谋型",
+      "反英雄",
+      "操控大师",
+      "冷静的野心家"
+    ]
+  },
+  "c45bef13": {
+    "id": "c45bef13",
+    "name": "Harvey Specter",
+    "book_title": "任务",
+    "book_author": "",
+    "gender": "男",
+    "identity": "律师",
+    "era": "现代",
+    "neuroticism": 0.3,
+    "extraversion": 0.7,
+    "openness": 0.6,
+    "agreeableness": 0.4,
+    "conscientiousness": 0.85,
+    "optimism": 0.8,
+    "resilience": 0.85,
+    "self_blame": -0.3,
+    "external_blame": 0.4,
+    "speech_patterns": [
+      "直接",
+      "锋利",
+      "带压迫感",
+      "自信的断言"
+    ],
+    "formality_level": 0.7,
+    "emotion_density": 0.4,
+    "first_person_ratio": 0.6,
+    "decision_style": "理性/经验驱动/快速判断",
+    "conflict_approach": "对抗/协商（基于优势）",
+    "social_strategy": "选择性社交（精英圈子）",
+    "personality_summary": "Harvey Specter是一位自信、强势、充满精英主义气质的顶尖律师。他的核心驱动力是专业成就和胜利，追求自我价值的实现。性格底色是自信与强势，道德边界相对稳定，但会基于自身原则灵活处理。风险偏好中高，但建立在精准的能力判断之上。决策迅速，依赖丰富的经验、严密的逻辑和快速判断力。他认为规则是可以利用的，而非遵守或打破。人际策略是选择性信任结合强势主导，将有能力的下属视为要求极高的战友。领导风格属于精英领袖型，带领强者打硬仗。沟通方式直接、锋利且带有压迫感，工作节奏高效、快节奏。对失败的反应是立刻反击并修正打法。情绪总体可控，但有爆发点。他凭借顶级的专业能力、决断力和谈判博弈技巧取得成功，但偶尔会因自负或低估情感因素而陷入困境。",
+    "key_quotes": [
+      "生活就像这样，要么聪明，要么回家。"
+    ],
+    "source_dimension": "核心驱动：专业成就+自我价值；性格底色：自信、强势、精英主义；道德边界：相对稳定（有个人原则）；风险偏好：中高（但基于能力判断）；决策方式：经验+逻辑+快速判断；对规则的态度：规则是可以利用的；人际策略：选择性信任+强势主导；领导风格：精英领袖型；对下属态度：战友（但要求极高）；沟通方式：直接、锋利、带压迫感；工作节奏：高效、快节奏、精准执行；对失败的反应：反击→修正打法；成功路径：专业精进→资源掌控；情绪管理：可控（但有爆发点）；对他人的洞察力：强（用于谈判与博弈）；典型行为模式：分析局势→快速出手→直接赢；职场优势：专业能力、决断力；致命弱点：自负、偶尔低估情感因素；适合环境：精英行业（法律、金融等）；长期结局倾向：高风险高回报（要么顶峰要么坠落）。",
+    "confidence": 0.95,
+    "source_evidence": [],
+    "created_at": "2026-04-06T19:13:54.892351",
+    "tags": [
+      "专业型",
+      "精英领袖",
+      "自信强势",
+      "律政精英"
+    ]
+  }
+}

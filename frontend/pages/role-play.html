@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZTalk - AI角色扮演</title>
+    <style>
+        :root {
+            --primary: #1a202c;
+            --primary-light: #2d3748;
+            --accent: #10B981;
+            --accent2: #EF4444;
+            --bg: #FFFFFF;
+            --bg2: #F8FAFC;
+            --bg3: #F1F5F9;
+            --card: #FFFFFF;
+            --text: #1a202c;
+            --text2: #64748B;
+            --text3: #94A3B8;
+            --border: #E2E8F0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,.07);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: var(--bg2);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            border-bottom: 1px solid var(--border);
+            height: 60px;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .navbar-links { display: flex; gap: 16px; }
+
+        .navbar-link {
+            color: var(--text2);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all .2s;
+            font-size: 14px;
+        }
+        .navbar-link:hover { color: var(--text); background: var(--bg3); }
+        .navbar-link.active {
+            color: var(--accent);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* 主容器 */
+        .main-container {
+            display: grid;
+            grid-template-columns: 300px 320px 1fr;
+            gap: 16px;
+            padding: 16px;
+            height: calc(100vh - 60px);
+        }
+
+        /* 面板 */
+        .left-panel, .middle-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .panel-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .panel-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text2);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 模式切换 */
+        .mode-switch { display: flex; gap: 8px; }
+
+        .mode-btn {
+            flex: 1;
+            padding: 10px 16px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text2);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .mode-btn:hover { background: var(--border); }
+        .mode-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        /* 角色列表 */
+        .character-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        .character-item {
+            padding: 12px;
+            background: var(--bg3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .2s;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .character-item:hover { background: var(--border); }
+        .character-item.active, .character-item.selected {
+            border-color: var(--primary);
+            background: rgba(26, 32, 44, 0.08);
+        }
+
+        /* 复选框 */
+        .char-checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .2s;
+            flex-shrink: 0;
+        }
+        .character-item.selected .char-checkbox {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+        .char-checkbox::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            display: none;
+        }
+        .character-item.selected .char-checkbox::after { display: block; }
+
+        .char-info { flex: 1; min-width: 0; }
+        .character-name { font-weight: 600; margin-bottom: 4px; }
+        .character-desc { font-size: 12px; color: var(--text3); }
+
+        /* 使用说明 */
+        .intro-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+        .intro-text { font-size: 13px; line-height: 1.8; color: var(--text2); }
+        .intro-text strong { color: var(--accent); }
+
+        /* 问题输入区 */
+        .question-area {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .question-input {
+            flex: 1;
+            width: 100%;
+            min-height: 100px;
+            padding: 14px;
+            background: var(--bg3);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 14px;
+            font-family: inherit;
+            resize: none;
+            transition: all .2s;
+        }
+        .question-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .question-input::placeholder { color: var(--text3); }
+
+        .send-btn {
+            margin-top: 12px;
+            padding: 12px 24px;
+            background: var(--primary);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .send-btn:hover { opacity: 0.9; }
+        .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* 右侧对话区 */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            background: var(--card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            height: 100%;
+        }
+
+        .chat-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg2);
+        }
+
+        .chat-character-name { font-weight: 600; font-size: 16px; }
+        .chat-character-traits { font-size: 12px; color: var(--text3); margin-top: 2px; }
+
+        /* 辩论头部 */
+        .debate-header {
+            display: none;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .debate-header.active { display: block; }
+        .debate-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .debate-characters { display: flex; flex-wrap: wrap; gap: 8px; }
+        .debate-char-tag {
+            padding: 4px 12px;
+            background: rgba(16, 185, 129, 0.15);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--accent);
+        }
+
+        /* 消息区 */
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 14px 18px;
+            border-radius: 16px;
+            line-height: 1.6;
+            animation: fadeIn .3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .message.character {
+            align-self: flex-start;
+            background: var(--primary);
+            color: #fff;
+            border-bottom-left-radius: 4px;
+        }
+        .message.user {
+            align-self: flex-end;
+            background: var(--bg3);
+            color: var(--text);
+            border-bottom-right-radius: 4px;
+        }
+        .message-time { font-size: 10px; opacity: 0.6; margin-top: 6px; }
+
+        /* 辩论消息 */
+        .debate-round { margin-bottom: 20px; }
+        .debate-question {
+            background: var(--bg2);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            font-size: 13px;
+        }
+        .debate-question-label {
+            font-size: 10px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .debate-responses { display: flex; flex-direction: column; gap: 12px; }
+        .debate-response {
+            display: flex;
+            gap: 12px;
+            animation: fadeIn .3s ease;
+        }
+        .debate-response-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .debate-response-content { flex: 1; min-width: 0; }
+        .debate-response-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .debate-response-name { font-weight: 600; font-size: 14px; }
+        .debate-response-text {
+            background: var(--bg3);
+            padding: 12px 16px;
+            border-radius: 12px;
+            border-top-left-radius: 4px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text3);
+            gap: 12px;
+        }
+        .empty-state-icon { font-size: 48px; opacity: 0.5; }
+
+        /* 加载 */
+        .loading {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text3);
+            padding: 14px 18px;
+        }
+        .loading-dots { display: flex; gap: 4px; }
+        .loading-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .loading-dot:nth-child(1) { animation-delay: -0.32s; }
+        .loading-dot:nth-child(2) { animation-delay: -0.16s; }
+        .loading-dot:nth-child(3) { animation-delay: 0s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* 滚动条 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+        /* 上传 */
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all .2s;
+            background: var(--bg3);
+        }
+        .upload-area:hover { border-color: var(--accent); background: rgba(16, 185, 129, 0.05); }
+        .upload-area.dragover { border-color: var(--accent); background: rgba(16, 185, 129, 0.1); }
+        .upload-icon { font-size: 24px; margin-bottom: 6px; }
+        .upload-text { font-size: 12px; color: var(--text2); }
+        .upload-text span { color: var(--accent); }
+        .upload-formats { font-size: 10px; color: var(--text3); margin-top: 4px; }
+        .upload-input { display: none; }
+        .upload-status {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            display: none;
+        }
+        .upload-status.loading { display: block; background: rgba(16, 185, 129, 0.1); color: var(--accent); }
+        .upload-status.success { display: block; background: rgba(16, 185, 129, 0.1); color: var(--accent); }
+        .upload-status.error { display: block; background: rgba(239, 68, 68, 0.1); color: var(--accent2); }
+
+        /* 自定义角色 */
+        .custom-characters {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+        .custom-characters-title { font-size: 11px; color: var(--text3); margin-bottom: 8px; }
+        .selected-count { font-size: 12px; color: var(--accent); margin-top: 8px; }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-brand">💬 ZTalk</div>
+        <div class="navbar-links">
+            <a href="index.html" class="navbar-link"></a>
+            <a href="role-play.html" class="navbar-link active">🎭Mind Theater（思维剧场）</a>
+        </div>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 左侧面板 - 角色选择 -->
+        <div class="left-panel">
+            <!-- 使用说明 -->
+            <div class="panel-card intro-card">
+                <div class="panel-title">💡 使用说明</div>
+                <div class="intro-text">
+                    <strong>1.</strong> 选择模式并勾选角色<br>
+                    <strong>2.</strong> 在中间栏描述问题<br>
+                    <strong>3.</strong> 查看右侧角色回答
+                </div>
+            </div>
+
+            <!-- 模式切换 -->
+            <div class="panel-card">
+                <div class="panel-title">🎯 选择模式</div>
+                <div class="mode-switch">
+                    <button class="mode-btn active" id="modeSingle" onclick="setMode('single')">
+                        👤 单角色
+                    </button>
+                    <button class="mode-btn" id="modeDebate" onclick="setMode('debate')">
+                        ⚔️ 辩论
+                    </button>
+                </div>
+            </div>
+
+            <!-- 文档上传 -->
+            <div class="panel-card">
+                <div class="panel-title">📤 上传角色</div>
+                <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                    <div class="upload-icon">📄</div>
+                    <div class="upload-text">点击上传文档<br><span>自动解析角色</span></div>
+                    <div class="upload-formats">PDF / Word</div>
+                </div>
+                <input type="file" id="fileInput" class="upload-input" accept=".pdf,.docx" onchange="handleFileUpload(this.files[0])">
+                <div class="upload-status" id="uploadStatus"></div>
+            </div>
+
+            <!-- 角色阵容 -->
+            <div class="panel-card" style="flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="panel-title">🎭 角色阵容</div>
+                <div class="character-list" id="characterList">
+                    <div class="character-item active" data-id="1" onclick="toggleCharacter(1, 'preset', event)">
+                        <div class="char-checkbox"></div>
+                        <div class="char-info">
+                            <div class="character-name">🧠 商业导师</div>
+                            <div class="character-desc">Jordan Belfort</div>
+                        </div>
+                    </div>
+                    <div class="character-item" data-id="2" onclick="toggleCharacter(2, 'preset', event)">
+                        <div class="char-checkbox"></div>
+                        <div class="char-info">
+                            <div class="character-name">⚔️ 权谋大师</div>
+                            <div class="character-desc">Frank Underwood</div>
+                        </div>
+                    </div>
+                    <div class="character-item" data-id="3" onclick="toggleCharacter(3, 'preset', event)">
+                        <div class="char-checkbox"></div>
+                        <div class="char-info">
+                            <div class="character-name">💼 法律精英</div>
+                            <div class="character-desc">Harvey Specter</div>
+                        </div>
+                    </div>
+                    <div class="character-item" data-id="4" onclick="toggleCharacter(4, 'preset', event)">
+                        <div class="char-checkbox"></div>
+                        <div class="char-info">
+                            <div class="character-name">🚀 创业导师</div>
+                            <div class="character-desc">Elon Musk</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 自定义角色区域 -->
+                <div class="custom-characters" id="customCharacters">
+                    <div class="custom-characters-title">📚 自定义角色</div>
+                    <div id="customCharacterList"></div>
+                </div>
+                <div class="selected-count" id="selectedCount"></div>
+            </div>
+        </div>
+
+        <!-- 中间面板 - 问题输入 -->
+        <div class="middle-panel">
+            <div class="panel-card" style="flex: 1; display: flex; flex-direction: column;">
+                <div class="panel-title">📝 描述你的难题</div>
+                <textarea
+                    class="question-input"
+                    id="questionInput"
+                    placeholder="在这里描述你面临的困境、挑战或需要建议的问题..."
+                    style="min-height: 200px;"
+                ></textarea>
+                <button class="send-btn" id="sendBtn" onclick="sendQuestion()" style="margin-top: 16px;">
+                    🚀 开始对话
+                </button>
+            </div>
+
+            <!-- 当前选中角色 -->
+            <div class="panel-card">
+                <div class="panel-title">🎯 当前角色</div>
+                <div id="currentCharDisplay">
+                    <div class="character-item active" style="cursor: default;">
+                        <div class="char-info">
+                            <div class="character-name" id="currentCharName2">🧠 商业导师</div>
+                            <div class="character-desc" id="currentCharTraits2">Jordan Belfort · 销售传奇</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧对话区 -->
+        <div class="right-panel">
+            <!-- 单角色头部 -->
+            <div class="chat-header" id="chatHeader">
+                <div class="chat-header-info">
+                    <div class="chat-character-name" id="currentCharName">🧠 商业导师</div>
+                    <div class="chat-character-traits" id="currentCharTraits">Jordan Belfort · 销售传奇</div>
+                </div>
+            </div>
+
+            <!-- 辩论模式头部 -->
+            <div class="debate-header" id="debateHeader">
+                <div class="debate-title">⚔️ 辩论阵容</div>
+                <div class="debate-characters" id="debateCharacters"></div>
+            </div>
+
+            <!-- 消息区域 -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="empty-state">
+                    <div class="empty-state-icon">💬</div>
+                    <div>选择一个角色，开始你的思维之旅</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 角色数据
+        const characters = {
+            1: { name: "🧠 商业导师", traits: "Jordan Belfort · 销售传奇", personality: "直接、激进、充满热情", emoji: "💰" },
+            2: { name: "⚔️ 权谋大师", traits: "Frank Underwood · 政界操盘手", personality: "冷静、算计、深谙人性", emoji: "👑" },
+            3: { name: "💼 法律精英", traits: "Harvey Specter · 顶级律师", personality: "自信、犀利、永不言败", emoji: "⚖️" },
+            4: { name: "🚀 创业导师", traits: "Elon Musk · 创新先锋", personality: "颠覆、冒险、追求极致", emoji: "🚀" }
+        };
+
+        // 自定义角色
+        let customCharacters = {};
+        let nextCustomId = 100;
+
+        // 状态
+        let currentMode = 'single'; // 'single' 或 'debate'
+        let currentCharId = 1;
+        let currentCharType = 'preset';
+        let selectedCharacters = []; // 辩论模式选中的角色
+
+        // 模式切换
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('modeSingle').classList.toggle('active', mode === 'single');
+            document.getElementById('modeDebate').classList.toggle('active', mode === 'debate');
+            document.getElementById('chatHeader').style.display = mode === 'single' ? 'flex' : 'none';
+            document.getElementById('debateHeader').classList.toggle('active', mode === 'debate');
+
+            if (mode === 'single') {
+                // 单角色模式：选中第一个
+                if (selectedCharacters.length === 0) {
+                    selectCharacter(1, 'preset');
+                } else {
+                    selectCharacter(selectedCharacters[0].id, selectedCharacters[0].type);
+                }
+            } else {
+                // 辩论模式：更新头部
+                updateDebateHeader();
+            }
+
+            // 清空对话
+            clearChat();
+        }
+
+        // 切换角色选中状态
+        function toggleCharacter(id, type, event) {
+            event.stopPropagation();
+
+            const item = event.currentTarget;
+            const charData = type === 'preset' ? characters[id] : customCharacters[id];
+
+            if (currentMode === 'single') {
+                // 单角色模式：直接选中
+                selectCharacter(id, type);
+            } else {
+                // 辩论模式：切换选中状态
+                const idx = selectedCharacters.findIndex(c => c.id == id && c.type === type);
+                if (idx >= 0) {
+                    selectedCharacters.splice(idx, 1);
+                    item.classList.remove('selected');
+                } else {
+                    selectedCharacters.push({ id, type });
+                    item.classList.add('selected');
+                }
+                updateDebateHeader();
+            }
+
+            updateSelectedCount();
+        }
+
+        // 选中单个角色
+        function selectCharacter(id, type) {
+            // 移除所有选中状态
+            document.querySelectorAll('.character-item').forEach(item => {
+                item.classList.remove('active', 'selected');
+            });
+
+            // 选中目标
+            const item = document.querySelector(`.character-item[data-id="${id}"]`);
+            if (item) {
+                item.classList.add('active');
+            }
+
+            currentCharId = id;
+            currentCharType = type;
+
+            const charData = type === 'preset' ? characters[id] : customCharacters[id];
+            document.getElementById('currentCharName').textContent = charData.name;
+            document.getElementById('currentCharTraits').textContent = charData.traits;
+
+            // 更新中间面板的角色显示
+            document.getElementById('currentCharName2').textContent = charData.name;
+            document.getElementById('currentCharTraits2').textContent = charData.traits;
+        }
+
+        // 更新辩论头部
+        function updateDebateHeader() {
+            const container = document.getElementById('debateCharacters');
+            container.innerHTML = selectedCharacters.map(c => {
+                const data = c.type === 'preset' ? characters[c.id] : customCharacters[c.id];
+                return `<span class="debate-char-tag">${data.emoji} ${data.name.replace(/^[^\s]+\s/, '')}</span>`;
+            }).join('');
+        }
+
+        // 更新已选数量
+        function updateSelectedCount() {
+            const el = document.getElementById('selectedCount');
+            if (currentMode === 'debate') {
+                el.textContent = `已选择 ${selectedCharacters.length} 个角色`;
+            } else {
+                el.textContent = '';
+            }
+        }
+
+        // 清空对话
+        function clearChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">💬</div>
+                    <div>${currentMode === 'single' ? '选择一个角色，开始对话' : '勾选参与辩论的角色，提出你的问题'}</div>
+                </div>
+            `;
+        }
+
+        // 发送问题
+        function sendQuestion() {
+            const input = document.getElementById('questionInput');
+            const question = input.value.trim();
+
+            if (!question) {
+                alert('请先描述你的问题');
+                return;
+            }
+
+            if (currentMode === 'debate' && selectedCharacters.length < 2) {
+                alert('辩论模式至少需要选择 2 个角色');
+                return;
+            }
+
+            const chatMessages = document.getElementById('chatMessages');
+
+            // 清空空状态
+            if (chatMessages.querySelector('.empty-state')) {
+                chatMessages.innerHTML = '';
+            }
+
+            if (currentMode === 'single') {
+                sendSingleQuestion(question);
+            } else {
+                sendDebateQuestion(question);
+            }
+        }
+
+        // 单角色对话
+        function sendSingleQuestion(question) {
+            const chatMessages = document.getElementById('chatMessages');
+
+            // 添加用户消息
+            addMessage(chatMessages, 'user', question);
+
+            // 添加加载动画
+            const loadingId = addLoading(chatMessages);
+
+            // 获取角色信息
+            const charData = currentCharType === 'preset' ? characters[currentCharId] : customCharacters[currentCharId];
+
+            // 模拟API调用
+            setTimeout(() => {
+                removeLoading(loadingId);
+                addMessage(chatMessages, 'character', getDefaultReply(currentCharId, currentCharType), charData.name);
+            }, 1500);
+        }
+
+        // 辩论模式
+        function sendDebateQuestion(question) {
+            const chatMessages = document.getElementById('chatMessages');
+
+            // 创建辩论回合
+            const round = document.createElement('div');
+            round.className = 'debate-round';
+
+            // 问题卡片
+            round.innerHTML = `
+                <div class="debate-question">
+                    <div class="debate-question-label">💭 问题</div>
+                    <div>${question}</div>
+                </div>
+                <div class="debate-responses" id="responsesContainer"></div>
+            `;
+            chatMessages.appendChild(round);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // 清空输入框
+            document.getElementById('questionInput').value = '';
+
+            // 依次显示各角色回复
+            let delay = 0;
+            selectedCharacters.forEach((char, index) => {
+                const charData = char.type === 'preset' ? characters[char.id] : customCharacters[char.id];
+                const reply = getDebateReply(char.id, char.type, question, index);
+
+                setTimeout(() => {
+                    addDebateResponse(charData, reply);
+                }, delay);
+
+                delay += 1500;
+            });
+        }
+
+        // 添加辩论回复
+        function addDebateResponse(charData, reply) {
+            const container = document.getElementById('responsesContainer');
+            if (!container) return;
+
+            const response = document.createElement('div');
+            response.className = 'debate-response';
+            response.innerHTML = `
+                <div class="debate-response-avatar">${charData.emoji || '👤'}</div>
+                <div class="debate-response-content">
+                    <div class="debate-response-header">
+                        <span class="debate-response-name">${charData.name}</span>
+                    </div>
+                    <div class="debate-response-text">${reply}</div>
+                </div>
+            `;
+            container.appendChild(response);
+
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // 添加消息
+        function addMessage(container, type, text, charName = '') {
+            const msg = document.createElement('div');
+            msg.className = `message ${type}`;
+
+            if (type === 'character' && charName) {
+                text = `<strong>${charName}</strong>：${text}`;
+            }
+
+            msg.innerHTML = `${text}<div class="message-time">${new Date().toLocaleTimeString()}</div>`;
+            container.appendChild(msg);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // 添加加载动画
+        function addLoading(container) {
+            const id = 'loading-' + Date.now();
+            const loading = document.createElement('div');
+            loading.className = 'message character';
+            loading.id = id;
+            loading.innerHTML = `<div class="loading"><div class="loading-dots"><div class="loading-dot"></div><div class="loading-dot"></div><div class="loading-dot"></div></div></div>`;
+            container.appendChild(loading);
+            container.scrollTop = container.scrollHeight;
+            return id;
+        }
+
+        // 移除加载动画
+        function removeLoading(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        // 获取默认回复
+        function getDefaultReply(charId, charType) {
+            const replies = {
+                1: "这是一个关于销售心态的问题！记住，成功不是偶然的——它需要你付出 110% 的努力。每一个'No'都让你离'Yes'更近一步！",
+                2: "有趣的问题...让我来帮你分析一下利弊。在这场博弈中，你需要找到对手的弱点，然后一击致命。",
+                3: "听着，问题在于你还不够自信。如果你想赢，就必须相信自己有能力赢。这是成功的唯一法则。",
+                4: "这个问题需要用第一性原理来思考。不要被传统思维束缚，要从零开始重构问题。"
+            };
+
+            if (charType === 'custom' && customCharacters[charId]) {
+                return `作为 ${customCharacters[charId].name}，我来帮你分析这个问题...`;
+            }
+
+            return replies[charId] || "让我从我的角度为你分析一下...";
+        }
+
+        // 获取辩论回复
+        function getDebateReply(charId, charType, question, index) {
+            const replies = {
+                1: [
+                    "从商业角度来看，这个问题的核心在于价值创造！我建议立刻行动，用100%的热情去推进，每一秒的犹豫都是在损失金钱！",
+                    "这不是犹豫的时候！市场不会等你，客户不会等你。拿出你的激情，直面挑战，这才是成功者的姿态！"
+                ],
+                2: [
+                    "慢着...让我从博弈的角度来分析。在采取任何行动之前，你需要先了解所有参与者的动机和弱点。",
+                    "权力的游戏里，没有永远的朋友或敌人，只有永远的利益。找到你的盟友，孤立你的对手，这是制胜的关键。"
+                ],
+                3: [
+                    "说实话，我认为你应该先咨询专业人士的意见。法律风险评估是一切商业决策的基础。",
+                    "但更重要的是——你必须相信自己。不管发生什么，都要保持自信。这是诉讼的基本原则，也是人生的制胜法宝。"
+                ],
+                4: [
+                    "让我用第一性原理来重构这个问题。不要被现有的框架束缚，回到问题的本质，从零开始思考。",
+                    "失败只是通往成功的另一个步骤。大胆尝试，快速迭代，这才是创新的正确方式！"
+                ]
+            };
+
+            if (charType === 'custom' && customCharacters[charId]) {
+                return `作为 ${customCharacters[charId].name}，我来发表一下我的观点...`;
+            }
+
+            return (replies[charId] || ["让我来分析一下这个问题..."])[index % 2];
+        }
+
+        // 文件上传处理
+        function handleFileUpload(file) {
+            if (!file) return;
+
+            const status = document.getElementById('uploadStatus');
+            const validTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+            if (!validTypes.includes(file.type)) {
+                status.className = 'upload-status error';
+                status.textContent = '❌ 只支持 PDF 或 Word 文件';
+                return;
+            }
+
+            status.className = 'upload-status loading';
+            status.textContent = '🔄 正在解析文档...';
+
+            setTimeout(() => {
+                const baseName = file.name.replace(/\.(pdf|docx)$/i, '');
+                addCustomCharacter({
+                    name: `📖 ${baseName}`,
+                    traits: "自定义角色 · 文档解析",
+                    personality: "来自您上传的文档",
+                    emoji: "📚"
+                });
+                status.className = 'upload-status success';
+                status.textContent = `✅ 已添加角色：${baseName}`;
+            }, 2000);
+        }
+
+        // 添加自定义角色
+        function addCustomCharacter(character) {
+            const id = nextCustomId++;
+            customCharacters[id] = character;
+
+            const charList = document.getElementById('customCharacterList');
+            const charItem = document.createElement('div');
+            charItem.className = 'character-item';
+            charItem.dataset.id = id;
+            charItem.dataset.type = 'custom';
+            charItem.onclick = (e) => toggleCharacter(id, 'custom', e);
+            charItem.innerHTML = `
+                <div class="char-checkbox"></div>
+                <div class="char-info">
+                    <div class="character-name">${character.name}</div>
+                    <div class="character-desc">${character.traits}</div>
+                </div>
+            `;
+
+            charList.appendChild(charItem);
+        }
+
+        // 拖拽上传
+        const uploadArea = document.getElementById('uploadArea');
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            const file = e.dataTransfer.files[0];
+            if (file) handleFileUpload(file);
+        });
+
+        // 回车发送
+        document.getElementById('questionInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendQuestion();
+            }
+        });
+
+        // 初始化：默认选中第一个
+        selectCharacter(1, 'preset');
+    </script>
+</body>
+</html>

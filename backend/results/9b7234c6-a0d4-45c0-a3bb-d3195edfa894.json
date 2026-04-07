@@ -1,0 +1,850 @@
+{
+  "task_id": "9b7234c6-a0d4-45c0-a3bb-d3195edfa894",
+  "status": "success",
+  "phrases": [
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "我们再考虑一下",
+      "time_range": "00:01:30",
+      "literal_meaning": "需要更多时间做决定",
+      "hidden_meaning": "委婉拒绝",
+      "power_level": "高",
+      "manipulation_type": "模糊",
+      "category": "模糊",
+      "coping_strategy": "直接询问具体顾虑"
+    }
+  ],
+  "counters": [
+    {
+      "original_phrase": "我们再考虑一下",
+      "counter_phrase": "当然可以。为了帮助您更高效地考虑，能分享一下目前您最核心的顾虑是什么吗？这样我或许能提供更针对性的信息。",
+      "strategy": "反问",
+      "rationale": "通过反问将模糊的拖延转化为具体的顾虑挖掘，既尊重对方表态，又主动引导对话进入实质讨论，避免陷入被动等待。预期效果是迫使对方要么透露真实顾虑（便于针对性解决），要么因无法具体化而暴露其委婉拒绝的意图，从而为后续谈判创造主动权。"
+    },
+    {
+      "original_phrase": "我们再考虑一下",
+      "counter_phrase": "理解您需要时间。不过这个方案/机会的窗口期比较紧张，如果我们能在今天明确关键障碍，或许能一起找到加速决策的路径。您看主要卡在哪一点上？",
+      "strategy": "直接反击",
+      "rationale": "在承认对方需求的同时，引入时间压力（窗口期）制造紧迫感，并将“考虑”重新定义为“解决具体障碍”。直接要求对方指出卡点，把模糊拖延转化为问题解决导向的对话，打破对方用模糊语言维持的权力优势。"
+    },
+    {
+      "original_phrase": "我们再考虑一下",
+      "counter_phrase": "好的。基于我们之前的沟通，我梳理了三个可能影响您决策的关键点：A、B、C。其中哪一个是最让您犹豫的，还是说有其他我没捕捉到的因素？",
+      "counter_strategy": "转移",
+      "rationale": "将对话焦点从“是否考虑”转移到“考虑什么具体问题”。通过预先归纳可能顾虑（展现专业性和准备度），引导对方在既定框架内回应，化被动为主动。此举既避免了正面冲突，又压缩了对方模糊回旋的空间，通常能迫使对方给出更实质的反馈。"
+    }
+  ],
+  "personalities": [
+    {
+      "id": "speaker_1",
+      "name": "Nigel",
+      "personality_type": "支配型/操控型",
+      "communication_style": "充满俚语、行话和模糊表达的模糊沟通风格，刻意制造信息不对称；使用大量缩写（TMZ、B&B、GPS、SOB等）和内部术语来建立小圈子，排斥新人；语气表面友好实则居高临下，带有明显的种族和文化刻板印象",
+      "emotional_traits": [
+        "优越感",
+        "排他性",
+        "操控欲",
+        "表面友好实则轻蔑",
+        "防御性攻击"
+      ],
+      "power_position": "上位者（试图维持）",
+      "communication_techniques": [
+        "行话壁垒",
+        "模糊化表达",
+        "种族刻板印象",
+        "假意赞美实则贬低",
+        "信息隐瞒",
+        "群体划分"
+      ],
+      "strengths": [
+        "熟悉内部文化",
+        "善于建立小圈子",
+        "表面社交能力"
+      ],
+      "weaknesses": [
+        "排外性",
+        "沟通不透明",
+        "种族偏见",
+        "缺乏专业性",
+        "情绪不稳定时转为攻击"
+      ]
+    },
+    {
+      "id": "speaker_2",
+      "name": "Roxy",
+      "personality_type": "分析型/任务导向型",
+      "communication_style": "直接、清晰、注重逻辑和事实的沟通风格；初期试图理解对方但逐渐转为对抗；使用具体的工作术语（plan A/B、email confirmation、contract等）；当感到被排斥和不公时转为直接质问和反击",
+      "emotional_traits": [
+        "困惑",
+        "挫败感",
+        "愤怒",
+        "被排斥感",
+        "坚持原则"
+      ],
+      "power_position": "下位者（新员工）但试图争取平等",
+      "communication_techniques": [
+        "明确提问",
+        "事实陈述",
+        "风险提示",
+        "直接对抗",
+        "文化差异辨析",
+        "拼写游戏反击"
+      ],
+      "strengths": [
+        "逻辑清晰",
+        "专业性强",
+        "坚持原则",
+        "敢于对抗不公",
+        "学习适应能力强"
+      ],
+      "weaknesses": [
+        "初期容忍模糊沟通",
+        "情绪积累后爆发",
+        "可能被贴上“难相处”标签"
+      ]
+    },
+    {
+      "id": "speaker_3",
+      "name": "Mark",
+      "personality_type": "友好型/调和型",
+      "communication_style": "温和、调解式的沟通风格；试图缓和紧张气氛；使用轻松话题（防晒霜）转移注意力；但作为管理者未能有效制止不当行为，存在管理缺位",
+      "emotional_traits": [
+        "尴尬",
+        "回避冲突",
+        "调和倾向",
+        "被动"
+      ],
+      "power_position": "上位者（管理者）但行使不力",
+      "communication_techniques": [
+        "话题转移",
+        "缓和语气",
+        "环境提醒（专业环境）",
+        "表面调解"
+      ],
+      "strengths": [
+        "冲突回避能力",
+        "表面和谐维护"
+      ],
+      "weaknesses": [
+        "管理不作为",
+        "未能建立公平沟通环境",
+        "回避核心问题"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "speaker_1",
+      "to": "speaker_2",
+      "type": "对立/上下级",
+      "intimacy": 2,
+      "conflict_points": [
+        "文化排斥与刻板印象（‘你英语很长，中国人’）",
+        "信息壁垒与故意模糊沟通（使用大量内部缩写）",
+        "工作流程绕过与边缘化（私下与Mark敲定交易）",
+        "种族化贬低（‘你是我最喜欢的中国人’）",
+        "专业能力蔑视与竞争威胁感"
+      ],
+      "cooperation_opportunities": [
+        "无明确合作机会，除非Nigel改变其排外和操控行为，或Roxy完全屈服于其非正式规则"
+      ],
+      "relationship_dynamics": "Nigel作为资深员工，试图通过建立基于行话、小圈子文化和种族刻板印象的权力结构来压制和排斥新同事Roxy。初期表面友好（‘我爱中国人’）实为居高临下的审视。当Roxy表现出专业能力和质疑时，Nigel转为公开的防御性攻击，将专业分歧扭曲为文化差异和个人恐惧（‘你只是害怕我的学校比你好’）。Roxy从困惑、试图理解，逐渐转为直接对抗和语言反击（拼写游戏），关系已彻底敌对。Nigel试图维持的‘上位者-顺从者’关系被Roxy拒绝，演变为公开的权力斗争。"
+    },
+    {
+      "from": "speaker_2",
+      "to": "speaker_1",
+      "type": "对立",
+      "intimacy": 2,
+      "conflict_points": [
+        "被故意排除在关键决策之外",
+        "沟通不透明带来的工作风险",
+        "遭受种族和文化层面的贬低",
+        "专业贡献被无视和边缘化",
+        "工作环境中的不公与操控"
+      ],
+      "cooperation_opportunities": [
+        "理论上，如果Nigel能采用透明、专业的沟通方式并尊重Roxy的专业意见，可能存在任务合作空间。但基于当前互动，可能性极低。"
+      ],
+      "relationship_dynamics": "Roxy作为新员工，最初试图以专业和合作的态度融入（询问项目进展、准备备份计划）。但遭遇Nigel的模糊沟通、信息隐瞒和种族化言论后，感到挫败和被排斥。冲突在发现Nigel绕过自己与上司敲定交易后爆发。Roxy的关系定位从‘寻求合作的新同事’转变为‘挑战不公和歧视的对抗者’。她通过直接质问、指出风险、并最终以犀利的语言游戏反击，试图打破Nigel建立的权力不对等。她对Nigel已无信任，关系充满敌意。"
+    },
+    {
+      "from": "speaker_1",
+      "to": "speaker_3",
+      "type": "平级/合作（非正式联盟）",
+      "intimacy": 7,
+      "conflict_points": [
+        "暂无公开冲突，但Nigel的行为（如私下交易）可能将Mark置于管理风险中"
+      ],
+      "cooperation_opportunities": [
+        "维持现有非正式合作模式，共同应对客户或项目"
+      ],
+      "relationship_dynamics": "Nigel与Mark存在长期共事关系（‘we go way back’），形成了基于内部默契和非正式规则的小圈子。Nigel在与Mark的互动中显得轻松、熟悉，甚至能私下敲定交易（SOB, GNT）。这种关系是Nigel在组织中权力的重要来源，他利用与Mark的亲密关系来边缘化Roxy（‘Mark邀请我…我们签了协议’）。Mark的默许和参与强化了Nigel的排外行为。这是一种基于历史、共享‘潜规则’和排斥外人的联盟关系。"
+    },
+    {
+      "from": "speaker_3",
+      "to": "speaker_1",
+      "type": "平级/合作（但管理缺位）",
+      "intimacy": 7,
+      "conflict_points": [
+        "Nigel的行为引发团队公开冲突，挑战了Mark作为管理者的权威和团队秩序"
+      ],
+      "cooperation_opportunities": [
+        "引导Nigel走向更专业、包容的沟通方式，以维护团队长期健康"
+      ],
+      "relationship_dynamics": "Mark与Nigel关系亲密，享受这种非正式、轻松的互动模式（聊防晒霜、私下聚会）。作为管理者，Mark未能有效监管或纠正Nigel的排外和不专业行为，反而参与了绕过Roxy的私下交易，这实际上纵容了Nigel。当冲突爆发时，Mark的调解（‘冷静’、‘专业环境’）流于表面，并未解决核心的权力不公和信息不透明问题。Mark更倾向于维持与Nigel的舒适关系，而非履行管理者建立公平环境的职责。这是一种失衡的、管理失效的合作关系。"
+    },
+    {
+      "from": "speaker_2",
+      "to": "speaker_3",
+      "type": "上下级（信任受损）",
+      "intimacy": 4,
+      "conflict_points": [
+        "Mark绕过Roxy与Nigel做出关键决策",
+        "Mark未能保护Roxy免受歧视和排挤",
+        "Mark在冲突调解中不作为，未能支持专业原则"
+      ],
+      "cooperation_opportunities": [
+        "如果Mark能明确支持透明、公平的工作流程，并制止Nigel的不当行为，可重建基于专业信任的上下级合作"
+      ],
+      "relationship_dynamics": "Roxy最初视Mark为上司，汇报工作进展（项目计划、等待客户确认）。但发现Mark私下与Nigel敲定交易后，感到被背叛和极度失望（‘为什么我不知道？’）。Roxy对Mark的信任崩塌，认为他未能履行管理职责，反而成为不公体系的一部分。她直接质问Mark的管理决定（‘没有合同的风险’），表明其已不再将Mark视为可信赖的领导者。Mark的被动和调和姿态（转移话题、要求冷静）进一步削弱了其权威。关系从‘下属-上司’演变为‘被辜负的专业人士-失职的管理者’。"
+    },
+    {
+      "from": "speaker_3",
+      "to": "speaker_2",
+      "type": "上下级（管理失效）",
+      "intimacy": 4,
+      "conflict_points": [
+        "未能将Roxy纳入关键决策循环",
+        "未能为Roxy创造一个免受歧视和排挤的安全工作环境",
+        "对Roxy的专业担忧和情绪爆发处理不当"
+      ],
+      "cooperation_opportunities": [
+        "认可Roxy的专业能力和风险意识，将其正式纳入决策流程，并明确支持其对抗不当行为"
+      ],
+      "relationship_dynamics": "Mark将Roxy视为需要‘安抚’和‘融入’的新下属，而非平等的专业伙伴。他试图用轻松话题（防晒霜）化解紧张，但回避了Roxy遭遇的核心结构性不公。当Roxy情绪爆发时，Mark更关心表面秩序（‘控制你自己’、‘专业环境’），而非解决其合理诉求。他默认了Nigel的‘这里做事方式’，无形中要求Roxy适应一个不透明、排外的环境。Mark未能扮演好保护者、仲裁者和规则制定者的管理者角色，导致与Roxy的关系建立在脆弱、不信任的基础上。这是一种管理缺位、权威受损的上下级关系。"
+    }
+  ],
+  "timeline": [
+    {
+      "time": "00:00:00",
+      "timestamp": 0.0,
+      "text": "Hi, I'm the new manager of Roxy."
+    },
+    {
+      "time": "00:00:02",
+      "timestamp": 2.0,
+      "text": "Oh hi, I'm Nigel, you new partner."
+    },
+    {
+      "time": "00:00:04",
+      "timestamp": 4.0,
+      "text": "You're Chinese right?"
+    },
+    {
+      "time": "00:00:06",
+      "timestamp": 6.0,
+      "text": "Oh I love Chinese people, very great people, and very hardworking."
+    },
+    {
+      "time": "00:00:10",
+      "timestamp": 10.0,
+      "text": "Oh right, Roxy, come here, say, oh, you're mark, woo woo woo woo."
+    },
+    {
+      "time": "00:00:16",
+      "timestamp": 16.0,
+      "text": "So, this is our big guy from Mark. Oh hi, don't get nervous, Roxy."
+    },
+    {
+      "time": "00:00:20",
+      "timestamp": 20.0,
+      "text": "We go way back, but I'm not nervous."
+    },
+    {
+      "time": "00:00:24",
+      "timestamp": 24.0,
+      "text": "You're mark, don't you worry, with Roxy and Bore,"
+    },
+    {
+      "time": "00:00:26",
+      "timestamp": 26.0,
+      "text": "We'll show you all of your TMZ, and we give back to our proper B&B,"
+    },
+    {
+      "time": "00:00:30",
+      "timestamp": 30.0,
+      "text": "Roxy, hey, maybe we can get her your own GPS."
+    },
+    {
+      "time": "00:00:32",
+      "timestamp": 32.0,
+      "text": "I don't understand, so our client has got it to deal with."
+    },
+    {
+      "time": "00:00:36",
+      "timestamp": 36.0,
+      "text": "Yeah, he's just some ASTOP, actually."
+    },
+    {
+      "time": "00:00:38",
+      "timestamp": 38.0,
+      "text": "Oh, TMZ, too many zeros."
+    },
+    {
+      "time": "00:00:40",
+      "timestamp": 40.0,
+      "text": "Never heard of it."
+    },
+    {
+      "time": "00:00:42",
+      "timestamp": 42.0,
+      "text": "B&B, both, and boots."
+    },
+    {
+      "time": "00:00:44",
+      "timestamp": 44.0,
+      "text": "Never heard of it either."
+    },
+    {
+      "time": "00:00:46",
+      "timestamp": 46.0,
+      "text": "GPS, you would have been it is Jean Polo is so,"
+    },
+    {
+      "time": "00:00:50",
+      "timestamp": 50.0,
+      "text": "if you do well, maybe he will invite you to his Polo booth."
+    },
+    {
+      "time": "00:00:54",
+      "timestamp": 54.0,
+      "text": "That's where the real business happens."
+    },
+    {
+      "time": "00:00:56",
+      "timestamp": 56.0,
+      "text": "Yeah, thanks, but next time maybe we just don't need all the heavy reactions."
+    },
+    {
+      "time": "00:01:00",
+      "timestamp": 60.0,
+      "text": "I don't always catch that kind of evil."
+    },
+    {
+      "time": "00:01:02",
+      "timestamp": 62.0,
+      "text": "No, your English is pretty long, Chinese."
+    },
+    {
+      "time": "00:01:04",
+      "timestamp": 64.0,
+      "text": "Just keep working hard, yeah?"
+    },
+    {
+      "time": "00:01:06",
+      "timestamp": 66.0,
+      "text": "You'll get there."
+    },
+    {
+      "time": "00:01:08",
+      "timestamp": 68.0,
+      "text": "You're Roxy, Mark's on the patio, you wanna come?"
+    },
+    {
+      "time": "00:01:10",
+      "timestamp": 70.0,
+      "text": "You're in love to see you."
+    },
+    {
+      "time": "00:01:12",
+      "timestamp": 72.0,
+      "text": "Comey, what's that?"
+    },
+    {
+      "time": "00:01:14",
+      "timestamp": 74.0,
+      "text": "Roxy, Roxy, Roxy, Roxy. What took you so long?"
+    },
+    {
+      "time": "00:01:16",
+      "timestamp": 76.0,
+      "text": "Yeah, I'm just putting on some sound screens, you guys need some."
+    },
+    {
+      "time": "00:01:18",
+      "timestamp": 78.0,
+      "text": "Oh, that's a secret for ages, don't age."
+    },
+    {
+      "time": "00:01:20",
+      "timestamp": 80.0,
+      "text": "Oh, how cute."
+    },
+    {
+      "time": "00:01:22",
+      "timestamp": 82.0,
+      "text": "What if you don't wear it, you get photo-aging."
+    },
+    {
+      "time": "00:01:24",
+      "timestamp": 84.0,
+      "text": "And you would tell like a lobster?"
+    },
+    {
+      "time": "00:01:26",
+      "timestamp": 86.0,
+      "text": "Skin cancers and everything."
+    },
+    {
+      "time": "00:01:28",
+      "timestamp": 88.0,
+      "text": "LaRia, you'll be perfect."
+    },
+    {
+      "time": "00:01:30",
+      "timestamp": 90.0,
+      "text": "You should try it."
+    },
+    {
+      "time": "00:01:32",
+      "timestamp": 92.0,
+      "text": "That's a shame though."
+    },
+    {
+      "time": "00:01:34",
+      "timestamp": 94.0,
+      "text": "You want to survive the SOB?"
+    },
+    {
+      "time": "00:01:36",
+      "timestamp": 96.0,
+      "text": "What?"
+    },
+    {
+      "time": "00:01:38",
+      "timestamp": 98.0,
+      "text": "Fund, oceans and beers."
+    },
+    {
+      "time": "00:01:40",
+      "timestamp": 100.0,
+      "text": "I just saw boys boring weekend."
+    },
+    {
+      "time": "00:01:42",
+      "timestamp": 102.0,
+      "text": "Since you're so scared of sun, I'm gonna we should protect your delicate skin."
+    },
+    {
+      "time": "00:01:44",
+      "timestamp": 104.0,
+      "text": "But you're sure."
+    },
+    {
+      "time": "00:01:46",
+      "timestamp": 106.0,
+      "text": "You know, Mark, last time somebody was saying that you look like my grandpa."
+    },
+    {
+      "time": "00:01:50",
+      "timestamp": 110.0,
+      "text": "For where is?"
+    },
+    {
+      "time": "00:01:52",
+      "timestamp": 112.0,
+      "text": "Right"
+    },
+    {
+      "time": "00:01:53",
+      "timestamp": 113.0,
+      "text": "And this one has high protection."
+    },
+    {
+      "time": "00:01:55",
+      "timestamp": 115.0,
+      "text": "Once wipe and done, I use it for commuting."
+    },
+    {
+      "time": "00:01:58",
+      "timestamp": 118.0,
+      "text": "I can use it for an outdoor beach party too."
+    },
+    {
+      "time": "00:02:00",
+      "timestamp": 120.0,
+      "text": "No problem."
+    },
+    {
+      "time": "00:02:01",
+      "timestamp": 121.0,
+      "text": "After all, this is your French national brand."
+    },
+    {
+      "time": "00:02:04",
+      "timestamp": 124.0,
+      "text": "I'm learning your culture."
+    },
+    {
+      "time": "00:02:05",
+      "timestamp": 125.0,
+      "text": "Alright."
+    },
+    {
+      "time": "00:02:06",
+      "timestamp": 126.0,
+      "text": "Oh, I've run a few extras."
+    },
+    {
+      "time": "00:02:08",
+      "timestamp": 128.0,
+      "text": "It's dressed really smoothly and friends really quickly."
+    },
+    {
+      "time": "00:02:10",
+      "timestamp": 130.0,
+      "text": "Just imagine in that."
+    },
+    {
+      "time": "00:02:11",
+      "timestamp": 131.0,
+      "text": "You gotta find this on your girlfriend's back."
+    },
+    {
+      "time": "00:02:14",
+      "timestamp": 134.0,
+      "text": "Oh, already feel excited?"
+    },
+    {
+      "time": "00:02:16",
+      "timestamp": 136.0,
+      "text": "So, if anything project related, please include me anywhere you go."
+    },
+    {
+      "time": "00:02:21",
+      "timestamp": 141.0,
+      "text": "Yeah, sure, sure, sure."
+    },
+    {
+      "time": "00:02:22",
+      "timestamp": 142.0,
+      "text": "What's the progress on this project?"
+    },
+    {
+      "time": "00:02:24",
+      "timestamp": 144.0,
+      "text": "So,we're still waiting for the client's email confirmation after last week."
+    },
+    {
+      "time": "00:02:27",
+      "timestamp": 147.0,
+      "text": "I prepared plan A and plan B as well."
+    },
+    {
+      "time": "00:02:30",
+      "timestamp": 150.0,
+      "text": "By the way, Mark said okay."
+    },
+    {
+      "time": "00:02:32",
+      "timestamp": 152.0,
+      "text": "I'm sorry, when did it happen?"
+    },
+    {
+      "time": "00:02:34",
+      "timestamp": 154.0,
+      "text": "I why didn't I know?"
+    },
+    {
+      "time": "00:02:35",
+      "timestamp": 155.0,
+      "text": "I was preparing for the backup plan for a whole weekend."
+    },
+    {
+      "time": "00:02:38",
+      "timestamp": 158.0,
+      "text": "Well,Roxy,don't be a mess."
+    },
+    {
+      "time": "00:02:40",
+      "timestamp": 160.0,
+      "text": "Oh,okay."
+    },
+    {
+      "time": "00:02:41",
+      "timestamp": 161.0,
+      "text": "Mark invited me over for SOB."
+    },
+    {
+      "time": "00:02:43",
+      "timestamp": 163.0,
+      "text": "We talked about WOS and then had a little GNT and then we signed a deal."
+    },
+    {
+      "time": "00:02:47",
+      "timestamp": 167.0,
+      "text": "That's it."
+    },
+    {
+      "time": "00:02:49",
+      "timestamp": 169.0,
+      "text": "What's up with your MVations?"
+    },
+    {
+      "time": "00:02:50",
+      "timestamp": 170.0,
+      "text": "Didn't I say it's project related?"
+    },
+    {
+      "time": "00:02:52",
+      "timestamp": 172.0,
+      "text": "You should loop me in."
+    },
+    {
+      "time": "00:02:53",
+      "timestamp": 173.0,
+      "text": "Now the deal is done without contract."
+    },
+    {
+      "time": "00:02:55",
+      "timestamp": 175.0,
+      "text": "Do you know how big of a risk that we're in?"
+    },
+    {
+      "time": "00:02:57",
+      "timestamp": 177.0,
+      "text": "No,no,no,no,sh,come down."
+    },
+    {
+      "time": "00:02:59",
+      "timestamp": 179.0,
+      "text": "That's how we do things here."
+    },
+    {
+      "time": "00:03:01",
+      "timestamp": 181.0,
+      "text": "You're not in China."
+    },
+    {
+      "time": "00:03:02",
+      "timestamp": 182.0,
+      "text": "You don't have to be scared."
+    },
+    {
+      "time": "00:03:03",
+      "timestamp": 183.0,
+      "text": "I was protecting you."
+    },
+    {
+      "time": "00:03:05",
+      "timestamp": 185.0,
+      "text": "We're just getting sun."
+    },
+    {
+      "time": "00:03:06",
+      "timestamp": 186.0,
+      "text": "Oh,you're playing like this."
+    },
+    {
+      "time": "00:03:07",
+      "timestamp": 187.0,
+      "text": "Shropsy you need to calm down."
+    },
+    {
+      "time": "00:03:09",
+      "timestamp": 189.0,
+      "text": "There are other people working and we are in a professional environment."
+    },
+    {
+      "time": "00:03:13",
+      "timestamp": 193.0,
+      "text": "Did you just put it on the highest group?"
+    },
+    {
+      "time": "00:03:15",
+      "timestamp": 195.0,
+      "text": "Ctrl yourself."
+    },
+    {
+      "time": "00:03:16",
+      "timestamp": 196.0,
+      "text": "Okay."
+    },
+    {
+      "time": "00:03:17",
+      "timestamp": 197.0,
+      "text": "Naijou,Naijou,Naijou."
+    },
+    {
+      "time": "00:03:19",
+      "timestamp": 199.0,
+      "text": "That's why I could do this."
+    },
+    {
+      "time": "00:03:20",
+      "timestamp": 200.0,
+      "text": "Let's stop pretending this is cultural."
+    },
+    {
+      "time": "00:03:22",
+      "timestamp": 202.0,
+      "text": "You're just scared."
+    },
+    {
+      "time": "00:03:23",
+      "timestamp": 203.0,
+      "text": "You're so scared that my school is better than yours."
+    },
+    {
+      "time": "00:03:25",
+      "timestamp": 205.0,
+      "text": "My performance score is better than yours."
+    },
+    {
+      "time": "00:03:27",
+      "timestamp": 207.0,
+      "text": "So what does it make you a new person?"
+    },
+    {
+      "time": "00:03:29",
+      "timestamp": 209.0,
+      "text": "That's why you hide behind the smell and try to edge me out."
+    },
+    {
+      "time": "00:03:33",
+      "timestamp": 213.0,
+      "text": "You are confusing me."
+    },
+    {
+      "time": "00:03:34",
+      "timestamp": 214.0,
+      "text": "Remember I just said that you're my favorite Chinese."
+    },
+    {
+      "time": "00:03:37",
+      "timestamp": 217.0,
+      "text": "Did you listen?"
+    },
+    {
+      "time": "00:03:38",
+      "timestamp": 218.0,
+      "text": "L-L-Listen."
+    },
+    {
+      "time": "00:03:39",
+      "timestamp": 219.0,
+      "text": "You are D-I-C-K."
+    },
+    {
+      "time": "00:03:41",
+      "timestamp": 221.0,
+      "text": "So what?"
+    },
+    {
+      "time": "00:03:42",
+      "timestamp": 222.0,
+      "text": "Dilocation instead of competent knowledge."
+    },
+    {
+      "time": "00:03:44",
+      "timestamp": 224.0,
+      "text": "You are L-A-M-E."
+    },
+    {
+      "time": "00:03:47",
+      "timestamp": 227.0,
+      "text": "Lack of action,Lack of J-A-M-E."
+    },
+    {
+      "time": "00:03:49",
+      "timestamp": 229.0,
+      "text": "Yes."
+    },
+    {
+      "time": "00:03:50",
+      "timestamp": 230.0,
+      "text": "You are P-I-G."
+    },
+    {
+      "time": "00:03:52",
+      "timestamp": 232.0,
+      "text": "Panochio,X-N-R-I-S."
+    },
+    {
+      "time": "00:03:53",
+      "timestamp": 233.0,
+      "text": "And GROPHI."
+    },
+    {
+      "time": "00:03:54",
+      "timestamp": 234.0,
+      "text": "Am I working hard enough for your language?"
+    },
+    {
+      "time": "00:03:57",
+      "timestamp": 237.0,
+      "text": "Right,I'm going out."
+    },
+    {
+      "time": "00:03:58",
+      "timestamp": 238.0,
+      "text": "No,no,no,no,no."
+    },
+    {
+      "time": "00:03:59",
+      "timestamp": 239.0,
+      "text": "With my Chinese client,"
+    },
+    {
+      "time": "00:04:01",
+      "timestamp": 241.0,
+      "text": "You know what's big Chinese."
+    },
+    {
+      "time": "00:04:02",
+      "timestamp": 242.0,
+      "text": "So I won't bother you."
+    },
+    {
+      "time": "00:04:03",
+      "timestamp": 243.0,
+      "text": "See you next Tuesday."
+    },
+    {
+      "time": "00:04:05",
+      "timestamp": 245.0,
+      "text": "Figure your language."
+    },
+    {
+      "time": "00:04:06",
+      "timestamp": 246.0,
+      "text": "Bye."
+    }
+  ],
+  "report": {
+    "overall_score": 85,
+    "pressure_level": "高",
+    "strategy_effectiveness": {
+      "进攻技巧": 70,
+      "防守技巧": 90,
+      "情绪控制": 75
+    },
+    "key_findings": [
+      "Nigel通过构建基于行话、内部文化和种族刻板印象的‘信息壁垒’，系统性地排斥和边缘化新同事Roxy，以维持其非正式权力地位。",
+      "Roxy从初期的困惑与容忍，逐渐转变为直接、犀利的对抗，通过逻辑质问、风险提示和语言游戏（拼写反击）成功打破了Nigel的操控框架，但情绪积累后爆发可能带来‘难相处’的标签风险。",
+      "管理者Mark在冲突中严重缺位，其‘调和型’风格流于表面，未能制止歧视行为、建立公平流程，反而通过参与私下交易纵容了不公，导致团队信任崩塌和管理权威受损。"
+    ],
+    "learning_points": [
+      "在遭遇模糊沟通和行话壁垒时，坚持‘明确提问’和‘要求具体解释’是打破信息不对称、维护专业边界的关键策略。",
+      "当面对种族或文化刻板印象时，直接指出其不专业性（如‘这与我的能力无关’）比沉默或单纯情绪反应更有效，但需注意场合和方式。",
+      "管理者在团队冲突中必须超越‘表面调和’，需明确支持公平原则、制止不当行为，并建立透明的决策流程，否则将丧失下属信任并加剧团队分裂。"
+    ],
+    "improvement_suggestions": [
+      "对Roxy：在初期可更早、更冷静地设定边界（例如：‘为了项目顺利，我们需要明确TMZ、B&B的具体含义’），避免情绪积累至爆发点；同时，可寻求更高层或HR的正式支持，而非仅依赖失职的直接上司Mark。",
+      "对Mark：必须立即采取行动：1）明确要求Nigel使用清晰、专业的沟通方式；2）将Roxy正式纳入所有关键决策循环；3）就种族刻板印象言论进行私下严肃谈话；4）建立团队沟通规范，杜绝私下交易。",
+      "对Nigel：需意识到其排外行为带来的团队风险和法律风险（歧视指控），建议接受多元化培训，学习将‘内部知识’转化为可共享的专业流程，而非权力工具。"
+    ],
+    "battle_summary": "这是一场新员工Roxy以专业逻辑和直接对抗，挑战资深员工Nigel基于行话壁垒和种族刻板印象构建的非正式权力体系的斗争，最终暴露了管理者Mark的失职与团队深层的不公文化。"
+  },
+  "created_at": "2026-04-06T21:22:11.323956"
+}

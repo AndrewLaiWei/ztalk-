@@ -443,6 +443,7 @@ body {
 .tag-power { background: #FEE2E2; color: #DC2626; }
 .tag-warning { background: #FEF3C7; color: #D97706; }
 .tag-info { background: #DBEAFE; color: #2563EB; }
+.tag-purple { background: #F3E8FF; color: #7C3AED; }
 
 .phrase-actions {
   display: flex;
@@ -608,6 +609,38 @@ body {
   margin-top: 12px;
 }
 </style>
+<script>
+// 内联 API 配置 - 避免外部文件加载失败
+const API_CONFIG = {
+  dev: {
+    BASE_URL: 'http://localhost:8000',
+    WS_URL: 'ws://localhost:8000'
+  },
+  prod: {
+    BASE_URL: window.location.origin,
+    WS_URL: window.location.protocol === 'https:' ? 'wss://' + window.location.host : 'ws://' + window.location.host
+  },
+  getConfig() {
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      return this.prod;
+    }
+    return this.dev;
+  },
+  endpoints: {
+    upload: '/api/upload',
+    analyze: '/api/analyze/',
+    status: '/api/status/',
+    result: '/api/result/',
+    websocket: '/ws/'
+  },
+  getUrl(endpoint) {
+    return this.getConfig().BASE_URL + endpoint;
+  },
+  getWsUrl(endpoint) {
+    return this.getConfig().WS_URL + endpoint;
+  }
+};
+</script>
 </head>
 <body>
 
@@ -732,6 +765,8 @@ body {
       <button class="tab-btn active" onclick="switchTab('phrases')">💬 话术</button>
       <button class="tab-btn" onclick="switchTab('counters')">⚡ 反击</button>
       <button class="tab-btn" onclick="switchTab('timeline')">⏱️ 时间轴</button>
+      <button class="tab-btn" onclick="switchTab('personality')">🎭 人格</button>
+      <button class="tab-btn" onclick="switchTab('relationship')">🔗 关系</button>
       <button class="tab-btn" onclick="switchTab('analysis')">📊 分析</button>
     </div>
 
@@ -750,32 +785,46 @@ body {
       <div id="timeline-list"></div>
     </div>
 
+    <!-- 人格分析 Tab -->
+    <div class="tab-content" id="tab-personality">
+      <div id="personality-list"></div>
+    </div>
+
+    <!-- 关系矩阵 Tab -->
+    <div class="tab-content" id="tab-relationship">
+      <div id="relationship-list"></div>
+    </div>
+
     <!-- 分析报告 Tab -->
     <div class="tab-content" id="tab-analysis">
       <div class="analysis-card">
         <div class="analysis-title">🎯 整体评价</div>
         <div class="analysis-item">
           <span class="analysis-label">压力指数</span>
-          <span class="analysis-value">高</span>
+          <span class="analysis-value" id="pressure-level">-</span>
         </div>
         <div class="analysis-item">
           <span class="analysis-label">应对得分</span>
-          <span class="analysis-value">72/100</span>
+          <span class="analysis-value" id="overall-score">-</span>
         </div>
         <div class="progress-bar" style="margin-top: 8px;">
-          <div class="progress-fill" style="width: 72%"></div>
+          <div class="progress-fill" id="score-progress" style="width: 0%"></div>
         </div>
       </div>
 
       <div class="analysis-card">
+        <div class="analysis-title">📋 关键发现</div>
+        <div id="key-findings"></div>
+      </div>
+
+      <div class="analysis-card">
         <div class="analysis-title">💡 学习建议</div>
-        <div class="analysis-item" style="display: block; padding: 0; border: none;">
-          <p style="font-size: 13px; color: var(--text2); line-height: 1.6;">
-            1. 对方使用了"模糊威胁"话术，可直接要求对方明确诉求<br><br>
-            2. 在对方陈述观点后，用"您的意思是...对吗？"确认，避免误解<br><br>
-            3. 当对方情绪激动时，保持沉默反而更有利
-          </p>
-        </div>
+        <div id="learning-suggestions"></div>
+      </div>
+
+      <div class="analysis-card">
+        <div class="analysis-title">⚔️ 总结</div>
+        <div id="battle-summary" style="font-size: 13px; color: var(--text2); line-height: 1.6;"></div>
       </div>
 
       <button class="restart-btn" onclick="restart()">🔄 重新上传视频</button>
@@ -866,7 +915,16 @@ function formatDuration(seconds) {
 }
 
 // 开始分析
-function startAnalysis() {
+async function startAnalysis() {
+  const fileInput = document.getElementById('file-input');
+  const file = fileInput.files[0];
+  
+  if (!file) {
+    alert('请先选择视频文件');
+    return;
+  }
+
+  // 显示进度页
   document.getElementById('upload-zone').style.display = 'none';
   document.getElementById('file-selected').style.display = 'none';
   document.getElementById('analyze-btn').style.display = 'none';
@@ -876,60 +934,298 @@ function startAnalysis() {
   const progressCircle = document.getElementById('progress-circle');
   const progressPercent = document.getElementById('progress-percent');
   const progressTitle = document.getElementById('progress-title');
-  const steps = [
-    { text: '正在读取视频文件...', time: 500 },
-    { text: '提取音视频轨道', time: 1000 },
-    { text: 'Whisper 语音识别中...', time: 1800 },
-    { text: '分离说话人声音', time: 2500 },
-    { text: '提取对话文本', time: 3000 },
-    { text: '分析话术特征', time: 3600 },
-    { text: '生成反击话术', time: 4200 },
-    { text: '完成分析', time: 4500, done: true },
-  ];
-  
-  let completed = 0;
-  const totalSteps = steps.length;
-  
-  steps.forEach((step, i) => {
-    setTimeout(() => {
-      const line = document.createElement('div');
-      line.className = 'log-line' + (step.done ? ' done' : '');
-      line.textContent = step.text;
-      logs.appendChild(line);
-      logs.scrollTop = logs.scrollHeight;
+
+  try {
+    // 1️⃣ 上传视频
+    addLog(logs, '正在上传视频...', false);
+    const uploadFormData = new FormData();
+    uploadFormData.append('file', file);
+    
+    const uploadRes = await fetch(API_CONFIG.getUrl(API_CONFIG.endpoints.upload), {
+      method: 'POST',
+      body: uploadFormData
+    });
+    const uploadData = await uploadRes.json();
+    
+    if (uploadData.code !== 0) {
+      throw new Error(uploadData.detail || '上传失败');
+    }
+    
+    const taskId = uploadData.data.task_id;
+    addLog(logs, `✓ 上传成功 (${uploadData.data.file_size_mb} MB)`, true);
+
+    // 2️⃣ 连接 WebSocket 监听进度
+    addLog(logs, '正在连接AI分析服务...', false);
+    const ws = new WebSocket(API_CONFIG.getWsUrl(API_CONFIG.endpoints.websocket + taskId));
+    
+    ws.onopen = () => {
+      addLog(logs, '✓ 已连接，开始深度分析...', true);
+      // 发送 ping 保持连接
+      ws.send('ping');
+    };
+    
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
       
-      completed++;
-      const percent = Math.round((completed / totalSteps) * 100);
+      // 忽略心跳响应
+      if (data.type === 'pong' || data.type === 'connected') {
+        return;
+      }
+      
+      addLog(logs, data.message, false);
+      
+      // 更新进度
+      const percent = data.progress || 0;
       const offset = 314 - (314 * percent / 100);
       progressCircle.style.strokeDashoffset = offset;
       progressPercent.textContent = percent + '%';
+      progressTitle.textContent = data.step_name || '处理中...';
       
-      if (step.done) {
-        setTimeout(() => showResult(), 500);
+      // 分析完成 - data 字段包含完整结果
+      if (data.progress >= 100 && data.data) {
+        ws.close();
+        setTimeout(() => showResult(data.data), 500);
+      } else if (data.progress >= 100 && !data.data) {
+        // 进度100但结果还没到，延迟检查
+        setTimeout(() => {
+          ws.close();
+          // 尝试从结果API获取
+          fetchResult(taskId);
+        }, 1000);
       }
-    }, step.time);
+    };
+    
+    ws.onerror = (error) => {
+      addLog(logs, '❌ WebSocket 连接失败: ' + error.type, false);
+    };
+    
+    ws.onclose = () => {
+      addLog(logs, '✓ 连接已关闭', true);
+    };
+
+    // 3️⃣ 启动分析
+    await fetch(API_CONFIG.getUrl(API_CONFIG.endpoints.analyze + taskId), {
+      method: 'POST'
+    });
+
+  } catch (err) {
+    addLog(logs, '❌ 错误: ' + err.message, false);
+    progressTitle.textContent = '分析失败';
+  }
+}
+
+// 备用：直接从API获取结果
+async function fetchResult(taskId) {
+  const logs = document.getElementById('terminal-log');
+  addLog(logs, '正在获取分析结果...', false);
+  
+  try {
+    const response = await fetch(API_CONFIG.getUrl(API_CONFIG.endpoints.result + taskId));
+    const result = await response.json();
+    
+    if (result.code === 0 && result.data) {
+      addLog(logs, '✓ 结果获取成功', true);
+      showResult(result.data);
+    } else {
+      addLog(logs, '⚠️ 结果尚未生成，请稍后重试', false);
+    }
+  } catch (err) {
+    addLog(logs, '❌ 获取结果失败: ' + err.message, false);
+  }
+}
+
+function addLog(container, text, done) {
+  const line = document.createElement('div');
+  line.className = 'log-line' + (done ? ' done' : '');
+  line.textContent = text;
+  container.appendChild(line);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showResult(data) {
+  document.getElementById('progress-page').classList.remove('show');
+  document.getElementById('result-page').classList.add('show');
+  
+  // 使用真实数据，如果没有就用示例
+  const phrases = (data?.phrases && data.phrases.length > 0) ? data.phrases : samplePhrases;
+  const counters = (data?.counters && data.counters.length > 0) ? data.counters : sampleCounters;
+  const timeline = (data?.timeline && data.timeline.length > 0) ? data.timeline : sampleTimeline;
+  const personalities = data?.personalities || [];
+  const relationships = data?.relationships || [];
+  const report = data?.report;
+  
+  // 更新统计数字
+  document.getElementById('stat-phrases').textContent = phrases.length;
+  document.getElementById('stat-counters').textContent = counters.length;
+  document.getElementById('stat-scenes').textContent = timeline.length;
+  
+  // 渲染各模块
+  renderPhrases(phrases);
+  renderCounters(counters);
+  renderTimeline(timeline);
+  renderPersonalities(personalities);
+  renderRelationships(relationships);
+  renderReport(report);
+  
+  console.log('[嘴替] 分析完成:', {
+    phrases: phrases.length,
+    counters: counters.length,
+    timeline: timeline.length,
+    personalities: personalities.length,
+    relationships: relationships.length,
+    report: !!report
   });
 }
 
-function showResult() {
-  document.getElementById('progress-page').classList.remove('show');
-  document.getElementById('result-page').classList.add('show');
-  renderPhrases();
-  renderCounters();
-  renderTimeline();
+function renderPersonalities(personalities) {
+  const container = document.getElementById('personality-list');
+  if (!personalities || personalities.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:var(--text2);padding:40px;">暂无人格分析数据</div>';
+    return;
+  }
+  
+  container.innerHTML = personalities.map(p => `
+    <div class="phrase-card" style="margin-bottom:16px;">
+      <div class="phrase-header">
+        <span class="phrase-time">${p.name || p.id || '未知'}</span>
+        <span class="phrase-tag tag-info">${p.personality_type || '未知类型'}</span>
+      </div>
+      <div style="margin:10px 0;">
+        <strong>沟通风格：</strong>
+        <span style="color:var(--text2);font-size:13px;">${p.communication_style || '未分析'}</span>
+      </div>
+      ${p.emotional_traits && p.emotional_traits.length > 0 ? `
+      <div style="margin:8px 0;">
+        <strong>情绪特征：</strong>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+          ${p.emotional_traits.map(t => `<span class="phrase-tag tag-warning">${t}</span>`).join('')}
+        </div>
+      </div>
+      ` : ''}
+      ${p.power_position ? `
+      <div style="margin:8px 0;">
+        <strong>权力位置：</strong>
+        <span style="color:var(--text2);">${p.power_position}</span>
+      </div>
+      ` : ''}
+      ${p.communication_techniques && p.communication_techniques.length > 0 ? `
+      <div style="margin:8px 0;">
+        <strong>沟通技巧：</strong>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+          ${p.communication_techniques.map(t => `<span class="phrase-tag tag-purple">${t}</span>`).join('')}
+        </div>
+      </div>
+      ` : ''}
+    </div>
+  `).join('');
 }
 
-function renderPhrases() {
+function renderRelationships(relationships) {
+  const container = document.getElementById('relationship-list');
+  if (!relationships || relationships.length === 0) {
+    container.innerHTML = '<div style="text-align:center;color:var(--text2);padding:40px;">暂无关系分析数据</div>';
+    return;
+  }
+  
+  container.innerHTML = relationships.map(r => `
+    <div class="phrase-card" style="margin-bottom:16px;">
+      <div class="phrase-header">
+        <span class="phrase-time">${r.from || '?'}</span>
+        <span style="color:var(--text2);margin:0 8px;">→</span>
+        <span class="phrase-time">${r.to || '?'}</span>
+        <span class="phrase-tag ${r.type && r.type.includes('对立') ? 'tag-warning' : 'tag-info'}">${r.type || '未知'}</span>
+      </div>
+      ${r.relationship_dynamics ? `
+      <div style="margin:10px 0;font-size:13px;color:var(--text2);line-height:1.6;">
+        <strong>关系动态：</strong><br>
+        ${r.relationship_dynamics}
+      </div>
+      ` : ''}
+      ${r.conflict_points && r.conflict_points.length > 0 ? `
+      <div style="margin:8px 0;">
+        <strong>冲突点：</strong>
+        <ul style="margin:6px 0;padding-left:18px;font-size:12px;color:var(--text2);">
+          ${r.conflict_points.map(c => `<li style="margin:4px 0;">${c}</li>`).join('')}
+        </ul>
+      </div>
+      ` : ''}
+    </div>
+  `).join('');
+}
+
+function renderReport(report) {
+  // 压力指数
+  const pressureEl = document.getElementById('pressure-level');
+  if (pressureEl) {
+    pressureEl.textContent = report?.pressure_level || '-';
+  }
+  
+  // 整体得分
+  const scoreEl = document.getElementById('overall-score');
+  const progressEl = document.getElementById('score-progress');
+  if (scoreEl) {
+    scoreEl.textContent = (report?.overall_score || '-') + '/100';
+  }
+  if (progressEl) {
+    progressEl.style.width = (report?.overall_score || 0) + '%';
+  }
+  
+  // 关键发现
+  const findingsEl = document.getElementById('key-findings');
+  if (findingsEl) {
+    const findings = report?.key_findings || [];
+    if (findings.length > 0) {
+      findingsEl.innerHTML = findings.map((f, i) => 
+        `<p style="font-size:13px;color:var(--text2);line-height:1.6;margin:8px 0;">
+          <span style="color:var(--primary);font-weight:bold;">${i + 1}.</span> ${f}
+        </p>`
+      ).join('');
+    } else {
+      findingsEl.innerHTML = '<p style="font-size:13px;color:var(--text2);">暂无关键发现</p>';
+    }
+  }
+  
+  // 学习建议
+  const suggestionsEl = document.getElementById('learning-suggestions');
+  if (suggestionsEl) {
+    const suggestions = report?.improvement_suggestions || report?.learning_points || [];
+    if (suggestions.length > 0) {
+      suggestionsEl.innerHTML = suggestions.map((s, i) => 
+        `<p style="font-size:13px;color:var(--text2);line-height:1.6;margin:8px 0;">
+          <span style="color:var(--orange);font-weight:bold;">${i + 1}.</span> ${s}
+        </p>`
+      ).join('');
+    } else {
+      suggestionsEl.innerHTML = '<p style="font-size:13px;color:var(--text2);">暂无学习建议</p>';
+    }
+  }
+  
+  // 总结
+  const summaryEl = document.getElementById('battle-summary');
+  if (summaryEl) {
+    summaryEl.innerHTML = report?.battle_summary || '暂无总结';
+  }
+}
+
+
+
+function renderPhrases(data) {
   const container = document.getElementById('phrases-list');
-  container.innerHTML = samplePhrases.map(p => `
+  const phrases = (data && data.length > 0) ? data : samplePhrases;
+  
+  container.innerHTML = phrases.map(p => `
     <div class="phrase-card">
       <div class="phrase-header">
-        <span class="phrase-time">⏱️ ${p.time}</span>
-        <span class="phrase-speaker">${p.speaker}</span>
+        <span class="phrase-time">⏱️ ${p.time_range || p.time || ''}</span>
+        <span class="phrase-speaker">${p.speaker || ''}</span>
       </div>
-      <div class="phrase-content">"${p.content}"</div>
+      <div class="phrase-content">"${p.original_phrase || p.content || ''}"</div>
+      <div class="phrase-hidden" style="color: #888; font-size: 13px; margin: 8px 0;">
+        💡 潜台词: ${p.hidden_meaning || ''}
+      </div>
       <div>
-        ${p.tags.map(t => `<span class="phrase-tag tag-warning">${t}</span>`).join('')}
+        <span class="phrase-tag tag-warning">${p.category || ''}</span>
+        <span class="phrase-tag tag-info">${p.power_level || ''}</span>
       </div>
       <div class="phrase-actions">
         <button class="action-btn copy" onclick="copyText(this)">📋 复制</button>
@@ -939,14 +1235,17 @@ function renderPhrases() {
   `).join('');
 }
 
-function renderCounters() {
+function renderCounters(data) {
   const container = document.getElementById('counters-list');
-  container.innerHTML = sampleCounters.map(c => `
+  const counters = (data && data.length > 0) ? data : sampleCounters;
+  
+  container.innerHTML = counters.map(c => `
     <div class="counter-card">
       <div class="counter-title">💬 对方说</div>
-      <div class="counter-text" style="color: var(--text2); font-size: 13px; margin-bottom: 12px;">"${c.phrase}"</div>
+      <div class="counter-text" style="color: var(--text2); font-size: 13px; margin-bottom: 12px;">"${c.original_phrase || c.phrase || ''}"</div>
       <div class="counter-title">⚡ 反击话术</div>
-      <div class="counter-text">"${c.counter}"</div>
+      <div class="counter-text">"${c.counter_phrase || c.counter || ''}"</div>
+      <div style="color: #888; font-size: 12px; margin-top: 8px;">策略: ${c.strategy || ''}</div>
       <div class="phrase-actions">
         <button class="action-btn copy" onclick="copyText(this)">📋 复制</button>
       </div>
@@ -954,14 +1253,16 @@ function renderCounters() {
   `).join('');
 }
 
-function renderTimeline() {
+function renderTimeline(data) {
   const container = document.getElementById('timeline-list');
+  const timelineData = (data && data.length > 0) ? data : sampleTimeline;
+  
   container.innerHTML = `
     <div class="timeline">
-      ${sampleTimeline.map(t => `
+      ${timelineData.map(t => `
         <div class="timeline-item">
-          <div class="timeline-time">${t.time}</div>
-          <div class="timeline-text">${t.text}</div>
+          <div class="timeline-time">${t.time || ''}</div>
+          <div class="timeline-text">${t.text || ''}</div>
         </div>
       `).join('')}
     </div>

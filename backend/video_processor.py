@@ -5,6 +5,7 @@
 
 import os
 import json
+import shutil
 import subprocess
 from pathlib import Path
 from typing import Optional, Dict, List
@@ -13,8 +14,14 @@ class VideoProcessor:
     """视频处理器 - 使用 FFmpeg"""
     
     def __init__(self):
-        self.ffprobe_path = "ffprobe"  # 系统安装的 ffprobe
-        self.ffmpeg_path = "ffmpeg"    # 系统安装的 ffmpeg
+        # 自动查找 ffmpeg/ffprobe 路径，避免 Windows 环境变量问题
+        self.ffmpeg_path = shutil.which("ffmpeg") or "ffmpeg"
+        self.ffprobe_path = shutil.which("ffprobe") or "ffprobe"
+        if not shutil.which("ffmpeg"):
+            print("⚠️  警告: 未找到 ffmpeg，请确认已安装并加入 PATH")
+        else:
+            print(f"✅ ffmpeg: {self.ffmpeg_path}")
+            print(f"✅ ffprobe: {self.ffprobe_path}")
     
     def get_video_info(self, video_path: str) -> Dict:
         """
@@ -117,9 +124,9 @@ class VideoProcessor:
         # 执行命令
         result = subprocess.run(
             cmd,
-            capture_output=True,
-            text=True,
-            stderr=subprocess.PIPE
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
         )
         
         if result.returncode != 0:

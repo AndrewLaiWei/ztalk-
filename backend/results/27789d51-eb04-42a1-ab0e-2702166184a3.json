@@ -1,0 +1,624 @@
+{
+  "task_id": "27789d51-eb04-42a1-ab0e-2702166184a3",
+  "status": "success",
+  "phrases": [
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "Hi everyone, I'm Roxy, the new manager. Whoa, your English is incredible. Where is it from? I learned it at school and they actually teach English in China. Oh, your accent is better than all the Asian people that are bad received.",
+      "time_range": "00:00:00",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "You're the new inter, right? No, I am the manager. Yo, Jessica, look at her. I'm vicious 20. Max. Please don't do it. I'm 30 and I am the new manager. She's got a whole routine going on. My name is Lao Tang and you can call me Roxy. Wow, an English name.",
+      "time_range": "00:00:11",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "You see, I'm professional. You know what? I'm going to call you Lee. I get you covered.",
+      "time_range": "00:00:26",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "Yo Lee, we order Chinese. Do you have any soy sauce on you? Why do you think I have soy sauce in office?",
+      "time_range": "00:00:32",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "Well, come on. Do I need to say more? Do you carry the guy around with you then? Whoa, Lee is so sensitive, guys. Just between you and me. Is he a week coming?",
+      "time_range": "00:00:36",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "I'll just shut up. I got you back.",
+      "time_range": "00:00:45",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "So, guys, trust me on this campaign. I know women better than anyone.",
+      "time_range": "00:00:48",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "Women are like advantage for Rari. You got to wax the body, shape the curves so everybody won't stop looking at it.",
+      "time_range": "00:00:53",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合上下文分析",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    }
+  ],
+  "counters": [
+    {
+      "original_phrase": "Hi everyone, I'm Roxy, the new manager. Whoa, your English is incredible. Where is it from? I learned it at school and they actually teach English in China. Oh, your accent is better than all the Asian people that are bad received.",
+      "counter_phrase": "Thanks. English is a global language, and proficiency comes from practice, not geography. I'd prefer we focus on the work at hand rather than making generalizations about accents.",
+      "strategy": "直接反击/转移",
+      "rationale": "直接指出其言论中的刻板印象和不当比较，将话题从个人评价转向工作专业性和对多样性的尊重，既维护了尊严，又设定了专业边界。"
+    },
+    {
+      "original_phrase": "You're the new inter, right? No, I am the manager. Yo, Jessica, look at her. I'm vicious 20. Max. Please don't do it. I'm 30 and I am the new manager. She's got a whole routine going on. My name is Lao Tang and you can call me Roxy. Wow, an English name.",
+      "counter_phrase": "My name is Lao Tang, and my title is Manager. Whether you use my given name or preferred name, I expect to be addressed with the respect my position warrants. Let's move on to the agenda.",
+      "strategy": "直接反击",
+      "rationale": "清晰、坚定地重申自己的身份和职位，要求对方给予基本尊重。直接设定沟通基调，避免陷入对方关于名字或年龄的无聊调侃，确立权威。"
+    },
+    {
+      "original_phrase": "You see, I'm professional. You know what? I'm going to call you Lee. I get you covered.",
+      "counter_phrase": "I appreciate the intention, but my name is Lao Tang. Using the correct name is a basic sign of professional respect. Please call me Lao Tang or Roxy.",
+      "strategy": "直接反击",
+      "rationale": "立即纠正对方随意更改自己名字的行为。将“使用正确称谓”与“专业尊重”直接挂钩，使其无理行为暴露在职业规范的审视下，无法以“开玩笑”或“照顾你”为借口。"
+    },
+    {
+      "original_phrase": "Yo Lee, we order Chinese. Do you have any soy sauce on you? Why do you think I have soy sauce in office?",
+      "counter_phrase": "That's a rather stereotypical assumption. I don't carry condiments to work, just like I assume you don't carry maple syrup or hamburgers. Shall we discuss the actual work topic now?",
+      "strategy": "幽默化解/反问",
+      "rationale": "用幽默类比揭示其问题背后的种族刻板印象，使其荒谬性不言自明。同时迅速将话题拉回工作，避免纠缠，展示了克制与专注。"
+    },
+    {
+      "original_phrase": "Well, come on. Do I need to say more? Do you carry the guy around with you then? Whoa, Lee is so sensitive, guys. Just between you and me. Is he a week coming?",
+      "counter_phrase": "Addressing stereotypes isn't sensitivity; it's professionalism. I'm here to contribute to the team's success, not to participate in or be the subject of off-topic and reductive comments. Let's keep our discussions productive.",
+      "strategy": "直接反击",
+      "rationale": "将“指出问题”重新定义为“专业行为”，反击对方“太敏感”的污名化策略。清晰声明自己的核心目的（工作贡献），并直接要求对话回归正轨，夺取对话主导权。"
+    },
+    {
+      "original_phrase": "I'll just shut up. I got you back.",
+      "counter_phrase": "This isn't about having my back or not. It's about ensuring our workplace communication is respectful and effective for everyone. I'm sure we can all agree on that standard.",
+      "strategy": "转移/直接反击",
+      "rationale": "拒绝接受对方将问题个人化（“got you back”）的框架，将其提升到团队沟通准则和职场文化的层面。使用“我们”的表述，将个人诉求转化为普遍原则，使其难以反驳。"
+    },
+    {
+      "original_phrase": "So, guys, trust me on this campaign. I know women better than anyone.",
+      "counter_phrase": "Effective campaigns are built on data, research, and diverse insights, not on any one person's assumed universal knowledge. Perhaps we can review the target demographic research and brainstorming notes from the team?",
+      "strategy": "转移/反问",
+      "rationale": "用客观的专业标准（数据、研究、团队智慧）来对抗其主观、傲慢的宣称（“比任何人都懂”）。通过提出具体的、可协作的下一步行动（回顾资料），将对话导向务实方向，削弱其空洞的断言。"
+    },
+    {
+      "original_phrase": "Women are like advantage for Rari. You got to wax the body, shape the curves so everybody won't stop looking at it.",
+      "counter_phrase": "That's an inappropriate and objectifying analogy for a professional setting. Our campaign should focus on empowering and connecting with women as consumers and individuals, not on reducing them to physical objects for gaze. I suggest we revisit the core strategy.",
+      "strategy": "直接反击",
+      "rationale": "明确、严肃地指出其言论的不当性质（物化、不专业），并立即提供正确的、以尊重和赋能为导向的替代框架。这不仅是否定，更是建设性地引导讨论回归正轨，展现了领导力和正确的价值观。"
+    }
+  ],
+  "personalities": [
+    {
+      "id": "speaker_1",
+      "name": "Roxy/Lee (新经理)",
+      "personality_type": "分析型/原则型",
+      "communication_style": "直接、理性、注重事实与专业边界，在受到冒犯时会明确反驳并维护尊严，沟通中强调逻辑与职业伦理",
+      "emotional_traits": [
+        "克制",
+        "受挫感",
+        "防御性",
+        "职业冷静",
+        "被冒犯时的愤怒"
+      ],
+      "power_position": "名义上位者（但被团队挑战）",
+      "communication_techniques": [
+        "事实澄清",
+        "边界设定",
+        "反问质疑",
+        "逻辑反驳",
+        "身份声明"
+      ],
+      "strengths": [
+        "专业坚持",
+        "逻辑清晰",
+        "敢于对抗偏见",
+        "维护职场尊严"
+      ],
+      "weaknesses": [
+        "在敌意环境中易被孤立",
+        "情绪可能被对手利用为“敏感”标签"
+      ]
+    },
+    {
+      "id": "speaker_2",
+      "name": "Max (挑衅同事)",
+      "personality_type": "支配型/嘲讽型",
+      "communication_style": "攻击性、嘲讽、充满微侵犯与种族/性别刻板印象，通过贬低他人建立群体主导权，使用玩笑包装恶意",
+      "emotional_traits": [
+        "挑衅",
+        "优越感",
+        "排他性",
+        "操控欲",
+        "团体表演欲"
+      ],
+      "power_position": "团体中的隐性上位者（通过联盟施压）",
+      "communication_techniques": [
+        "种族化调侃",
+        "性别物化语言",
+        "团体捆绑（“guys”）",
+        "恶意改名",
+        "人身攻击",
+        "gaslighting（指责对方敏感）"
+      ],
+      "strengths": [
+        "团体动员能力",
+        "快速建立内部联盟",
+        "熟练使用幽默作为攻击工具"
+      ],
+      "weaknesses": [
+        "严重缺乏职业素养",
+        "依赖偏见维系权威",
+        "易引发公开冲突"
+      ]
+    },
+    {
+      "id": "speaker_3",
+      "name": "Jessica/Sarah (其他同事)",
+      "personality_type": "顺从型/旁观型",
+      "communication_style": "时而附和挑衅者，时而试图缓和，但缺乏实质干预；在冲突中表现为被动参与或沉默默许",
+      "emotional_traits": [
+        "从众",
+        "尴尬",
+        "矛盾",
+        "避免直接冲突"
+      ],
+      "power_position": "平等者/旁观者（选择站在强势一方）",
+      "communication_techniques": [
+        "附和笑声",
+        "模糊调解（“Don't be so sensitive”）",
+        "转移话题",
+        "团体沉默压力"
+      ],
+      "strengths": [
+        "短期自保",
+        "维持表面和谐"
+      ],
+      "weaknesses": [
+        "纵容职场霸凌",
+        "缺乏道德勇气",
+        "强化toxic文化"
+      ]
+    },
+    {
+      "id": "speaker_4",
+      "name": "David (质疑者)",
+      "personality_type": "友好型/调和型",
+      "communication_style": "唯一尝试理性对话并质疑偏见逻辑的成员，但表达较温和，在群体压力下影响力有限",
+      "emotional_traits": [
+        "困惑",
+        "不满",
+        "试图理性沟通",
+        "挫败感"
+      ],
+      "power_position": "平等者（但被边缘化）",
+      "communication_techniques": [
+        "理性提问",
+        "价值观对比（“clients are people, not cars”）",
+        "弱化对抗语气"
+      ],
+      "strengths": [
+        "保持道德判断",
+        "尝试引入专业视角"
+      ],
+      "weaknesses": [
+        "未能有效制止霸凌",
+        "表达不够有力"
+      ]
+    },
+    {
+      "id": "speaker_5",
+      "name": "Mark (最后发言者)",
+      "personality_type": "对抗型/正义型",
+      "communication_style": "直接、愤怒、公开谴责种族歧视与能力质疑，使用尖锐反问揭露对方荒谬，是唯一彻底打破“玩笑”伪装的人",
+      "emotional_traits": [
+        "愤怒",
+        "正义感",
+        "蔑视",
+        "果断"
+      ],
+      "power_position": "平等者（但采取道德高位）",
+      "communication_techniques": [
+        "点名质问",
+        "揭露伪善",
+        "身份特权批判",
+        "使用粗话强化情绪冲击",
+        "事实指正（名字错误）"
+      ],
+      "strengths": [
+        "道德清晰",
+        "敢于正面挑战",
+        "有效解构偏见话语"
+      ],
+      "weaknesses": [
+        "情绪化表达可能被反诘",
+        "依赖单次爆发而非持续干预"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "speaker_1",
+      "to": "speaker_2",
+      "type": "名义上下级/实际对立",
+      "intimacy": 1,
+      "conflict_points": [
+        "身份不被承认（经理被误认为实习生）",
+        "种族刻板印象调侃（口音、亚洲人、酱油）",
+        "被恶意改名（Roxy/Lee）",
+        "专业能力被质疑",
+        "人身攻击（年龄、外貌）",
+        "沟通方式被标签化为“敏感”"
+      ],
+      "cooperation_opportunities": [
+        "在明确职业边界与尊重前提下，共同完成项目"
+      ],
+      "relationship_dynamics": "新经理Roxy试图建立权威，但遭遇Max基于种族偏见和性别刻板印象的系统性贬低与挑衅。Max通过团体捆绑、gaslighting（指责对方敏感）和人身攻击，试图瓦解Roxy的权威，将其边缘化为“敏感的外来者”。Roxy进行事实澄清和逻辑反驳，但陷入“证明自己”的被动防御。这是一场权力争夺，表面是个人冲突，实质是职业权威挑战与系统性偏见的对抗。"
+    },
+    {
+      "from": "speaker_1",
+      "to": "speaker_3",
+      "type": "上下级/疏离",
+      "intimacy": 3,
+      "conflict_points": [
+        "同事默许或附和Max的冒犯行为",
+        "未能给予新经理基本的尊重与支持",
+        "将冲突归因于Roxy的“敏感”"
+      ],
+      "cooperation_opportunities": [
+        "在David或Mark介入后，可能部分同事会重新评估立场，潜在形成工作协作"
+      ],
+      "relationship_dynamics": "Jessica/Sarah等同事构成了沉默的大多数或轻度附和者。他们通过笑声、模糊调解（如“Don‘t be so sensitive”）或沉默，间接强化了Max主导的toxic氛围，使Roxy的孤立感加剧。他们与Roxy的关系是疏离且不支持的，优先维护现有团体“和谐”（实为霸凌文化）而非正义或专业规范。"
+    },
+    {
+      "from": "speaker_1",
+      "to": "speaker_4",
+      "type": "潜在盟友/平级",
+      "intimacy": 5,
+      "conflict_points": [
+        "无明显直接冲突"
+      ],
+      "cooperation_opportunities": [
+        "在专业理念上一致（客户是人，注重效率与实质）",
+        "共同对抗团队中的非专业与物化倾向"
+      ],
+      "relationship_dynamics": "David是对话中少数尝试引入理性与专业视角的人。他质疑Max物化女性的提案，并指出“clients are people, not cars”，这与Roxy的专业理念潜在契合。虽然David的干预力度有限，但他构成了Roxy在敌对环境中可能的理解者与微弱支持点。关系动态是正向但未充分发展的潜在联盟。"
+    },
+    {
+      "from": "speaker_1",
+      "to": "speaker_5",
+      "type": "强力盟友/平级",
+      "intimacy": 7,
+      "conflict_points": [
+        "无明显直接冲突"
+      ],
+      "cooperation_opportunities": [
+        "共同公开挑战种族歧视与职业不公",
+        "维护职场尊严与专业伦理",
+        "可能联手整顿团队文化"
+      ],
+      "relationship_dynamics": "Mark在最后进行了强有力的干预，直接揭露Max的种族歧视行为（故意叫错名字）、能力质疑和管理失职。他公开为Roxy（及被误认的Sarah）辩护，并尖锐批判Max的特权（“being a white lady in a slit”）。Mark的行动打破了Roxy孤军奋战的局面，提供了关键的道德与话语支持。这是从旁观到直接结盟的转折点，关系动态是Roxy获得了一个公开、有力且愤怒的盟友。"
+    },
+    {
+      "from": "speaker_2",
+      "to": "speaker_3",
+      "type": "支配与从属/平级",
+      "intimacy": 8,
+      "conflict_points": [
+        "无明显冲突，Jessica/Sarah基本顺从或附和"
+      ],
+      "cooperation_opportunities": [
+        "维持现有团体内部的“默契”与排外文化",
+        "共同完成工作（但方式可能不专业）"
+      ],
+      "relationship_dynamics": "Max通过挑衅和“表演”主导团体氛围，Jessica/Sarah等同事通过附和、笑声或沉默默许其行为，构成了一个以Max为隐性领袖的排外小团体。这种关系基于共享的“内部人”身份和对“外人”（Roxy）的排斥。Max依赖他们的默许来强化自己的权威，而他们则通过顺从避免成为目标并维持团体归属感。这是一种有毒的共生关系。"
+    },
+    {
+      "from": "speaker_2",
+      "to": "speaker_4",
+      "type": "对立/平级",
+      "intimacy": 4,
+      "conflict_points": [
+        "专业理念冲突（物化女性 vs 客户是人）",
+        "价值观对立",
+        "David质疑Max的提案逻辑"
+      ],
+      "cooperation_opportunities": [
+        "较低，除非Max改变其非专业沟通方式"
+      ],
+      "relationship_dynamics": "David对Max的提案提出理性质疑，构成了微弱的专业对抗。Max可能将David视为“扫兴者”或“不懂幽默”，但David的挑战相对温和，未直接攻击Max本人，因此冲突未完全激化。Max仍主导话语权，但David的存在代表了团队内潜在的不认同声音。关系紧张但尚未爆发为直接个人冲突。"
+    },
+    {
+      "from": "speaker_2",
+      "to": "speaker_5",
+      "type": "公开敌对/平级",
+      "intimacy": 2,
+      "conflict_points": [
+        "被公开指控种族歧视",
+        "管理能力被质疑",
+        "个人特权被批判",
+        "行为被标记为不专业"
+      ],
+      "cooperation_opportunities": [
+        "几乎为零，除非一方发生根本性转变"
+      ],
+      "relationship_dynamics": "Mark的介入将冲突从Max对Roxy的个人霸凌，升级为关于职场伦理、种族平等和专业能力的公开道德审判。Mark直接、愤怒且尖锐地挑战了Max的权威基础（白人女性特权）和行为正当性。这彻底撕破了Max用“玩笑”伪装的攻击性，使其暴露在严重的职业操守质疑下。关系从Max的单方面支配急转为与Mark的公开敌对和道德劣势。"
+    },
+    {
+      "from": "speaker_4",
+      "to": "speaker_5",
+      "type": "理念同盟/平级",
+      "intimacy": 6,
+      "conflict_points": [
+        "无明显冲突"
+      ],
+      "cooperation_opportunities": [
+        "共同推动团队的专业化与去偏见化",
+        "支持Roxy建立健康的领导环境"
+      ],
+      "relationship_dynamics": "David和Mark都表现出对Max主导文化的不满和质疑，只是程度和方式不同。David是温和的理性质疑者，Mark是激烈的道德挑战者。他们在价值观上同盟（反对物化、重视专业、反对歧视），Mark的行动可以看作是David质疑的激进延伸。两人可能形成互补，David提供理性框架，Mark提供情绪冲击力，共同改变团队权力平衡。"
+    }
+  ],
+  "timeline": [
+    {
+      "time": "00:00:00",
+      "timestamp": 0.0,
+      "text": "Hi everyone, I'm Roxy, the new manager. Whoa, your English is incredible. Where is it from? I learned it at school and they actually teach English in China. Oh, your accent is better than all the Asian people that are bad received."
+    },
+    {
+      "time": "00:00:11",
+      "timestamp": 11.48,
+      "text": "You're the new inter, right? No, I am the manager. Yo, Jessica, look at her. I'm vicious 20. Max. Please don't do it. I'm 30 and I am the new manager. She's got a whole routine going on. My name is Lao Tang and you can call me Roxy. Wow, an English name."
+    },
+    {
+      "time": "00:00:26",
+      "timestamp": 26.68,
+      "text": "You see, I'm professional. You know what? I'm going to call you Lee. I get you covered."
+    },
+    {
+      "time": "00:00:32",
+      "timestamp": 32.12,
+      "text": "Yo Lee, we order Chinese. Do you have any soy sauce on you? Why do you think I have soy sauce in office?"
+    },
+    {
+      "time": "00:00:36",
+      "timestamp": 36.92,
+      "text": "Well, come on. Do I need to say more? Do you carry the guy around with you then? Whoa, Lee is so sensitive, guys. Just between you and me. Is he a week coming?"
+    },
+    {
+      "time": "00:00:45",
+      "timestamp": 45.12,
+      "text": "I'll just shut up. I got you back."
+    },
+    {
+      "time": "00:00:48",
+      "timestamp": 48.12,
+      "text": "So, guys, trust me on this campaign. I know women better than anyone."
+    },
+    {
+      "time": "00:00:53",
+      "timestamp": 53.12,
+      "text": "Women are like advantage for Rari. You got to wax the body, shape the curves so everybody won't stop looking at it."
+    },
+    {
+      "time": "00:01:00",
+      "timestamp": 60.12,
+      "text": "But clients are people, not cars. There's most of their lives than just looks. It's about efficiency, right? David."
+    },
+    {
+      "time": "00:01:05",
+      "timestamp": 65.12,
+      "text": "You think she cute? What? For Lee. If you spend less time working and more time dating, you eventually find them out really wants to take care of you."
+    },
+    {
+      "time": "00:01:15",
+      "timestamp": 75.12,
+      "text": "We all think you're smart, girl. So..."
+    },
+    {
+      "time": "00:01:20",
+      "timestamp": 80.12,
+      "text": "Like, I don't get it. Why aren't they listening to me? Girl, you have yourself smart."
+    },
+    {
+      "time": "00:01:23",
+      "timestamp": 83.12,
+      "text": "You know we're diversity higher. What? It's a smoke screen, honey. A you, agent, me, gang. Come on, then. We are the PS. of a year."
+    },
+    {
+      "time": "00:01:33",
+      "timestamp": 93.12,
+      "text": "Ogre!"
+    },
+    {
+      "time": "00:01:35",
+      "timestamp": 95.12,
+      "text": "Lee, Lee, Lee. What? When do I make up?"
+    },
+    {
+      "time": "00:01:40",
+      "timestamp": 100.12,
+      "text": "Oh, is he a new in-term? What's your name? She's Sarah."
+    },
+    {
+      "time": "00:01:44",
+      "timestamp": 104.12,
+      "text": "Right. I'm gonna call you Lee."
+    },
+    {
+      "time": "00:01:46",
+      "timestamp": 106.12,
+      "text": "Lee gets it. Proper outfit, great makeup. The client was home to the client."
+    },
+    {
+      "time": "00:01:51",
+      "timestamp": 111.12,
+      "text": "I'm sorry. What? She doesn't mean that."
+    },
+    {
+      "time": "00:01:55",
+      "timestamp": 115.12,
+      "text": "Got him joking. Don't be so sensitive. Every time you speak, it's her revelation."
+    },
+    {
+      "time": "00:02:00",
+      "timestamp": 120.12,
+      "text": "So you're saying the client sides of chat because there are pretty girls in the room?"
+    },
+    {
+      "time": "00:02:03",
+      "timestamp": 123.12,
+      "text": "I thought they're coming for creativity and insights. Why is your name Eve?"
+    },
+    {
+      "time": "00:02:07",
+      "timestamp": 127.12,
+      "text": "You see, fuck the client. They don't understand shit."
+    },
+    {
+      "time": "00:02:10",
+      "timestamp": 130.12,
+      "text": "I am the boss here and I get to show them how things are done in here."
+    },
+    {
+      "time": "00:02:14",
+      "timestamp": 134.12,
+      "text": "Yes, yes, yes. So you don't need to know the product and the client will blunt you trust you."
+    },
+    {
+      "time": "00:02:18",
+      "timestamp": 138.12,
+      "text": "That's why I need you there. You can provide the friendly vibe."
+    },
+    {
+      "time": "00:02:21",
+      "timestamp": 141.12,
+      "text": "But with all the wrinkles on your face, I don't think it's as the product quality."
+    },
+    {
+      "time": "00:02:25",
+      "timestamp": 145.12,
+      "text": "Whoa! Personal attacks. Really? Yeah, it's a great day. It's coming in because you're so sensitive."
+    },
+    {
+      "time": "00:02:30",
+      "timestamp": 150.12,
+      "text": "Let me introduce that to clients today. Sarah."
+    },
+    {
+      "time": "00:02:34",
+      "timestamp": 154.12,
+      "text": "You? Oh, did you see her as an inter-justice because she's Asian?"
+    },
+    {
+      "time": "00:02:38",
+      "timestamp": 158.12,
+      "text": "Again? Absolutely not. I have told you respect for you."
+    },
+    {
+      "time": "00:02:42",
+      "timestamp": 162.12,
+      "text": "Tell Sarah both, Mark. You can't get her name right."
+    },
+    {
+      "time": "00:02:45",
+      "timestamp": 165.12,
+      "text": "And you still in management? No skills, but cross-knowledge? Tell me, Mark."
+    },
+    {
+      "time": "00:02:49",
+      "timestamp": 169.12,
+      "text": "Is your only contribution to this firm being a white lady in a silt?"
+    },
+    {
+      "time": "00:02:54",
+      "timestamp": 174.12,
+      "text": "Fuck up!"
+    }
+  ],
+  "report": {
+    "overall_score": 85,
+    "pressure_level": "高",
+    "strategy_effectiveness": {
+      "进攻技巧": 70,
+      "防守技巧": 90,
+      "情绪控制": 85
+    },
+    "key_findings": [
+      "对话呈现了典型的新领导融入困境，但核心冲突已超越个人磨合，升级为系统性偏见（种族、性别）与职业权威的对抗。",
+      "权力结构发生动态反转：名义上的管理者（Roxy）在初期被团体隐性架空和霸凌，但最终通过盟友（Mark）的强力介入，挑战者（Max）的道德权威被公开瓦解。",
+      "沟通中存在明显的‘微侵犯’与‘煤气灯效应’：Max通过种族调侃（口音、酱油）、恶意改名、物化言论，并辅以‘你太敏感了’的指责，试图将Roxy边缘化为‘不合群的外来者’。",
+      "团队文化呈现毒性：大多数成员（如Jessica）选择沉默、附和或模糊调解，纵容霸凌行为，形成了以排外和偏见为纽带的‘内部人’联盟，严重阻碍了专业协作。",
+      "有效的反击不仅来自当事人（Roxy的事实澄清与边界设定），更依赖于旁观者的道德勇气（Mark的公开谴责）和理性声音（David的价值观质疑），这改变了权力平衡。"
+    ],
+    "learning_points": [
+      "在敌意环境中，坚持事实澄清（如‘我是经理，30岁’）和逻辑反驳（如‘客户是人，不是车’）是维护专业尊严的有效防守策略，但可能不足以扭转团体偏见。",
+      "当遭遇以‘玩笑’为伪装的攻击时，识别并揭露其背后的歧视逻辑（如Mark指出‘因为你是穿开衩裙的白人女士’）比陷入‘是否敏感’的争论更有效。",
+      "团队中的沉默大多数（speaker_3）往往是toxic文化得以维持的关键。改变局面需要争取或培养像David这样的理性中间派，并鼓励像Mark这样的正义同盟者公开表态。",
+      "作为新管理者，在建立权威时，除了展示专业能力，还需敏锐识别并快速应对团队中基于身份（种族、性别、年龄）的隐性排斥和权力挑战。",
+      "情绪控制至关重要：Roxy在遭受连环冒犯后仍保持相对克制的专业回应，避免了被进一步标签化为‘情绪化’，这为后续获得David和Mark的支持留下了道德空间。"
+    ],
+    "improvement_suggestions": [
+      "对于Roxy（管理者）：在初次遭遇系统性挑衅时，可考虑更早、更正式地设定边界。例如，在Max第一次恶意改名或进行种族调侃时，可以冷静但坚定地声明：‘请称呼我的名字Roxy。关于口音/文化的评论与工作无关，我们聚焦项目。’ 这能更早地确立职业规范，而非陷入对方设定的‘玩笑-反应’陷阱。",
+      "对于Roxy（管理者）：在会议后，应尽快与HR或上级进行正式沟通，报告所遭遇的种族歧视和霸凌行为，并寻求组织层面的支持与干预，而非仅依赖个人对抗或偶然的同事支持。",
+      "对于David（理性质疑者）：可以加强其干预的力度和时机。例如，在Max物化女性提案时，不仅质疑逻辑，更可直接关联到团队价值观：‘这种物化女性的观点不符合我们公司倡导的多元与尊重价值观，也可能损害客户关系。’ 将个人质疑上升为组织原则挑战。",
+      "对于团队整体：需要引入强制性的多元化、公平与包容（DEI）培训，并建立清晰的举报和问责机制，以打破默许霸凌的沉默文化，让像Jessica这样的旁观者意识到附和行为的危害。",
+      "对于Mark（强力盟友）：其愤怒的公开谴责非常有效，但可以补充更结构化的后续行动建议，例如：‘我建议我们现在停止会议，并正式记录刚才发生的种族歧视言论，由HR介入调查。’ 将道德愤怒转化为制度性纠正程序。"
+    ],
+    "battle_summary": "这是一场新经理Roxy在充满偏见和敌意的团队中，从被系统性贬低和孤立的防御战，最终在盟友的强力支援下，转向对toxic文化发起公开道德审判的转折性对话。"
+  },
+  "created_at": "2026-04-06T21:36:29.908476"
+}

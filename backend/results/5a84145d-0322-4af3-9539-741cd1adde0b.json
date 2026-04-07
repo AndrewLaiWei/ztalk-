@@ -1,0 +1,551 @@
+{
+  "task_id": "5a84145d-0322-4af3-9539-741cd1adde0b",
+  "status": "success",
+  "phrases": [
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "Hi, I'm the new manager of Roxy. Oh, hi, I'm Nijia, you new partner. Your Chinese",
+      "time_range": "00:00:00",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "暗示对方英语能力不足，基于种族刻板印象",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "right? Oh, I love Chinese people, very great people and very hardworking. All right, Roxy,",
+      "time_range": "00:00:04",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "暗示对方英语能力不足，基于种族刻板印象",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "come here and say, oh, you're a mark, woo woo woo woo woo. So, this is our big guy from",
+      "time_range": "00:00:12",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "建立'圈内人'与'外人'的区分",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "Mark. Oh, hi, don't get nervous, Roxy. We go way back, but I'm not nervous. Don't",
+      "time_range": "00:00:18",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "建立'圈内人'与'外人'的区分",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "拉拢",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "you worry with Roxy and Boor? She will sort all of your TMZ and we give back to our",
+      "time_range": "00:00:24",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "建立'圈内人'与'外人'的区分",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "拉拢",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "proper B&B, a Roxy. Hey, maybe we can get her your own GPS. I don't understand, so",
+      "time_range": "00:00:28",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "建立'圈内人'与'外人'的区分",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "模糊",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "our client has got it to deal with. Yeah, it's just some livestock actually. TMZ to many",
+      "time_range": "00:00:34",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "建立'圈内人'与'外人'的区分",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "拉拢",
+      "coping_strategy": "建议结合完整对话场景理解"
+    },
+    {
+      "speaker": "speaker_1",
+      "original_phrase": "zeros. Never heard of it. B&B, Bobs and Boots. Never heard of it either. GPS. You would",
+      "time_range": "00:00:40",
+      "literal_meaning": "对话内容",
+      "hidden_meaning": "需要结合完整对话场景理解",
+      "power_level": "中",
+      "manipulation_type": "",
+      "category": "对话",
+      "coping_strategy": "建议结合完整对话场景理解"
+    }
+  ],
+  "counters": [
+    {
+      "original_phrase": "Hi, I'm the new manager of Roxy. Oh, hi, I'm Nijia, you new partner. Your Chinese",
+      "counter_phrase": "Actually, I'm Nijia. And yes, I'm Chinese-American. Is there something specific about my background you'd like to discuss, or shall we focus on the partnership?",
+      "strategy": "直接反击",
+      "rationale": "立即纠正对方的错误称呼和刻板印象，明确自己的身份（Chinese-American 而不仅仅是“Chinese”），并将对话焦点拉回专业合作。这既维护了尊严，又避免了陷入种族话题的陷阱。"
+    },
+    {
+      "original_phrase": "right? Oh, I love Chinese people, very great people and very hardworking. All right, Roxy,",
+      "counter_phrase": "I appreciate the sentiment, but I prefer to be judged by my individual work and ideas, not by generalizations about a group of over a billion people. Shall we talk about the project?",
+      "strategy": "直接反击",
+      "rationale": "直接指出对方言论中的“群体刻板印象”问题，将其个人化（“judged by my individual work”），并再次将话题转向专业事务。这避免了接受看似“恭维”实则冒犯的言论，并树立了专业、理性的形象。"
+    },
+    {
+      "original_phrase": "come here and say, oh, you're a mark, woo woo woo woo woo. So, this is our big guy from",
+      "counter_phrase": "I'm not sure I follow the 'woo woo' part. Could you clarify what you mean by 'mark' and 'big guy' in the context of our work? I want to make sure we're all on the same page.",
+      "strategy": "反问",
+      "rationale": "通过要求对方澄清其模糊、带有圈内俚语和可能贬低意味的词汇（“mark”, “big guy”），迫使对方用清晰、专业的语言解释。这打破了对方建立“圈内密语”以排外的企图，并占据了要求清晰沟通的道德高地。"
+    },
+    {
+      "original_phrase": "Mark. Oh, hi, don't get nervous, Roxy. We go way back, but I'm not nervous. Don't",
+      "counter_phrase": "(保持冷静的微笑) There's no need to assume I'm nervous. I'm here to work. Since you and Roxy have history, perhaps you can brief me on how that history impacts our current objectives?",
+      "strategy": "转移",
+      "rationale": "不直接否认对方的“安抚”（实为居高临下的假设），而是用行动（冷静）和语言表明自己的专业状态。随后将话题从个人情绪转移到工作影响上，化被动为主动，将对方的“老交情”转化为需要解释的工作背景信息。"
+    },
+    {
+      "original_phrase": "you worry with Roxy and Boor? She will sort all of your TMZ and we give back to our",
+      "counter_phrase": "Before we delegate, I'd like to understand the workflow. What exactly is 'TMZ' in this process, and what are the defined roles for Roxy, yourself, and me? Clarity will prevent future misunderstandings.",
+      "strategy": "反问/直接反击",
+      "rationale": "不被动接受对方安排的模糊任务和内部术语（“TMZ”）。通过要求明确流程、术语定义和角色分工，挑战对方试图用信息不对称和模糊指令来掌控局面的做法。这体现了主动性和对工作严谨性的要求。"
+    },
+    {
+      "original_phrase": "proper B&B, a Roxy. Hey, maybe we can get her your own GPS. I don't understand, so",
+      "counter_phrase": "It sounds like there are a lot of acronyms and inside references here. For the efficiency of the team and to avoid errors, could we take a moment to define B&B, GPS, and any other key terms on a shared document?",
+      "strategy": "直接反击",
+      "rationale": "直接点破对方频繁使用内部术语（B&B, GPS）造成沟通壁垒的问题。提出一个具体、建设性的解决方案（创建共享术语表），将对方排外性的“行话”转化为需要标准化、透明化的团队知识，从而瓦解其信息优势。"
+    },
+    {
+      "original_phrase": "our client has got it to deal with. Yeah, it's just some livestock actually. TMZ to many",
+      "counter_phrase": "'Just some livestock' and 'TMZ to many zeros' – that seems like a significant discrepancy in scale and seriousness. Can we get precise figures and a clear scope of work from the client? Assumptions can be costly.",
+      "strategy": "反问/直接反击",
+      "rationale": "抓住对方描述中自相矛盾和不专业的地方（轻描淡写 vs. 巨额资金），质疑其信息的可靠性。强调需要精确数据和明确范围，将对话提升到专业和风险管理的层面，暗示对方当前提供的信息不足或草率。"
+    },
+    {
+      "original_phrase": "zeros. Never heard of it. B&B, Bobs and Boots. Never heard of it either. GPS. You would",
+      "counter_phrase": "Since several of these key terms are unfamiliar to me – and perhaps to others new to the team – it confirms the need for that glossary we discussed. It's standard practice for onboarding and ensuring alignment. Let's prioritize that.",
+      "strategy": "直接反击",
+      "rationale": "利用对方最后承认不熟悉某些术语（即使是假意）的时机，强势回扣之前提出的“创建术语表”建议，并将其合理化、标准化（“standard practice”）。这巩固了自己推动清晰化、规范化沟通的立场，并使之前的提议显得更具前瞻性和必要性。"
+    }
+  ],
+  "personalities": [
+    {
+      "id": "speaker_1",
+      "name": "Nijia",
+      "personality_type": "支配型/操控型",
+      "communication_style": "充满俚语、缩写和模糊暗示的压迫性沟通，刻意制造信息不对称，通过语言游戏建立权力优势",
+      "emotional_traits": [
+        "优越感",
+        "操控欲",
+        "挑衅",
+        "表面友好实则轻蔑",
+        "防御性攻击"
+      ],
+      "power_position": "试图维持上位者姿态",
+      "communication_techniques": [
+        "信息隐藏",
+        "文化刻板印象运用",
+        "语言羞辱",
+        "专业术语滥用",
+        "社交排斥威胁"
+      ],
+      "strengths": [
+        "熟悉本地商业潜规则",
+        "善于制造心理压力",
+        "快速建立非正式联盟"
+      ],
+      "weaknesses": [
+        "缺乏专业透明度",
+        "种族偏见明显",
+        "情绪控制差",
+        "沟通效率极低"
+      ]
+    },
+    {
+      "id": "speaker_2",
+      "name": "Roxy",
+      "personality_type": "分析型/原则型",
+      "communication_style": "直接、结构化、追求清晰明确的沟通，重视流程和风险控制，初期保持礼貌但后期转为对抗",
+      "emotional_traits": [
+        "初期困惑",
+        "逐渐愤怒",
+        "职业焦虑",
+        "文化疏离感",
+        "最终爆发性反击"
+      ],
+      "power_position": "从下位者转为平等对抗者",
+      "communication_techniques": [
+        "明确询问",
+        "风险提示",
+        "流程强调",
+        "文化反击",
+        "语言对等报复"
+      ],
+      "strengths": [
+        "专业准备充分",
+        "风险意识强",
+        "跨文化适应努力",
+        "最终敢于正面冲突"
+      ],
+      "weaknesses": [
+        "初期容忍度过高",
+        "对非正式规则不适应",
+        "情绪积累后爆发可能影响职业形象"
+      ]
+    },
+    {
+      "id": "speaker_3",
+      "name": "Mark",
+      "personality_type": "随和型/回避型",
+      "communication_style": "被动、模糊、避免直接冲突，通过第三方传递信息，在权力游戏中充当中间但偏袒的角色",
+      "emotional_traits": [
+        "回避冲突",
+        "表面中立",
+        "隐性站队",
+        "尴尬",
+        "不作为"
+      ],
+      "power_position": "名义上的上位者但实际权力让渡",
+      "communication_techniques": [
+        "信息延迟传达",
+        "非正式渠道决策",
+        "冲突调解失败",
+        "权力下放但不监督"
+      ],
+      "strengths": [
+        "维持表面和谐",
+        "利用现有关系网络"
+      ],
+      "weaknesses": [
+        "领导力缺失",
+        "决策不透明",
+        "纵容不良文化",
+        "团队管理失效"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "from": "speaker_1",
+      "to": "speaker_2",
+      "type": "对立/表面平级",
+      "intimacy": 2,
+      "conflict_points": [
+        "文化刻板印象与种族偏见（‘你的英语很长，中国人’、‘你不是在中国’）",
+        "信息不透明与专业排斥（使用TMZ、B&B、GPS等模糊缩写，绕过Roxy签署协议）",
+        "权力竞争与能力贬低（‘你只是害怕我的学校比你好，绩效比你好’）",
+        "沟通方式冲突（俚语/缩写 vs 清晰结构化）",
+        "风险管理分歧（非正式签约 vs 合同流程）"
+      ],
+      "cooperation_opportunities": [
+        "理论上作为合作伙伴共同完成项目",
+        "Nijia可能依赖Roxy对中国客户或文化的理解",
+        "若建立明确规则和尊重边界，可能形成专业互补"
+      ],
+      "relationship_dynamics": "从Nijia单方面的文化优越感和信息操控开始，逐渐发展为公开的权力斗争。Nijia试图通过语言游戏、非正式社交（S-O-B聚会）和刻板印象维持支配地位，而Roxy从困惑忍耐转向直接对抗，最终用对等的语言攻击（拼写羞辱）反击。关系已彻底敌对，信任归零。"
+    },
+    {
+      "from": "speaker_1",
+      "to": "speaker_3",
+      "type": "非正式联盟/上下级（Nijia对Mark有隐性影响力）",
+      "intimacy": 7,
+      "conflict_points": [
+        "Mark可能对Nijia的挑衅行为感到尴尬但未制止",
+        "Nijia利用与Mark的私人关系（‘我们认识很久了’）绕过正式流程"
+      ],
+      "cooperation_opportunities": [
+        "维持现有非正式决策模式",
+        "共同应对Roxy带来的‘规则挑战’"
+      ],
+      "relationship_dynamics": "Nijia与Mark存在长期私人关系（‘we go way back’），并通过非正式社交（S-O-B聚会）巩固联盟。Nijia在对话中频繁借用Mark的名义（‘Mark said okay’）来强化自身权威，Mark则默许甚至纵容这种行为。这是一种基于旧有默契而非专业尊重的联盟，Mark的回避性格使Nijia实际获得了更多操作空间。"
+    },
+    {
+      "from": "speaker_2",
+      "to": "speaker_3",
+      "type": "上下级（名义上）/信任破裂",
+      "intimacy": 3,
+      "conflict_points": [
+        "Mark绕过Roxy与Nijia私下决策",
+        "Mark未及时传达关键信息（协议已签）",
+        "Mark在冲突中未能公正调解，反而指责Roxy（‘控制你自己’）",
+        "领导责任缺失，纵容团队不良文化"
+      ],
+      "cooperation_opportunities": [
+        "若Mark能建立透明流程并支持Roxy的专业性，可重建信任",
+        "Roxy的准备充分（Plan A/B）显示其专业价值，Mark可借此制衡Nijia"
+      ],
+      "relationship_dynamics": "Roxy初期对Mark保持下级尊重，但发现被排除在决策圈外后感到背叛。Mark作为名义上的管理者，未能履行领导职责，既未保护下属免受文化歧视，也未确保信息透明。他的回避行为（通过Nijia传话、聚会私下签约）加剧了Roxy的不安全感和愤怒。关系从职业期待转为失望与不信任。"
+    }
+  ],
+  "timeline": [
+    {
+      "time": "00:00:00",
+      "timestamp": 0.0,
+      "text": "Hi, I'm the new manager of Roxy. Oh, hi, I'm Nijia, you new partner. Your Chinese"
+    },
+    {
+      "time": "00:00:04",
+      "timestamp": 4.96,
+      "text": "right? Oh, I love Chinese people, very great people and very hardworking. All right, Roxy,"
+    },
+    {
+      "time": "00:00:12",
+      "timestamp": 12.76,
+      "text": "come here and say, oh, you're a mark, woo woo woo woo woo. So, this is our big guy from"
+    },
+    {
+      "time": "00:00:18",
+      "timestamp": 18.36,
+      "text": "Mark. Oh, hi, don't get nervous, Roxy. We go way back, but I'm not nervous. Don't"
+    },
+    {
+      "time": "00:00:24",
+      "timestamp": 24.26,
+      "text": "you worry with Roxy and Boor? She will sort all of your TMZ and we give back to our"
+    },
+    {
+      "time": "00:00:28",
+      "timestamp": 28.9,
+      "text": "proper B&B, a Roxy. Hey, maybe we can get her your own GPS. I don't understand, so"
+    },
+    {
+      "time": "00:00:34",
+      "timestamp": 34.38,
+      "text": "our client has got it to deal with. Yeah, it's just some livestock actually. TMZ to many"
+    },
+    {
+      "time": "00:00:40",
+      "timestamp": 40.62,
+      "text": "zeros. Never heard of it. B&B, Bobs and Boots. Never heard of it either. GPS. You would"
+    },
+    {
+      "time": "00:00:47",
+      "timestamp": 47.38,
+      "text": "have been it is Jean Polo is. Oh, if you do well, maybe he will invite you to his Polo"
+    },
+    {
+      "time": "00:00:53",
+      "timestamp": 53.26,
+      "text": "and that's where the real business happens. Yeah, thanks, but next time maybe we just don't"
+    },
+    {
+      "time": "00:00:58",
+      "timestamp": 58.3,
+      "text": "need all the heavy reactions. I don't always catch that kind of thing. No, your English is"
+    },
+    {
+      "time": "00:01:03",
+      "timestamp": 63.02,
+      "text": "pretty long, Chinese. Just keep working hard, yeah? You'll get there. You're Roxy, Mark"
+    },
+    {
+      "time": "00:01:09",
+      "timestamp": 69.02,
+      "text": "son of had you, you want to come? You would love to see you. Come here, what's that? Roxy,"
+    },
+    {
+      "time": "00:01:12",
+      "timestamp": 72.98,
+      "text": "Roxy, Roxy, Roxy. What took you so long? Yeah, I'm just putting on some sound screens,"
+    },
+    {
+      "time": "00:01:17",
+      "timestamp": 77.58,
+      "text": "you guys need some. Oh, that's a secret for ages, don't age. Oh, how cute. What if you don't"
+    },
+    {
+      "time": "00:01:22",
+      "timestamp": 82.82,
+      "text": "wear it, you get photo angels. And you would tell like a lobster, skiing cancers and everything."
+    },
+    {
+      "time": "00:01:28",
+      "timestamp": 88.98,
+      "text": "La Ria, you'll be perfect. You should try it. Oh, that's a shame though. You won't survive"
+    },
+    {
+      "time": "00:01:33",
+      "timestamp": 93.38,
+      "text": "the S.O.B. What? Fun, oceans and beers. Ah, you just saw boys boring weekend. Since you're"
+    },
+    {
+      "time": "00:01:39",
+      "timestamp": 99.46,
+      "text": "so scared of sun, we should protect your delicate skin. But you should. You know, Mark, last"
+    },
+    {
+      "time": "00:01:46",
+      "timestamp": 106.74,
+      "text": "time somebody was saying that you look like my grandpa. For where is? All right. And this one"
+    },
+    {
+      "time": "00:01:54",
+      "timestamp": 114.02,
+      "text": "has high protection. Once wipe and done, I use it for commuting, I can use it for an outdoor"
+    },
+    {
+      "time": "00:01:59",
+      "timestamp": 119.06,
+      "text": "beach party too. No problem at all. After all, this is your French national brand. I'm learning"
+    },
+    {
+      "time": "00:02:04",
+      "timestamp": 124.66,
+      "text": "your culture. All right. Oh, I've run a few extras. It's dressed really smoothly and friends"
+    },
+    {
+      "time": "00:02:09",
+      "timestamp": 129.46,
+      "text": "really quickly. Just imagine in that. You're gonna find this on your girlfriend's back. Uh-huh,"
+    },
+    {
+      "time": "00:02:14",
+      "timestamp": 134.42,
+      "text": "already feel excited. So if anything project related, please include me anywhere you go."
+    },
+    {
+      "time": "00:02:20",
+      "timestamp": 140.18,
+      "text": "Yeah, sure, sure, sure. What's the progress on this project? So, uh, we're still waiting for"
+    },
+    {
+      "time": "00:02:25",
+      "timestamp": 145.46,
+      "text": "the client's email confirmation after last week. I prepared plan A and plan B as well. By the way,"
+    },
+    {
+      "time": "00:02:30",
+      "timestamp": 150.02,
+      "text": "Mark said okay. I'm sorry. When did it happen? I why didn't I know? I was preparing for the backup"
+    },
+    {
+      "time": "00:02:36",
+      "timestamp": 156.58,
+      "text": "plan for a whole weekend. Well, Roxy don't be a mess. Oh, okay. Mark invited me over for S-O-B. We"
+    },
+    {
+      "time": "00:02:43",
+      "timestamp": 163.38,
+      "text": "talked about W-O-S and then had a little G-N-T and then we signed a deal. That's it. Could you stop"
+    },
+    {
+      "time": "00:02:48",
+      "timestamp": 168.26,
+      "text": "with your abbreviations? Did it nice say if it's project related, you should loop me in? Now the deal"
+    },
+    {
+      "time": "00:02:54",
+      "timestamp": 174.02,
+      "text": "is done without contract. Do you know how big of a risk that we're in? No, no, no, no, no, no, no,"
+    },
+    {
+      "time": "00:02:58",
+      "timestamp": 178.5,
+      "text": "come down. That's how we do things here. You're not in China. You don't have to be scared."
+    },
+    {
+      "time": "00:03:03",
+      "timestamp": 183.22,
+      "text": "I was protecting you. We're just gonna sun. Oh, you're playing like this? Roxy, you need to calm down."
+    },
+    {
+      "time": "00:03:09",
+      "timestamp": 189.54,
+      "text": "There are other people working and we are in a professional environment. Did you just pull out the"
+    },
+    {
+      "time": "00:03:14",
+      "timestamp": 194.42,
+      "text": "highest filter? Control yourself, okay? Nai-jou, Nai-jou, Nai-jou. That's why I could do this saying."
+    },
+    {
+      "time": "00:03:20",
+      "timestamp": 200.58,
+      "text": "Let's stop pretending this is cultural. You're just scared. You're so scared that my school is"
+    },
+    {
+      "time": "00:03:24",
+      "timestamp": 204.74,
+      "text": "better than yours. My performance score is better than yours. So what does it make you a new"
+    },
+    {
+      "time": "00:03:29",
+      "timestamp": 209.62,
+      "text": "teacher? That's why you hide behind the smell and try to edge me out. You are confusing me."
+    },
+    {
+      "time": "00:03:34",
+      "timestamp": 214.5,
+      "text": "Remember, I just said that you're my favorite Chinese. Did you listen?"
+    },
+    {
+      "time": "00:03:38",
+      "timestamp": 218.1,
+      "text": "L-L-L. Listen. You are D-I-C-K. So what? The delegation instead of competent knowledge,"
+    },
+    {
+      "time": "00:03:44",
+      "timestamp": 224.82,
+      "text": "you are L-A-M-E. The lack of action, the lack of job experience, and you are P-I-G."
+    },
+    {
+      "time": "00:03:51",
+      "timestamp": 231.38,
+      "text": "Pinocchio, X-N-R-R-E-S, and GROPHY. Am I working hard enough for your language?"
+    },
+    {
+      "time": "00:03:56",
+      "timestamp": 236.18,
+      "text": "Right, I'm going out."
+    },
+    {
+      "time": "00:03:58",
+      "timestamp": 238.18,
+      "text": "No, no, no. With my Chinese client, you know what's big Chinese, so I won't bother you."
+    },
+    {
+      "time": "00:04:02",
+      "timestamp": 242.98,
+      "text": "See you next Tuesday. Figure out your language. Bye!"
+    }
+  ],
+  "report": {
+    "overall_score": 85,
+    "pressure_level": "高",
+    "strategy_effectiveness": {
+      "进攻技巧": 90,
+      "防守技巧": 75,
+      "情绪控制": 70
+    },
+    "key_findings": [
+      "Nijia通过俚语、缩写（TMZ/B&B/GPS/S-O-B）和刻板印象（‘你的英语很长，中国人’）构建信息壁垒与权力优势，试图将Roxy排除在核心决策圈外。",
+      "Roxy从初期的困惑忍耐转向直接对抗，最终以对等的语言攻击（‘你只是害怕我的学校比你好，绩效比你好’）和风险提示（‘你签的协议可能无效’）进行反击，成功打破单方面压制。",
+      "Mark作为名义管理者，采取回避策略，纵容Nijia的非正式操作并私下签约，导致团队信任彻底破裂，暴露其领导力缺失与决策不透明。"
+    ],
+    "learning_points": [
+      "在跨文化职场中，面对以‘圈内人’语言（俚语、缩写）和刻板印象建立的权力游戏时，直接要求澄清（‘我不明白这些缩写’）和坚持专业流程是有效的防御策略。",
+      "当遭遇种族或文化贬低时，初期保持专业冷静（如Roxy忽略‘中国人’评论）可避免落入情绪陷阱，但需在关键时刻明确反击（如用对等的能力比较回击）。",
+      "管理者若默许非正式联盟（如Mark与Nijia）并绕过下属决策，会迅速摧毁团队信任，引发公开冲突。"
+    ],
+    "improvement_suggestions": [
+      "建议Roxy在后续沟通中提前设定边界：首次遇到模糊术语时立即要求书面定义，并抄送Mark以确保信息透明；同时可准备文化反制话术（如‘在我的文化中，清晰合同是尊重的表现’）。",
+      "建议Mark建立正式决策流程：要求所有协议必须经团队共同审核，并公开支持专业规范（如‘以后所有缩写必须在邮件中注明全称’），以制衡Nijia的非正式操作。",
+      "建议Nijia若想维持合作效率，应停止使用歧视性语言和模糊缩写，转而采用清晰术语，否则将持续引发对抗并增加项目风险。"
+    ],
+    "battle_summary": "一场由文化歧视、信息操控和领导纵容引发的职场权力斗争，最终从单方压制演变为公开对抗，暴露了非正式联盟对团队信任的毁灭性影响。"
+  },
+  "created_at": "2026-04-06T21:51:11.366144"
+}

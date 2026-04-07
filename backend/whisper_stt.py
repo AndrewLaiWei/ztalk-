@@ -8,6 +8,11 @@ import asyncio
 from typing import List, Dict, Optional
 from pathlib import Path
 
+# 清除可能导致问题的代理环境变量
+for var in ['HTTP_PROXY', 'HTTPS_PROXY', 'http_proxy', 'https_proxy', 'ALL_PROXY', 'all_proxy']:
+    if var in os.environ:
+        del os.environ[var]
+
 # Whisper 模型大小选项
 MODEL_SIZES = ["tiny", "base", "small", "medium", "large"]
 

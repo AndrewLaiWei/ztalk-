@@ -5,9 +5,23 @@ DeepSeek AI 分析模块
 
 import os
 import json
+import re
 import asyncio
 from typing import List, Dict, Optional
+import httpx
 from openai import OpenAI
+
+
+def clean_json_response(text: str) -> str:
+    """
+    清理 DeepSeek API 返回的 Markdown 代码块，提取纯 JSON
+    """
+    # 移除 markdown 代码块标记
+    text = re.sub(r'^```json\s*', '', text, flags=re.MULTILINE)
+    text = re.sub(r'^```\s*', '', text, flags=re.MULTILINE)
+    text = re.sub(r'^```json', '', text, flags=re.MULTILINE)
+    text = text.strip()
+    return text
 
 
 class DeepSeekAnalyzer:
@@ -23,7 +37,8 @@ class DeepSeekAnalyzer:
         """
         self.client = OpenAI(
             api_key=api_key,
-            base_url=base_url
+            base_url=base_url,
+            http_client=httpx.Client(trust_env=False)
         )
         self.model = "deepseek-chat"
     
@@ -64,9 +79,26 @@ class DeepSeekAnalyzer:
         result = await self._call_api(prompt)
         
         try:
-            data = json.loads(result)
-            return data.get("speakers", [])
+            # 清理 Markdown 代码块
+            clean_result = clean_json_response(result)
+            data = json.loads(clean_result)
+            speakers = data.get("speakers", [])
+            if speakers:
+                return speakers
+            # 如果返回空数组，返回默认
+            return [{
+                "id": "speaker_1",
+                "name": "说话人1",
+                "personality_type": "待分析",
+                "communication_style": "根据对话内容分析",
+                "emotional_traits": ["待识别"],
+                "power_position": "待判断",
+                "communication_techniques": [],
+                "strengths": [],
+                "weaknesses": []
+            }]
         except json.JSONDecodeError:
+            print(f"⚠️ analyze_personality JSON解析失败，原始返回: {result[:200]}...")
             # 解析失败，返回默认结构
             return [{
                 "id": "speaker_1",
@@ -118,9 +150,15 @@ class DeepSeekAnalyzer:
         result = await self._call_api(prompt)
         
         try:
-            data = json.loads(result)
-            return data.get("relationships", [])
+            # 清理 Markdown 代码块
+            clean_result = clean_json_response(result)
+            data = json.loads(clean_result)
+            relationships = data.get("relationships", [])
+            if relationships:
+                return relationships
+            return []
         except json.JSONDecodeError:
+            print(f"⚠️ analyze_relationships JSON解析失败，原始返回: {result[:200]}...")
             return []
     
     async def extract_phrases(self, transcription: Dict) -> List[Dict]:
@@ -133,10 +171,22 @@ class DeepSeekAnalyzer:
         - 权力话术
         - 情感操控
         """
+        # 使用时间轴信息构建更丰富的上下文
+        timeline_text = ""
+        if transcription.get("timeline"):
+            for item in transcription["timeline"][:50]:  # 限制前50条
+                time_str = item.get("time", "")
+                text = item.get("text", "")
+                timeline_text += f"[{time_str}] {text}\n"
+        
+        # 如果时间轴为空，使用完整文本
+        if not timeline_text.strip():
+            timeline_text = transcription.get("text", "")[:3000]
+        
         prompt = f"""你是一个专业的语言分析专家。请从以下对话中提取关键话术，并分析其含义和意图。
 
-对话内容:
-{transcription['text']}
+对话时间轴:
+{timeline_text}
 
 请以 JSON 格式输出话术分析，格式如下:
 {{
@@ -144,7 +194,7 @@ class DeepSeekAnalyzer:
     {{
       "speaker": "speaker_1",
       "original_phrase": "原始话术原文",
-      "time_range": "出现时间段",
+      "time_range": "出现时间段，如 00:01:30",
       "literal_meaning": "字面意思",
       "hidden_meaning": "潜台词/真实意图",
       "power_level": "权力等级 (高/中/低)",
@@ -160,23 +210,102 @@ class DeepSeekAnalyzer:
         result = await self._call_api(prompt)
         
         try:
-            data = json.loads(result)
-            return data.get("phrases", [])
-        except json.JSONDecodeError:
-            # 返回示例数据
-            return [
-                {
-                    "speaker": "speaker_1",
-                    "original_phrase": "我们再考虑一下",
-                    "time_range": "00:01:30",
-                    "literal_meaning": "需要更多时间做决定",
-                    "hidden_meaning": "委婉拒绝",
-                    "power_level": "高",
-                    "manipulation_type": "模糊",
-                    "category": "模糊",
-                    "coping_strategy": "直接询问具体顾虑"
-                }
-            ]
+            # 清理 Markdown 代码块
+            clean_result = clean_json_response(result)
+            print(f"📝 extract_phrases API返回: {clean_result[:300]}...")
+            data = json.loads(clean_result)
+            phrases = data.get("phrases", [])
+            if phrases and len(phrases) > 0:
+                return phrases
+            # 如果返回空数组，从 timeline 中提取关键对话
+            print(f"⚠️ extract_phrases 返回空数组，使用 fallback")
+            return self._extract_phrases_from_timeline(transcription)
+        except json.JSONDecodeError as e:
+            print(f"⚠️ extract_phrases JSON解析失败: {e}")
+            print(f"   原始返回: {result[:500]}...")
+            # 从时间轴提取关键对话
+            return self._extract_phrases_from_timeline(transcription)
+    
+    def _extract_phrases_from_timeline(self, transcription: Dict) -> List[Dict]:
+        """从时间轴直接提取关键对话，并进行简单的潜台词分析"""
+        phrases = []
+        timeline = transcription.get("timeline", [])
+        full_text = transcription.get("text", "").lower()
+        
+        # 关键词模式匹配
+        hidden_meaning_patterns = [
+            # 种族/文化相关
+            (["chinese", "asian", "accent", "english", "school"], "暗示对方英语能力不足，基于种族刻板印象"),
+            # 贬低/打压
+            (["bad", "worse", "terrible", "scared", "fear", "sensitive"], "通过贬低对方来建立心理优势"),
+            # 排外/小圈子
+            (["we", "us", "our", "between you", "trust me"], "建立'圈内人'与'外人'的区分"),
+            # 模糊/回避
+            (["consider", "think about", "maybe", "we'll see", "i'll let you know"], "不给出明确答复，回避直接回应"),
+            # 施压/威胁
+            (["risk", "problem", "trouble", "careful", "watch out"], "通过制造焦虑来施加压力"),
+            # 质疑/挑衅
+            (["really", "seriously", "you sure", "what if"], "质疑对方判断，试图让对方自我怀疑"),
+            # 施恩/拉拢
+            (["i'll help", "don't worry", "i got you", "trust me"], "通过小恩小惠建立依赖关系"),
+        ]
+        
+        def analyze_hidden_meaning(text: str) -> str:
+            """基于关键词模式推断潜台词"""
+            text_lower = text.lower()
+            for patterns, meaning in hidden_meaning_patterns:
+                for pattern in patterns:
+                    if pattern in text_lower:
+                        return meaning
+            return "需要结合完整对话场景理解"
+        
+        def infer_category(text: str) -> str:
+            """推断话术类别"""
+            text_lower = text.lower()
+            if any(w in text_lower for w in ["scared", "fear", "bad", "worse", "weak"]):
+                return "打压"
+            if any(w in text_lower for w in ["risk", "problem", "careful"]):
+                return "施压"
+            if any(w in text_lower for w in ["consider", "think", "maybe", "we'll see"]):
+                return "模糊"
+            if any(w in text_lower for w in ["we", "us", "together", "help"]):
+                return "拉拢"
+            if any(w in text_lower for w in ["really", "you sure", "seriously"]):
+                return "试探"
+            if any(w in text_lower for w in ["no", "but", "however"]):
+                return "防御"
+            return "对话"
+        
+        # 找出较长的对话片段（可能是关键话术）
+        for item in timeline:
+            text = item.get("text", "").strip()
+            if len(text) > 30 and len(phrases) < 8:
+                hidden = analyze_hidden_meaning(text)
+                category = infer_category(text)
+                
+                phrases.append({
+                    "speaker": item.get("speaker", "speaker_1"),
+                    "original_phrase": text,
+                    "time_range": item.get("time", ""),
+                    "literal_meaning": "对话内容",
+                    "hidden_meaning": hidden,
+                    "power_level": "中",
+                    "manipulation_type": "",
+                    "category": category,
+                    "coping_strategy": "建议结合完整对话场景理解"
+                })
+        
+        return phrases if phrases else [{
+            "speaker": "speaker_1",
+            "original_phrase": "未能提取到有效话术",
+            "time_range": "00:00:00",
+            "literal_meaning": "语音识别或AI分析出现问题",
+            "hidden_meaning": "建议重新上传清晰音频",
+            "power_level": "中",
+            "manipulation_type": "",
+            "category": "系统提示",
+            "coping_strategy": "请确保音频清晰、对话内容充足"
+        }]
     
     async def generate_counters(self, phrases: List[Dict]) -> List[Dict]:
         """
@@ -204,9 +333,12 @@ class DeepSeekAnalyzer:
         result = await self._call_api(prompt)
         
         try:
-            data = json.loads(result)
+            # 清理 Markdown 代码块
+            clean_result = clean_json_response(result)
+            data = json.loads(clean_result)
             return data.get("counters", [])
         except json.JSONDecodeError:
+            print(f"⚠️ generate_counters JSON解析失败，原始返回: {result[:200]}...")
             # 返回示例数据
             return [
                 {
@@ -267,7 +399,9 @@ class DeepSeekAnalyzer:
         result = await self._call_api(prompt)
         
         try:
-            data = json.loads(result)
+            # 清理 Markdown 代码块
+            clean_result = clean_json_response(result)
+            data = json.loads(clean_result)
             return data.get("report", {
                 "overall_score": 75,
                 "pressure_level": "中",
@@ -282,6 +416,7 @@ class DeepSeekAnalyzer:
                 "battle_summary": "一场典型的职场权力对话"
             })
         except json.JSONDecodeError:
+            print(f"⚠️ generate_report JSON解析失败，原始返回: {result[:200]}...")
             return {
                 "overall_score": 75,
                 "pressure_level": "中",

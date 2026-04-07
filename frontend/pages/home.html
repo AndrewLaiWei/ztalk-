@@ -17,7 +17,7 @@ body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;backgro
 .feature-card:active{transform:scale(.97)}
 .feature-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
 .video-card::before,.battle-card::before,.train-card::before{background:var(--accent)}
-.slang-card::before,.profile-card::before{background:var(--primary)}
+.slang-card::before,.profile-card::before,.roleplay-card::before{background:var(--primary)}
 .phrases-card::before{background:#6366F1}
 .favorites-card::before{background:#F59E0B}
 .feature-icon{width:52px;height:52px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;background:var(--bg3)}
@@ -60,6 +60,20 @@ body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;backgro
           <span class="feature-tag">💼 职场</span>
           <span class="feature-tag">💕 恋爱</span>
           <span class="feature-tag">🍺 酒桌</span>
+        </div>
+      </div>
+      <div class="feature-arrow">›</div>
+    </div>
+
+    <div class="feature-card roleplay-card" onclick="switchTab('roleplay')">
+      <div class="feature-icon">🎭</div>
+      <div class="feature-content">
+        <div class="feature-title">角色扮演</div>
+        <div class="feature-desc">用经典角色解决现实难题</div>
+        <div class="feature-tags">
+          <span class="feature-tag">📚 书籍角色</span>
+          <span class="feature-tag">⚔️ 辩论模式</span>
+          <span class="feature-tag">👥 多角色</span>
         </div>
       </div>
       <div class="feature-arrow">›</div>
@@ -137,6 +151,7 @@ body{font-family:-apple-system,'PingFang SC','Helvetica Neue',sans-serif;backgro
 const TAB_ROUTES = {
   'video':     '/pages/ai-video.html',
   'slang':     '/pages/slang.html',
+  'roleplay':  '/pages/role-play.html',
   'battle':    '/pages/scenarios.html',
   'phrases':   '/pages/scripts.html',
   'train':     '/pages/training.html',

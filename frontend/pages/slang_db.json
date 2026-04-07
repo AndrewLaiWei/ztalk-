@@ -1,0 +1,10595 @@
+{
+  "slangs": [
+    {
+      "slang": "赋能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抓手",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中台",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "闭环",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "落地",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "漏斗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沉淀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "给到",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平台",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "响应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "同步",
+      "category": "colleague",
+      "risk": "medium"
+    },
+    {
+      "slang": "对齐",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "迭代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "优化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "跟进",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "升级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "交付",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "聚焦",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "倒逼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复盘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "梳理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "输出",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "提炼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "包装",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上升",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "方案",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "摸索",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "踩坑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "填坑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "报备",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "串联",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "协同",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "联动",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "透传",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打通",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打平",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抹平",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "发力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "兼容",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "量化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "细分",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重塑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蓄能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "引爆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "挖掘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "背书",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "背锅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "支持",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "支撑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "协调",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "支援",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "加持",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "加速",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共建",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共创",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "融合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉通",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉升",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "洞察",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "渗透",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "咬合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "穿梭",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "辐射",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "扩展",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "开拓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "兜底",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "容错",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "容灾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "解耦",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "耦合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复用",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "封装",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抽象",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "聚合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "集成",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拆解",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抓包",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "观察",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "监控",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上报",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "捕获",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "分发",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "分层",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "迁移",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回溯",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回流",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回跳",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通晒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "吃透",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "死磕",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "树立",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "跨界",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共情",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "演绎",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "画饼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打造",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "反哺",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "输血",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "造血",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "造势",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "造市",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "造事",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下沉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉新",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "转化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "留存",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "促活",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "付费",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "营收",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "盈利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "获客",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "邀请",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "助力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "激励",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "激活",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "推广",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "投放",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "导流",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "覆盖",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "曝光",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "裂变",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "增长",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "优秀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "感恩",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "比心",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "笔芯",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下跪",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "致敬",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "订阅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认证",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "推送",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "唤醒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "流失",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "召回",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "授权",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "接入",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "铸造",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "构筑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "构建",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "搭建",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "布局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "组局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "摸鱼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "划水",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "众筹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "收割",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共享",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重组",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "收口",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "转型",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "围绕",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "出击",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "证言",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "确认",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "明确",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "评估",
+      "category": "boss",
+      "risk": "high"
+    },
+    {
+      "slang": "评审",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "务实",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "夯实",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "预判",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "预言",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "变迁",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "返佣",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "深入",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打磨",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "攻坚",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "击穿",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "破冰",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "破题",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "解题",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "破圈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "破局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "制约",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "约束",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "触及",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "触达",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "触发",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "操盘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "思考",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "反思",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "精简",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "深耕",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "突围",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "补位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抽离",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "履约",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "进化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "进军",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "起飞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "皮实",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "本分",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重磅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "垂直",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "真香",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自洽",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "精准",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "持续",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "灵活",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "稳定",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "可控",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "活跃",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "风口",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "玩法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "矩阵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "纽带",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "刺激",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "规模",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "场景",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "渠道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "入口",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "维度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "格局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "形态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "体系",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "体感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "感知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心智",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "调性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "战役",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "合力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赛道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "基石",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "基因",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "因子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "模型",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "链路",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "水位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "水准",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "姿态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "卡点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "卡位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "头部",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "腰部",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "踝部",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "痛点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "爽点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "痒点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全域",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "公域",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "私域",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "本我",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自我",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "超我",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蓝海",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "红海",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "纵向",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "横向",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上限",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下限",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上游",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下游",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阈值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "场域",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "架构",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "系统",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标配",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "长尾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "态势",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "锚点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标杆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "壁垒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "变量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "期权",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "边界",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品牌",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阵地",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高地",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "洼地",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高空",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "革命",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "变革",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内卷",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "外包",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "福报",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "脑暴",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "脑洞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "圈层",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "层级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "段位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "环节",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "困局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "话术",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "文案",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "议程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "公关",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "配称",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "力场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "魔方",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "触点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "势能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "流量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资源",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "排期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "延期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "弹窗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "浮层",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "引导",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蒙层",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "幕帘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "遮罩",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "埋点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "坑位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "楼层",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "按钮",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "红包",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "峰值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "漏洞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "风险",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "瓶颈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "策略",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "价值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "成本",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利器",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "深度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "玩家",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "小白",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "韭菜",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "羊毛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "福利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "套路",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情怀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标准",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "规范",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社群",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "产业",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "载体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "服务",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "粘性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "属性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "地域",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "终端",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "版本",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "口碑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "指标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "年框",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "试点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "母体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "空白",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "银弹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对一下",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "碰一下",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "过一下",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抢品类",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "卡认知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "占场景",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "观行业",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "明竞争",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "洞自身",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "开场子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "提调子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "冷启动",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "秀肌肉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "借东风",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "断舍离",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "薅羊毛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "砍一刀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "走出去",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "讲故事",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "扁平化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "差异化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平台化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "结构化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "精细化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "短平快",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "常态化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "强依赖",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "不可控",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "有风险",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "感知度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "颗粒度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "方法论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "组合拳",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "引爆点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "护城河",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "影响力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资源位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "优先级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "制高点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "可用性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "易用性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "稳定性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "便捷性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "耦合性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "一致性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "系统性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "端到端",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "点对点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "点线面",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上半场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下半场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "主战场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人货场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "基本面",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "基本盘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "操盘手",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "进化论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "解释权",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "最优解",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "执行力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "驱动力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "鄙视链",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生态链",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生态圈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生态位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全场景",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全渠道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全方位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全媒体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "流量池",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "天花板",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "传话筒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "转化率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "活跃度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "颗粒感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "登云梯",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "冲击力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "视觉锤",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "孵化器",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新零售",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新物种",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新品牌",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新篇章",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新局势",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新赛道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新势能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新国货",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新国潮",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新动力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "同理心",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "气氛组",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "竞争力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "存在感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认同感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "参与感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "归属感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "使命感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "价值观",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "忠诚度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "预热期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高峰期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高潮期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上升期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "瓶颈期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大数据",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "云计算",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "区块链",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "比特币",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "虚拟币",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "天使轮",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自媒体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新媒体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "价格门",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "超预期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "小前台",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大中台",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "凝聚力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "向心力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "元无知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "软夺权",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "支棱起来",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "快速响应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "小步快跑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "价值转化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "强化认知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资源置换",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资源倾斜",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资源配置",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "完善逻辑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "去中心化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "渠道下沉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户下沉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降维打击",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "体验度量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高频触达",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "快速迭代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "持续迭代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "持续集成",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "持续交付",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "持续观察",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "躬身入局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "顺势而为",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打破结界",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "升维定位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "有机结合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "起承转合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "存量维持",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "增量博弈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心智角逐",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抽离透传",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拨冗参会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "反复确认",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "综合评估",
+      "category": "boss",
+      "risk": "high"
+    },
+    {
+      "slang": "刻意练习",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打破制约",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "绝境求生",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品牌露出",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拥抱变化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重新定义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "借势营销",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内容创业",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "归因分析",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逻辑推理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "建立范式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "总结沉淀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "解决问题",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "占领心智",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高举高打",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高开低走",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高台跳水",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "深入产业",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉齐水位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全情投入",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "如何收口",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全面封锁",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "协同作战",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "剑走偏锋",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "弹射起飞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "结果导向",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "业务导向",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资源紧张",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人力不足",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "体感不好",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "风险可控",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逻辑自洽",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品效合一",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "全球领先",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人无我有",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人有我优",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人优我变",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "势如破竹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "势不可挡",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "石破天惊",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生命周期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复用打法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "商业模式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平台战略",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "集团战略",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "战略引擎",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "关键路径",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "决策路径",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "天使投资",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "盈利模式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "底层逻辑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "顶层设计",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "饥饿营销",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "行业壁垒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下沉市场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "消费认知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人工智能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赛博朋克",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "智慧城市",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "解决方案",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "知识付费",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "私域流量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "交付价值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "时间价值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共享经济",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通证经济",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中央厨房",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "先发优势",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "真实场景",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "临门一脚",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "真香定律",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "正态分布",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "幂律分布",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二八定律",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "长尾理论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "叠加效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "马太效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沉没成本",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "边际成本",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "机会成本",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "偏好植入",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蚂蚁市场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "场景占位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "产业集群",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "产业服务",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标杆市场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心动情境",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利基市场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "第二曲线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "垂直领域",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "可持续性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "可替代性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知优势",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新增长点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "颠覆态势",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "最高规制",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三位一体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资深玩家",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "不破不立",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户心智",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户粘性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户体验",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户认知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户画像",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户调研",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重度用户",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沉默用户",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "活跃用户",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户黏性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "千人千面",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "千人一面",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信息茧房",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "流量红利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "流量为王",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "价格歧视",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "意识形态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心理账户",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情绪G点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品牌势能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "服务产业",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "关键时期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沟通协作",
+      "category": "smart",
+      "risk": "low"
+    },
+    {
+      "slang": "战略合力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品牌航母",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品类战舰",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "行军路线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "产品尖兵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拳头产品",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "超级符号",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "挽留弹窗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "时间窗口",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定性定量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "战略支点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "声音印记",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社交货币",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "付费社群",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "神交已久",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "财务自由",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "微粒社会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "增强回路",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知折叠",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "代偿效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "隐性玩家",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "知识盲维",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信用系数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "行动轴心",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "故乡策略",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回到母体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "无边棋盘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "飞轮效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "合成真实",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逆火效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打开率高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "留存率高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "活跃度高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "精神SPA",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大数据分析",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大数据杀熟",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "延迟满足感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "地毯式轰炸",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "饱和式攻击",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "四两拨千斤",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "开辟新路径",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "建立新习惯",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户无感知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "叫好又叫座",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "优先级很高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉新成本高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "颠覆式创新",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "连续创业者",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "投入产出比",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "互联网思维",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "互联网红利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "国民总时间",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "最后一公里",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "海豚湾模式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "最大公约数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "现象级事件",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沉浸式体验",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户忠诚度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自媒体矩阵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "病毒式营销",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "风口上的猪",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "战略性投资",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "战略性亏损",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "系统性风险",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "意义炼金术",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共识性发展",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "横向标准化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "符号私有化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非理性异动",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "方言化认知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对齐",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赋能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "闭环",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "颗粒度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "组合拳",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "落地",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抓手",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "敏捷",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "迭代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复盘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "痛点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "痛点场景",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蓝海",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "红海",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "护城河",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "跑通",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打通",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "倒逼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "协同",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "优先级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "量化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "维度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉通",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拆解",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沉淀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "输出",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "激活",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "粘性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "留存",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "转化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "头部",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "腰部",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "尾部",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "垂直",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "精细化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "矩阵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中台",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "业务闭环",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "商业模式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "估值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "退出",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "路演",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "天使轮",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "A轮",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "B轮",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "IPO",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "孵化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赛道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "壁垒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "天花板",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降维打击",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "快速迭代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "小步快跑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "试错",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "容错",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复盘总结",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知升级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "底层逻辑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "方法论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "最佳实践",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抓手点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "切入点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "突破口",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "引爆点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户画像",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户心智",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户旅程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "触点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "转化漏斗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "私域流量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "公域流量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "流量池",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "裂变",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "分销",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复购",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "客单价",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "LTV",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ROI",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "GMV",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "DAU",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "MAU",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ARPU",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "环比",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "同比",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "基准线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "里程碑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Q1",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "KPI",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "OKR",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "SOP",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "CRM",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ERP",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "RPA",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "低垂的果实",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "硬骨头",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "天花板效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "长尾理论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二八法则",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "马太效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "飞轮效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "黑天鹅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "灰犀牛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降本增效",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降维打击",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "升维思考",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降维沟通",
+      "category": "smart",
+      "risk": "low"
+    },
+    {
+      "slang": "向上管理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "向下兼容",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "横向拉通",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "纵向深挖",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "颗粒度更细",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉齐预期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "补齐短板",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "打出组合拳",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "形成闭环",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "跑通流程",
+      "category": "colleague",
+      "risk": "medium"
+    },
+    {
+      "slang": "快速响应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "小步快跑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "灰度发布",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "A/B测试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "用户调研",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "需求评审",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "技术评审",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复盘会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "站会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "周会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "月会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "季度会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "年会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "头脑风暴",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "工作坊",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "冲刺",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "里程碑节点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "交付物",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "责任到人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "时间节点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "倒推",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "甘特图",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "看板",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "燃尽图",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "风险管理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "变更管理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "干系人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "项目章程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "验收标准",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "投产上线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回滚",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "监控告警",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "SLA",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "SLO",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "容灾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "备份",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高可用",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "弹性伸缩",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "负载均衡",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "微服务",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "容器化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "DevOps",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "CI/CD",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "技术债",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重构",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "代码评审",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "单元测试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "集成测试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "压力测试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "性能优化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内存泄漏",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "并发量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "QPS",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "TPS",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "RT",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "TP99",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "熵减",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "熵增",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "毕业",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "极高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "奇高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "交接",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "接棒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "继承",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "联调",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "监测",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复现",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重现",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "提议",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "提案",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对等",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "进展",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "预算",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "路演",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人设",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "权重",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共振",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "连爆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "瞬爆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "切片",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "起号",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "养号",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "算法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "限流",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "断流",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "达人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "素人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逆转",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "黑盒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "白盒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "向量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "图谱",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "基线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "底线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "远景",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "愿景",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "友商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "竞对",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉高",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "发酵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双周",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双月",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "招标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "围标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "陪标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "串标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "币圈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "撸毛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "空投",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大饼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "土狗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "挖矿",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "矿工",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "矿难",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "梭哈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "破发",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "割肉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "看板",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "孤岛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "群控",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中控",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "场控",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "导播",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "洗稿",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "互推",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "硬广",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "软文",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "网感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "声量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "出圈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "普惠",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "景观",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "代际",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "出海",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "众包",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "海淘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标品",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "集美",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "景别",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "运镜",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "构图",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "转场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定格",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "闪回",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "截流",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "死锁",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "脑裂",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "作业",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "常量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "探针",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "探活",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "断点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "快照",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "同构",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "异构",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高定",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逆天",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "能量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非遗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "达观",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "前向",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "后向",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "敏捷",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高优",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "撬动",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下钻",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "撞库",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "烧钱",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "勾兑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "寡头",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "宽松",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "落盘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "黑洞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "雄竞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "雌竞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "虫洞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "奇点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "范畴",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "祛魅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "羁绊",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "民粹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沙盒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "模因",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内因",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "外因",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "泛化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "极化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "钝化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "奴化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "让渡",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "微操",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社科",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "民科",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "耻感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "热寂",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "应然",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "实然",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "虹吸",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "均值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "养蛊",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "涅槃",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对冲",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对赌",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "范式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内耗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "刻奇",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "冥想",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "群氓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "脱敏",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "寇仇",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "暗网",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阴谋",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阳谋",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "穷举",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "极客",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "反智",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "冗余",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "意识",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "盘点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "轮转",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "先贤",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "悖论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "诡辩",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "溢价",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "公知",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "湿件",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "规训",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "解构",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "扰动",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回滚",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "临期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人月",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人日",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人时",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "极致",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "塔基",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "塔尖",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "轻奢",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "重奢",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "顶奢",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "维密",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "白牌",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内包",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "总包",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "推演",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "军阀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "财阀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "学阀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定金",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "订金",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "手办",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "公仔",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "函数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "映射",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拟合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "方差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "智商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逆商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "财商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社牛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社恐",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "丁克",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "团建",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "躺平",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上头",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "下头",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "丧系",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "佛系",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "油腻",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "硬核",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "副本",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "四大",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "递归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内涵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "外延",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "口嗨",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "环比",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "同比",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "量贩",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "场观",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信托",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "碳水",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "瑜伽",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "席位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "应力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通货",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "现金",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通胀",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通缩",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "交媾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "媾和",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降噪",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "正念",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "证伪",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "辩证",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "同化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "异化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拉爆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "集合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内核",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "收入",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "毛利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利润",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "企画",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赋闲",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "软件",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "硬件",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "涌现",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "雷管",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社达",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "炸鱼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "豁免",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "有氧",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "无氧",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "困囿",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "僭越",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平替",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "左翼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "右翼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "左倾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "右倾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双碳",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拿捏",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "过单",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "运维",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "斡旋",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回源",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "泛型",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "制程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "指数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "商数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "飞地",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "买办",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "仓位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平仓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "爆仓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "守仓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "斩仓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "穿仓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抛单",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "滑点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多头",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "空头",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "做空",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "做多",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "杠杆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "合约",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "期货",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "头寸",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标的",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "分叉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双花",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "表征",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "软考",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "统考",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "统招",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中考",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高考",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抽样",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "发小",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "发妻",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "唯二",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拔群",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "子集",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "超集",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "统筹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拥趸",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "局座",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "笔者",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "主体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "客体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "应援",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "脑雾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信创",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "加息",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "降息",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人权",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "掮客",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "搭子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "收官",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "鉴权",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "业态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "踏空",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "套牢",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蓝筹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "红筹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "等保",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "合规",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "掉电",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "浪涌",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "党鞭",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "熔断",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "抱石",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赓续",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "企稳",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "器局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "六经",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "图床",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "泡沫",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "插桩",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "坪效",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "顺差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逆差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "糊咖",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "幕僚",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阴鸷",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "放水",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "走线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "东大",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "挽尊",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "业力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "晕染",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "动线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "机场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "氧化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "代币",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "元件",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "固态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "本科",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "专科",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "百合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "耽美",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "攻受",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "纯爱",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "腐女",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "腐男",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利是",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品类",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "水友",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "驴友",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "老六",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "效能",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "排面",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赤字",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蛇头",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "狗血",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "当量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "乡愿",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "捞女",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "避谶",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "喽啰",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "公允",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "吊诡",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "面首",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "戒牒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "侘寂",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "粒子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逃逸",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "解离",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "崩殂",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "工件",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "政治",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "经济",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中出",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "空耳",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "夺舍",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "长机",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "僚机",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "断言",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "文科",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "理科",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "工科",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双开",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "猎奇",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "教条",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三农",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "犬儒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "买量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "两会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "两院",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "现充",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "肥宅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中肯",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双一流",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "交学费",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "智商税",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阶段性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "有深度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "原动力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三板斧",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利益点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "不可逆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "向量化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "微服务",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "云原生",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平常心",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "独角兽",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "强绑定",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "超融合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蒙太奇",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "关键帧",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "剪辑率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "工具人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "凡尔赛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非标品",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "硬着陆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "软着陆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "供给侧",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "需求端",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "跳出率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "产业链",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信息流",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "碎片化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "一元化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二元化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多元化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "新常态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "X世代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Y世代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Z世代",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "黑天鹅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "博弈论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上下文",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "里程碑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "检查点",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "元数据",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "场景化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "危机感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高压线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "智能体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人生观",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "世界观",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多巴胺",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "内啡肽",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "血清素",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "催产素",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "边界感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信息差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "暗物质",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "引力波",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "叠加态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "猜疑链",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "劣根性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信息熵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "缝合怪",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知税",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "罗生门",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "污名化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "厚黑学",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "容错率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "剪刀差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "士大夫",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "杀猪盘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多模态",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "应声虫",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "神经元",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "周期律",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "因果论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "玛丽苏",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "龙傲天",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "宗主国",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "寒号鸟",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "常春藤",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "键盘侠",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "东林党",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "宿命论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "投名状",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二元论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "与非门",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "乌托邦",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "厌蠢症",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "分水岭",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "过滤器",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "做市商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "语料库",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "做题家",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高可用",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "安慰剂",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "建设性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "奶头乐",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "苦行僧",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "婆罗门",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "过拟合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "仁波切",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "千禧年",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人效比",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "正反馈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "负反馈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "现象学",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "艾滋病",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "渐冻症",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "令牌化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "假名化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "匿名化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "幂等性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自变量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "因变量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "钝感力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "仪式感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回旋镖",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "空窗期",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "庇护所",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二五仔",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三段论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中二病",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "产学研",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "公务员",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "体制内",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "鲁棒性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "置信度",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "作用域",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平方差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "标准差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "性张力",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "裸金属",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "在野党",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "反对党",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "结构性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "元宇宙",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "有机物",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "无机物",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大杀器",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "金本位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "爱国贼",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "乌班图",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "法西斯",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "建制派",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "概念股",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "红脖子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "官本位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "零拷贝",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "实验组",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对照组",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "白热化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "市梦率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "浮点数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定点数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自由基",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "呼吸感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "疏通费",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信达雅",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "白月光",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "朱砂痣",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "甘特图",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "容积率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "得房率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "理想国",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "巴别塔",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "克苏鲁",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "普信男",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "配得感",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "卡门线",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "清道夫",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "等离子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "干系人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "主理人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "白皮书",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多范式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "印花税",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "增值税",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社区团购",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "图灵完备",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "输送人才",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自我价值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "消费升级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "消费降级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "借假修真",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信息屏障",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "虚拟现实",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "增强现实",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "冒烟测试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "灰度发布",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蓝绿发布",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "滚动发布",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "可观测性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生态化反",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "红蓝对抗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "增长黑客",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "商业本质",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三电系统",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "从0到1",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "斜杠青年",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "T型人才",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "头脑风暴",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "弯道超车",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非标到标",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "小镇青年",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "刻板印象",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "种子用户",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "鲶鱼效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "羊群效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "墨菲定律",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蝴蝶效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "木桶效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "零和博弈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "囚徒困境",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "光环效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "破窗效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "边缘计算",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "胖客户端",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "瘦客户端",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对称加密",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "一级市场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二级市场",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "一类电商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二类电商",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逆向工程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "代码混淆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "长期主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "影响因子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "上帝视角",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人口红利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "行业红利",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "四纵三横",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "专家系统",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "图灵测试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "末位淘汰",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "洛希极限",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "引力弹弓",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "思想钢印",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "缸中之脑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "箱庭世界",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "开放世界",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "草台班子",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "庞氏骗局",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "优绩主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "树状结构",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "思维导图",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "柔性生产",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "瀑布模型",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "边缘路径",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知劣化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知茧房",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "认知失调",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "互害绑定",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "神经递质",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心理韧性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "先验概率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "介入因果",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "无效社交",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "乌合之众",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人格障碍",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情绪回路",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "虚无主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "现实主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "功利主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利己主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "个人主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利他主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "集体主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "英雄主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "恐怖主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "人道主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "爱国主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "军国主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "世界主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "经验主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "理想主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "行为主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "身份认同",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自我实现",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "存在主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "存在焦虑",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "英雄史观",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "庄周梦蝶",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "普世价值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "原生家庭",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "光晕效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "戒断反应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情境崩溃",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情境分离",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "创伤记忆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "应激反应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "向上管理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "锚定效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "宏大叙事",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "消费主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自恋幻觉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "归因谬误",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "假因谬误",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "形而上学",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "反刍思维",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通识教育",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大而化之",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "程序正义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "政治正确",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "机械降神",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平行世界",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "黑暗森林",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情绪铃铛",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多头博弈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "边际效用",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "管中窥豹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "色厉内荏",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生化环材",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "专家主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "因噎废食",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "地缘政治",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "妙手回春",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回光返照",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "复杂系统",
+      "category": "colleague",
+      "risk": "medium"
+    },
+    {
+      "slang": "混沌系统",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "混沌工程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "均值回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "唯物主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "唯心主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "熵增定律",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "粉饰太平",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "文艺复兴",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "封建主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资本主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "共产主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自由主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "民族主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "机会主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "修正主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会博弈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "文以载道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "道法术器",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "点线面体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "魑魅魍魉",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "绥靖政策",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "情绪价值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "炉边谈话",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "零日漏洞",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "实体清单",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "帕金森病",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "数据脱敏",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "连续数据",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "离散数据",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "线性规划",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "曲线拟合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "线性回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逻辑回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "方差分析",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "定序回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "泊松回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "生存回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "神经网络",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "机器学习",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "深度学习",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "强化学习",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "迁移学习",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "数据挖掘",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "数据清洗",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "向上社交",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "向下兼容",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三观不合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "以偏概全",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "偷换概念",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非黑即白",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "诉诸中庸",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "迷信权威",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "不当类比",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自相矛盾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "循环论证",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "量化投资",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拿到结果",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "敌意归因",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "刎颈之交",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "角色扮演",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "提示工程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "序位效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多看效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "镜中自我",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "霍桑效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "赌徒谬误",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "手表定律",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "通感效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "投射效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "饮鸩止渴",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "自证预言",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "怀璧其罪",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "倒反天罡",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "核心力量",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "尸位素餐",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "事业单位",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "纳什均衡",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "命名空间",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "一带一路",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "贸易转移",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "有效取样",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "模拟信号",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "数字信号",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "射频信号",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "株式会社",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蒙氏教育",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "孕妇效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "斯金纳箱",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双减政策",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "政左经右",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "汗牛充栋",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "弹冠相庆",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "贤者时间",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三中全会",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三和大神",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "资产阶级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "无产阶级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "工人阶级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "农民阶级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "中产阶级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "相得益彰",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "对赌协议",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "硅基生物",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "碳基生物",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "费米悖论",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "红顶商人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "国家机器",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沐猴而冠",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "回归测试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "沙文主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "拾人牙慧",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "转移支付",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "战略纵深",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "寅吃卯粮",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "逻辑炸弹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "铁锈地带",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "深层政府",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "隐性债务",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "化地方债",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "寒蝉效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "六经注我",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "我注六经",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "洛阳纸贵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "统战价值",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "退避重试",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "纵深防御",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "一语成谶",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "双盲实验",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "几何级数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "算术级数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "四不青年",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "等额本金",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "等额本息",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "科学上网",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二律背反",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "开盒挂人",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "国四国五",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "信息过载",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "量子跃迁",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "纵横捭阖",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "基尼系数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "横渠四句",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "笛卡尔积",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "加权求和",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "步步为营",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "本自具足",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "单边主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "多边主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "保护主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "霸权主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "唾面自干",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "数学建模",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "念兹在兹",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "氛围编程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "模型量化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "结对编程",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心智负担",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "金丝雀发布",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "第一性原理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "供应链攻击",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会工程学",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "旁观者效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "幸存者偏差",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "登门槛效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "以退为进法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "恩格尔系数",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "渐进式框架",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非对称加密",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "结构化数据",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "无监督学习",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "大语言模型",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "巴纳姆效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "集体潜意识",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "普鲁士教育",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "建构式教育",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "启发式教育",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "传授式教育",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "填鸭式教育",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "既得利益者",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "习得性无助",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "规则类怪谈",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "薛定谔的猫",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "宇称不守恒",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "替代性成瘾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "主观能动性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "主人翁意识",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "原教旨主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "路西法效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会化死亡",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "表演型人格",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "贝叶斯概率",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "忒修斯之船",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "吸引力法则",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "六边形战士",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "观察者偏见",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二极管思维",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "庞加莱回归",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "无政府主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "历史局限性",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非普适范式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "他人即地狱",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "何不食肉糜",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会管道化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阿茲海默症",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "伯努利原理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "鲁珀特之泪",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "讨好型人格",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "单电子宇宙",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "煤气灯效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "凡勃伦效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心理摆效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "酸葡萄效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "皈依者狂热",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "聚光灯效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会性懈怠",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "存在即合理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "平均数谬误",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "布尔什维克",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "社会原子化",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "结构性风险",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "结构性改革",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "边缘性行为",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "同素异形体",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "费曼学习法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "魅力型权威",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "我思故我在",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "塔西佗陷阱",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "丁达尔效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "色受想行识",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高净值人士",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "斯多葛主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "流氓无产阶级",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "官僚资本主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "机械唯物主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "辩证唯物主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "古典自由主义",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "劣币驱逐良币",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "半结构化数据",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非结构化数据",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "卷积神经网络",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "天时地利人和",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "品牌记忆系统",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "心智切割利器",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "利维坦最优解",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "雷普利症候群",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "不确定性原理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "蔡加尼克效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "会计师事务所",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "三明治反馈法",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "白璧微瑕效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "罗森塔尔效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "禁果逆反效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "柏拉图式爱情",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "二级混沌系统",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "高内聚低耦合",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阿喀琉斯之踵",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "修昔底德陷阱",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "系统一系统二",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "非监督式学习",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "欧亨利式结尾",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "道可道非常道",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "名可名非常名",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "事业环境因素",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "组织过程资产",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "莱布尼茨公式",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "斯德哥尔摩症候",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "奥卡姆剃刀定律",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "邓宁克鲁格效应",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "相关不蕴涵因果",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "阿斯伯格综合症",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "马斯洛需求层次",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "布雷顿森林体系",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "韦伯费希纳定理",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Let's circle back",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Low-hanging fruit",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Move the needle",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Boil the ocean",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Bandwidth",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Deep dive",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Drill down",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Sync",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Elephant in the room",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ping",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Leverage",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Deliverable",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Scope creep",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Action item",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Takeaway",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "On the same page",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Pain point",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Game changer",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Paradigm shift",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Synergy",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ROI",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "KPI",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Pushback",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Best practice",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Touch base",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Out of the loop",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Bring to the table",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Quick win",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "EOD",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ASAP",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "TBD",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "FYI",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Per my last email",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Win-win",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ecosystem",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Disrupt",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Scalable",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Robust",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Optimize",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Streamline",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Agile",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Sprint",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Stakeholder",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Onboard",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Offboard",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Feedback loop",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "North Star",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Hard stop",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Table this",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Blue sky thinking",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Granular",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Helicopter view",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Band-aid solution",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Run it up the flagpole",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Silo",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Pivot",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Unpack",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Level set",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Socialize",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Cascade",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Skin in the game",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Low risk  high reward",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Hardcoded",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Tech debt",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Deploy",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Rollback",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Hotfix",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Uptime",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Bleeding edge",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Dogfooding",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Feature creep",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "MVP",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Standup",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Retrospective",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Blocker",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Timebox",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Backlog",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ideate",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Iterate",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Dial it up/down",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Double down",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Sunset",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Deprecate",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Benchmark",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Baseline",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Cascade effect",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Leverage existing",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Reinvent the wheel",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Eat our own cooking",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "firefighting",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Jump the shark",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Silver bullet",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Swimlane",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Birds of a feather",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Open floor",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Parking lot",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Read the room",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Manage expectations",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Radical candor",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Psychological safety",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "VUCA",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "OKR",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "SMART goal",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "QBR",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "All hands",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "1-on-1",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Skip level",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Post-mortem",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Root cause analysis",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Cold call",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "War room",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Offsite",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Town hall",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Swag",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Perks",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ping-pong table",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Unlimited PTO",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Equity",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "RSU",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Vesting",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Cliff",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ramp up",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ramp down",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Proactive",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Reactive",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Cross-functional",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Buy-in",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "No-brainer",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Red flag",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Green flag",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Lowball",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Overdeliver",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Under-promise and overdeliver",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Glass cliff",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Glass ceiling",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Seat at the table",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Safe space",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Work-life balance",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Burnout",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Quiet quitting",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Great Resignation",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Return to office",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Loud quitting",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Act your wage",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Career cushioning",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Coffee badging",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Busy season",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Performance review",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "PIP",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Severance",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Layoff",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "RIF",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Restructure",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Transparent",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Alignment",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Whitespace",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Traction",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Run rate",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Churn",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "CAC",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "LTV",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "DAU/MAU",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Conversion rate",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Funnel",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "A/B test",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Growth hack",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Viral loop",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Net new",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Bottom line",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Top line",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "OpEx",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "CapEx",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Headcount",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "FTE",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Open headcount",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Hiring freeze",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Reorg",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Center of excellence",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Subject matter expert",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Force multiplier",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "RACI matrix",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Single point of failure",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Bus factor",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Tiger team",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Shadow IT",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Tech stack",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Bleed",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ramen profitable",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Product-market fit",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Unicorn",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Decacorn",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Exit",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "IPO",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Acqui-hire",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Board",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Series A/B/C",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Term sheet",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Due diligence",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Valuation",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Burn rate",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Runway",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Bootstrap",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Venture capital",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Angel investor",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "In the weeds",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Circle the wagons",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Paralysis by analysis",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Herding cats",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Call an audible",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Throw under the bus",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "CYA",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "CC",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "FYA",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "TL;DR",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "IMO",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ETA",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "OOO",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "WFH",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Hybrid",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Per diem",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Mentor",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Sponsor",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Ally",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "Microaggression",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ERG",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "DEI",
+      "category": "colleague",
+      "risk": "low"
+    },
+    {
+      "slang": "ESG",
+      "category": "colleague",
+      "risk": "low"
+    }
+  ],
+  "total": 2118
+}
