@@ -24,8 +24,10 @@ load_dotenv()
 
 from fastapi import FastAPI, UploadFile, File, HTTPException, WebSocket, WebSocketDisconnect, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+import os
 
 # 导入处理模块
 from video_processor import VideoProcessor
@@ -97,6 +99,27 @@ app.add_middleware(
 # 注册路由
 app.include_router(roleplay_router)
 
+# 配置静态文件服务 - 前端页面
+frontend_path = Path(__file__).parent.parent / "frontend"
+if frontend_path.exists():
+    app.mount("/static", StaticFiles(directory=str(frontend_path)), name="static")
+
+    @app.get("/pages/{page_name}")
+    async def serve_pages(page_name: str):
+        """服务前端页面"""
+        page_path = frontend_path / "pages" / page_name
+        if page_path.exists():
+            return FileResponse(str(page_path))
+        raise HTTPException(status_code=404, detail="页面不存在")
+
+    @app.get("/ai-video")
+    async def serve_ai_video():
+        """服务AI视频分析页面"""
+        page_path = frontend_path / "pages" / "ai-video.html"
+        if page_path.exists():
+            return FileResponse(str(page_path))
+        raise HTTPException(status_code=404, detail="页面不存在")
+
 # WebSocket 连接管理器
 class ConnectionManager:
     def __init__(self):
@@ -117,10 +140,10 @@ class ConnectionManager:
 manager = ConnectionManager()
 
 # ==================== 初始化处理模块 ====================
-print("🚀 初始化 AI 视频分析服务...")
-print(f"   - 视频处理: FFmpeg")
-print(f"   - 语音识别: Whisper ({Config.WHISPER_MODEL})")
-print(f"   - AI 分析: DeepSeek")
+print("[INIT] Starting AI Video Analysis Service...")
+print(f"   - Video Processing: FFmpeg")
+print(f"   - Speech Recognition: Whisper ({Config.WHISPER_MODEL})")
+print(f"   - AI Analysis: DeepSeek")
 print()
 
 # ==================== API 路由 ====================
